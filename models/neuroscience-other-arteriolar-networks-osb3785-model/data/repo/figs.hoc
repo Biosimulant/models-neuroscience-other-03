@@ -1,0 +1,26 @@
+// assumes presence of model and gui
+
+proc coupling() {
+	forall {
+		r_couple5 = $1*diam/(diam - 2*mw)
+	}
+}
+
+proc fig1A_vitro() {
+	Graph[0].erase()
+	coupling(1e8)
+	ecab[0] IClamp[0].loc(.5025)
+	run()
+	Graph[0].exec_menu("Keep Lines") // toggle on and off
+	Graph[0].exec_menu("Keep Lines")
+	mcab[0] IClamp[0].loc(.5025)
+	run()
+}
+
+proc othervitro() { //
+	Graph[0].erase()
+	IClamp[0].loc(.5025)
+	coupling($1)
+	run()
+}
+

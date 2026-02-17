@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: BurstAndTonicFiringBehaviourInSubfornical262422Model'
+description: '{"value": "\"Subfornical organ (SFO) neurons exhibit heterogeneity in
+  current expression and spiking behavior,\r\nwhere the two major spiking phenotypes
+  appear as tonic and burst firing. Insight into '
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:262422
+  source_db: modeldb
+  source_id: '262422'
+  standard: other
+  original_url: https://modeldb.science/262422
+  download_url: https://modeldb.science/download/262422
+  license: ''
+bsim:
+  entrypoint: src.burst_and_tonic_firing_behaviour_in_subfornical_262422_model:BurstAndTonicFiringBehaviourInSubfornical262422Model
+  init_kwargs:
+    model_path: data/262422.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

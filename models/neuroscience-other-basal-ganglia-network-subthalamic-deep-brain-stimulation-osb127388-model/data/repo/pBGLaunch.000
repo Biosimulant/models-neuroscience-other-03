@@ -1,0 +1,36 @@
+strdef str
+
+tstop = 10000				//set the simulation time in milliseconds
+
+netNum = 0
+getOutput("pNets.dat", netNum, 1)	//load a parameter set
+setMPTPinput()				//configure parameters for MPTP settings
+//setNORMALinput()			//configure parameters for Normal settings
+runNum = 0
+	
+pnm.prun()				//run the model
+pnm.gatherspikes()			//collect spikes from nodes (required for parallel runs)
+netStats(res)				//calculate population statistics
+
+saveData(netNum, res)			//append results to a file stats000.txt
+
+sprint(str, "spikes%03d.txt", runNum)	//put identifying number in filename
+saveSpikes(str)				//save spike time data for all cells to spikes000.txt
+
+
+runNum = 1
+
+setDBS(.4,.2)				//activate DBS for 40% of STN and 20% of GPi axons
+
+pnm.prun()				//run the model
+pnm.gatherspikes()			//collect spikes from nodes (required for parallel runs)
+netStats(res)				//calculate population statistics
+
+saveData(netNum, res)			//append results to a file stats000.txt
+
+sprint(str, "spikes%03d.txt", runNum)	//put identifying number in filename
+saveSpikes(str)				//save spike time data for all cells to spikes000.txt
+
+
+quit()					//exit Neuron and close all windows
+

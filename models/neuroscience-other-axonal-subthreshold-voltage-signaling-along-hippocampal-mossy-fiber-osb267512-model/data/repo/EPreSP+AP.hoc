@@ -1,0 +1,6 @@
+load_file("nrngui.hoc")
+
+load_file("GC.hoc")
+
+load_file("EPreSP+AP.ses")
+

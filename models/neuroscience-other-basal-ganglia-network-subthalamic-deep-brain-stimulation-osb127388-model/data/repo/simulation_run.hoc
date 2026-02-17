@@ -1,0 +1,25 @@
+
+pnm.pc.runworker
+
+objref res
+res = new Vector()
+
+
+// Update and save seed value
+rf.wopen("randseed.txt")
+rf.printf("%d\n", seedVal+1)
+rf.close()
+
+strdef fname
+// use 0 as default file for modeldb auto-launch
+i = 0 // xred("Enter number of launch file ", -1, 0, 999)
+
+// NoQuit file especially made for auto-launch
+if (i >= 0) {
+	sprint(fname, "pBGLaunchNoQuit.%03d", i)
+	print "Launching file ", fname
+	load_file(fname)
+}
+
+
+pnm.pc.done

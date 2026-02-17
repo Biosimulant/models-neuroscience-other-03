@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AlleviatingCatastrophicForgettingContextGati256370Model'
+description: '{"value": "\"Artificial neural networks can suffer from catastrophic
+  forgetting, in which learning a new task causes the network to forget how to perform
+  previous tasks. While previous studies have pr'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:256370
+  source_db: modeldb
+  source_id: '256370'
+  standard: other
+  original_url: https://modeldb.science/256370
+  download_url: https://modeldb.science/download/256370
+  license: ''
+bsim:
+  entrypoint: src.alleviating_catastrophic_forgetting_context_gati_256370_model:AlleviatingCatastrophicForgettingContextGati256370Model
+  init_kwargs:
+    model_path: data/256370.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

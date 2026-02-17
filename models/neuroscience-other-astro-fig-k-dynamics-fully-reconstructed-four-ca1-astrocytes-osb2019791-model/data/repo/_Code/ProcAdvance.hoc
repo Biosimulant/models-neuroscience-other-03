@@ -1,0 +1,14 @@
+
+proc advance() {
+    
+    fadvance()
+    
+    forall {
+        if (kSrc.isSourceActive()) {
+            ko = Kout
+        } else  {
+            ko = 2.5    // mM       // !!! maybe expose in UI or copy from the GLOBAL "ko0_k_ion"
+        }
+    }
+    
+}

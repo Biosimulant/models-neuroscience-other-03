@@ -1,0 +1,81 @@
+// This script runs simulation of loop of pyramidal cells
+// connected by gap junctions in axonal section 21, at distance 2296 um from soma
+// one gap junction is set weak to break loop symmetry and induce reentrant oscillations
+
+load_file ("nrngui.hoc")
+load_file("cellTemplate.hoc")
+load_file("gapjunction.hoc")
+
+tstop = 25
+ncells = 9
+gj_conductance = 3e-3 //[mcS]
+weakgj_conductance = 1.3e-3 //[mcS]
+axonal_section = 21 // axonal section used
+section_pos1 = 0.45 // position within section1
+section_pos2 = 0.55 // position within section2
+
+objectvar cells, gaps
+
+proc mkloop(){ local i localobj cell_, gap_
+// $1 - length of loop
+   cells = new List()
+   gaps = new List()
+   for i=0,$1-1{
+     cell_ = new pyramidal()
+	 cells.append(cell_)
+   }
+   for i=0,$1-1{
+    gap_ = new gapjunction(cells.object(i), axonal_section, cells.object((i+1)%$1), axonal_section, gj_conductance, section_pos1, section_pos2)
+	gap_.setcells(i,(i+1)%$1)
+	gaps.append(gap_)
+   }
+}
+
+proc setpositions(){ local i, x, y
+  for i = 0,cells.count()-1{
+      x = 1000*cos(2*PI*i/cells.count())
+	  y = 1000*sin(2*PI*i/cells.count())
+	  cells.object(i).position(x,y,0)
+	  cells.object(i).setgid(i+1)
+  }
+}
+
+// adds steady current to soma (hyperpolarizing)
+// $1 is the current in nA, "-" for hyperpolarizing, "+" for depolarizing
+proc setcurrentbias(){ local i, area_soma localobj cell_
+ cell_ = new pyramidal() //create a generic cell
+ cell_.soma { area_soma = PI*diam*L*1e-8 } // unts converted [mcm2->cm2], area_soma is the area of a soma membrane
+ for i = 0,cells.count-1{
+   cells.object(i).soma {
+      insert bias
+	  amp_bias = -$1*1e-6/area_soma //note conversion [nA->mA] by 1e-6 and change of sign
+    }
+  }
+}
+
+// sets all conductances to 0 except HH: fast Na+ and K+(DR)
+// this function is used to have only Na(F) and K(DR) conductances and a minimum loop length (9)
+// a model with Na(F), K(DR), K(A) and K(M) requires a loop of 40 cells
+proc setaxonalchannelsHH(){ local i
+ for i = 0,cells.count-1{
+	forsec cells.object(i).axonal {	gbar_ka = gbar_km = 0 } 
+ }
+}
+
+mkloop(ncells)
+setpositions()
+setcurrentbias(-0.1) // electrode current, [nA]
+setaxonalchannelsHH()
+
+// set one gap junction weak
+gaps.object(0).setg(weakgj_conductance)
+
+objectvar pulse
+cells.object(0).soma pulse = new Ipulse1(0.5)
+pulse.amp = 1
+pulse.del = 2
+pulse.num = 1
+pulse.ton = pulse.toff = 1
+
+access cells.object(0).soma
+xopen("ringGUI.ses")

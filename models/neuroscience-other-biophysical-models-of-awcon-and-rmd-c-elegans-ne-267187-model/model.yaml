@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: BiophysicalModelsOfAwconAndRmdCElegansNe267187Model'
+description: '{"value": "Here are presented the Hodgkin-Huxley models of AWCon and
+  RMD cells of the C. elegans nervous system as reported in Nicoletti et al. 2019.
+  Cells are stimulated both in voltage and current c'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:267187
+  source_db: modeldb
+  source_id: '267187'
+  standard: other
+  original_url: https://modeldb.science/267187
+  download_url: https://modeldb.science/download/267187
+  license: ''
+bsim:
+  entrypoint: src.biophysical_models_of_awcon_and_rmd_c_elegans_ne_267187_model:BiophysicalModelsOfAwconAndRmdCElegansNe267187Model
+  init_kwargs:
+    model_path: data/267187.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

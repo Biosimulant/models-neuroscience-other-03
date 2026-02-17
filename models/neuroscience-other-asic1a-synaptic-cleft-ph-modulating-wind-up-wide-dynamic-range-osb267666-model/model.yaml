@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model267666267666Model'
+description: A model of ASIC1a and synaptic cleft pH modulating wind-up in wide dynamic
+  range neurons (Delrocq)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:267666
+  source_db: opensourcebrain
+  source_id: '267666'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/267666
+  download_url: https://github.com/OpenSourceBrain/267666.git
+  license: ''
+bsim:
+  entrypoint: src.model_267666_267666_model:Model267666267666Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

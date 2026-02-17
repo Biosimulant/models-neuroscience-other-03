@@ -1,0 +1,98 @@
+
+viewDirIdx = 0          // XY
+
+objref ecsShape
+
+proc updateSphereMarker() { local xc_screen, yc_screen
+    
+    ecsShape.erase()    // !! .erase_all would remove the species label, but it has much worse performance
+    
+    kSrc.getCentreScreenCoords(viewDirIdx, &xc_screen, &yc_screen)
+    _addCircleMarker(xc_screen, yc_screen)
+    
+    _removeSpeciesLabel()
+    _addSpeciesLabel(kSrc.colour)
+}
+
+proc viewDirectionChangedHandler() {
+    viewDirIdx = $1
+    _setViewDir(viewDirIdx)
+    updateSphereMarker()
+    ecsShape.exec_menu("View = plot")
+}
+
+// !! test if we miss the "release" event when user releases LMB outside the Shape or the widget
+proc mouseEventsHandler() { local eventType, x_screen, y_screen, keystate, isMoveOrResize
+    
+    eventType = $1
+    x_screen = $2
+    y_screen = $3
+    keystate = $4
+    
+    isMoveOrResize = (keystate != 2)    // 2: Shift
+    
+    if (eventType == enumMouseEvents.press) {
+        dismissGraph()
+    }
+    
+    if (isMoveOrResize) {
+        kSrc.moveSphere(viewDirIdx, x_screen, y_screen)
+    } else {
+        kSrc.resizeSphere(viewDirIdx, x_screen, y_screen)
+    }
+    
+    updateSphereMarker()
+    
+    if (eventType == enumMouseEvents.release) {
+        ifHasContactThenCreateGraphForPointClosestToSphereCentre()
+        warnIfNoContact(0)
+    }
+}
+
+
+proc _addCircleMarker() { local x_screen, y_screen, radius_screen, numPts, delta_angle, ptIdx, angle
+    
+    x_screen = $1
+    y_screen = $2
+    
+    radius_screen = kSrc.radius
+    
+    numPts = 200
+    
+    delta_angle = 2 * PI / numPts
+    ecsShape.beginline(kSrc.colour, 0)
+    for ptIdx = 0, numPts {
+        angle = delta_angle * ptIdx
+        ecsShape.line(x_screen + radius_screen * cos(angle), y_screen + radius_screen * sin(angle))
+    }
+}
+
+proc _setViewDir() { local viewDirIdx
+    
+    viewDirIdx = $1
+    
+    ecsShape.rotate()                              // XY
+    
+    if (viewDirIdx == 0) {
+        // Empty by design
+    } else if (viewDirIdx == 1) {
+        ecsShape.rotate(0, 0, 0, 0, PI / 2, 0)     // ZY
+    } else if (viewDirIdx == 2) {
+        ecsShape.rotate(0, 0, 0, PI / 2, 0, 0)     // XZ
+    } else {
+        codeContractViolation()
+    }
+}
+
+proc _removeSpeciesLabel() { local i
+    for i = 1, 10 {     // !! hack
+        _addSpeciesLabel(enumColours.white)
+    }
+}
+
+proc _addSpeciesLabel() { local colour
+    strdef label
+    colour = $1
+    sprint(label, "Extracellular %s Source", kSrc.species)
+    ecsShape.label(0.99, 0.99, label, 2, 1, 1, 1, colour)
+}

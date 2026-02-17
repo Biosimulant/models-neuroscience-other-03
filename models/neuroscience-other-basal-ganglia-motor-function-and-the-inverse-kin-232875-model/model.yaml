@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: BasalGangliaMotorFunctionAndTheInverseKin232875Model'
+description: '{"value": "The computational model to study the possible correlation
+  between Basal Ganglia (BG) function and solving the Inverse Kinematics (IK).", "attr_id":
+  24}'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:232875
+  source_db: modeldb
+  source_id: '232875'
+  standard: other
+  original_url: https://modeldb.science/232875
+  download_url: https://modeldb.science/download/232875
+  license: ''
+bsim:
+  entrypoint: src.basal_ganglia_motor_function_and_the_inverse_kin_232875_model:BasalGangliaMotorFunctionAndTheInverseKin232875Model
+  init_kwargs:
+    model_path: data/232875.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

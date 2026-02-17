@@ -1,0 +1,119 @@
+{
+  "biophys": [
+    {
+      "model_file": [
+        "manifest.json",
+        "472451419_fit.json"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "sweeps": [
+        37,
+        43,
+        31,
+        24,
+        57,
+        22,
+        51,
+        23,
+        66,
+        4,
+        58,
+        46,
+        29,
+        11,
+        33,
+        10,
+        0,
+        14,
+        7,
+        21,
+        48,
+        16,
+        39,
+        12,
+        2,
+        13,
+        17,
+        49,
+        6,
+        3,
+        34,
+        61,
+        1,
+        59,
+        44,
+        9,
+        40,
+        63,
+        26,
+        28,
+        56,
+        18,
+        15,
+        62,
+        30,
+        35,
+        42,
+        65,
+        19,
+        27,
+        60,
+        38,
+        32,
+        67,
+        36,
+        50,
+        41,
+        5,
+        47
+      ]
+    }
+  ],
+  "neuron": [
+    {
+      "hoc": [
+        "stdgui.hoc",
+        "import3d.hoc"
+      ]
+    }
+  ],
+  "manifest": [
+    {
+      "type": "dir",
+      "spec": ".",
+      "key": "BASEDIR"
+    },
+    {
+      "type": "dir",
+      "spec": "work",
+      "key": "WORKDIR",
+      "parent": "BASEDIR"
+    },
+    {
+      "type": "file",
+      "spec": "Nr5a1-Cre_Ai14_IVSCC_-177334.05.01.01_471120787_m.swc",
+      "key": "MORPHOLOGY"
+    },
+    {
+      "type": "dir",
+      "spec": "modfiles",
+      "key": "MODFILE_DIR"
+    },
+    {
+      "type": "file",
+      "format": "NWB",
+      "spec": "386049444.nwb",
+      "key": "stimulus_path"
+    },
+    {
+      "parent_key": "WORKDIR",
+      "type": "file",
+      "format": "NWB",
+      "spec": "386049444.nwb",
+      "key": "output"
+    }
+  ]
+}

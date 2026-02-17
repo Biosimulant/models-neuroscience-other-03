@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AxonalSpheroidsAndConductionDefectsInAlzhe185864Model'
+description: '{"value": "PAAS (plaque-associated axonal spheroid(s)) are dystrophic
+  structures that sprout from axons that pass through amyloid beta plaques. If small
+  enough they do not interfere with action potent'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:185864
+  source_db: modeldb
+  source_id: '185864'
+  standard: other
+  original_url: https://modeldb.science/185864
+  download_url: https://modeldb.science/download/185864
+  license: ''
+bsim:
+  entrypoint: src.axonal_spheroids_and_conduction_defects_in_alzhe_185864_model:AxonalSpheroidsAndConductionDefectsInAlzhe185864Model
+  init_kwargs:
+    model_path: data/185864.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

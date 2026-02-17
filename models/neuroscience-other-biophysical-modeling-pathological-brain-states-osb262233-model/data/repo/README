@@ -1,0 +1,25 @@
+This is the Readme for the model associated with the paper:
+
+Sudhakar, S. K., Choi, T. J., & Ahmed, O. J. (2019). Biophysical Modeling Suggests Optimal Drug Combinations for Improving the Efficacy of GABA Agonists after Traumatic Brain Injuries. Journal of Neurotrauma, 36, 1–14. https://doi.org/10.1089/neu.2018.6065
+
+
+
+File descriptions
+
+PYR_template.hoc - Neuron template of Regular spiking (RS) neuron described in the paper
+
+test_RS_fig_1a1.hoc - Test file to generate figure 1a (upper panel, current = 300 pA)
+test_RS_fig_1a2.hoc - Test file to generate figure 1a (middle panel, current = 700 pA)
+test_RS_fig_1a3.hoc - Test file to generate figure 1a (lower panel, current = 2700 pA)
+
+
+How to run the model
+
+Download all files to your computer and cd to the corresponding folder On the terminal, type "mknrndll (or nrnivmodl)" to complile the .mod files
+If you need more help running NEURON on your platform please consult:
+https://senselab.med.yale.edu/ModelDB/NEURON_DwnldGuide
+Type "nrngui test_model_RS.hoc" or " nrngui test_model_LR.hoc" to run the model
+
+For accurate results, use a dt of 0.025 ms.
+
+In case of any questions, please send an email to shyamk@umich.edu

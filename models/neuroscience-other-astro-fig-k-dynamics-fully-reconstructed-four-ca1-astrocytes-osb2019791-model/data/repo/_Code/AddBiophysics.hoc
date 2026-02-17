@@ -1,0 +1,27 @@
+
+forall {
+    
+    Ra = 100    // ohm-cm
+    cm = 0.8    // uF/cm2
+    
+    insert pas
+    g_pas = 0       // S/cm2
+    e_pas = -75     // mV
+    
+    insert kir4
+    gkir_kir4 = 0.1     // mS/cm2
+    NormK_kir4 = 0.6    // unitless
+    
+    insert kdifl
+    ki0_kdifl = 110     // mM
+    Dk_kdifl = 0.6      // micron2/ms
+    iextra_kdifl = 0    // milliamp/cm2
+    
+    insert KNaTrans
+    Kp_KNaTrans = 0.106     // mA/cm2
+    Krest_KNaTrans = 110    // mM
+    imax_KNaTrans = 0.02    // mA/cm2
+    
+    insert nakpumpLong
+    
+}

@@ -1,0 +1,84 @@
+{load_file("nrngui.hoc")}
+objectvar save_window_, rvp_
+objectvar scene_vector_[5]
+objectvar ocbox_, ocbox_list_, scene_, scene_list_
+{ocbox_list_ = new List()  scene_list_ = new List()}
+{pwman_place(0,0,0)}
+{
+xpanel("RunControl", 0)
+v_init = -70
+xvalue("Init","v_init", 1,"stdinit()", 1, 1 )
+xbutton("Init & Run","run()")
+xbutton("Stop","stoprun=1")
+runStopAt = 40
+xvalue("Continue til","runStopAt", 1,"{continuerun(runStopAt) stoprun=1}", 1, 1 )
+runStopIn = 1
+xvalue("Continue for","runStopIn", 1,"{continuerun(t + runStopIn) stoprun=1}", 1, 1 )
+xbutton("Single Step","steprun()")
+t = 550
+xvalue("t","t", 2 )
+tstop = 550
+xvalue("Tstop","tstop", 1,"tstop_changed()", 0, 1 )
+dt = 0.02
+xvalue("dt","dt", 1,"setdt()", 0, 1 )
+steps_per_ms = 50
+xvalue("Points plotted/ms","steps_per_ms", 1,"setdt()", 0, 1 )
+screen_update_invl = 0.05
+xvalue("Scrn update invl","screen_update_invl", 1,"", 0, 1 )
+realtime = 0.15
+xvalue("Real Time","realtime", 0,"", 0, 1 )
+xpanel(22,199)
+}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,550,-0.068,2.32831e-09)
+scene_vector_[2] = save_window_
+{save_window_.view(0, -0.068, 550, 0.068, 397, 360, 508.5, 154)}
+graphList[1].append(save_window_)
+save_window_.save_name("graphList[1].")
+save_window_.addvar("c.i", 2, 1, 0.8, 0.9, 2)
+}
+{
+save_window_ = new Graph(0)
+save_window_.size(0,550,0,1)
+scene_vector_[3] = save_window_
+{save_window_.view(0, 0, 550, 1, 397, 12, 516.6, 200.8)}
+graphList[1].append(save_window_)
+save_window_.save_name("graphList[1].")
+save_window_.addvar("PRE.T_fastglu( 0.5 )", 1, 1, 0.8, 0.9, 2)
+}
+{
+xpanel("fast-flow", 0)
+xmenu("cmax", 0)
+xbutton("1 uM","PRE.cmax_fastglu = 1e-3")
+xbutton("30 uM","PRE.cmax_fastglu = 30e-3")
+xbutton("1000 uM","PRE.cmax_fastglu = 1000e-3")
+xmenu()
+xmenu("dur", 0)
+xbutton("1 ms","PRE.dur_fastglu = 1")
+xbutton("20 ms","PRE.dur_fastglu = 20")
+xbutton("2 s","PRE.dur_fastglu = 2000")
+xmenu()
+PRE.cmax_fastglu(.5) = 0.03
+xvalue("cmax","PRE.cmax_fastglu(.5)", 1,"", 0, 0 )
+PRE.dur_fastglu(.5) = 500
+xvalue("dur","PRE.dur_fastglu(.5)", 1,"", 0, 0 )
+PRE.Twait_fastglu(.5) = 10
+xvalue("Twait","PRE.Twait_fastglu(.5)", 1,"", 0, 0 )
+xpanel(1152,43)
+}
+{
+xpanel("Temperature", 0)
+celsius = 22
+xvalue("celsius","celsius", 1,"", 0, 1 )
+xpanel(1297,372)
+}
+{
+xpanel("AMPA13[0] at POST(0.5)", 0)
+xlabel("AMPA13[0] at POST(0.5)")
+c.gmax = 4535.4
+xvalue("gmax","c.gmax", 1,"", 0, 1 )
+xpanel(1446,704)
+}
+objectvar scene_vector_[1]
+{doNotify()}

@@ -1,0 +1,33 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model184202184202Model'
+description: 'Allen Institute: Scnn1a-Tg2-Cre VISp layer 4 472427533'
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:184202
+  source_db: opensourcebrain
+  source_id: '184202'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/184202
+  download_url: https://github.com/OpenSourceBrain/184202.git
+  license: ''
+bsim:
+  entrypoint: src.model_184202_184202_model:Model184202184202Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

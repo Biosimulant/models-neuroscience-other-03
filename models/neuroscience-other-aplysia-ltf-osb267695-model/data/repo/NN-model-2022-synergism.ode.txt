@@ -1,0 +1,256 @@
+
+pRaf'=((K_fRaf*ApNT+0.00013)*Raf-K_bRaf*pRaf)
+
+Raf=Raf_total-pRaf
+
+p K_fRaf=0.037
+p K_bRaf=0.00037
+p Raf_total=0.5
+
+
+MAPKK'=-K_fMAPKK*pRaf*(MAPKK/(MAPKK+K_1mkk))+(K_bMAPKK+0.04*act_dp38*heav(ppMAPKK-0.25))*(pMAPKK/(pMAPKK+K_2mkk))
+
+ppMAPKK'=K_fMAPKK*pRaf*(pMAPKK/(pMAPKK+K_1mkk))-(K_bMAPKK+0.04*act_dp38*heav(ppMAPKK-0.25))*(ppMAPKK/(ppMAPKK+K_2mkk))
+
+pMAPKK=MAPKK_tt-MAPKK-ppMAPKK
+
+act_dp38'=(1.2*0.33*(dpp38-0.142)*heav(dpp38-0.142)*(1-SB)-0.0013*act_dp38)
+
+
+p K_fMAPKK=0.41
+p K_1mkk=0.20
+p K_2mkk=0.19
+p MAPKK_tt=0.5
+
+
+K_bMAPKK=0.04
+
+
+
+
+MAPK'=(-K_fMAPK*(ppMAPKK+ppMEKtgf)*(MAPK/(MAPK+K_1mk))+K_bMAPK*(pMAPK/(pMAPK+K_2mk)))
+ppMAPK'=(K_fMAPK*(ppMAPKK+ppMEKtgf)*(pMAPK/(pMAPK+K_1mk))-K_bMAPK*(ppMAPK/(ppMAPK+K_2mk)))
+pMAPK=MAPK_tt-ppMAPK-MAPK
+
+p K_fMAPK=0.41
+p K_1mk=0.19
+p K_2mk=0.21
+K_bMAPK=0.12*(1-NSC)
+p MAPK_tt=0.5
+
+
+
+MEKtgf'=-K_fMAPKK*TGF*(MEKtgf/(MEKtgf+K_1mkk))+(K_bMAPKK+0.04*act_dp38)*(pMEKtgf/(pMEKtgf+K_2mkk))
+ppMEKtgf'=K_fMAPKK*TGF*(pMEKtgf/(pMEKtgf+K_1mkk))-(K_bMAPKK+0.04*act_dp38)*(ppMEKtgf/(ppMEKtgf+K_2mkk))
+pMEKtgf=MAPKK_tt/6-MEKtgf-ppMEKtgf
+TGF'=(0.0087*TBL^2/(TBL^2+0.0078^2)-0.0058*TGF)
+
+
+pRafP'=((0.0009*5HT+0.036)*RafP-0.1*pRafP)
+RafP=RafP_to-pRafP
+p RafP_to=0.5
+
+
+MEK6'=(-K_fMAPKK*pRafP*(MEK6/(MEK6+K_1mkk))+K_bMp38*(pMEK6/(pMEK6+K_2mkk)))
+ppMEK6'=(K_fMAPKK*pRafP*(pMEK6/(pMEK6+K_1mkk))-K_bMp38*(ppMEK6/(ppMEK6+K_2mkk)))
+pMEK6=MEK6_tt-MEK6-ppMEK6
+
+K_bMp38=0.04
+
+
+p38'=(-(K_fp38)*(p38/(p38+K_1mk))+K_b38*(pp38/(pp38+K_2mk)))
+dpp38'=((K_fp38)*(pp38/(pp38+K_1mk))-K_b38*(dpp38/(dpp38+K_2mk)))
+pp38=p38_total-dpp38-p38
+
+
+
+K_fp38=(0.25*ppMEK6+0.99*(pRSK*(1-1*Chi3)+0.042*1*Chi3))/(1+act5HT)
+
+
+act5HT'=(0.8*5HT/(5HT+50)-1*act5HT)
+
+p MEK6_tt=0.5
+p p38_total=0.5
+p K_b38=0.12
+
+pRSK'=((0.26*(PKAC-0.35)*heav(PKAC-0.35)*0+0.82*ppMAPK)*RSK-0.31*(pRSK/(pRSK+0.2))*(1+10*act_dp38R^2/(act_dp38R^2+2^2)))
+
+act_dp38R'=(3*(dpp38-0.144)*heav(dpp38-0.144)*(1-SB)-0.25*act_dp38R)*0
+
+act_dpR'=(30*(pRSK-0.042)*heav(pRSK-0.042)-0.25*act_dpR)/60*0
+
+
+RSK=RSK_total-pRSK
+RSK_total=0.5
+
+
+
+cAMP'=lamda*(5HT/(5HT+K_5HT)+1*ApNT/(ApNT+10)*0)-K_bcamp*cAMP+cAMPbas
+PKAR'=V_syn+K_fpka*PKARC*cAMP^2-K_bpka*PKAR*PKAC-K_dpka*PKAR
+PKARC'=-K_fpka*PKARC*cAMP^2+K_bpka*PKAR*PKAC-K_dpka*PKARC
+PKAC'=V_syn+K_fpka*PKARC*cAMP^2-K_bpka*PKAR*PKAC-K_dpka*PKAC
+
+ApNT'=0.3*(PKAC-0.35)/((PKAC-0.35)+1)*heav(PKAC-0.35)-0.05*ApNT
+
+
+
+p V_syn=0
+p K_dpka=0
+p cAMPbas=0.7
+p K_bpka=12
+
+p lamda=3.64
+p K_5HT=85
+p K_fpka=20
+
+K_bcamp=1*(1-roli)
+
+
+
+
+
+init pRaf=0.13
+init MAPKK=0.095
+init ppMAPKK=0.26
+init MAPK=0.19
+init PPMAPK=0.145
+
+init pRafP=0.13
+init MEK6=0.095
+init ppMEK6=0.26
+
+init p38=0.19
+init dpp38=0.145
+init act_dp38=0
+
+init PKAC=0.35
+init cAMP=0.7
+init PKAR=0.35
+
+init PKARC=0.15
+init pRSK=0.042
+
+
+PKACA=PKAC/3.8
+
+
+# the following are the equations of CREB1, CREB2, and CEBP
+
+#phosphorylated CREB1 protein
+pCREB1'=(1.25*(pRSK-0.042)*heav(pRSK-0.042)*(1-1*Chi3)+0.3*(PKAC-0.35)*heav(PKAC-0.35))*CREB1-K_dephC1*pCREB1
+
+#phosphorylated CREB2 protein
+
+pCREB2e'=(K_phosC2*ppMAPK*CREB2-K_dephC2*pCREB2e)
+
+pCREB2p'=(K_phosC2*dpp38*CREB2*(1-SB)-K_dephC2*pCREB2p)
+
+CREB1=0.05-pCREB1
+CREB2=0.05-pCREB2e-pCREB2p
+
+p K_dephC1=0.05
+p K_phosC2=3.5
+p K_dephC2=0.5
+
+
+#synthesis OF TGF protein
+TBL'=DR-TBL
+DR=(pCREB1^2/0.003^2)/(1+pCREB1^2/0.003^2+(CREB2)^2/0.003^2+(pCREB2p)^2/0.0003^2)*heav(pCREB1)
+
+#synthesis OF CEBP protein
+CEBP'=(V_xCBP*DR-K_dxCBP*CEBP)-(K_phosC3*ppMAPK*CEBP-K_dephC3*pCEBP)
+
+#phosphorylated CEBP protein
+pCEBP'=(K_phosC3*ppMAPK*CEBP-K_dephC3*pCEBP-K_dZ2*pCEBP)
+
+V_xCBP=400*(CBP^2/(Kcbp^2+CBP^2))
+Kcbp=5
+CBP=1
+
+p K_xCBP=0.00009
+p K_yCBP=0.00001
+
+p K_dxCBP=0.75
+p K_dZ2=0.0015	
+
+p K_phosC3=0.25
+p K_dephC3=0.5
+
+
+#init pCREB1, pCREB2, CEBP
+init pCREB1=0
+init pCREB2e=0.0164
+init pCREB2p=0.0168
+
+# training protocols
+5HT'=(50*(on0*heav(t-t2)*heav(t2+5-t)+on1*heav(t-t2-inter1)*heav(inter1+5+t2-t)+on2*heav(t-t2-inter1-inter2)*heav(inter1+inter2+5+t2-t)+on3*heav(t-t2-inter1-inter2-inter3)*heav(inter1+inter2+inter3+5+t2-t)+on4*heav(t-t2-inter1-inter2-inter3-inter4)*heav(inter1+inter2+inter3+inter4+5+t2-t))*turnon-5HT)
+
+inter1=5*(1+a1)
+
+inter2=5*(1+a2)
+
+inter3=5*(1+a3)
+
+inter4=5*(1+a4)
+
+
+#ERK enhancer
+NSC=0.012*heav(t-t2+30)*heav(t2+85-t)*flr(step2/10)
+
+#cAMP enhancer
+roli=0.025*heav(t-t2+30)*heav(t2+85-t)*(step2-10*flr(step2/10))
+
+
+#p38 MAPK inhibitor
+SB=0.025*heav(t-t2+30)*heav(t2+85-t)*flr(step2/10)*0
+
+#BID
+Chi3=0.6*0
+
+p on0=1
+p on1=1
+p on2=1
+p on3=1
+p on4=1
+
+
+p turnoff=0
+p turnon=1
+p t1=2995
+p t2=2910
+
+
+aux 1=(t-t2)
+aux 4=5HT
+aux 7=a1
+aux 8=a2
+aux 9=a3
+aux 10=a4
+aux 14=ApNT
+aux 18=ppMAPK/0.14*100
+aux 19=dpp38/0.145*100
+AUX 20=pRSK/0.041*100
+aux 22=PKAC/0.35*100
+aux 24=TGF
+aux 25=TBL
+aux 26=pCREB1
+aux 27=pCEBP
+aux 28=(ppMAPK-0.14)*(PKAC-0.35)
+aux 33=roli
+aux 34=SB
+
+p step=3333
+p step2=0
+
+
+a4=(step-10*flr(step/10))
+a3=flr((step-100*flr(step/100))/10)
+a2=flr((step-1000*flr(step/1000))/100)
+a1=flr(step/1000)
+
+@ total=3300, xlo=0, xhi=5000, ylo=0, yhi=10, bounds=10e30, MAXSTOR=1300000,xp=vs, yp=mk,nout=200, dt=0.01,
+@ delay=6000
+
+#@ RANGE=1, RANGEOVER=step2, RANGESTEP=100, RANGELOW=0, RANGEHIGH=100, RANGERESET=yes, RANGEOLDIC=yes, output=test1
+
+@ output=test2.txt

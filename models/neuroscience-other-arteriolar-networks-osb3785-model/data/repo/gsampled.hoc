@@ -1,0 +1,106 @@
+xopen("$(NEURONHOME)/lib/hoc/noload.hoc")
+load_proc("nrnmainmenu")
+nrnmainmenu()
+
+// gsampled.hoc
+// m refers to muscle layer, e to endothelial
+// m and e have same structure
+nsec = 7
+create mcab[nsec], ecab[nsec]
+
+connect mcab[1](0), mcab[0](1)
+connect mcab[2](0), mcab[0](1)
+connect ecab[1](0), ecab[0](1)
+connect ecab[2](0), ecab[0](1)
+
+connect mcab[3](0), mcab[1](1)
+connect mcab[4](0), mcab[1](1)
+connect ecab[3](0), ecab[1](1)
+connect ecab[4](0), ecab[1](1)
+
+connect mcab[5](0), mcab[2](1)
+connect mcab[6](0), mcab[2](1)
+connect ecab[5](0), ecab[2](1)
+connect ecab[6](0), ecab[2](1)
+
+access ecab[0]
+
+objref stim
+ecab[0] stim = new IClamp(0.5)
+stim.del = 0
+stim.dur = 500     // [ms]
+stim.amp = 0.1
+tstop = 500        // [ms]
+v_init = 0
+
+
+
+// endothelium width (microns)
+ew = 0.5
+// muscle cell width (microns)
+mw = 5
+func rim() {
+	return ($1*diam^2)/(4*mw*(diam -mw))
+}
+
+func rie() { 
+        return ($1*diam^2)/(4*ew*(diam -ew -2*mw))
+}
+       
+mcab[0] {nseg=200 L=2000 diam=50  Ra = rim(300) }
+ecab[0] {nseg=200 L=2000 diam=50  Ra = rie(120) }
+mcab[1] {nseg=20 L=350 diam=40  Ra = rim(300) }
+ecab[1] {nseg=20 L=350 diam=40  Ra = rie(120) }
+mcab[2] {nseg=50 L=720 diam=35  Ra = rim(300) }
+ecab[2] {nseg=50 L=720 diam=35  Ra = rie(120) }
+mcab[3] {nseg=100 L=1600 diam=30  Ra = rim(300) }
+ecab[3] {nseg=100 L=1600 diam=30  Ra = rie(120) }
+mcab[4] {nseg=50 L=845  diam=40  Ra = rim(300) }
+ecab[4] {nseg=50 L=845  diam=40  Ra = rie(120) }
+mcab[5] {nseg=50 L=460  diam=30  Ra = rim(300) }
+ecab[5] {nseg=50 L=460  diam=30  Ra = rie(120) }
+mcab[6] {nseg=100 L=2000  diam=30  Ra = rim(300) }
+ecab[6] {nseg=100 L=2000  diam=30  Ra = rie(120) }
+
+func rm() {
+          return $1*diam/(2*(diam - mw)) 
+} 
+
+func rme() {
+          return $1*diam/(2*(diam - ew -2*mw))
+}
+
+func mycm() {
+          return $1*2*(diam - mw)/diam
+}
+
+func myce() {
+          return $1*2*(diam-ew-2*mw)/diam
+}
+ 
+for i=0, nsec-1 mcab[i] {
+	insert pas
+	g_pas = 1/rm(5e4)
+	e_pas = 0
+        cm = mycm(1)
+}
+
+for i=0, nsec-1 ecab[i] {
+     insert pas
+     g_pas = 1/rme(5e4)
+     e_pas = 0
+     cm = myce(1)
+}
+
+forall {
+	insert couple5
+	r_couple5 = 100*diam/(diam - 2*mw)
+}
+
+// couple the identical structures
+for i=0, nsec-1 mcab[i] for (x) if (x > 0 && x < 1) {
+	mcab[i] setpointer vc_couple5(x), ecab[i].v(x)
+	ecab[i] setpointer vc_couple5(x), mcab[i].v(x)
+}
+
+

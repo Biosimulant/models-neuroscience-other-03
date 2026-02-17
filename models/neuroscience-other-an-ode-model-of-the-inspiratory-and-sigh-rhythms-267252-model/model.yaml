@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AnOdeModelOfTheInspiratoryAndSighRhythms267252Model'
+description: '{"value": "Our work aims to understand the cellular and synaptic mechanisms
+  underlying eupnea and sigh rhythms in the brain. Part of our work benefited from
+  a mathematical model that made predictions '
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:267252
+  source_db: modeldb
+  source_id: '267252'
+  standard: other
+  original_url: https://modeldb.science/267252
+  download_url: https://modeldb.science/download/267252
+  license: ''
+bsim:
+  entrypoint: src.an_ode_model_of_the_inspiratory_and_sigh_rhythms_267252_model:AnOdeModelOfTheInspiratoryAndSighRhythms267252Model
+  init_kwargs:
+    model_path: data/267252.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

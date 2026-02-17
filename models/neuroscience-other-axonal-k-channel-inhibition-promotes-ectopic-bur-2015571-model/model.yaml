@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AxonalKChannelInhibitionPromotesEctopicBur2015571Model'
+description: '{"value": "Simulation of ectopic burst firings from distal axons induced
+  by local inhibition of axonal K channels on the hippocampal mossy fibers.", "attr_id":
+  24}'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:2015571
+  source_db: modeldb
+  source_id: '2015571'
+  standard: other
+  original_url: https://modeldb.science/2015571
+  download_url: https://modeldb.science/download/2015571
+  license: ''
+bsim:
+  entrypoint: src.axonal_k_channel_inhibition_promotes_ectopic_bur_2015571_model:AxonalKChannelInhibitionPromotesEctopicBur2015571Model
+  init_kwargs:
+    model_path: data/2015571.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

@@ -1,0 +1,73 @@
+/*
+
+Creates a four-panel figure
+
+*/
+
+objref graphs[4], tmp, fig2, menu
+
+proc add_panel() {
+    xpanel($s2)
+    xlabel($s2)
+    xpanel(0,0)
+    graphs[$1] = new Graph()
+    graphList[0].append(graphs[$1])
+}
+
+proc add_row() {
+    tmp = new HBox()
+    tmp.intercept(1)
+    add_panel($1, $s2)
+    add_panel($3, $s4)
+    tmp.intercept(0)
+    tmp.map()
+}
+
+proc make_figure() {
+    $o1 = new VBox()
+    $o1.intercept(1)
+    add_row(0, "a", 1, "b")
+    add_row(2, "c", 3, "d")
+    $o1.intercept(0)
+    $o1.map($s2, 0, 250, 800, 500)
+}
+
+proc make_menu() {
+    $o1 = new VBox()
+    $o1.intercept(1)
+    xpanel("Parameters")
+    xlabel("This script reproduces Figures 2 and 3")
+    xlabel("from Badoual et al (2006) Int J. Neural Syst. 16: 79-97") 
+    xpvalue("t_pre", &ampasyn.onset)
+    xpvalue("t_post - t_pre", &ampasyn.delta)
+    xlabel("Click on one of the buttons below to run the simulation.")
+    xpanel()
+    xpanel("Buttons", 1)
+    xbutton("Fig 2A", "ampasyn.delta = -100 set_axis_limits(0.0014, 0.007, 0.7, 0.014) run()")
+    xbutton("Fig 2B", "ampasyn.delta = -10 set_axis_limits(0.0014, 0.007, 0.7, 0.35) run()")
+    xbutton("Fig 3A", "ampasyn.delta = 10 set_axis_limits(0.0045, 0.5, 0.9, 0.014) run()")
+    xbutton("Fig 3B", "ampasyn.delta = 200 ampasyn.onset = 10 set_axis_limits(0.0016, 0.016, 0.7, 0.014) run()")
+    xpanel()
+    $o1.intercept(0)
+    $o1.map($s2, 400, 0, -1, -1)
+}
+
+proc set_axis_limits() {
+    graphs[0].size(0, 500, 0, $1)
+    graphs[1].size(0, 500, 0, $2)
+    graphs[2].size(0, 500, 0, $3)
+    graphs[3].size(0, 500, 0, $4)
+}
+
+make_figure(fig2, "Figure 2/Figure 3")
+make_menu(menu, "Click to run")
+
+graphs[0].addvar("Calcium signal (mM)", "spine.cai(0.5)", 3, 1)
+graphs[1].addvar("% of K*", "kin.n", 3, 1)
+graphs[1].addvar("Maximum", "maxltp", 2, 6)
+graphs[2].addvar("% of m*", "kin.m", 3, 1)
+graphs[2].addvar("% of h*", "kin.h", 4, 1)
+graphs[3].addvar("% of Ph*", "ltd", 3, 1)
+graphs[3].addvar("Maximum", "maxltd", 2, 6)
+
+set_axis_limits(0.0014, 0.007, 0.7, 0.014)

@@ -1,0 +1,33 @@
+schema_version: '2.0'
+title: 'Neuroscience: AplysiaLtfModelLiuEtAl2020ZhangEtAl202267695Model'
+description: Faithful wrapper of upstream OTHER model.
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:267695
+  source_db: modeldb
+  source_id: '267695'
+  standard: other
+  original_url: https://modeldb.science/267695
+  download_url: https://modeldb.science/download/267695
+  license: ''
+bsim:
+  entrypoint: src.aplysia_ltf_model_liu_et_al_2020_zhang_et_al_202_267695_model:AplysiaLtfModelLiuEtAl2020ZhangEtAl202267695Model
+  init_kwargs:
+    model_path: data/267695.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: Ca1PyramidalNeuronNonlinearA5GabaarControl258867Model'
+description: '{"value": "The study shows that IPSCs mediated by a5-subunit containing
+  GABAA receptors are strongly outward-rectifying generating 4-fold larger conductances
+  above -50?mV than at rest. Experiments and'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:258867
+  source_db: modeldb
+  source_id: '258867'
+  standard: other
+  original_url: https://modeldb.science/258867
+  download_url: https://modeldb.science/download/258867
+  license: ''
+bsim:
+  entrypoint: src.ca1_pyramidal_neuron_nonlinear_a5_gabaar_control_258867_model:Ca1PyramidalNeuronNonlinearA5GabaarControl258867Model
+  init_kwargs:
+    model_path: data/258867.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

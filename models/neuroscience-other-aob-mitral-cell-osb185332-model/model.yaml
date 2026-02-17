@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model185332185332Model'
+description: 'AOB mitral cell: persistent activity without feedback (Zylbertal et
+  al., 2015)'
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:185332
+  source_db: opensourcebrain
+  source_id: '185332'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/185332
+  download_url: https://github.com/OpenSourceBrain/185332.git
+  license: ''
+bsim:
+  entrypoint: src.model_185332_185332_model:Model185332185332Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

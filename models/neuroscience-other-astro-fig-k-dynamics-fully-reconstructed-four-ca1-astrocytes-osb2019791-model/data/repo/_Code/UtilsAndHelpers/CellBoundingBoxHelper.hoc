@@ -1,0 +1,104 @@
+
+proc _getCellBoundingBox() { codeContractViolation() }
+
+begintemplate CellBoundingBoxHelper
+
+    public analyzeCellBoundingBox
+    
+    external  _getCellBoundingBox
+    external math
+    
+    
+    func analyzeCellBoundingBox() { local xMin, yMin, zMin, xMax, yMax, zMax, Dx, Dy, Dz, D
+        
+        _getCellBoundingBox(&xMin, &yMin, &zMin, &xMax, &yMax, &zMax)
+        
+        D = analyzeCellDimensions(xMin, yMin, zMin, xMax, yMax, zMax, &Dx, &Dy, &Dz)
+        
+        $&1 = xMin
+        $&2 = yMin
+        $&3 = zMin
+        $&4 = Dx
+        $&5 = Dy
+        $&6 = Dz
+        
+        return D
+    }
+    
+    // All next staff is private
+    
+    
+    func analyzeCellDimensions() { local xMin, yMin, zMin, xMax, yMax, zMax, D, nndDims, Dx, Dy, Dz
+        
+        xMin = $1
+        yMin = $2
+        zMin = $3
+        xMax = $4
+        yMax = $5
+        zMax = $6
+        
+        D = 1       // Size of a side for the equivalent cube / square having the same volume / area as the cell bounding box
+        nndDims = 0     // The number of non-degenerate cell dimensions
+        Dx = analyzeOneDimension(xMin, xMax, &D, &nndDims)
+        Dy = analyzeOneDimension(yMin, yMax, &D, &nndDims)
+        Dz = analyzeOneDimension(zMin, zMax, &D, &nndDims)
+        if (nndDims > 0) {
+            D = D ^ (1 / nndDims)
+        } else {
+            // Preventing "division by zero"
+            D = 1
+        }
+        
+        $&7 = Dx
+        $&8 = Dy
+        $&9 = Dz
+        
+        return D
+    }
+    
+    func analyzeOneDimension() { local uMin, uMax, Du
+        uMin = $1
+        uMax = $2
+        Du = uMax - uMin
+        if (Du != 0) {
+            $&3 *= Du
+            $&4 += 1
+        }
+        return Du
+    }
+    
+endtemplate CellBoundingBoxHelper
+
+
+objref cbbHelper
+cbbHelper = new CellBoundingBoxHelper()
+
+
+// !! maybe use segment centres instead of 3D points (see _interpEachSegmCentreCoordsFromSec3DPointCoords)
+// !! maybe skip nanogeometry for better performance
+proc _getCellBoundingBox() { local inf, xMin, yMin, zMin, xMax, yMax, zMax, numPts, ptIdx
+    
+    inf = math.inf
+    xMin = inf
+    yMin = inf
+    zMin = inf
+    xMax = -inf
+    yMax = -inf
+    zMax = -inf
+    
+    forall {
+        numPts = n3d()
+        for ptIdx = 0, numPts - 1 {
+            math.updateMinMax(&xMin, &xMax, x3d(ptIdx))
+            math.updateMinMax(&yMin, &yMax, y3d(ptIdx))
+            math.updateMinMax(&zMin, &zMax, z3d(ptIdx))
+        }
+    }
+    
+    $&1 = xMin
+    $&2 = yMin
+    $&3 = zMin
+    $&4 = xMax
+    $&5 = yMax
+    $&6 = zMax
+}

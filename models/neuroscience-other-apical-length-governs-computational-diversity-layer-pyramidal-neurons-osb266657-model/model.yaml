@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model266657266657Model'
+description: Apical Length Governs Computational Diversity of Layer 5 Pyramidal Neurons
+  (Galloni et al 2020)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:266657
+  source_db: opensourcebrain
+  source_id: '266657'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/266657
+  download_url: https://github.com/OpenSourceBrain/266657.git
+  license: ''
+bsim:
+  entrypoint: src.model_266657_266657_model:Model266657266657Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

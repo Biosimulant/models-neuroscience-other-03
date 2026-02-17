@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AnIntegrativeDynamicModelOfBrainEnergyMet247648Model'
+description: '{"value": "An integrative, systems approach to the modelling of brain
+  energy metabolism is presented. Mechanisms such as glutamate cycling between neurons
+  and astrocytes and glycogen storage in astroc'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:247648
+  source_db: modeldb
+  source_id: '247648'
+  standard: other
+  original_url: https://modeldb.science/247648
+  download_url: https://modeldb.science/download/247648
+  license: ''
+bsim:
+  entrypoint: src.an_integrative_dynamic_model_of_brain_energy_met_247648_model:AnIntegrativeDynamicModelOfBrainEnergyMet247648Model
+  init_kwargs:
+    model_path: data/247648.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

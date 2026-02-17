@@ -1,0 +1,33 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model189155189155Model'
+description: Axonal HH-model for temperature stimulation (Fribance et al 2016)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:189155
+  source_db: opensourcebrain
+  source_id: '189155'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/189155
+  download_url: https://github.com/OpenSourceBrain/189155.git
+  license: ''
+bsim:
+  entrypoint: src.model_189155_189155_model:Model189155189155Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

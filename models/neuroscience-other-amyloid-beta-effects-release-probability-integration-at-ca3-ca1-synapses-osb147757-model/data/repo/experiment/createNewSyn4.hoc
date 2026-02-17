@@ -1,0 +1,47 @@
+for i = 0, nSyn-1 {
+
+	SELECTED = 0
+
+	while (!SELECTED) {
+		//select section (sec) using apical_non_trunk_list
+		//repick a random number
+		sec=int(ransec.repick())	//select section
+		dend[sec].sec {
+
+			//select location (loc)
+			ranseg.uniform(1, nseg+1)	//generate distribution for selecting segments
+			tmpnseg = int(ranseg.repick())	//repick a random number
+			loc = (2*tmpnseg - 1)/(2*nseg)
+
+			//check if the distance is correct, otherwise start from the beginning
+			xdist = find_vector_distance_precise(secname(),loc)
+			if ((xdist > min_distance) && (xdist < max_distance)) {SELECTED=1}
+		}	//exit from section
+	}	//close while loop
+
+	//locate synapses
+	dend[sec].sec {
+		 
+          syn[i] = new tmgsyn(loc)
+
+          //insert NetStim
+		nstim[i] = new NetStim(0.5)
+		netcon[i] = new NetCon(nstim[i],syn[i])
+
+
+		flagW = 0
+		while (!flagW) {
+			wei = 5+ranwei.repick()  //x0=5 for fitting data by Ito & Schuman
+			if (wei > 0) {
+				netcon[i].weight = 100*wei/(70*1000)
+        //divide by 70 mV
+        //divide by 1000 to change from nS to uS
+        //multiply by a factor to simulate multiple sinapses
+
+				flagW = 1
+			}
+		}
+
+	}	//close locate synapses
+
+}	//close main loop

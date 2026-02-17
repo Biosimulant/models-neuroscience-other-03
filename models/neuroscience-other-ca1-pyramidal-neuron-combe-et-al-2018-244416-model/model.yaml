@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: Ca1PyramidalNeuronCombeEtAl2018244416Model'
+description: '{"value": "\"Gamma oscillations are thought to play a role in learning
+  and memory. Two distinct bands, slow (25-50 Hz) and fast (65-100 Hz) gamma, have
+  been identified in area CA1 of the rodent hippoc'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:244416
+  source_db: modeldb
+  source_id: '244416'
+  standard: other
+  original_url: https://modeldb.science/244416
+  download_url: https://modeldb.science/download/244416
+  license: ''
+bsim:
+  entrypoint: src.ca1_pyramidal_neuron_combe_et_al_2018_244416_model:Ca1PyramidalNeuronCombeEtAl2018244416Model
+  init_kwargs:
+    model_path: data/244416.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

@@ -1,0 +1,173 @@
+//proc setMPTPinput()
+//proc setNORMALinput()
+//proc setPROBinput()
+//proc saveData(indx, resVec)
+//proc setDBS(bSTNflag, bGPiFlag)
+
+
+
+//-----------------------------------------------------------------------------------------------------
+proc setMPTPinput() {local i
+//---------------
+
+probCtxSTN.fill(.25)
+probStrGPe.fill(.25)
+probStrGPi.fill(.25)
+
+imnCtxSTN = 75
+imnStrGPe = 75
+imnStrGPi = 150
+
+gDA_CtxSTN = 1.25
+gDA_StrGPe = 1.25
+gDA_StrGPi = 1
+gDA_STNGPe = 1.25
+gDA_STNGPi = 1
+gDA_GPeSTN = 1.25
+gDA_GPeGPe = 1
+gDA_GPeGPi = 1.25
+
+INPupdateWeights()
+CONupdateWeights()
+
+}
+
+
+//-----------------------------------------------------------------------------------------------------
+proc setNORMALinput() {local i
+//---------------
+
+probCtxSTN.fill(.05)
+probStrGPe.fill(.05)
+probStrGPi.fill(.05)
+
+imnCtxSTN = 100
+imnStrGPe = 100
+imnStrGPi = 100
+
+gDA_CtxSTN = 1
+gDA_StrGPe = 1
+gDA_StrGPi = 1
+gDA_STNGPe = 2
+gDA_STNGPi = 1
+gDA_GPeSTN = 1
+gDA_GPeGPe = 1
+gDA_GPeGPi = 1
+
+INPupdateWeights()
+CONupdateWeights()
+
+}
+
+
+//-----------------------------------------------------------------------------------------------------
+proc setPROBinput() {local i
+//---------------
+
+probCtxSTN.fill($1)
+probStrGPe.fill($1)
+probStrGPi.fill($1)
+
+INPupdateWeights()
+
+}
+
+
+
+strdef str
+
+//-----------------------------------------------------------------------------------------------------
+proc saveData() {local i	localobj resVec, f		//(indx, resVec)
+//---------------
+//Append line of result vector values to filename encoding numeric value indx - eg stats000.txt
+
+resVec = $o2
+
+f = new File()
+
+sprint(str, "stats%03d.txt", $1)
+
+f.aopen(str)
+
+for i=0,resVec.size-1 {
+	f.printf("%f\t", resVec.x(i))
+}
+f.printf("\n")
+
+f.close()
+
+}
+
+
+
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
+
+
+objref r2
+r2 = new Random(seedVal)
+
+//-----------------------------------------------------------------------------------------------------
+proc setDBS() {local i,j,k,p		//(bSTNflag, bGPiFlag)
+//---------------
+//Set DBS flags to stimulate bSTNflag percent of STN axons and bGPiFlag percent of GPi axons
+//... and then turn on DBS inputs if any flags were actually set
+dbsRESET()
+
+if ($1 > 0) {
+	if ($1 > 1) {
+		p = 1
+	} else {
+		p = $1
+	}
+
+	// p% central block of STN
+
+	j = ((1-p)/2)*numSTN
+	k = j + p*numSTN - 1
+	for i=int(j),int(k) {
+		dbsONflags[DBS_STN].append(i)
+	}
+}
+
+if ($2 > 0) {
+	if ($2 > 1) {
+		p = 1
+	} else {
+		p = $2
+	}
+
+	// p% randomly chosen GPi
+
+	for i=0,numGPi-1 {
+		if (r2.repick() < p) {
+			dbsONflags[DBS_GPiTha].append(i)
+		}
+	}
+}
+
+
+if ($1 || $2) {
+
+	//Override current DBS parameters with the following values
+	//... if not otherwise save, the old values will be lost
+
+	dbs_del = 0
+	dbs_dur = tstop
+	dbs_direct_amp = 10
+	dbs_direct_pw = .25
+	dbs_ad_amp = .15
+	dbs_ad_pw = 2
+	dbs_period = 7.35		// _136_ Hz	STIupdateWeights()
+
+	dbsON()
+}
+
+
+}
+
+
+//-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
+
+

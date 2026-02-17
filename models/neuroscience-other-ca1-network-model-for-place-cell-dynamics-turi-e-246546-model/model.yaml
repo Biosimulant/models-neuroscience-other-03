@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: Ca1NetworkModelForPlaceCellDynamicsTuriE246546Model'
+description: '{"value": "Biophysical model of CA1 hippocampal region. The model simulates
+  place cells/fields and explores the place cell dynamics as function of VIP+ interneurons.",
+  "attr_id": 24}'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:246546
+  source_db: modeldb
+  source_id: '246546'
+  standard: other
+  original_url: https://modeldb.science/246546
+  download_url: https://modeldb.science/download/246546
+  license: ''
+bsim:
+  entrypoint: src.ca1_network_model_for_place_cell_dynamics_turi_e_246546_model:Ca1NetworkModelForPlaceCellDynamicsTuriE246546Model
+  init_kwargs:
+    model_path: data/246546.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AllenInstituteRorbIres2CreDVispLayer547184159Model'
+description: '{"value": "This is an Allen Cell Types Database model of a Rorb-IRES2-Cre-D
+  neuron from layer 5 of the mouse primary visual cortex. The model was based on a
+  traced morphology after filling the cell wi'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:184159
+  source_db: modeldb
+  source_id: '184159'
+  standard: other
+  original_url: https://modeldb.science/184159
+  download_url: https://modeldb.science/download/184159
+  license: ''
+bsim:
+  entrypoint: src.allen_institute_rorb_ires2_cre_d_visp_layer_5_47_184159_model:AllenInstituteRorbIres2CreDVispLayer547184159Model
+  init_kwargs:
+    model_path: data/184159.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

@@ -1,0 +1,431 @@
+load_file("nrngui.hoc")
+//use_mcell_ran4(1) // MUST be used on CINECA
+cvode_active(0)
+
+a1=0.1
+
+b1=0.7
+
+a1max=a1
+
+b1max=b1
+
+rap_a1=5
+rap_b1=(b1/0.71)*5
+
+
+numaxon=1
+numsoma=1
+numbasal=58
+numapical=78
+numtrunk=57
+cont=26  // ******  number of obliques
+
+last=12 //********  n-ple size
+ns=26  //********  number of trunk comps with noise
+
+sim4conf=102
+double pin[cont]
+double cond[cont]
+double trunko[cont]
+double dendo[cont]
+double u2[last+3]
+double u[last]
+
+weight=80
+
+xopen("geoc91662.hoc")             // geometry file
+xopen("fixnseg.hoc")           
+
+Rm = 28000
+RmDend = Rm/1
+RmSoma = Rm
+RmAx = Rm
+
+Cm    = 1
+CmSoma= Cm
+CmAx  = Cm
+CmDend = Cm*1
+
+RaAll= 150
+RaSoma=150  
+RaAx = 50
+
+Vrest = -65
+dt = 0.1
+gna =  .025
+AXONM = 5
+gkdr = 0.01
+celsius = 35.0  
+KMULT =  0.03
+KMULTP = 0.03
+ghd=0.00005
+nash=0
+
+objref g, b,c, stim, vbox,vecchio,pc, args, args2, r,ennupla
+objref  p, s[cont], rsyn[cont], nc[last], sref, blist[numtrunk],aplist,f[2*cont]
+strdef dend, trunk
+
+
+for i=0, numtrunk-1 {blist[i] = new Vector()}
+
+
+
+args = new Vector()
+args2 = new Vector()
+
+
+aplist = new Vector(numapical)
+
+forsec "axon" {insert pas e_pas=Vrest g_pas = 1/RmAx Ra=RaAx cm=CmAx}
+forsec "soma" {insert pas e_pas=Vrest g_pas = 1/RmSoma Ra=RaSoma cm=CmSoma}
+forsec "dendrite"{insert pas e_pas=Vrest g_pas = 1/RmDend Ra=RaAll cm=CmDend}
+forsec "user5" {insert pas e_pas=Vrest g_pas = 1/RmDend Ra=RaAll cm=CmDend}
+
+access soma
+freq=50
+geom_nseg()
+tot=0
+forall {tot=tot+nseg}
+
+distance()
+maxdist=0
+forsec "user5" for(x) {if (distance(x)>maxdist) {maxdist=distance(x)}}
+print "total # of segments (50Hz): ",tot, "  max path distance: ", maxdist
+
+
+//*********mapping bifurcations******************
+
+
+for i=0, numapical-1 apical_dendrite[i] {
+	while (!issection("user5.*")) {
+	//print "before  ", i, secname()
+		sref = new SectionRef()
+		access sref.parent
+		sprint(dend, secname())
+	}
+	//print "apical ",i," ",dend
+	for k=0, numtrunk-1 user5[k] {
+		sprint(trunk,secname())
+		x=strcmp(dend, trunk)
+		if (x==0) {blist[k].append(i)aplist.x[i]=k}
+	}
+}
+
+/*****************lettura da file********************/
+
+vecchio = new File()
+vecchio.ropen("obliqui91662.txt")
+
+for i=0,cont-1 {
+	trunko[i]=vecchio.scanvar()
+	dendo[i]=vecchio.scanvar()
+	pin[i]=vecchio.scanvar()
+	cond[i]=vecchio.scanvar()
+}
+
+vecchio.close()
+
+
+
+/********************  fine  **********************/
+
+
+tstop=30
+
+for z=0, cont-1 {
+	s[z] = new NetStims(.5)
+	s[z].interval=0.2
+	s[z].number = 1
+	s[z].start=10
+	s[z].noise=0
+	s[z].seed(987651119)
+	rsyn[z] = new Exp2Syn(0.5)
+	rsyn[z].tau1 = 0.4
+	rsyn[z].tau2 = 1
+	rsyn.e=0
+	
+}
+
+user5[13] {		// *************cell dependent
+	stim= new IClamp(0)
+	stim.amp=0
+	stim.dur=tstop
+	stim.del=0
+}
+
+forsec "axon" {   
+                insert nax gbar_nax=gna * AXONM	sh_nax=nash
+                insert kdr gkdrbar_kdr=gkdr
+                insert kap gkabar_kap = KMULTP*1
+}
+
+forsec "soma" {   
+		insert hd ghdbar_hd=ghd	vhalfl_hd=-73
+                insert na3 ar_na3=1 sh_na3=nash gbar_na3=gna
+                insert kdr gkdrbar_kdr=gkdr
+                insert kap gkabar_kap = KMULTP
+		insert ds
+}
+
+for i=0, numbasal-1 dendrite[i] {
+		insert hd ghdbar_hd=ghd	vhalfl_hd=-73
+                insert na3 ar_na3=1 gbar_na3=gna sh_na3=nash
+                insert kdr gkdrbar_kdr=gkdr
+                insert kap gkabar_kap = KMULTP
+}
+                
+
+forsec "user5" {
+	insert hd ghdbar_hd=ghd
+        insert na3 ar_na3=1 gbar_na3=gna sh_na3=nash
+        insert kdr gkdrbar_kdr=gkdr
+	insert kap gkabar_kap=0
+	insert kad gkabar_kad=0
+	for (x,0) { 
+		xdist = distance(x)
+               	ghdbar_hd(x) = ghd*(1+3*xdist/100)
+               		if (xdist > 100){
+						vhalfl_hd=-81
+                    	gkabar_kad(x) = KMULT*(1+xdist/100)
+               		} else {
+						vhalfl_hd=-73
+                    	gkabar_kap(x) = KMULTP*(1+xdist/100)
+        			}
+	}
+}
+
+for i=0, numapical-1 apical_dendrite[i] {
+	insert hd 
+        insert na3 ar_na3=1 gbar_na3=gna sh_na3=nash
+        insert kdr gkdrbar_kdr=gkdr
+	insert kap
+	insert kad
+		gkabar_kad = 1*user5[aplist.x[i]].gkabar_kad(1)
+		gkabar_kap = 1*user5[aplist.x[i]].gkabar_kap(1)
+		vhalfl_hd = user5[aplist.x[i]].vhalfl_hd
+       	ghdbar_hd = user5[aplist.x[i]].ghdbar_hd(1)
+}
+
+proc init() {
+
+	t=0
+    forall {
+    	v=Vrest
+    	if (ismembrane("nax") || ismembrane("na3")) {ena=55}
+       	if (ismembrane("kdr") || ismembrane("kap") || ismembrane("kad")) {ek=-90}
+       	if (ismembrane("hd") ) {ehd_hd=-30}
+	}
+	finitialize(Vrest)
+    fcurrent()
+
+    forall {
+		for (x) {
+			if (ismembrane("na3")||ismembrane("nax")){e_pas(x)=v(x)+(ina(x)+ik(x))/g_pas(x)}
+			if (ismembrane("hd")) {e_pas(x)=e_pas(x)+i_hd(x)/g_pas(x)}
+		}
+	}
+	cvode.re_init()
+	cvode.event(tstop)
+	access soma
+	//g.begin()
+	flag=0
+	
+}
+
+
+proc advance() {
+	fadvance()
+	if (vmax_ds(.5)>0) {t=tstop flag=1}
+	//g.plot(t)
+	//g.flush()
+	//p.flush()
+	doNotify()
+}
+
+
+func superrun() {local id, numprove, c, k, seme1, seme2, seme3
+
+	a1=$o2.x[0]
+	b1=$o2.x[1]
+	stim.amp=$o2.x[2]
+    
+	k=$3
+	c=$4
+	seme1=(k*sim4conf+c)*31530
+	seme2=(k*sim4conf+c)*22210
+	seme3=(k*sim4conf+c)*18230
+
+	print "seme1", seme1
+	print "seme2", seme2
+	print "seme3", seme3
+
+	for kk=0, ns user5[kk] {  // cell-dependent
+	f[kk] = new Gfluct2(0.5)
+	f[kk].g_e0 = a1
+	f[kk].g_i0 = b1
+	f[kk].std_e = a1/rap_a1
+	f[kk].std_i = b1/rap_b1
+	f[kk].new_seed(seme1)
+	print " noise #",kk, " at ",secname()
+	}
+	
+	
+
+	
+	print k,c
+	objref ennupla
+	numprove=0
+	id = hoc_ac_
+	ennupla= new Vector()
+	flag=0
+	// definiamo ennupla 
+	for c=0, cont-1 {
+	ennupla.append(c)
+	}
+	aux=cont
+	// print "seme", seme3
+	r= new Random()
+	r.MCellRan4(seme3)
+	for c=0, last-1 {
+	ind=r.discunif(0, aux-1)
+	cond[ennupla.x[ind]]=80
+	aux=aux-1
+	print ennupla.x(ind)
+	ennupla.remove(ind)
+	}
+	print "\n"
+	for c=0, cont-last-1 {
+	cond[ennupla.x(c)]=0
+	print ennupla.x(c)
+
+	}
+	ennupla.resize(0)
+
+	r= new Random(seme2)
+        r.MCellRan4(seme2)
+
+	while(0==0){ 
+	numprove=numprove+1
+	for c=0, cont-1 {
+	ennupla.append(c)
+	}
+	aux=cont
+	// print " \n"
+	for c=0, last-1 {
+	ind=r.discunif(0, aux-1)
+	//print "indice ",ind
+	u[c]=ennupla.x[ind]
+	u2[c]=dendo[u[c]]
+	nc[c] = new NetCon(s[u[c]],rsyn[u[c]],0,0,cond[u[c]]*1.e-3)
+	apical_dendrite[u2[c]] rsyn[u[c]].loc(0.5)
+	ennupla.remove(ind)
+	aux=aux-1
+	 
+	//print u[c]
+	}
+	// print " \n"
+	ennupla.resize(0)	
+			
+	// print f[2].g_e0
+	run()
+	//print numprove*0.025-0.5 ," s "
+	if (flag==1) { print "ha sparato dopo",numprove,"prove" spikec=1}
+	if(numprove>3600){print "piu di 3600 prove" flag=1 spikec=0}
+	
+ 	}
+	pc.post(id, $o2,numprove,seme1,seme2,seme3)
+	
+	return id
+	
+}
+
+
+pc = new ParallelContext()
+pc.runworker()
+
+
+for yy=0, last-1 {u[yy]=0}
+
+order=0
+conto=0
+
+print "Begin Simulation"
+print "Contesto = ",stim.amp
+
+objref aa1, bb1, aamp 
+aa1 = new Vector()
+bb1 = new Vector()
+aamp = new Vector()
+//ennupla = new Vector()
+
+aa1.append(0.02)
+//aa1.append(0.25,0.38,0.5,1,2.5,5,7.5)
+bb1.append(0.02)
+
+//bb1.append(0.5,0.75,1,2,5,10,15)
+//aamp.append(0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5)
+contex = 0
+proc loop() { local k, first, ind, c
+	k=$1
+	c=$2
+	args.resize(0)      
+	args.append(aa1.x[nsim]*a1max)
+	args.append(bb1.x[nsim]*b1max)
+	args.append(contex)
+	pc.submit("superrun", order, args,k,c)
+	order=order+1
+		
+}
+
+for nsim=0, aa1.size()-1 {
+	for z=1,sim4conf{
+	loop(nsim,z)	    
+	}
+}
+
+objref outfile, outfile2
+outfile = new File()
+outfile2 = new File() 
+
+strdef name, name2
+
+
+total=0
+
+while ((id = pc.working) != 0) {
+	pc.take(id)
+	args2 = pc.upkvec
+	m  = pc.upkscalar
+	seme1=pc.upkscalar
+	seme2=pc.upkscalar
+	seme3=pc.upkscalar
+	
+	//	args2.printf()
+	total = total +1
+
+//	printf("%d configurazioni ", m)
+		//for y=0, last-1 {printf(" %g ", args2.x[y])}
+//	printf("noise ex %g inh %g context %g semerum %d semeennupla %d \n",args2.x[0]/a1max,args2.x[1]/b1max, args2.x[2],seme1,seme2)
+		//write n-uples
+	
+	
+	
+	
+sprint(name,"le%dple-%dobl-%gecc-%gini-b%g-%d.txt",last,cont,args2.x[0]/a1max,args2.x[1]/b1max,b1max,sim4conf)
+	     
+sprint(name2,"le%dple-%dobl-%gecc-%gini-b%g-solotempi-%d.txt",last,cont,args2.x[0]/a1max,args2.x[1]/b1max,b1max,sim4conf)	
+
+	outfile.aopen(name)
+	outfile.printf(" %d configurazioni ",m)
+	args2.printf(outfile, " %g ")	
+	outfile.printf(" seme r seme e semel %d %d %d",seme1,seme2,seme3)
+	outfile.close()
+	
+        outfile2.aopen(name2)	
+        outfile2.printf(" %d   	%d \n",m,seme1)
+        outfile2.close()
+}
+
+pc.done
+

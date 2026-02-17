@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: Ca1PyramidalNeuronDendriticCa2InhibitionMu206244Model'
+description: '{"value": "In our experimental study, we combined\r\npaired patch-clamp
+  recordings and two-photon\r\nCa2+ imaging to quantify inhibition exerted by individual
+  GABAergic contacts on hippocampal pyramid'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:206244
+  source_db: modeldb
+  source_id: '206244'
+  standard: other
+  original_url: https://modeldb.science/206244
+  download_url: https://modeldb.science/download/206244
+  license: ''
+bsim:
+  entrypoint: src.ca1_pyramidal_neuron_dendritic_ca2_inhibition_mu_206244_model:Ca1PyramidalNeuronDendriticCa2InhibitionMu206244Model
+  init_kwargs:
+    model_path: data/206244.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

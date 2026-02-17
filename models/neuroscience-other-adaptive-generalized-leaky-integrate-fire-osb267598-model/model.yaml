@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model267598267598Model'
+description: Adaptive Generalized Leaky Integrate-and-Fire Model (AGLIF) (Marasco
+  et al., 2023)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:267598
+  source_db: opensourcebrain
+  source_id: '267598'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/267598
+  download_url: https://github.com/OpenSourceBrain/267598.git
+  license: ''
+bsim:
+  entrypoint: src.model_267598_267598_model:Model267598267598Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

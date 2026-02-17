@@ -1,0 +1,15 @@
+// plot all points as function of position
+objref rvp_
+proc spaceplot() { // arg is Graph instance
+	mcab[0] {distance(0,0)}
+	forsec "mcab" { sp1($o1, 2) }
+	ecab[0] {distance(0,0)}
+	forsec "ecab" { sp1($o1, 1) }
+}
+proc sp1() {
+	rvp_ = new RangeVarPlot("v")
+	rvp_.begin(0)
+	rvp_.end(1)
+	rvp_.origin(distance(0))
+	$o1.addobject(rvp_, $2, 1, -1, 0)
+}

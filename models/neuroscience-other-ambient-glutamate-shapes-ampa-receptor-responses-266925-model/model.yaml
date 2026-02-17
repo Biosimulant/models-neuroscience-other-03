@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AmbientGlutamateShapesAmpaReceptorResponses266925Model'
+description: '{"value": "To explore how ambient glutamate contributes to the generation
+  of ultra-slow signaling through AMPARs at the cerebellar unipolar brush cell synapse,
+  we created this 13-state kinetic model i'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:266925
+  source_db: modeldb
+  source_id: '266925'
+  standard: other
+  original_url: https://modeldb.science/266925
+  download_url: https://modeldb.science/download/266925
+  license: ''
+bsim:
+  entrypoint: src.ambient_glutamate_shapes_ampa_receptor_responses_266925_model:AmbientGlutamateShapesAmpaReceptorResponses266925Model
+  init_kwargs:
+    model_path: data/266925.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

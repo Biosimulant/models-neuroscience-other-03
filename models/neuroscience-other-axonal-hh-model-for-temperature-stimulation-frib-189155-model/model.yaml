@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AxonalHhModelForTemperatureStimulationFrib189155Model'
+description: '{"value": "\"... To analyze the temperature effect, our study modified\r\nthe
+  classical HH axonal model by incorporating a membrane\r\ncapacitance-temperature
+  relationship. The modified model\r\nsucce'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:189155
+  source_db: modeldb
+  source_id: '189155'
+  standard: other
+  original_url: https://modeldb.science/189155
+  download_url: https://modeldb.science/download/189155
+  license: ''
+bsim:
+  entrypoint: src.axonal_hh_model_for_temperature_stimulation_frib_189155_model:AxonalHhModelForTemperatureStimulationFrib189155Model
+  init_kwargs:
+    model_path: data/189155.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

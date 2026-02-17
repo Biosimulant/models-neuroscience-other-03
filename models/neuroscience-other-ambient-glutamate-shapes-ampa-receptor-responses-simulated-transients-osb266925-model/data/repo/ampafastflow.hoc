@@ -1,0 +1,38 @@
+//----------------------------------------------------------------------------
+//  general parameters
+//----------------------------------------------------------------------------
+
+dt=0.02
+tstop = 1000
+runStopAt = tstop
+steps_per_ms = 1/dt
+celsius = 36
+v_init = -70
+
+//----------------------------------------------------------------------------
+//  create compartments and insert passive properties
+//----------------------------------------------------------------------------
+
+create PRE,POST
+
+//----------------------------------------------------------------------------
+//  insert presynaptic mechanisms
+//----------------------------------------------------------------------------
+
+access PRE      // insert Hodgk-Hux. Na+ and K+ currents for spikes
+//insert glurel       //for glutamate train tool
+insert fastglu      // for fast flow
+
+//----------------------------------------------------------------------------
+//  insert postsynaptic mechansisms
+//----------------------------------------------------------------------------
+
+objectvar c
+c = new AMPA13()             // create synapse
+POST c.loc(0.5)             // assign postsynaptic compartment
+setpointer c.C, PRE.T_fastglu(0.5)      // assign presynaptic compartment
+
+objectvar clamp
+POST clamp = new VClamp(0.5)
+clamp.amp[0]=-70
+clamp.dur[0]=tstop

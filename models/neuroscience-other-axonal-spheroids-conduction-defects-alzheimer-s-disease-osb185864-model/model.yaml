@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model185864185864Model'
+description: "Axonal spheroids and conduction defects in Alzheimer\u2019s disease\
+  \ (Yuan, Zhang, Tong, et al 2022)"
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:185864
+  source_db: opensourcebrain
+  source_id: '185864'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/185864
+  download_url: https://github.com/OpenSourceBrain/185864.git
+  license: ''
+bsim:
+  entrypoint: src.model_185864_185864_model:Model185864185864Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

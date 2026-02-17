@@ -1,0 +1,132 @@
+ objref time, y, y2, infile, ifile, currt, curr,graphV, stim2
+ time = new Vector()
+ graphV=new Vector()
+ y = new Vector()
+ 
+Vrest=-78
+ 
+ strdef name150WT,name100WT,name50WT,name150AD,name100AD,name50AD
+
+ 
+ name150WT="trace_WT10m_150.txt"
+ name100WT="trace_WT10m_100.txt" 
+ name50WT="trace_WT10m_50.txt"
+ name150AD="trace_AD10m_150.txt"
+ name100AD="trace_AD10m_100.txt"
+ name50AD="trace_AD10m_50.txt"
+
+
+
+  
+proc WT150() {
+stim2.amp=-0.15
+time.resize(0)
+y.resize(0)
+infile = new File()
+infile.ropen(name150WT)
+	while (!infile.eof()) {
+	time.append(infile.scanvar())
+	y.append(infile.scanvar())
+	}
+infile.close()
+graphV=Graph[0]
+graphV.color(2)
+graphV.vector(y.size()-1, &time.x[0], &y.x[0])
+graphV.color(3)
+graphV.color(1)
+graphV.exec_menu("Whole Scene")
+} 
+ 
+
+ 
+proc WT100() {
+stim2.amp=-0.1
+time.resize(0)
+y.resize(0)
+infile = new File()
+infile.ropen(name100WT)
+	while (!infile.eof()) {
+	time.append(infile.scanvar())
+	y.append(infile.scanvar())
+	}
+infile.close()
+graphV=Graph[0]
+graphV.color(2)
+graphV.vector(y.size()-1, &time.x[0], &y.x[0])
+graphV.color(3)
+graphV.color(1)
+graphV.exec_menu("Whole Scene")
+} 
+ 
+proc WT50() {
+stim2.amp=-0.05
+time.resize(0)
+y.resize(0)
+infile = new File()
+infile.ropen(name50WT)
+	while (!infile.eof()) {
+	time.append(infile.scanvar())
+	y.append(infile.scanvar())
+	}
+infile.close()
+graphV=Graph[0]
+graphV.color(2)
+graphV.vector(y.size()-1, &time.x[0], &y.x[0])
+graphV.color(3)
+graphV.color(1)
+graphV.exec_menu("Whole Scene")
+}
+proc AD150() {
+stim2.amp=-0.15
+time.resize(0)
+y.resize(0)
+infile = new File()
+infile.ropen(name150AD)
+	while (!infile.eof()) {
+	time.append(infile.scanvar())
+	y.append(infile.scanvar())
+	}
+infile.close()
+graphV=Graph[0]
+graphV.color(2)
+graphV.vector(y.size()-1, &time.x[0], &y.x[0])
+graphV.color(3)
+graphV.color(1)
+graphV.exec_menu("Whole Scene")
+}
+proc AD100() {
+stim2.amp=-0.1
+time.resize(0)
+y.resize(0)
+infile = new File()
+infile.ropen(name100AD)
+	while (!infile.eof()) {
+	time.append(infile.scanvar())
+	y.append(infile.scanvar())
+	}
+infile.close()
+graphV=Graph[0]
+graphV.color(2)
+graphV.vector(y.size()-1, &time.x[0], &y.x[0])
+graphV.color(3)
+graphV.color(1)
+graphV.exec_menu("Whole Scene")
+}
+proc AD50() {
+stim2.amp=-0.05
+time.resize(0)
+y.resize(0)
+infile = new File()
+infile.ropen(name50AD)
+	while (!infile.eof()) {
+	time.append(infile.scanvar())
+	y.append(infile.scanvar())
+	}
+infile.close()
+graphV=Graph[0]
+graphV.color(2)
+graphV.vector(y.size()-1, &time.x[0], &y.x[0])
+graphV.color(3)
+graphV.color(1)
+graphV.exec_menu("Whole Scene")
+}

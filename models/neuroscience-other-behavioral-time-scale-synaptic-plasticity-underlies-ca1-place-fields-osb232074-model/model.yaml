@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model232074232074Model'
+description: Behavioral time scale synaptic plasticity underlies CA1 place fields
+  (Bittner et al. 2017)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:232074
+  source_db: opensourcebrain
+  source_id: '232074'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/232074
+  download_url: https://github.com/OpenSourceBrain/232074.git
+  license: ''
+bsim:
+  entrypoint: src.model_232074_232074_model:Model232074232074Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

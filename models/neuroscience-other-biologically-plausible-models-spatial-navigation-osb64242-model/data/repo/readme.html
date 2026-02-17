@@ -1,0 +1,176 @@
+<html><pre>
+    Note from ModelDB administrator:
+    The files you need to run (and examine the code of) the model are 1) newtmaze.ccm and 2) catacomb-2.034.zip,
+    both of which are available from links below.  You will likely need java from sun in order to run the model.
+    To start the model under linux if you have multiple java's installed you can execute a command like:<p/>
+
+/usr/java/jre1.5.0_06/bin/java -jar /home/morse/nrnmodels/newtmaze/catacomb-2.034/ccmb.jar /home/morse/nrnmodels/newtmaze/newtmaze.ccm
+
+or simpler if you use relative paths.
+
+    20170601:
+    
+    The original source of catacomb web sites are not available at the moment so catacomb is being made available through this copy provided
+    by Robert Cannon:
+
+    <a href="http://senselab.med.yale.edu/ModelDB/Data/64242/catacomb.tgz">http://senselab.med.yale.edu/ModelDB/Data/64242/catacomb.tgz</a>
+    in addition you will need newtmaze.ccm from here: <a href="http://senselab.med.yale.edu/ModelDB/Data/64242/newtmaze.ccm">http://senselab.med.yale.edu/ModelDB/Data/64242/newtmaze.ccm</a>
+
+    The links in the below have been turned off because they (askja.bu.edu site and others) no longer exist however the documentation is still relevant:
+    <hr/>
+<h1>askja.bu.edu: <font color="#3333ff">Computational Neurophysiology at 
+the Boston University Center for Memory &amp; Brain</font></h1>
+
+<table width="100%"><tbody><tr><td>&nbsp;</td><td width="40%">
+<font color="#00007f">Supported by NIDA DA16454 as part of the NSF/NIH
+collaborative research in Computational Neuroscience Program, and by
+MH60013 and MH61492 and NSF SBE 0354378.</font>
+</td></tr></tbody></table>
+
+<hr>
+
+<table width="100%"><tbody><tr align="center">
+<td>(http://askja.bu.edu/data/models/) <b>BROWSE model files</b>
+</td><td>(http://askja.bu.edu/rak/upload.html) <b><font color="#af0000">UPLOAD model files</font></b>
+</td><td>(http://axiope.anc.ed.ac.uk/catacomb/mantis/) <b>Catacomb bug tracker</b>
+</td><td>(http://askja.bu.edu/search.html) <b>search site</b>
+</td></tr></tbody></table>
+
+<hr>
+
+<h3>A model of the role of hippocampus in spatial navigation</h3>
+
+<table>
+
+<tbody><tr>
+
+<td valign="top" width="40%">
+This model addresses the potential role of the hippocampus in goal
+directed spatial navigation, the role of theta rhythm oscillations in
+reversal learning, and the role of entorhinal cortex as a buffer for
+novel information. The model can encode a spatial environment and guide
+movement of a virtual rat to find a food reward within this
+environment. The structure of the model is constrained by the overall
+anatomical connectivity of the hippocampus, and the spread of activity
+is constrained by the relative size of place fields in entorhinal
+cortex and regions CA3 and CA1 of the hippocampus. The model has a
+simple form of theta phase precession. The model avoids interference
+from prior retrieval during encoding by implementing separate phases of
+encoding and retrieval on each cycle of the theta rhythm. The model
+uses sustained spiking activity in entorhinal cortical neurons to allow
+slow transitions in sensory input from the environment to cause
+synaptic modification dependent upon a very brief temporal window of
+spike timing dependent synaptic plasticity.
+<p>
+<!-- uploadpastebegin -->
+<img src="weblink_to_askja_bu_edu_files/newtmaze">
+<!-- uploadpasteend -->
+</p><p>
+Prof. Michael E. Hasselmo<br>
+Department of Psychology<br>
+Center for Memory and Brain,<br>
+Program in Neuroscience and<br>
+Center for BioDynamics<br>
+64 Cummington St.<br>
+Boston, MA 02215<br>
+Tel: (617) 353-1397
+</p><p>
+E-mail: (mailto:hasselmo@bu.edu) hasselmo@bu.edu
+</p><p>
+Overview of research projects:<br>
+(http://people.bu.edu/hasselmo/) laboratory web page.
+</p><p>
+Articles available as PDF files:<br>
+(http://people.bu.edu/hasselmo/publications.html) publications page.
+</p></td>
+
+<td width="10%">
+</td>
+
+<td valign="top" width="50%">
+<b>Spatial navigation in a T-maze</b>: This integrate-and-fire model
+created with Catacomb relates hippocampal physiological data with the
+possible functional role of the hippocampus for behavior in a spatial
+navigation task.<br>
+To test this model:<br>
+(1) Download the Catacomb script (http://askja.bu.edu/rak/newtmaze.ccm) newtmaze.ccm.<br>
+<i>(Press the right hand mouse button on the link. A "Save As" window
+will pop up. At the bottom of the window, make sure to save as "All
+files", not as "HTML document".)</i><br>
+(2) Make sure you have Catacomb version 2.034, which the newtmaze model is designed to work with: (http://askja.bu.edu/mike/catacomb-2.034.zip) catacomb-2.034.zip.<br>
+Some simple exercises with the newtmaze model are shown (http://askja.bu.edu/mike/exploring-T-maze.html) here.
+<p>
+<b>Obtaining and running Catacomb</b>: The most recent stable release of Catacomb may be obtained at: (http://askja.bu.edu/catacomb/index.html) http://askja.bu.edu/catacomb/.<br>
+<i>(The most recent version will not work with the newtmaze model. As
+indicated above, that model is designed to work with version 2.034 of
+Catacomb.)</i>
+</p><p>
+To run the Catacomb environment, you need a suitable implementation of <b>JAVA</b>
+for your computer and operating system. While Catacomb may run with the
+Java provided as a standard installation on your platform, the best way
+to insure that Catacomb will run correctly is to install Java from one
+of these two sources:<br>
+(1) The official Java site at (http://www.java.com/) http://www.java.com.
+A box displayed at this site offers automated and manual download of
+java software. If you follow the link to the automated download, a page
+will appear that immediately attempts an automated installation of the
+correct Java for your platform.<br>
+If the automated install does not work, or if you wish to manually
+select a different platform, such as Linux, Macintosh or Solaris, use
+the "Manual Download" link at the front page of (http://www.java.com/) http://www.java.com.<br>
+<i>(If your operating system is Windows95, the FAQ link at the official Java site indicates how to install Java properly.)</i><br>
+(2) The Java developers download page at (http://java.sun.com/j2se/1.4/download.html) http://java.sun.com/j2se/1.4/download.html.
+Scroll down the page to the section labeled "Download J2SE v 1.4.2_03".
+There, download from the column labeled "JRE". Software for all
+operating systems is provided.
+</p><p>
+<b>Project Guidelines for PS530 students</b>: The following guidelines
+may be useful for those who would like to learn about Catacomb and the
+details of the hippocampal simulation.
+</p><ul>
+<li>Downloading and Running guidelines for the Catacomb tutorials: (http://askja.bu.edu/rak/catacomb-examples/Exercise1.pdf) Exercise1.pdf.<br>
+The software page for PS530, (http://askja.bu.edu/mike/index.html) PS530: Neural models of Memory Function.
+</li><li>PS530 Students Guidelines for a Final Project using Catacomb: (http://askja.bu.edu/rak/catacomb-examples/CatacombFinalProjectGuidelines2003b.pdf) CatacombFinalProjectGuidelines2003b.pdf<br>(or the same document in MS Word (http://askja.bu.edu/rak/catacomb-examples/CatacombFinalProjectGuidelines2003b.doc) .doc format).
+</li><li>Assignment 1: (http://askja.bu.edu/rak/catacomb-examples/PS530catacombEx1for2003fPDF.pdf) PS530catacombEx1for2003fPDF.pdf<br>(or the same document in MS Word (http://askja.bu.edu/rak/catacomb-examples/PS530catacombEx1for2003f.doc) .doc format).
+</li><li>Assignment 2: (http://askja.bu.edu/rak/catacomb-examples/PS530catacombEx2for2003b.pdf) PS530catacombEx2for2003b.pdf<br>(or the same document in MS Word (http://askja.bu.edu/rak/catacomb-examples/PS530catacombEx2for2003b.doc) .doc format).
+</li></ul>
+(You will need a PDF reader, such as the free (http://www.adobe.com/products/acrobat/) Acrobat Reader to open the PDF files above.)
+</td>
+
+</tr>
+
+</tbody></table>
+
+<hr>
+
+<h3>Catacomb</h3>
+
+Information about the Catacomb simulation environment is available at
+<!-- uploadpastebegin -->
+(http://askja.bu.edu/catacomb/index.html) http://askja.bu.edu/catacomb/
+<!-- uploadpasteend -->
+(a mirror of compneuro.org).
+<p>
+A Catacomb wizard tool that accelerates the construction of standard experiments is in the early stages of development at:
+<!-- uploadpastebegin -->
+(http://askja.bu.edu/catacomb-wizard/) http://askja.bu.edu/catacomb-wizard/.
+<!-- uploadpasteend -->
+
+</p><hr>
+
+<h3>The Virtual Rat</h3>
+
+A log of ongoing projects and Catacomb simulations collected under the general heading "The Virtual Rat" is maintained at (http://askja.bu.edu/rak/virtual-rat.html) http://askja.bu.edu/rak/virtual-rat.html. The project research described there currently involves models of prefrontal cortical areas and hippocampus in the rat.
+
+<p>
+</p><hr>
+
+<!-- uploadpastebegin -->
+<p>(http://askja.bu.edu/) askja.bu.edu<font color="#3f3f3f"> -
+<!-- uploadpasteend -->
+<!-- uploaddate -->Tue Apr  5 07:39:26 EST 2005
+<!-- uploadpastebegin -->
+ - </font>(http://rak.minduploading.org/" target="_top) Randal A. Koene</p><p>
+<!-- uploadpasteend -->
+
+</p></body></html>

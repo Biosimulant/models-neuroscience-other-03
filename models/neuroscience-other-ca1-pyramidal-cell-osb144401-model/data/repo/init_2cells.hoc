@@ -1,0 +1,64 @@
+// This file runs 2 pyramidal cells connected by axonal gap junction 
+// The gap junction is placed in axonal section 4, at 370 um from soma in each cell
+
+load_file ("nrngui.hoc")
+load_file("cellTemplate.hoc")
+load_file("gapjunction.hoc")
+
+tstop=15
+ncells=2
+ngaps=1
+gj_conductance=3e-3 //[mcS]
+// position of gj in axonal sections:
+axonal_section1=4 // section index in cell[1].axon[]
+axonal_section2=4 // section index in cell[2].axon[]
+section1_pos=0.5 // position within section1
+section2_pos=0.5 // position within section2
+objectvar cells, gap
+
+proc mkcells(){ local i localobj cell_
+   cells=new List()
+   for i=0,$1-1{
+     cell_=new pyramidal()
+	 cells.append(cell_)
+   }
+}
+proc setpositions(){ local i, x, y
+  for i=1,cells.count(){
+      x=i*$1
+	  y=i*$2
+	  cells.object(i-1).position(x,y,0)
+	  cells.object(i-1).setgid(i)
+  }
+}
+// adds steady current to soma (hyperpolarizing)
+// $1 is the current in nA, "-" for hyperpolarizing, "+" for depolarizing
+proc setcurrentbias(){ local i, area_soma localobj cell_
+ cell_ = new pyramidal() //create a generic cell
+ cell_.soma { area_soma = PI*diam*L*1e-8 } // unts converted [mcm2->cm2], area_soma is the area of a soma membrane
+ for i = 0,cells.count-1{
+   cells.object(i).soma {
+      insert bias
+	  amp_bias = -$1*1e-6/area_soma //note conversion [nA->mA] by 1e-6 and change of sign
+    }
+  }
+}
+
+// create cells
+mkcells(ncells)
+// set their positions
+setpositions(1000, 0)
+// set a steady hyperpolarizing current in soma, -0.1 nA
+setcurrentbias(-0.1)
+
+gap=new gapjunction(cells.object(0),axonal_section1,cells.object(1),axonal_section2,gj_conductance,section1_pos, section2_pos)
+
+objectvar pulse
+cells.object(0).soma pulse = new Ipulse1(0.5)
+pulse.amp=1
+pulse.del=5
+pulse.num=1
+pulse.ton = pulse.toff = 1
+
+access cells.object(0).soma
+xopen("2cellsGUI.ses")

@@ -1,0 +1,302 @@
+load_file("nrngui.hoc")
+cvode_active(0) //1-time step variabile 0-time step fisso
+opt= 0	    //Stampa files di corrente per ogni frames
+                //0=no,1=yes
+
+tstop=30	    // Durata della simulazione
+dist=1
+
+xopen("geoc8076.hoc")       //Lettura file morfologia      
+numaxon=1	    // axon
+numsoma=1	    // soma
+numbasal=77		// dendrites
+numapical=48	// apical_dendrite=obliqui
+                // Costituiscono la max parte della superficie apicale e
+				// sono sede principale dei bersagli dei assoni collaterali 
+				// di Schaff delle CA3.
+numtrunk=51 	// user 5
+
+//***************************************************************************** 
+// PROPRIETA' ELETTRICHE (Non modificare!!)
+//***************************************************************************** 
+Rm =    28000.		  // Ohm*cm**2
+RmDend = Rm/1.
+RmSoma = Rm
+RmAx = Rm											
+
+Cm    = 1.		  // uF/cm**2
+CmSoma= Cm
+CmAx  = Cm
+CmDend = Cm*1.
+
+RaAll= 150.		  // Ohm*cm Resistenza intracellulare
+RaSoma=150.  	  // Ohm*cm
+RaAx = 50.	      // Ohm*cm Resistenza nell' assone
+
+Vrest = -65.	  // mV
+dt = 0.013
+gna =  .025
+AXONM = 5.
+gkdr = 0.01
+celsius = 35.0    // Gradi Celsius
+KMULT =  0.03
+KMULTP = 0.03
+ghd=0.00005
+nash=0.
+//*****************************************************************************
+
+//**************************************************************************
+// DETERMINAZIONE NUMERO DI COMPARTIMENTI
+//**************************************************************************
+// In questo caso il numero di compartimenti è uguale al numero dei segmenti
+// col quale è stato discretizzato il neurone e ricostruita la morfologia.
+// E' stato visto che la lunghezza tipica di cavo per le proprietà biofisiche
+// del presente neurone è molto più grande delle dimensioni tipiche di ciascun
+// compartimento, così la differenza di potenziale tra adiacenti compartimenti
+// è molto piccola. Ciò ci interessa perchè vogliamo calcolare il campo
+// magnetico del neurone con un grado di precisione molto alto, ed abbiamo
+// bisogno di un numero molto elevato di segmentazioni del neurone.
+
+  forall {nseg=n3d()-1} // Assegna un numero di compartimenti entro
+                        // ciascuna sezione pari al numero di segmenti
+					    // in cui è stato sezionato.
+
+//************************************************************************
+
+//************************************************************************ 
+//INSERIMENTO COMPONENTI PASSIVE
+forsec "axon" {insert pas e_pas=Vrest g_pas = 1./RmAx Ra=RaAx cm=CmAx}
+forsec "soma" {insert pas e_pas=Vrest g_pas = 1./RmSoma Ra=RaSoma cm=CmSoma}
+forsec "dendrite"{insert pas e_pas=Vrest g_pas = 1./RmDend Ra=RaAll cm=CmDend}
+forsec "user5" {insert pas e_pas=Vrest g_pas = 1./RmDend Ra=RaAll cm=CmDend}
+//************************************************************************
+
+objref b,c, stim, outfile,outfile1
+objref sref, blist[numtrunk]
+strdef filename, dend, trunk ,fil,filename1,fil1
+
+access soma
+
+
+distance()  // Fissa il riferimento a x=0.5 nella sezione corrente
+            // in questo caso la sezione corrente è il soma. La
+			// distanza dal soma è importante perchè a seconda di
+			// essa varia la densità dei vari canali ionici.
+
+xopen("synapses.hoc")  //Connessioni sinaptiche
+
+//***************************************************************************** 
+// INSERIMENTO COMPONENTI ATTIVE
+//***************************************************************************** 
+
+forsec "axon" {   
+                insert nax gbar_nax=gna * AXONM	sh_nax=nash
+                insert kdr gkdrbar_kdr=gkdr
+                insert kap gkabar_kap = KMULTP*1
+ 		insert ds
+}
+
+forsec "soma" {   
+		insert hd ghdbar_hd=ghd	vhalfl_hd=-73
+                insert na3 ar_na3=1 sh_na3=nash gbar_na3=gna
+                insert kdr gkdrbar_kdr=gkdr
+                insert kap gkabar_kap = KMULTP
+ 		insert ds
+}
+
+for i=0, numbasal-1 dendrite[i] {
+ 		insert ds
+		if (diam>0.35) {factor=1} else {factor=1}
+		insert hd ghdbar_hd=ghd vhalfl_hd=-73
+                insert na3 ar_na3=1 gbar_na3=gna*factor sh_na3=nash
+                insert kdr gkdrbar_kdr=gkdr*factor
+		insert kap gkabar_kap=0
+		insert kad gkabar_kad=0
+
+		for (x) if (x>0 && x<1) { xdist = distance(x)
+                	ghdbar_hd(x) = factor*ghd*(1+3*xdist/100)
+                		if (xdist > 100){
+					vhalfl_hd=-81
+                        		gkabar_kad(x) = factor*KMULT*(1+xdist/100)
+                			} else {
+					vhalfl_hd=-73
+                        		gkabar_kap(x) = factor*KMULTP*(1+xdist/100)
+               				}
+		}
+}
+                
+forsec "apical_dendrite" {
+	insert ds
+	if (diam>0.35) {factor=1} else {factor=1}
+		insert hd ghdbar_hd=ghd
+                insert na3 ar_na3=1 gbar_na3=gna*factor sh_na3=nash
+                insert kdr gkdrbar_kdr=gkdr*factor
+		insert kap gkabar_kap=0
+		insert kad gkabar_kad=0
+
+		for (x) if (x>0 && x<1) { xdist = distance(x)
+                	ghdbar_hd(x) = factor*ghd*(1+3*xdist/100)
+                		if (xdist > 100){
+					vhalfl_hd=-81
+                        		gkabar_kad(x) = factor*KMULT*(1+xdist/100)
+                			} else {
+					vhalfl_hd=-73
+                        		gkabar_kap(x) = factor*KMULTP*(1+xdist/100)
+               				}
+		}
+}
+
+forsec "user5" {
+	insert ds
+		insert hd ghdbar_hd=ghd
+                insert na3 ar_na3=1 gbar_na3=gna sh_na3=nash
+                insert kdr gkdrbar_kdr=gkdr
+		insert kap gkabar_kap=0
+		insert kad gkabar_kad=0
+
+		for (x) if (x>0 && x<1) { xdist = distance(x)
+                	ghdbar_hd(x) = ghd*(1+3*xdist/100)
+                		if (xdist > 100){
+					vhalfl_hd=-81
+                        		gkabar_kad(x) = KMULT*(1+xdist/100)
+                			} else {
+					vhalfl_hd=-73
+                        		gkabar_kap(x) = KMULTP*(1+xdist/100)
+               				}
+		}
+}
+//************************************************************** 
+
+//*****************************************************
+// GRAFICA //
+//******** Per creare una box *************************
+objref vbox,vbox1
+objref g,h,n,p,ll
+
+vbox = new VBox() 
+vbox.intercept(1) 
+g = new Graph()
+g.size(0,tstop,-70,30)
+
+g.addvar("apical_dendrite[12].v(rel)",1,1,0.5,1,2)
+g.addvar("apical_dendrite[14].v(rel)",2,1,0.5,0.98,2) 
+g.addvar("apical_dendrite[30].v(rel)",3,1,0.5,0.96,2) 
+
+g.xaxis(1)
+
+h = new Graph()
+h.size(0,tstop,-70,30)
+
+h.addvar("soma.v(0.5)",1,1,0.5,1,2)
+
+h.xaxis(1)
+
+xpanel("",0)
+xbutton("Start-Restart","runm()")
+xpanel()  
+vbox.intercept(0) 
+vbox.map("Potenziali (mV)",427,98,322,540)	   //b = new VBox()
+
+//******************************************************
+
+vbox1 = new VBox() 
+vbox1.intercept(1) 
+
+n = new Graph()	   // Dipoli
+n.size(0,tstop,-3.,3.)
+n.addexpr("dipx",1,1,0.5,1,2)
+n.addexpr("dipy",2,1,0.5,0.98,2)
+n.addexpr("dipz",3,1,0.5,0.96,2)
+n.addexpr("diptot",4,1,0.5,0.94,2)
+n.xaxis(1)
+
+vbox1.intercept(0) 
+vbox1.map("Fig.8a ECD (pA*m)",-2,98,322,510.3)
+
+p = new PlotShape()
+p.exec_menu("Shape Plot")
+p.size(-245.834,295.834,-671.282,341.282) 
+p.label(0,0,"geoc8076",2,1,0,0,1)
+p.variable("v")
+p.show(1)
+
+
+//***************************************************************************** 
+// INIZIALIZZAZIONE SIMULAZIONE
+//***************************************************************************** 
+			
+proc init() {
+	t=0
+        conto=0
+        forall {
+        v=Vrest
+        if (ismembrane("nax") || ismembrane("na3")) {ena=55}
+        if (ismembrane("kdr") || ismembrane("kap") || ismembrane("kad")) {ek=-90}
+        if (ismembrane("hd") ) {ehd_hd=-30}
+	}
+	finitialize(Vrest)
+      fcurrent()
+
+      forall {
+	for (x) {
+	if (ismembrane("na3")||ismembrane("nax")){e_pas(x)=v(x)+(ina(x)+ik(x))/g_pas(x)}
+	if (ismembrane("hd")) {e_pas(x)=e_pas(x)+i_hd(x)/g_pas(x)}
+		}
+	}
+	cvode.re_init()
+	cvode.event(tstop)
+	access soma
+	g.begin()
+      h.begin()
+      n.begin()
+
+}
+
+    proc advance() {
+    fadvance()
+
+//***********************************************************************
+// CALCOLO DEL DIPOLO DI CORRENTE (Q)
+//***********************************************************************
+// Da Murakami, Hirose, Okada, (J. Physiol. (2003) 553,3,pp. 975-985)
+// "Contr. of ionic curr. to MEG and EEG signals generated by guinea 
+//  CA3 slices"
+//***********************************************************************
+
+      dipx=0.
+	dipolox=0.
+	dipy=0.
+	dipoloy=0.
+	dipz=0.
+	dipoloz=0.
+	diptot=0.
+	
+	forall for i=0, n3d()-2 {
+	
+	resist=ri((i+0.)/(n3d()-1))	  //  MOhm
+	difftens=( v((i+0.)/(n3d()-1))-v((i+1)/(n3d()-1)) )	 //Diff. Tens. Adiac. Comp.
+	curr=difftens/resist          // nA
+	
+	dipolox=(x3d(i)-x3d(i+1))*curr*0.001	 // in pA*m
+	dipoloy=(y3d(i)-y3d(i+1))*curr*0.001
+	dipoloz=(z3d(i)-z3d(i+1))*curr*0.001	
+	dipx=dipx+dipolox
+	dipz=dipz+dipoloz
+	dipy=dipy+dipoloy						
+
+	diptot=sqrt(dipx*dipx+dipy*dipy+dipz*dipz) // in pA*m
+
+}
+	g.plot(t)
+	h.plot(t)
+	n.plot(t)
+      g.flush()
+	h.flush()
+	n.flush()
+	p.flush()
+      doNotify()
+}
+
+proc runm() { 
+run()
+}

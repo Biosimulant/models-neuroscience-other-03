@@ -1,0 +1,127 @@
+{load_file("nrngui.hoc")}
+objectvar save_window_, rvp_
+objectvar scene_vector_[4]
+objectvar ocbox_, ocbox_list_, scene_, scene_list_
+{ocbox_list_ = new List()  scene_list_ = new List()}
+{pwman_place(0,0,0)}
+{
+xpanel("RunControl", 0)
+v_init = -70
+xvalue("Init","v_init", 1,"stdinit()", 1, 1 )
+xbutton("Init & Run","run()")
+xbutton("Stop","stoprun=1")
+runStopAt = 1000
+xvalue("Continue til","runStopAt", 1,"{continuerun(runStopAt) stoprun=1}", 1, 1 )
+runStopIn = 1
+xvalue("Continue for","runStopIn", 1,"{continuerun(t + runStopIn) stoprun=1}", 1, 1 )
+xbutton("Single Step","steprun()")
+t = 2000
+xvalue("t","t", 2 )
+tstop = 2000
+xvalue("Tstop","tstop", 1,"tstop_changed()", 0, 1 )
+dt = 0.1
+xvalue("dt","dt", 1,"setdt()", 0, 1 )
+steps_per_ms = 10
+xvalue("Points plotted/ms","steps_per_ms", 1,"setdt()", 0, 1 )
+screen_update_invl = 0.05
+xvalue("Scrn update invl","screen_update_invl", 1,"", 0, 1 )
+realtime = 0.15
+xvalue("Real Time","realtime", 0,"", 0, 1 )
+xpanel(78,198)
+}
+{
+save_window_ = new Graph(0)
+save_window_.size(-100,2000,1.78814e-07,6.5)
+scene_vector_[2] = save_window_
+{save_window_.view(-100, 1.78814e-07, 2100, 6.5, 402, 0, 832.5, 173.8)}
+graphList[1].append(save_window_)
+save_window_.save_name("graphList[1].")
+save_window_.addvar("PRE.T_glurel( 0.5 )", 1, 2, 0.767049, 0.0691799, 2)
+}
+{
+save_window_ = new Graph(0)
+save_window_.size(-100,2000,-0.14,-9.31323e-10)
+scene_vector_[3] = save_window_
+{save_window_.view(-100, -0.14, 2100, 0.14, 396, 295, 840.6, 217.9)}
+graphList[1].append(save_window_)
+save_window_.save_name("graphList[1].")
+save_window_.addvar("c.i", 1, 2, 0.8, 0.9, 2)
+}
+{
+xpanel("GlutTransTrainTool", 0)
+xlabel("Choose functions to shape glutamate transients")
+xlabel(" ========== ")
+PRE.Twait_glurel(.5) = 814
+xvalue("Start time (ms)","PRE.Twait_glurel(.5)", 1,"", 0, 0 )
+PRE.PulseInterval_glurel(.5) = 20
+xvalue("Pulse train interval (ms)","PRE.PulseInterval_glurel(.5)", 1,"", 0, 0 )
+PRE.PulseNum_glurel(.5) = 10
+xvalue("Number of pulses","PRE.PulseNum_glurel(.5)", 1,"", 0, 0 )
+PRE.D_glurel(.5) = 0.005
+xvalue("Ambient Glu (mM)","PRE.D_glurel(.5)", 1,"", 0, 0 )
+xlabel(" ========== ")
+PRE.diff3dfunctrain_glurel(.5) = 1
+xstatebutton(" ===== 3D diffusion equation ===== ",&PRE.diff3dfunctrain_glurel(0.5),"")
+PRE.distance3d_glurel(.5) = 750
+xvalue("3D Distance (nm)","PRE.distance3d_glurel(.5)", 1,"", 0, 0 )
+PRE.cleftWidth_glurel(.5) = 20
+xvalue("Cleft Width (nm)","PRE.cleftWidth_glurel(.5)", 1,"", 0, 0 )
+PRE.numMolecules3d_glurel(.5) = 3e+06
+xvalue("Num Molecules","PRE.numMolecules3d_glurel(.5)", 1,"", 0, 0 )
+PRE.diffCoeff3d_glurel(.5) = 0.33
+xvalue("Diffusion Coeff (um^2/ms)","PRE.diffCoeff3d_glurel(.5)", 1,"", 0, 0 )
+PRE.alpha3d_glurel(.5) = 0.21
+xvalue("Volume Fraction (alpha)","PRE.alpha3d_glurel(.5)", 1,"", 0, 0 )
+PRE.lambda3d_glurel(.5) = 1.55
+xvalue("Tortuosity (lambda)","PRE.lambda3d_glurel(.5)", 1,"", 0, 0 )
+xlabel(" ========== ")
+PRE.difffunc_glurel(.5) = 0
+xstatebutton(" ===== 2D diffusion equation ===== ",&PRE.difffunc_glurel(0.5),"")
+PRE.distance_glurel(.5) = 20.034
+xvalue("Distance (nm)","PRE.distance_glurel(.5)", 1,"", 0, 0 )
+PRE.cleftWidth_glurel(.5) = 20
+xvalue("Cleft Width (nm)","PRE.cleftWidth_glurel(.5)", 1,"", 0, 0 )
+PRE.numMolecules_glurel(.5) = 289140
+xvalue("Num Molecules","PRE.numMolecules_glurel(.5)", 1,"", 0, 0 )
+PRE.diffCoeff_glurel(.5) = 0.78
+xvalue("Diffusion Coeff (um^2/ms)","PRE.diffCoeff_glurel(.5)", 1,"", 0, 0 )
+xlabel(" ========== ")
+PRE.expfunctrain_glurel(.5) = 0
+xstatebutton(" ===== triple exponential ===== ",&PRE.expfunctrain_glurel(0.5),"")
+PRE.A1_glurel(.5) = 5
+xvalue("Fast Conc, A1 (mM)","PRE.A1_glurel(.5)", 1,"", 0, 0 )
+PRE.tau1_glurel(.5) = 4
+xvalue("Fast Decay, tau1 (ms)","PRE.tau1_glurel(.5)", 1,"", 0, 0 )
+PRE.A2_glurel(.5) = 0.013
+xvalue("Med Conc, A2 (mM)","PRE.A2_glurel(.5)", 1,"", 0, 0 )
+PRE.tau2_glurel(.5) = 137
+xvalue("Med Decay, tau2 (ms)","PRE.tau2_glurel(.5)", 1,"", 0, 0 )
+PRE.A3_glurel(.5) = 0
+xvalue("Slow Conc, A3 (mM)","PRE.A3_glurel(.5)", 1,"", 0, 0 )
+PRE.tau3_glurel(.5) = 1
+xvalue("Slow Decay, tau3 (ms)","PRE.tau3_glurel(.5)", 1,"", 0, 0 )
+xlabel(" ========== ")
+PRE.alphafunc_glurel(.5) = 0
+xstatebutton(" ===== alpha function ===== ",&PRE.alphafunc_glurel(0.5),"")
+PRE.aA_glurel(.5) = 1
+xvalue("Alpha A (mM)","PRE.aA_glurel(.5)", 1,"", 0, 0 )
+PRE.atau_glurel(.5) = 10
+xvalue("Alpha tau (ms)","PRE.atau_glurel(.5)", 1,"", 0, 0 )
+xlabel(" ")
+xpanel(1720,27)
+}
+{
+xpanel("AMPA13[0] at POST(0.5)", 0)
+xlabel("AMPA13[0] at POST(0.5)")
+c.gmax = 4600
+xvalue("gmax","c.gmax", 1,"", 0, 1 )
+xpanel(1311,687)
+}
+{
+xpanel("Temperature", 0)
+celsius = 34
+xvalue("celsius","celsius", 1,"", 0, 1 )
+xpanel(1309,829)
+}
+objectvar scene_vector_[1]
+{doNotify()}

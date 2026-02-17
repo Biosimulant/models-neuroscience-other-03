@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AgeDependentExcitabilityOfCa1PyramidalNeur266848Model'
+description: '{"value": "Age-dependent accumulation of amyloid-b, provoking increasing
+  brain amyloidopathy, triggers abnormal patterns of neuron activity and circuit synchronization
+  in Alzheimer\u2019s disease (AD)'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:266848
+  source_db: modeldb
+  source_id: '266848'
+  standard: other
+  original_url: https://modeldb.science/266848
+  download_url: https://modeldb.science/download/266848
+  license: ''
+bsim:
+  entrypoint: src.age_dependent_excitability_of_ca1_pyramidal_neur_266848_model:AgeDependentExcitabilityOfCa1PyramidalNeur266848Model
+  init_kwargs:
+    model_path: data/266848.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

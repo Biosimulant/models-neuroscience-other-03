@@ -1,0 +1,567 @@
+{load_file("nrngui.hoc")}
+objectvar save_window_, rvp_
+objectvar scene_vector_[9]
+objectvar ocbox_, ocbox_list_, scene_, scene_list_
+{ocbox_list_ = new List()  scene_list_ = new List()}
+{pwman_place(0,0,0)}
+
+//Begin ChannelBuild[0] managed KSChan[0]
+{
+load_file("chanbild.hoc", "ChannelBuild")
+}
+{ion_register("ca", 2)}
+{ocbox_ = new ChannelBuild(1)}
+{object_push(ocbox_)}
+{genprop.set_data("CaL", 1, 1, 8, "ca")}
+{genprop.set_defstr(0.000119647, -40)}
+tobj = new ChannelBuildKSGate(this)
+{gatelist.append(tobj)}
+{tobj.begin_restore(1)}
+{tobj.set_state("m", 1, 140, 110)}
+{tobj.set_trans(0, 0, 1)}
+{tobj.transitions.object(0).settype(1, "")}
+{tobj1 = new Vector(3)  for (i=0; i < 3; i += 1) tobj1.x[i] = fscan() }
+1
+-0.17575
+-27.82
+{tobj.transitions.object(0).set_f(0, 4, tobj1)}
+{tobj1 = new Vector(1)  for (i=0; i < 1; i += 1) tobj1.x[i] = fscan() }
+20
+{tobj.transitions.object(0).set_f(1, 1, tobj1)}
+{tobj.end_restore()}
+tobj = new ChannelBuildKSGate(this)
+{gatelist.append(tobj)}
+{tobj.begin_restore(1)}
+{tobj.set_state("h", 1, 160, 110)}
+{tobj.set_trans(0, 0, 1)}
+{tobj.transitions.object(0).settype(1, "")}
+{tobj1 = new Vector(3)  for (i=0; i < 3; i += 1) tobj1.x[i] = fscan() }
+1
+0.19121
+-52.4
+{tobj.transitions.object(0).set_f(0, 4, tobj1)}
+{tobj1 = new Vector(1)  for (i=0; i < 1; i += 1) tobj1.x[i] = fscan() }
+450
+{tobj.transitions.object(0).set_f(1, 1, tobj1)}
+{tobj.end_restore()}
+end_restore()
+{genprop.set_single(0)}
+{set_alias(0)}
+{usetable(0)}
+{object_pop()}
+{
+//ocbox_.map("ChannelBuild[0] managed KSChan[0]", 1369, 104, 291.84, 273.6)
+}
+objref ocbox_
+//End ChannelBuild[0] managed KSChan[0]
+
+
+//Begin ChannelBuild[1] managed KSChan[1]
+{
+load_file("chanbild.hoc", "ChannelBuild")
+}
+{ion_register("ca", 2)}
+{ocbox_ = new ChannelBuild(1)}
+{object_push(ocbox_)}
+{genprop.set_data("HVA", 1, 1, 8, "ca")}
+{genprop.set_defstr(2.94118e-05, -40)}
+tobj = new ChannelBuildKSGate(this)
+{gatelist.append(tobj)}
+{tobj.begin_restore(1)}
+{tobj.set_state("m", 1, 140, 110)}
+{tobj.set_trans(0, 0, 1)}
+{tobj.transitions.object(0).settype(1, "")}
+{tobj1 = new Vector(3)  for (i=0; i < 3; i += 1) tobj1.x[i] = fscan() }
+1
+-0.17575
+-27.82
+{tobj.transitions.object(0).set_f(0, 4, tobj1)}
+{tobj1 = new Vector(1)  for (i=0; i < 1; i += 1) tobj1.x[i] = fscan() }
+10
+{tobj.transitions.object(0).set_f(1, 1, tobj1)}
+{tobj.end_restore()}
+end_restore()
+{genprop.set_single(0)}
+{set_alias(0)}
+{usetable(0)}
+{object_pop()}
+{
+//ocbox_.map("ChannelBuild[1] managed KSChan[1]", 1353, 127, 291.84, 273.6)
+}
+objref ocbox_
+//End ChannelBuild[1] managed KSChan[1]
+
+
+//Begin ChannelBuild[2] managed KSChan[2]
+{
+load_file("chanbild.hoc", "ChannelBuild")
+}
+{ion_register("ca", 2)}
+{ocbox_ = new ChannelBuild(1)}
+{object_push(ocbox_)}
+{genprop.set_data("CaT", 1, 1, 8, "ca")}
+{genprop.set_defstr(0.000119647, 0)}
+tobj = new ChannelBuildKSGate(this)
+{gatelist.append(tobj)}
+{tobj.begin_restore(1)}
+{tobj.set_state("m", 1, 0, 100)}
+{tobj.set_trans(0, 0, 1)}
+{tobj.transitions.object(0).settype(1, "")}
+{tobj1 = new Vector(3)  for (i=0; i < 3; i += 1) tobj1.x[i] = fscan() }
+1
+-0.42373
+-59.05
+{tobj.transitions.object(0).set_f(0, 4, tobj1)}
+{tobj1 = new Vector(1)  for (i=0; i < 1; i += 1) tobj1.x[i] = fscan() }
+25
+{tobj.transitions.object(0).set_f(1, 1, tobj1)}
+{tobj.end_restore()}
+tobj = new ChannelBuildKSGate(this)
+{gatelist.append(tobj)}
+{tobj.begin_restore(1)}
+{tobj.set_state("h", 1, 50, 100)}
+{tobj.set_trans(0, 0, 1)}
+{tobj.transitions.object(0).settype(1, "")}
+{tobj1 = new Vector(3)  for (i=0; i < 3; i += 1) tobj1.x[i] = fscan() }
+1
+0.18832
+-80.72
+{tobj.transitions.object(0).set_f(0, 4, tobj1)}
+{tobj1 = new Vector(401)  for (i=0; i < 401; i += 1) tobj1.x[i] = fscan() }
+1.9865
+2.01993
+2.05449
+2.09023
+2.12717
+2.16536
+2.20485
+2.24568
+2.28789
+2.33153
+2.37664
+2.42329
+2.47151
+2.52136
+2.5729
+2.62619
+2.68128
+2.73823
+2.79711
+2.85798
+2.92091
+2.98597
+3.05323
+3.12276
+3.19465
+3.26896
+3.34578
+3.4252
+3.5073
+3.59218
+3.67991
+3.77061
+3.86437
+3.96129
+4.06148
+4.16504
+4.2721
+4.38276
+4.49714
+4.61537
+4.73758
+4.86389
+4.99444
+5.12938
+5.26884
+5.41298
+5.56195
+5.7159
+5.87499
+6.0394
+6.2093
+6.38486
+6.56626
+6.7537
+6.94736
+7.14744
+7.35415
+7.56769
+7.78827
+8.01612
+8.25146
+8.49452
+8.74553
+9.00474
+9.27238
+9.54871
+9.83399
+10.1285
+10.4324
+10.7461
+11.0698
+11.4037
+11.7483
+12.1036
+12.4701
+12.848
+13.2376
+13.6391
+14.0529
+14.4793
+14.9184
+15.3706
+15.8361
+16.3152
+16.8081
+17.3151
+17.8363
+18.372
+18.9223
+19.4875
+20.0675
+20.6626
+21.2728
+21.898
+22.5384
+23.1939
+23.8642
+24.5494
+25.2491
+25.963
+26.6909
+27.4322
+28.1865
+28.9531
+29.7313
+30.5204
+31.3194
+32.1273
+32.943
+33.7652
+34.5925
+35.4234
+36.2563
+37.0895
+37.9209
+38.7486
+39.5704
+40.3841
+41.1872
+41.9772
+42.7517
+43.5078
+44.2429
+44.9541
+45.6387
+46.2938
+46.9167
+47.5045
+48.0546
+48.5644
+49.0315
+49.4534
+49.828
+50.1534
+50.4279
+50.65
+50.8185
+50.9325
+50.9913
+50.9946
+50.9425
+50.8351
+50.6731
+50.4574
+50.1891
+49.8697
+49.5008
+49.0845
+48.6228
+48.118
+47.5726
+46.9891
+46.3703
+45.7189
+45.0377
+44.3295
+43.5972
+42.8434
+42.0711
+41.2827
+40.4811
+39.6685
+38.8476
+38.0205
+37.1894
+36.3563
+35.5233
+34.6921
+33.8642
+33.0414
+32.2248
+31.4159
+30.6158
+29.8255
+29.0459
+28.2778
+27.522
+26.7791
+26.0496
+25.334
+24.6326
+23.9457
+23.2735
+22.6163
+21.9741
+21.347
+20.735
+20.1381
+19.5563
+18.9894
+18.4373
+17.8998
+17.3768
+16.8682
+16.3736
+15.8928
+15.4257
+14.9719
+14.5313
+14.1034
+13.6881
+13.2851
+12.8941
+12.5149
+12.147
+11.7903
+11.4445
+11.1093
+10.7844
+10.4695
+10.1644
+9.86883
+9.58247
+9.30508
+9.0364
+8.7762
+8.52422
+8.28022
+8.04396
+7.81523
+7.59378
+7.37941
+7.17189
+6.97103
+6.77661
+6.58843
+6.40632
+6.23006
+6.0595
+5.89444
+5.73471
+5.58015
+5.4306
+5.28589
+5.14587
+5.0104
+4.87933
+4.75251
+4.62982
+4.51112
+4.39628
+4.28518
+4.1777
+4.07373
+3.97314
+3.87583
+3.7817
+3.69064
+3.60255
+3.51734
+3.43491
+3.35518
+3.27804
+3.20344
+3.13126
+3.06145
+2.99393
+2.92861
+2.86542
+2.80431
+2.74519
+2.68801
+2.6327
+2.5792
+2.52746
+2.4774
+2.42899
+2.38216
+2.33686
+2.29305
+2.25067
+2.20968
+2.17003
+2.13169
+2.09459
+2.05872
+2.02402
+1.99045
+1.95799
+1.92659
+1.89621
+1.86684
+1.83842
+1.81094
+1.78436
+1.75865
+1.73378
+1.70972
+1.68646
+1.66396
+1.64219
+1.62114
+1.60078
+1.58108
+1.56203
+1.54361
+1.52579
+1.50855
+1.49188
+1.47575
+1.46016
+1.44507
+1.43048
+1.41637
+1.40272
+1.38952
+1.37675
+1.3644
+1.35245
+1.3409
+1.32972
+1.31891
+1.30846
+1.29834
+1.28856
+1.2791
+1.26995
+1.2611
+1.25254
+1.24426
+1.23626
+1.22851
+1.22102
+1.21377
+1.20677
+1.19999
+1.19343
+1.18709
+1.18096
+1.17502
+1.16929
+1.16374
+1.15837
+1.15318
+1.14815
+1.1433
+1.1386
+1.13406
+1.12966
+1.12541
+1.1213
+1.11732
+1.11348
+1.10976
+1.10616
+1.10268
+1.09931
+1.09606
+1.09291
+1.08986
+1.08691
+1.08407
+1.08131
+1.07864
+1.07607
+1.07357
+1.07116
+1.06883
+1.06657
+1.06439
+1.06228
+1.06024
+1.05826
+1.05635
+1.0545
+1.05272
+1.05099
+1.04932
+1.0477
+1.04614
+1.04462
+1.04316
+1.04175
+1.04038
+1.03905
+1.03777
+1.03653
+1.03534
+1.03418
+1.03306
+1.03197
+1.03093
+1.02991
+1.02893
+1.02798
+1.02707
+1.02618
+1.02532
+1.02449
+1.02369
+1.02291
+1.02216
+1.02143
+1.02073
+1.02005
+1.01939
+1.01876
+1.01814
+1.01755
+1.01697
+1.01642
+{tobj.transitions.object(0).set_f(1, 7, tobj1, -150, 50)}
+{tobj.end_restore()}
+end_restore()
+{genprop.set_single(0)}
+{set_alias(0)}
+{usetable(0)}
+{object_pop()}
+{
+//ocbox_.map("ChannelBuild[2] managed KSChan[2]", 1336, 151, 291.84, 273.6)
+}
+objref ocbox_
+//End ChannelBuild[2] managed KSChan[2]
+
+
+//Begin ChannelBuild[3] managed KSChan[3]
+{
+load_file("chanbild.hoc", "ChannelBuild")
+}
+{ion_register("k", 1)}
+{ocbox_ = new ChannelBuild(1)}
+{object_push(ocbox_)}
+{genprop.set_data("K_Leak", 1, 1, 6, "k")}
+{genprop.set_defstr(8.5714e-05, 0)}
+end_restore()
+{genprop.set_single(0)}
+{set_alias(0)}
+{usetable(0)}
+{object_pop()}
+{
+//ocbox_.map("ChannelBuild[3] managed KSChan[3]", 1319, 173, 291.84, 273.6)
+}
+objref ocbox_
+//End ChannelBuild[3] managed KSChan[3]
+
+objectvar scene_vector_[1]
+{doNotify()}

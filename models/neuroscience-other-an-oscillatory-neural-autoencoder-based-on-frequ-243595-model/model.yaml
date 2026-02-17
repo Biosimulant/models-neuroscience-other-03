@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AnOscillatoryNeuralAutoencoderBasedOnFrequ243595Model'
+description: '{"value": "\" ... We propose here an oscillatory neural network model
+  that performs the function of an autoencoder. The model is a hybrid of rate-coded
+  neurons and neural oscillators. Input signals mo'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:243595
+  source_db: modeldb
+  source_id: '243595'
+  standard: other
+  original_url: https://modeldb.science/243595
+  download_url: https://modeldb.science/download/243595
+  license: ''
+bsim:
+  entrypoint: src.an_oscillatory_neural_autoencoder_based_on_frequ_243595_model:AnOscillatoryNeuralAutoencoderBasedOnFrequ243595Model
+  init_kwargs:
+    model_path: data/243595.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

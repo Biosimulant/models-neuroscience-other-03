@@ -1,0 +1,5 @@
+load_file("nrngui.hoc")
+
+load_file("GC.hoc")
+
+load_file("GABA-EPreSP+AP.ses")

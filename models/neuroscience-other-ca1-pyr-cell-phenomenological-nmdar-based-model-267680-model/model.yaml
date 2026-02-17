@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: Ca1PyrCellPhenomenologicalNmdarBasedModel267680Model'
+description: '{"value": "This Python code implements a phenomenological NMDA receptor-based
+  voltage-dependent model of synaptic plasticity for CA3-CA1 synapse and shows weight
+  changes of a synapse placed on a two-c'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:267680
+  source_db: modeldb
+  source_id: '267680'
+  standard: other
+  original_url: https://modeldb.science/267680
+  download_url: https://modeldb.science/download/267680
+  license: ''
+bsim:
+  entrypoint: src.ca1_pyr_cell_phenomenological_nmdar_based_model_267680_model:Ca1PyrCellPhenomenologicalNmdarBasedModel267680Model
+  init_kwargs:
+    model_path: data/267680.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

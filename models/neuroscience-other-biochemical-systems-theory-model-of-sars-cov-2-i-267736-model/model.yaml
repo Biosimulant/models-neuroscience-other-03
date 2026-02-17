@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: BiochemicalSystemsTheoryModelOfSarsCov2I267736Model'
+description: '{"value": "\"We report here a mathematical model of SARS-CoV-2 infection
+  pathway network with cytokine storm, oxidative stress, thrombosis, insulin resistance,
+  and nitric oxide (NO) pathways. The bioc'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:267736
+  source_db: modeldb
+  source_id: '267736'
+  standard: other
+  original_url: https://modeldb.science/267736
+  download_url: https://modeldb.science/download/267736
+  license: ''
+bsim:
+  entrypoint: src.biochemical_systems_theory_model_of_sars_cov_2_i_267736_model:BiochemicalSystemsTheoryModelOfSarsCov2I267736Model
+  init_kwargs:
+    model_path: data/267736.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

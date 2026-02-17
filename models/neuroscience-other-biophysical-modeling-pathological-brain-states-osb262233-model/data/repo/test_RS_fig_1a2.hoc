@@ -1,0 +1,85 @@
+load_file("nrngui.hoc")
+load_file("PYR_template.hoc")
+
+
+n=1
+objref cell[n],filed, r,g,tvec, hines
+
+tstop = 2000
+r = new Random(2) 
+g = new Graph()
+
+tvec = new Vector()
+
+proc hines1(){
+        dt = 0.025
+        printf("%d t=%g dt=%g dreal=%g treal=%g\n", \
+                0, t, dt, startsw()-hinest2, startsw()-hinest1)
+             
+        hinest2 = startsw()
+        cvode.event(t + 1, "hines1()")
+        
+
+
+
+}
+
+proc init() {
+
+    finitialize()
+
+    if (cvode_active()) {
+        cvode.re_init()
+    } else {
+        fcurrent()
+    }
+    frecord_init()
+}
+
+
+
+for i=0,n-1 {
+	cell[i] = new PYR_template()
+	cell[i].Currentclamp.amp = 0.7
+    
+}
+
+tstop = 2000
+hinest1 = startsw()
+hinest2 = startsw()
+hines = new FInitializeHandler(2, "hinest1=startsw() hinest2=startsw() hines1()")
+finitialize()
+tvec.record(&t)
+
+
+proc runandplot() {
+  g.exec_menu("Erase") 
+  g.addexpr("RS_neuron_model",7,1)
+  run()
+  cell[0].voltagem.plot(g,tvec) 
+  g.exec_menu("View = plot") 
+  g.size(0, 2000, -100, 50)
+
+}
+
+
+runandplot()
+
+cell.spiketimes.printf()
+filed = new File()
+filed.wopen("d.bin")
+filed.close("d.bin")
+filed.aopen("d.bin") 
+
+cell[0].voltagem.vwrite(filed)
+filed.close()
+
+
+
+
+
+
+
+
+
+//quit()

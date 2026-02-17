@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AobMitralCellPersistentActivityWithoutFeed185332Model'
+description: '{"value": "Persistent activity has been reported in many brain areas
+  and is\r\nhypothesized to mediate working memory and emotional brain states and\r\nto
+  rely upon network or biophysical feedback. He'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:185332
+  source_db: modeldb
+  source_id: '185332'
+  standard: other
+  original_url: https://modeldb.science/185332
+  download_url: https://modeldb.science/download/185332
+  license: ''
+bsim:
+  entrypoint: src.aob_mitral_cell_persistent_activity_without_feed_185332_model:AobMitralCellPersistentActivityWithoutFeed185332Model
+  init_kwargs:
+    model_path: data/185332.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

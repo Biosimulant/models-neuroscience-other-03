@@ -1,0 +1,330 @@
+// Load channel files
+load_file("pmchannels.ses")
+load_file("hgchannels.ses")
+load_file("calciumchannels.ses")
+
+//********************* RandomStream Template***************************
+random_stream_offset_ = 1000
+
+begintemplate RandomStream
+public r, repick, start, stream
+external random_stream_offset_
+objref r
+proc init() {
+	stream = $1
+	r = new Random()
+	start()
+}
+func start() {
+	return r.MCellRan4(stream*random_stream_offset_ + 1)
+}
+func repick() {
+	return r.repick()
+}
+endtemplate RandomStream
+
+//******************************Pacemaker Template***************************
+begintemplate PM
+public is_art
+public init, topol, basic_shape, subsets, geom, biophys, geom_nseg, biophys_inhomo
+public synlist, x, y, z, position, connect2target
+
+public soma
+public all
+
+objref synlist
+
+proc init() {
+  topol()
+  subsets()
+  geom()
+  biophys()
+  geom_nseg()
+  synlist = new List()
+  synapses()
+  x = y = z = 0 // only change via position
+}
+
+create soma
+
+proc topol() { local i
+  basic_shape()
+}
+proc basic_shape() {
+  soma {pt3dclear() pt3dadd(0, 0, 0, 1) pt3dadd(15, 0, 0, 1)}
+}
+
+objref all
+proc subsets() { local i
+  objref all
+  all = new SectionList()
+    soma all.append()
+
+}
+proc geom() {
+  forsec all {  /*area = 3000 */ L = diam = 30.9019  }
+  soma {  /*area = 3000 */ L = diam = 30.9019  }
+}
+external lambda_f
+proc geom_nseg() {
+  forsec all { nseg = int((L/(0.1*lambda_f(100))+.9)/2)*2 + 1  }
+}
+proc biophys() {
+  soma {
+    Ra = 100
+    insert na
+      gmax_na = 0.0013333
+    insert nap
+      gmax_nap = 0.00002907
+    insert k
+      gmax_k = 0.000533333
+    insert leak
+      gmax_leak = 0.00003091
+      e_leak = -65
+    insert K_Leak
+      gmax_K_Leak = 0.000021428
+    insert potassium
+      kbath_potassium = 6
+      fhspace_potassium = 300
+      txfer_potassium = 50
+      bmax_potassium = 50
+      k1N_potassium = 1.1
+      k1_potassium = 0.0008
+      d_potassium = 1.5e-07
+    insert pump
+      kbath_pump = 6
+      ipumpmax_pump = 0.0005
+  }
+}
+proc biophys_inhomo(){}
+proc position() { local i
+  soma for i = 0, n3d()-1 {
+    pt3dchange(i, $1-x+x3d(i), $2-y+y3d(i), $3-z+z3d(i), diam3d(i))
+  }
+  x = $1  y = $2  z = $3
+}
+obfunc connect2target() { localobj nc //$o1 target point process, optional $o2 returned NetCon
+  soma nc = new NetCon(&v(1), $o1)
+  nc.threshold = 0
+  if (numarg() == 2) { $o2 = nc } // for backward compatibility
+  return nc
+}
+objref syn_
+proc synapses() {
+  /* Itonic0 */   soma syn_ = new ExpSyn(0.5)  synlist.append(syn_)
+    syn_.tau = 5
+  /* Isyn1 */   soma syn_ = new ExpSyn(0.5)  synlist.append(syn_)
+    syn_.tau = 5
+}
+func is_art() { return 0 }
+
+endtemplate PM
+
+//******************************Hypoglossal Template***************************
+begintemplate HG
+public is_art
+public init, topol, basic_shape, subsets, geom, biophys, geom_nseg, biophys_inhomo
+public synlist, x, y, z, position, connect2target
+
+public soma
+public all
+
+objref synlist
+
+proc init() {
+  topol() 
+  subsets()
+  geom()
+  biophys()
+  geom_nseg()
+  synlist = new List()
+  synapses()
+  x = y = z = 0 // only change via position
+}
+
+create soma
+
+proc topol() { local i
+  basic_shape()
+}
+proc basic_shape() {
+  soma {pt3dclear() pt3dadd(0, 0, 0, 1) pt3dadd(15, 0, 0, 1)}
+}
+
+objref all
+proc subsets() { local i
+  objref all
+  all = new SectionList()
+    soma all.append()
+
+}
+proc geom() {
+  forsec all {  /*area = 4000 */ L = diam = 35.6825  }
+}
+external lambda_f
+proc geom_nseg() {
+  forsec all { nseg = int((L/(0.1*lambda_f(100))+.9)/2)*2 + 1  }
+}
+proc biophys() {
+  soma {
+    Ra = 100
+    insert H
+      gmax_H = 0.000125
+      e_H = -38.8
+    insert A
+      gmax_A = 0.025
+    insert P
+      gmax_P = 0.00125
+    insert N
+      gmax_N = 0.00125
+    insert leak_hg
+      gmax_leak_hg = 0.001476
+      e_leak_hg = -50
+    insert T
+      gmax_T = 0.0025
+    insert K_hg
+      gmax_K_hg = 0.0325
+    insert NaP_hg
+      gmax_NaP_hg = 0.000039747
+    insert Na_hg
+      gmax_Na_hg = 0.0175
+    insert sk
+      gbar_sk = 0.0075
+      ztau_sk = 1
+      i_sk = 0
+    insert cax
+      K1_cax = 0.02
+      K2_cax = 0.04
+  }
+}
+proc biophys_inhomo(){}
+proc position() { local i
+  soma for i = 0, n3d()-1 {
+    pt3dchange(i, $1-x+x3d(i), $2-y+y3d(i), $3-z+z3d(i), diam3d(i))
+  }
+  x = $1  y = $2  z = $3
+}
+obfunc connect2target() { localobj nc //$o1 target point process, optional $o2 returned NetCon
+  soma nc = new NetCon(&v(1), $o1)
+  nc.threshold = 0
+  if (numarg() == 2) { $o2 = nc } // for backward compatibility
+  return nc
+}
+objref syn_
+proc synapses() {
+  /* Isyn0 */   soma syn_ = new ExpSyn(0.5)  synlist.append(syn_)
+    syn_.tau = 5
+}
+func is_art() { return 0 }
+
+endtemplate HG
+
+//********************* Premotoneuron/intermediate-cell Template***************************
+begintemplate IC
+public is_art
+public init, topol, basic_shape, subsets, geom, biophys, geom_nseg, biophys_inhomo
+public synlist, x, y, z, position, connect2target
+
+public soma
+public all
+
+objref synlist
+
+proc init() {
+  topol()
+  subsets()
+  geom()
+  biophys()
+  geom_nseg()
+  synlist = new List()
+  synapses()
+  x = y = z = 0 // only change via position
+}
+
+create soma
+
+proc topol() { local i
+  basic_shape()
+}
+proc basic_shape() {
+  soma {pt3dclear() pt3dadd(0, 0, 0, 1) pt3dadd(15, 0, 0, 1)}
+}
+
+objref all
+proc subsets() { local i
+  objref all
+  all = new SectionList()
+    soma all.append()
+
+}
+proc geom() {
+  forsec all {  /*area = 3000 */ L = diam = 37.847  }
+  soma {  /*area = 3000 */ L = diam = 37.847  }
+}
+external lambda_f
+proc geom_nseg() {
+  forsec all { nseg = int((L/(0.1*lambda_f(100))+.9)/2)*2 + 1  }
+}
+proc biophys() {
+  soma {
+    Ra = 100
+    insert na
+      gmax_na = 0.0013333
+    insert nap
+      gmax_nap = 0.00002467
+    insert k
+      gmax_k = 0.000533333
+    insert leak
+      gmax_leak = 0.00006667
+      e_leak = -65
+    insert K_Leak
+      gmax_K_Leak = 0.000021428
+    insert potassium
+      kbath_potassium = 6
+      fhspace_potassium = 300
+      txfer_potassium = 50
+      bmax_potassium = 50
+      k1N_potassium = 1.1
+      k1_potassium = 0.0008
+      d_potassium = 1.5e-07
+    insert pump
+      kbath_pump = 6
+      ipumpmax_pump = 0.0005
+//    insert HVA
+//      gmax_HVA = 1.1743-05
+//    insert CaT
+//      gmax_CAT = 1.2228e-05
+//    insert CaL
+//      gmax_CaL = 2.347e-05  
+//    insert cadyn
+//      depth_cadyn = 0.1
+//      tayr_cadyn = 2
+//      cainf_cadyn = 5e-05
+//      kt_cadyn = 0.0001
+//      kd_cadyn = 0.0001
+
+  }
+}
+proc biophys_inhomo(){}
+proc position() { local i
+  soma for i = 0, n3d()-1 {
+    pt3dchange(i, $1-x+x3d(i), $2-y+y3d(i), $3-z+z3d(i), diam3d(i))
+  }
+  x = $1  y = $2  z = $3
+}
+obfunc connect2target() { localobj nc //$o1 target point process, optional $o2 returned NetCon
+  soma nc = new NetCon(&v(1), $o1)
+  nc.threshold = 0
+  if (numarg() == 2) { $o2 = nc } // for backward compatibility
+  return nc
+}
+objref syn_
+proc synapses() {
+  /* Itonic0 */   soma syn_ = new ExpSyn(0.5)  synlist.append(syn_)
+    syn_.tau = 5
+  /* Isyn1 */   soma syn_ = new ExpSyn(0.5)  synlist.append(syn_)
+    syn_.tau = 5
+}
+func is_art() { return 0 }
+
+endtemplate IC

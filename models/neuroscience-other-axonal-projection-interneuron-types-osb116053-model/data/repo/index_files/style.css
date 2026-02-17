@@ -1,0 +1,51 @@
+body {
+	margin: 0 auto;
+	padding: 0; /* need for Opera */
+	color: #111;
+	font-family:   Verdana,non-serif;/*georgia,serif; /*, helvetica, sans-serif;*/
+	font-size: 14px;
+	width: 800px;	
+	text-align: center;
+}
+
+#pagehead {
+	width:800px; 
+	font-family: Verdana,non-serif; 
+	text-align:right; 
+	font-size:x-large;
+}
+
+#text {
+	
+	font-family: Verdana,non-serif;
+	font-size:14px;
+	background: transparent;
+	margin: 0 auto;
+	padding-bottom: 10px;
+	border: 0;
+	text-align: left;
+}
+
+#papertitle {
+	font-style:italic;
+}
+
+#modifiedtag {
+	font-size: x-small;
+	text-align: left;
+	padding-top: 40px;
+}
+h1 {
+	font-family: Verdana,non-serif;
+	font-size:18px;
+}
+
+h2 {
+	font-family: Verdana,non-serif;
+	font-size:14px;
+	font-style:normal;
+	font-weight:bold;
+}
+a {
+	color: #555555;
+}

@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model264519264519Model'
+description: Ave. neuron model for slow-wave sleep in cortex Tatsuki 2016 Yoshida
+  2018 Rasmussen 2017 (all et al)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:264519
+  source_db: opensourcebrain
+  source_id: '264519'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/264519
+  download_url: https://github.com/OpenSourceBrain/264519.git
+  license: BSD-3-Clause
+bsim:
+  entrypoint: src.model_264519_264519_model:Model264519264519Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

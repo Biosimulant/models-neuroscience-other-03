@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model141274141274Model'
+description: Biophysically detailed model of the mouse sino-atrial node cell (Kharche
+  et al. 2011)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:141274
+  source_db: opensourcebrain
+  source_id: '141274'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/141274
+  download_url: https://github.com/OpenSourceBrain/141274.git
+  license: ''
+bsim:
+  entrypoint: src.model_141274_141274_model:Model141274141274Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

@@ -1,0 +1,110 @@
+/* Granule Cell */
+
+create s, a[10], b[12], d0[1], d1[3], d2[9], f[48], c[6]
+
+forall {
+	Ra = 70
+	cm = 1
+}
+
+access s
+    nseg = 1
+	diam = 15
+	L    = 15
+
+a [0] { 
+	nseg = 150
+	diam(0:1) = 1:0.4
+	L    = 150
+}
+
+for i = 1, 9 a[i] {
+	nseg = 150
+	diam = 0.4
+	L    = 150
+}
+
+for i = 0, 11 b[i] {
+	nseg = 7
+	diam = 7
+	L    = 7
+}
+
+d0 [0] {
+    nseg = 7 
+	diam = 5
+	L    = 7
+}
+
+for i = 0, 2  d1 [i] {
+    nseg =50 
+	diam(0:1) = 4:3
+	L    = 50
+}  
+
+for i = 0, 8  d2 [i] {
+    nseg = 35 
+	diam(0:1) = 3:1
+	L    = 350
+}  
+
+for i = 0, 47 f[i] {
+	nseg = 20
+	diam = 0.1
+	L = 20
+}
+
+for i = 0, 5 c[i] {
+	nseg = 100
+	diam = 0.2
+	L = 100
+}
+
+for i = 0, 2 {
+	j = 3*i
+	connect d2[j](1),   d1[i](0)
+	connect d2[j+1](1), d1[i](0)
+	connect d2[j+2](1), d1[i](0)
+}
+
+for i = 0, 2 {
+    connect d1[i](1), d0(0)
+}
+
+connect d0(1), s(0)
+
+connect s(1), a[0](0)
+
+for i = 0, 8 {connect b[i](0), a[i](1)		
+}		
+
+for i = 0, 8 {connect a[i+1](0), b[i](1)		
+}
+
+for i = 0, 11 {
+	j = 4*i
+	connect f[j](0),   b[i](0.4)
+	connect f[j+1](0), b[i](0.6)
+	connect f[j+2](0), b[i](0.4)
+	connect f[j+3](0), b[i](0.6)
+}
+
+connect c[0](0), a[0](0.33)
+connect b[9](0), c[0](1)
+connect c[1](0), b[9](1)
+
+connect c[2](0), a[0](0.67)
+connect b[10](0), c[2](1)
+connect c[3](0), b[10](1)
+
+connect c[4](0), a[1](0.33)
+connect b[11](0), c[4](1)
+connect c[5](0), b[11](1)
+
+forall insert mfbhh
+forall gl_mfbhh = 0.00001667 /* (S/cm2) 60 kohm・cm^2 */
+forall gnabar_mfbhh = 0 /* S/cm^2 */
+forall gkbar_mfbhh = 0 /* S/cm^2 */
+forall  ena = 50    /* mV */
+forall  ek = -85    /* mV */
+forall celsius = 25

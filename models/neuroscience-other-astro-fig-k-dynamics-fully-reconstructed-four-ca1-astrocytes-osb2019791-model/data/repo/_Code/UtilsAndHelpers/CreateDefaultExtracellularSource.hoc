@@ -1,0 +1,27 @@
+
+objref kSrc
+
+proc _createDefaultExtracellularSource() { local xMin, yMin, zMin, Dx, Dy, Dz, D, x, y, z, radius
+    
+    D = cbbHelper.analyzeCellBoundingBox(&xMin, &yMin, &zMin, &Dx, &Dy, &Dz)
+    
+    // Potassium
+    x = xMin + 0.4 * Dx
+    y = yMin + 0.8 * Dy
+    z = zMin + 0.5 * Dz
+    radius = 0.4 * D
+    kSrc = new ExtracellularSource(x, y, z, radius, 1, 10000, enumColours.blue, "[K+]")
+    
+}
+
+_createDefaultExtracellularSource()
+
+proc warnIfNoContact() { local isDefaultSrc, isWarn, srcIdx
+    isDefaultSrc = $1
+    
+    isWarn = kSrc.warnIfNoContactWithTheCell(isDefaultSrc)
+    
+    if (!isWarn) {
+        mwh.hideWarningBox()
+    }
+}

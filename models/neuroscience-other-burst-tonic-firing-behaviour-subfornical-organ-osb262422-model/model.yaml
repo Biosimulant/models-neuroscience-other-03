@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model262422262422Model'
+description: Burst and tonic firing behaviour in subfornical organ (SFO) neurons (Medlock
+  et al 2018)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:262422
+  source_db: opensourcebrain
+  source_id: '262422'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/262422
+  download_url: https://github.com/OpenSourceBrain/262422.git
+  license: ''
+bsim:
+  entrypoint: src.model_262422_262422_model:Model262422262422Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

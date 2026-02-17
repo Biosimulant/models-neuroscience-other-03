@@ -1,0 +1,57 @@
+
+// $s1 (output) - The selected file path and name (only if selected)
+// Returns: 0/1 flag indicating that the file was selected
+func selectAstrocyteGeomFile() { localobj file
+    strdef hint, defaultDirPath
+    
+    file = new File()
+    hint = "Astrocyte geometry: Choose one of the following four"
+    sprint(defaultDirPath, "%s../Geometries/", getcwd())
+    file.chooser("r", hint, "*.hoc", "Load", "Cancel", defaultDirPath)
+    if (!file.chooser()) {
+        return 0
+    }
+    
+    $s1 = file.getname
+    
+    return 1
+}
+
+strdef filePathName
+isChosen = selectAstrocyteGeomFile(filePathName)
+if (!isChosen) {
+    quit()
+}
+
+{ load_file(filePathName) }
+
+
+strdef somaSecName
+somaSecName = "soma"    // The default name
+
+objref somaSec_ref
+
+// in:  somaSecName (the default name)
+// out: somaSec_ref, somaSecName
+proc identifySoma() { local isCancel localobj nil
+    
+    while (1) {
+        // forsec secNameOrRegex {              // - These two don't require that match must start at the beginning of the string
+        // forall ifsec secNameOrRegex {        // /
+        forall if (issection(somaSecName)) {    // - This does
+            somaSec_ref = new SectionRef()
+            break
+        }
+        
+        if (somaSec_ref != nil) {
+            break
+        }
+        
+        isCancel = !string_dialog("Please help us identify the name used for the soma section:", somaSecName)
+        if (isCancel) {
+            quit()
+        }
+    }
+}
+
+identifySoma()

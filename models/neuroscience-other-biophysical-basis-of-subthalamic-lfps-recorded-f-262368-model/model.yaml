@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: BiophysicalBasisOfSubthalamicLfpsRecordedF262368Model'
+description: '{"value": "\"Clinical deep brain stimulation (DBS) technology is evolving
+  to enable chronic recording of local field potentials (LFPs) that represent electrophysiological
+  biomarkers of the underlying '
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:262368
+  source_db: modeldb
+  source_id: '262368'
+  standard: other
+  original_url: https://modeldb.science/262368
+  download_url: https://modeldb.science/download/262368
+  license: ''
+bsim:
+  entrypoint: src.biophysical_basis_of_subthalamic_lfps_recorded_f_262368_model:BiophysicalBasisOfSubthalamicLfpsRecordedF262368Model
+  init_kwargs:
+    model_path: data/262368.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

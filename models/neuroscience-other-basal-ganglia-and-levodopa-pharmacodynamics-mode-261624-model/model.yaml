@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: BasalGangliaAndLevodopaPharmacodynamicsMode261624Model'
+description: '{"value": "Parkinson disease (PD) is characterized by a clear beneficial
+  motor response to levodopa (LD) treatment. However, with disease progression and
+  longer LD exposure, drug-related motor fluctua'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:261624
+  source_db: modeldb
+  source_id: '261624'
+  standard: other
+  original_url: https://modeldb.science/261624
+  download_url: https://modeldb.science/download/261624
+  license: ''
+bsim:
+  entrypoint: src.basal_ganglia_and_levodopa_pharmacodynamics_mode_261624_model:BasalGangliaAndLevodopaPharmacodynamicsMode261624Model
+  init_kwargs:
+    model_path: data/261624.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

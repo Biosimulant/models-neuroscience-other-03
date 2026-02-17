@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: Ca1NetworkModelInterneuronContributionsToE256311Model'
+description: '{"value": "Temporal lobe epilepsy causes significant cognitive deficits
+  in both humans and rodents, yet the specific circuit mechanisms underlying these
+  deficits remain unknown. There are profound and'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:256311
+  source_db: modeldb
+  source_id: '256311'
+  standard: other
+  original_url: https://modeldb.science/256311
+  download_url: https://modeldb.science/download/256311
+  license: ''
+bsim:
+  entrypoint: src.ca1_network_model_interneuron_contributions_to_e_256311_model:Ca1NetworkModelInterneuronContributionsToE256311Model
+  init_kwargs:
+    model_path: data/256311.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

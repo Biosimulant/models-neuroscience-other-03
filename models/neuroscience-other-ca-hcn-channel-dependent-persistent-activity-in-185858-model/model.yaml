@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: CaHcnChannelDependentPersistentActivityIn185858Model'
+description: '{"value": "\"Neuronal persistent activity has been primarily assessed
+  in terms of electrical mechanisms, without attention to the complex array of molecular
+  events that also control cell excitability.'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:185858
+  source_db: modeldb
+  source_id: '185858'
+  standard: other
+  original_url: https://modeldb.science/185858
+  download_url: https://modeldb.science/download/185858
+  license: ''
+bsim:
+  entrypoint: src.ca_hcn_channel_dependent_persistent_activity_in_185858_model:CaHcnChannelDependentPersistentActivityIn185858Model
+  init_kwargs:
+    model_path: data/185858.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

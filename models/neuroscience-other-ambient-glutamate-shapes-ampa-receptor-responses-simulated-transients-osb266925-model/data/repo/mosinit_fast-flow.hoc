@@ -1,0 +1,18 @@
+xopen("ampafastflow.hoc")
+load_file("fast-flow.ses")
+xpanel("About FastFlow")
+xlabel("This simulates the fast application of glutamate to AMPA receptors.")
+xlabel("Choose the concentration of glutamate to apply (cmax), the duration")
+xlabel("of the glutamate pulse (dur) and the start time (Twait)") 
+xlabel("There are also windows to choose the bath temperature and")
+xlabel("the maximal conductance of the AMPA receptors at the synapse.")
+xlabel("                                                             ")
+xlabel("This simulation uses a 13-state detailed AMPAR kinetic model")                                                             
+xlabel("See AMPA13.mod for details                                  ")
+xlabel("                                                             ")
+xlabel("                                                             ")
+xlabel("                       Balmer, Borges-Merjane, Trussell")
+xlabel("                       elife 2021")
+xpanel()
+
+

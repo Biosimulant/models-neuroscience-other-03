@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AnAgentBasedComputationalModelForCortical266895Model'
+description: '{"value": "This computational model can account for layer-specific neuron
+  numbers in various different cortical structures. It is agent-based and is initiated
+  from a small homogeneous pool of precurso'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:266895
+  source_db: modeldb
+  source_id: '266895'
+  standard: other
+  original_url: https://modeldb.science/266895
+  download_url: https://modeldb.science/download/266895
+  license: ''
+bsim:
+  entrypoint: src.an_agent_based_computational_model_for_cortical_266895_model:AnAgentBasedComputationalModelForCortical266895Model
+  init_kwargs:
+    model_path: data/266895.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

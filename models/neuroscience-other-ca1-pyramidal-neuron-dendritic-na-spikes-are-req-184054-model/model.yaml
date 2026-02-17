@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: Ca1PyramidalNeuronDendriticNaSpikesAreReq184054Model'
+description: '{"value": "This model simulates the effects of dendritic sodium spikes
+  initiated in distal apical dendrites on the voltage and the calcium dynamics revealed
+  by calcium imaging. It shows that dendritic'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:184054
+  source_db: modeldb
+  source_id: '184054'
+  standard: other
+  original_url: https://modeldb.science/184054
+  download_url: https://modeldb.science/download/184054
+  license: ''
+bsim:
+  entrypoint: src.ca1_pyramidal_neuron_dendritic_na_spikes_are_req_184054_model:Ca1PyramidalNeuronDendriticNaSpikesAreReq184054Model
+  init_kwargs:
+    model_path: data/184054.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

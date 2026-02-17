@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: BrainNetworksSimulatorsAComparativeStudyTi222725Model'
+description: '{"value": "\" ... In this article, we select the three most popular
+  simulators, as determined by the number of models in the ModelDB database, such
+  as NEURON, GENESIS, and BRIAN, and perform an indepe'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:222725
+  source_db: modeldb
+  source_id: '222725'
+  standard: other
+  original_url: https://modeldb.science/222725
+  download_url: https://modeldb.science/download/222725
+  license: ''
+bsim:
+  entrypoint: src.brain_networks_simulators_a_comparative_study_ti_222725_model:BrainNetworksSimulatorsAComparativeStudyTi222725Model
+  init_kwargs:
+    model_path: data/222725.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

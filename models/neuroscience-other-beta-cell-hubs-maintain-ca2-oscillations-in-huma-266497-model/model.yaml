@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: BetaCellHubsMaintainCa2OscillationsInHuma266497Model'
+description: '{"value": "\"Islet \u00df-cells are responsible for secreting all circulating
+  insulin in response to rising plasma glucose concentrations. These cells are a phenotypically
+  diverse population that expr'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:266497
+  source_db: modeldb
+  source_id: '266497'
+  standard: other
+  original_url: https://modeldb.science/266497
+  download_url: https://modeldb.science/download/266497
+  license: ''
+bsim:
+  entrypoint: src.beta_cell_hubs_maintain_ca2_oscillations_in_huma_266497_model:BetaCellHubsMaintainCa2OscillationsInHuma266497Model
+  init_kwargs:
+    model_path: data/266497.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

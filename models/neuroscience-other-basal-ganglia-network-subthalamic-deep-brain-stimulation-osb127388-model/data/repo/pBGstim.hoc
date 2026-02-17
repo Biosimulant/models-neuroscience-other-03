@@ -1,0 +1,518 @@
+//----------------------------------------------------------------------------
+// Initialize global variables
+//----------------------------------------------------------------------------
+
+/* COMMENTS see DBS_stim.txt */
+
+DBS_STN = 0
+DBS_STNGPe = 1
+DBS_STNGPi = 2
+DBS_GPeSTN = 3
+DBS_GPeGPi = 4
+DBS_GPeGPe = 5
+DBS_GPiTha = 6
+
+
+numDBS = 7
+objref dbsONflags[numDBS],dbs_activationProb[numDBS], dbs_gidOffset
+
+for tmpi=0,numDBS-1 {
+	dbsONflags[tmpi] = new Vector()	//array of vectors containing indices into dbsStim object arrays
+}
+
+dbs_activationProb[DBS_STN] = new Vector(numSTN, 0.8)
+dbs_activationProb[DBS_STNGPe] = new Vector(numSTN, 0.8)
+dbs_activationProb[DBS_STNGPi] = new Vector(numSTN, 0.8)
+dbs_activationProb[DBS_GPeSTN] = new Vector(numGPe, 0.8)
+dbs_activationProb[DBS_GPeGPi] = new Vector(numGPe, 0.8)
+dbs_activationProb[DBS_GPeGPe] = new Vector(numGPe, 0.8)
+dbs_activationProb[DBS_GPiTha] = new Vector(numGPi, 0.8)
+
+//gid offset of artificial cell (dbsStim object) gids, must be beyond those assigned to STN,GPe,GPi cells
+//  need gid to make connection for orthodromic event to be communicated
+
+if (ncell > 1000) {
+	print "ERROR - gid overlap in dbsStim.hoc"
+}
+dbs_gidOffset = new Vector(numDBS)
+dbs_gidOffset.x(DBS_STN) = 1000
+dbs_gidOffset.x(DBS_STNGPe) = 2000
+dbs_gidOffset.x(DBS_STNGPi) = 3000
+dbs_gidOffset.x(DBS_GPeSTN) = 4000
+dbs_gidOffset.x(DBS_GPeGPi) = 5000
+dbs_gidOffset.x(DBS_GPeGPe) = 6000
+dbs_gidOffset.x(DBS_GPiTha) = 7000
+
+
+
+// ad* objects are dbsSTIM objects that apply a current to their somatic parent and send an event to orthodromic targets
+// odnc* objects are pointers to NetCon objects connect an ad* to a target synapse, used to set weights and delays
+
+objref directSTN[numSTN], adSTNGPe[numSTN], adSTNGPi[numSTN], adGPeSTN[numGPe], adGPeGPi[numGPe], adGPeGPe[numGPe], adGPiTha[numGPi]
+
+//orthodromic effects through NetCon from antidromic sources of presyn cells that project to target
+objref odncSTNGPe[numGPe], odncSTNGPi[numGPi], odncGPeSTN[numSTN], odncGPeGPi[numGPi], odncGPeGPe[numGPe] 	//vector of nclist indices for each cell
+
+
+for tmpi=0,numSTN-1 {
+	if (pnm.gid_exists(cellID(ID_STN, tmpi))) {
+		directSTN[tmpi] = new dbsStim()
+		adSTNGPe[tmpi] = new dbsStim()
+		adSTNGPi[tmpi] = new dbsStim()
+		odncGPeSTN[tmpi] = new Vector()		
+	}
+}
+for tmpi=0,numGPe-1 {
+	if (pnm.gid_exists(cellID(ID_GPe, tmpi))) {
+		adGPeSTN[tmpi] = new dbsStim()
+		adGPeGPi[tmpi] = new dbsStim()
+		adGPeGPe[tmpi] = new dbsStim()
+		odncSTNGPe[tmpi] = new Vector()
+		odncGPeGPe[tmpi] = new Vector()
+	}
+}
+for tmpi=0,numGPi-1 {
+	if (pnm.gid_exists(cellID(ID_GPi, tmpi))) {
+		adGPiTha[tmpi] = new dbsStim()
+		odncGPeGPi[tmpi] = new Vector()
+		odncSTNGPi[tmpi] = new Vector()
+	}
+}
+
+
+
+
+
+
+//----------------------------------------------------------------------------
+// Functions to set up network from current value of global variables
+//----------------------------------------------------------------------------
+
+proc newStimOBJ() {local gid	localobj dbs,nc,nil	//($1:cell type, $2:index, $3:pathway type, $o4:dbsStim obj) 
+
+	dbs = $o4
+
+	pnm.pc.gid2obj(cellID($1, $2)).soma dbs.loc(.5)
+	gid = cellID($1, $2) + dbs_gidOffset.x($3)	//global id
+	pnm.pc.set_gid2node(gid, pnm.pc.id())
+	pnm.cells.append(dbs)
+	nc = new NetCon(dbs, nil)
+	pnm.pc.cell(gid, nc)
+}
+
+
+
+proc newStimNc() {local k,ncIndx  localobj dbs,nc //($1:srctype,$2:srcIndx,$3:tartype,$4:tarIndx,$5:synIndx,$6:pathtype,$o7:ncIndx array[.]) 
+
+	//Get dbsStim object associated with presyn cell in this NetCon object.
+	//	When it is antidromically active, its net_event will trigger an
+	//	orthodromic event too, through this NetCon
+
+	ncIndx = pnm.nc_append(cellID($1, $2)+dbs_gidOffset.x($6), cellID($3, $4), synNum($1, $3, $5), 0, 0)
+	if (ncIndx >= 0) {
+		$o7.append(ncIndx)
+	}
+}
+
+
+
+proc STIconnectNet() { local i,j,k
+
+//-----------------------------------------
+// connections at/from STN
+
+for i=0,numSTN-1 {
+	if (pnm.gid_exists(cellID(ID_STN, i))) {
+		newStimOBJ(ID_STN, i, DBS_STN, directSTN[i])
+		newStimOBJ(ID_STN, i, DBS_STNGPe, adSTNGPe[i])		
+		newStimOBJ(ID_STN, i, DBS_STNGPi, adSTNGPi[i])
+	}
+}
+
+
+//-----------------------------------------
+// connections from GPe
+
+for i=0,numGPe-1 {
+	if (pnm.gid_exists(cellID(ID_GPe, i))) {
+		newStimOBJ(ID_GPe, i, DBS_GPeSTN, adGPeSTN[i])
+		newStimOBJ(ID_GPe, i, DBS_GPeGPi, adGPeGPi[i])
+		newStimOBJ(ID_GPe, i, DBS_GPeGPe, adGPeGPe[i]) 
+	}
+}
+
+
+//-----------------------------------------
+// connections from GPi
+
+for i=0,numGPi-1 {
+	if (pnm.gid_exists(cellID(ID_GPi, i))) {
+		newStimOBJ(ID_GPi, i, DBS_GPiTha, adGPiTha[i])
+	}
+}
+
+
+
+
+
+// Go through synapse lists for each cell (A) and find ad dbsStim objects for each presyn cell (Bs),
+//	then connect them as presyn objects to that cell (A)
+
+//-----------------------------------------
+// orthodromic dbs to STN
+
+for i=0,numSTN-1 {
+	for j=0,numGPeSTN-1 {
+		newStimNc(ID_GPe, srcGPeSTN[i].x(j), ID_STN, i, j, DBS_GPeSTN, odncGPeSTN[i])
+	}
+}
+
+
+//-----------------------------------------
+// orthodromic dbs to GPe
+
+for i=0,numGPe-1 {
+	for j=0,numSTNGPe-1 {
+		newStimNc(ID_STN, srcSTNGPe[i].x(j), ID_GPe, i, j, DBS_STNGPe, odncSTNGPe[i])
+	}
+
+	for j=0,numGPeGPe-1 {
+		newStimNc(ID_GPe, srcGPeGPe[i].x(j), ID_GPe, i, j, DBS_GPeGPe, odncGPeGPe[i])
+	}
+}
+
+
+
+//-----------------------------------------
+// orthodromic dbs to GPi
+
+for i=0,numGPi-1 {
+	for j=0,numSTNGPi-1 {
+		newStimNc(ID_STN, srcSTNGPi[i].x(j), ID_GPi, i, j, DBS_STNGPi, odncSTNGPi[i])
+	}
+
+	for j=0,numGPeGPi-1 {
+		newStimNc(ID_GPe, srcGPeGPi[i].x(j), ID_GPi, i, j, DBS_GPeGPi, odncGPeGPi[i])
+	}
+}
+
+
+
+}
+
+
+//----------------------------------------------------------------------------
+proc STIupdateWeights() { local i,j
+
+//-----------------------------------------
+// connections at/from STN
+
+for i=0,numSTN-1 {
+	if (pnm.gid_exists(cellID(ID_STN, i))) {
+		directSTN[i].del = dbs_del
+		directSTN[i].dur = dbs_dur
+		directSTN[i].amp = dbs_direct_amp
+		directSTN[i].pw = dbs_direct_pw
+		directSTN[i].period = dbs_period
+		directSTN[i].actPrb = dbs_activationProb[DBS_STN].x(i)
+
+		adSTNGPe[i].del = dbs_del
+		adSTNGPe[i].dur = dbs_dur
+		adSTNGPe[i].amp = dbs_ad_amp
+		adSTNGPe[i].pw = dbs_ad_pw
+		adSTNGPe[i].period = dbs_period
+		adSTNGPe[i].actPrb = dbs_activationProb[DBS_STNGPe].x(i)
+
+		adSTNGPi[i].del = dbs_del
+		adSTNGPi[i].dur = dbs_dur
+		adSTNGPi[i].amp = dbs_ad_amp
+		adSTNGPi[i].pw = dbs_ad_pw
+		adSTNGPi[i].period = dbs_period
+		adSTNGPi[i].actPrb = dbs_activationProb[DBS_STNGPi].x(i)
+
+		for j=0,numGPeSTN-1 {
+			pnm.nclist.o(odncGPeSTN[i].x(j)).weight = gmaxGPeSTN/numGPeSTN
+			pnm.nclist.o(odncGPeSTN[i].x(j)).weight[1] = 1	//dbs NetCon
+			pnm.nclist.o(odncGPeSTN[i].x(j)).delay = delGPeSTN
+		}
+	}
+}
+
+
+
+//-----------------------------------------
+// connections from GPe
+
+for i=0,numGPe-1 {
+	if (pnm.gid_exists(cellID(ID_GPe, i))) {
+		adGPeSTN[i].del = dbs_del
+		adGPeSTN[i].dur = dbs_dur
+		adGPeSTN[i].amp = dbs_ad_amp
+		adGPeSTN[i].pw = dbs_ad_pw
+		adGPeSTN[i].period = dbs_period
+		adGPeSTN[i].actPrb = dbs_activationProb[DBS_GPeSTN].x(i)
+
+		adGPeGPi[i].del = dbs_del
+		adGPeGPi[i].dur = dbs_dur
+		adGPeGPi[i].amp = dbs_ad_amp
+		adGPeGPi[i].pw = dbs_ad_pw
+		adGPeGPi[i].period = dbs_period
+		adGPeGPi[i].actPrb = dbs_activationProb[DBS_GPeGPi].x(i)
+
+		adGPeGPe[i].del = dbs_del
+		adGPeGPe[i].dur = dbs_dur
+		adGPeGPe[i].amp = dbs_ad_amp
+		adGPeGPe[i].pw = dbs_ad_pw
+		adGPeGPe[i].period = dbs_period
+		adGPeGPe[i].actPrb = dbs_activationProb[DBS_GPeGPe].x(i)
+
+		for j=0,numSTNGPe-1 {
+			pnm.nclist.o(odncSTNGPe[i].x(j)).weight = gmaxSTNGPe/numSTNGPe
+			pnm.nclist.o(odncSTNGPe[i].x(j)).weight[1] = 1	//dbs NetCon
+			pnm.nclist.o(odncSTNGPe[i].x(j)).delay = delSTNGPe
+		}
+
+		for j=0,numGPeGPe-1 {
+			pnm.nclist.o(odncGPeGPe[i].x(j)).weight = gmaxGPeGPe/numGPeGPe
+			pnm.nclist.o(odncGPeGPe[i].x(j)).weight[1] = 1	//dbs NetCon
+			pnm.nclist.o(odncGPeGPe[i].x(j)).delay = delGPeGPe
+		}
+	}
+}
+
+
+
+
+//-----------------------------------------
+// connections from GPi
+
+for i=0,numGPi-1 {
+	if (pnm.gid_exists(cellID(ID_GPi, i))) {
+		adGPiTha[i].del = dbs_del
+		adGPiTha[i].dur = dbs_dur
+		adGPiTha[i].amp = dbs_ad_amp
+		adGPiTha[i].pw = dbs_ad_pw
+		adGPiTha[i].period = dbs_period
+		adGPiTha[i].actPrb = dbs_activationProb[DBS_GPiTha].x(i)
+
+		for j=0,numSTNGPi-1 {
+			pnm.nclist.o(odncSTNGPi[i].x(j)).weight = gmaxSTNGPi/numSTNGPi
+			pnm.nclist.o(odncSTNGPi[i].x(j)).weight[1] = 1	//dbs NetCon
+			pnm.nclist.o(odncSTNGPi[i].x(j)).delay = delSTNGPi
+		}
+
+		for j=0,numGPeGPi-1 {
+			pnm.nclist.o(odncGPeGPi[i].x(j)).weight = gmaxGPeGPi/numGPeGPi
+			pnm.nclist.o(odncGPeGPi[i].x(j)).weight[1] = 1	//dbs NetCon
+			pnm.nclist.o(odncGPeGPi[i].x(j)).delay = delGPeGPi
+		}
+
+
+	}
+}
+
+
+
+
+
+}
+
+strdef pstr
+
+//----------------------------------------------------------------------------
+proc dbsRESET() { local i
+
+dbsOFF()
+
+if (pnm.pc.id() == 0) {
+	// master tells all slave nodes to update network with inputs vector
+
+	pnm.pc.look_take("dbsRESET")
+	pnm.pc.post("dbsRESET")
+	pnm.pc.context("dbsRESET", 0)
+	for i=1,pnm.pc.nhost-1 {
+		sprint(pstr, "dbsRESET%d", i)
+		pnm.pc.take(pstr)
+	}
+} else {
+	// slave nodes clear message from master and doit
+
+      pnm.pc.look("dbsRESET")
+	sprint(pstr, "dbsRESET%d", pnm.pc.id())
+	pnm.pc.post(pstr)
+}
+
+	for i=0,numDBS-1 {
+		dbsONflags[i].resize(0)
+	}
+
+
+}
+
+
+
+
+//----------------------------------------------------------------------------
+proc dbsOFF() { local i
+
+
+if (pnm.pc.id() == 0) {
+	// master tells all slave nodes to update network with inputs vector
+
+	pnm.pc.look_take("dbsOFF")
+	pnm.pc.post("dbsOFF")
+	pnm.pc.context("dbsOFF", 0)
+	for i=1,pnm.pc.nhost-1 {
+		sprint(pstr, "dbsOFF%d", i)
+		pnm.pc.take(pstr)
+	}
+} else {
+	// slave nodes clear message from master and doit
+
+      pnm.pc.look("dbsOFF")
+	sprint(pstr, "dbsOFF%d", pnm.pc.id())
+	pnm.pc.post(pstr)
+}
+
+
+// turn all OFF
+
+for i=0,numSTN-1 {
+	if (pnm.gid_exists(cellID(ID_STN, i))) {
+		directSTN[i].active = 0
+		adSTNGPe[i].active = 0
+		adSTNGPi[i].active = 0
+	}
+}
+
+for i=0,numGPe-1 {
+	if (pnm.gid_exists(cellID(ID_GPe, i))) {
+		adGPeSTN[i].active = 0
+		adGPeGPi[i].active = 0
+		adGPeGPe[i].active = 0
+	}
+}
+
+for i=0,numGPi-1 {
+	if (pnm.gid_exists(cellID(ID_GPi, i))) {
+		adGPiTha[i].active = 0
+	}
+}
+
+
+
+
+
+}
+
+
+
+//----------------------------------------------------------------------------
+proc dbsON() { local i,j
+
+dbsOFF()
+
+if (pnm.pc.id() == 0) {
+	// master tells all slave nodes to update network with inputs vector
+
+	pnm.pc.look_take("dbsON")
+	for i=0,numDBS-1 {
+		pnm.pc.pack(dbsONflags[i])
+	}
+	pnm.pc.post("dbsON")
+	pnm.pc.context("dbsON", 0)
+	for i=1,pnm.pc.nhost-1 {
+		sprint(pstr, "dbsON%d", i)
+		pnm.pc.take(pstr)
+	}
+} else {
+	// slave nodes clear message from master and doit
+
+      pnm.pc.look("dbsON")
+	for i=0,numDBS-1 {
+		pnm.pc.unpack(dbsONflags[i])
+	}
+	sprint(pstr, "dbsON%d", pnm.pc.id())
+	pnm.pc.post(pstr)
+}
+
+
+// turn selected components ON
+
+for i=0, numDBS-1 {
+
+	for j=0,dbsONflags[i].size-1 {
+
+
+		if (i == DBS_STN) {
+			if (pnm.gid_exists(cellID(ID_STN, dbsONflags[i].x(j)))) {
+				directSTN[dbsONflags[i].x(j)].active = 1
+			}
+		}
+
+		if (i == DBS_STNGPe) {		
+			if (pnm.gid_exists(cellID(ID_STN, dbsONflags[i].x(j)))) {
+				adSTNGPe[dbsONflags[i].x(j)].active = 1
+			}
+		}
+
+		if (i == DBS_STNGPi) {		
+			if (pnm.gid_exists(cellID(ID_STN, dbsONflags[i].x(j)))) {
+				adSTNGPi[dbsONflags[i].x(j)].active = 1
+			}
+		}
+
+		if (i == DBS_GPeSTN) {		
+			if (pnm.gid_exists(cellID(ID_GPe, dbsONflags[i].x(j)))) {
+				adGPeSTN[dbsONflags[i].x(j)].active = 1
+			}
+		}
+
+		if (i == DBS_GPeGPi) {		
+			if (pnm.gid_exists(cellID(ID_GPe, dbsONflags[i].x(j)))) {
+				adGPeGPi[dbsONflags[i].x(j)].active = 1
+			}
+		}
+
+		if (i == DBS_GPeGPe) {		
+			if (pnm.gid_exists(cellID(ID_GPe, dbsONflags[i].x(j)))) {
+				adGPeGPe[dbsONflags[i].x(j)].active = 1
+			}
+		}
+
+		if (i == DBS_GPiTha) {		
+			if (pnm.gid_exists(cellID(ID_GPi, dbsONflags[i].x(j)))) {
+				adGPiTha[dbsONflags[i].x(j)].active = 1
+			}
+		}
+		
+
+	}
+
+}
+
+
+
+
+}
+
+
+
+
+
+
+//----------------------------------------------------------------------------
+// Call setup functions when .hoc file is loaded
+//----------------------------------------------------------------------------
+
+STIconnectNet()
+STIupdateWeights()
+
+
+
+
+//----------------------------------------------------------------------------
+// Dialog to update parameter values
+//----------------------------------------------------------------------------
+
+

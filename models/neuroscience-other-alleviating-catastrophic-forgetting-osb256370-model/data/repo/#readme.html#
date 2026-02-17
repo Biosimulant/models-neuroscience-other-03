@@ -1,0 +1,13 @@
+<html>
+The computer code associated with the paper:<p/>
+Masse NY, Grant GD, Freedman DJ (2018) Alleviating catastrophic forgetting using context-dependent gating and synaptic stabilization. Proc Natl Acad Sci U S A 115:E10467-E10475<p/>
+<a href="http://dx.doi.org/10.1073/pnas.1803839115">http://dx.doi.org/10.1073/pnas.1803839115</a><p/>
+is available at the authors github repositories.<p/>
+The feed-forward network model can be found in the repository:<p/>
+
+<a href="https://github.com/nmasse/Context-Dependent-Gating/">https://github.com/nmasse/Context-Dependent-Gating/</a><p/>
+
+The recurrent network model can be found in the repository:<p/>
+
+<a href="https://github.com/gdgrant/Context-Dependent-Gating-RNN">https://github.com/gdgrant/Context-Dependent-Gating-RNN</a>
+</html>

@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AnIonBasedModelForSwellingOfNeuronsAndA187599Model'
+description: '{"value": "The programs describe ion dynamics and osmosis-driven cellular
+  swelling. \u201ccode_fig3.ode\u201d shows a \r\nscenario of permanent cessation
+  of energy supply / Na/K-pump activity, and the'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:187599
+  source_db: modeldb
+  source_id: '187599'
+  standard: other
+  original_url: https://modeldb.science/187599
+  download_url: https://modeldb.science/download/187599
+  license: ''
+bsim:
+  entrypoint: src.an_ion_based_model_for_swelling_of_neurons_and_a_187599_model:AnIonBasedModelForSwellingOfNeuronsAndA187599Model
+  init_kwargs:
+    model_path: data/187599.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

@@ -1,0 +1,33 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model182843182843Model'
+description: CA1 PV+ fast-firing hippocampal interneuron (Ferguson et al. 2013)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:182843
+  source_db: opensourcebrain
+  source_id: '182843'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/182843
+  download_url: https://github.com/OpenSourceBrain/182843.git
+  license: ''
+bsim:
+  entrypoint: src.model_182843_182843_model:Model182843182843Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

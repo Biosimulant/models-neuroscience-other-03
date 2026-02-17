@@ -1,0 +1,214 @@
+load_file("nrngui.hoc")
+{load_file("import3d.hoc")}
+
+load_file("cell_new.hoc")
+load_file("proc_print_exp.hoc")
+cvode_active(0) 
+
+objref testcell, stim, stim2
+ 
+testcell = new CA1_PC() 
+celsius=34 
+
+testcell.soma {
+stim = new IClamp(0.5)
+stim.del=0
+stim.dur=1000
+stim.amp=-0.01
+}
+
+testcell.soma {
+stim2 = new IClamp(0.5)
+stim2.del=100
+stim2.dur=500
+stim2.amp=-0.1
+}
+
+proc distribute_distance(){local x localobj sl
+  strdef stmp, distfunc, mech
+
+  sl = $o1
+  mech = $s2
+  distfunc = $s3
+  testcell.soma[0] distance(0, 0.5)
+  sprint(distfunc, "%%s %s(%%f) = %s", mech, distfunc)
+  forsec sl for(x, 0) {
+  sprint(stmp, distfunc, secname(), x, distance(x))
+  execute(stmp)
+  }
+}
+
+proc value() {
+	peack_cond= 1.3e-5
+}
+
+value()
+
+proc def(){ 
+
+//******AXON************
+gpas_all=testcell.axon.g_pas
+epas_all=testcell.axon.e_pas
+Ra_somaaxon=testcell.axon.Ra
+
+
+//******DEND-BASAL************
+gpas_all=testcell.dend.g_pas
+Ra_dend=testcell.dend.Ra
+epas_all=testcell.dend.e_pas
+peack_cond=testcell.dend.ghdbar_hd
+
+
+//******DEND-APICAL************
+epas_all=testcell.apic.e_pas
+gpas_all=testcell.apic.g_pas
+Ra_dend=testcell.apic.Ra
+peack_cond=testcell.apic.ghdbar_hd
+
+
+//**********SOMA********
+gpas_all=testcell.soma.g_pas
+epas_all=testcell.soma.e_pas
+Ra_somaaxon=testcell.soma.Ra
+peack_cond=testcell.soma.ghdbar_hd
+
+}
+
+Vrest=-78
+
+proc init() {
+
+  t=0  
+ 
+  forall {
+		v = Vrest
+
+		if(ismembrane("hd")) {vinit_hd=Vrest}
+		}
+		 
+forsec testcell.axonal {  
+
+	g_pas = gpas_all
+    e_pas = epas_all
+	Ra = Ra_somaaxon
+	
+}
+ 
+forsec testcell.somatic {
+	
+	Ra = Ra_somaaxon
+    g_pas = gpas_all
+	e_pas = epas_all
+	ghdbar_hd =peack_cond
+	   
+}
+
+forsec testcell.basal {
+	
+	g_pas = gpas_all
+	Ra = Ra_dend
+	e_pas = epas_all
+	ghdbar_hd =peack_cond  
+ 
+}
+
+forsec testcell.apical {
+	
+    g_pas = gpas_all
+	e_pas=epas_all
+    Ra = Ra_dend
+
+    }
+
+  distribute_distance(testcell.apical, "ghdbar_hd", " (1+ 6/(1.0 + exp((280-%.17g)/50)))*peack_cond")   
+
+	finitialize(Vrest)
+	fcurrent()
+	cvode.re_init()
+}
+
+
+def()
+init()
+
+proc WT10m() {
+
+	stim.amp=-0.01
+	gpas_all= 3.54e-5
+	epas_all= -87.48
+	 forall {
+		if(ismembrane("hd")) {
+			peack_cond= 1.55e-5
+			vhalft_hd= -76.85
+			vhalfl_hd= -80.86
+			kl_hd= -10.00
+			gmt_hd= 0.439
+			zetat_hd= 2.22
+			a0t_hd= 3.10e-3
+			}
+		}
+		
+}
+
+proc AD10m() {
+
+	stim.amp=-0.02
+	gpas_all= 3.79e-5
+	epas_all= -88.61
+	 forall {
+		if(ismembrane("hd")) {
+			peack_cond= 2.35e-5
+			vhalft_hd= -82.22
+			vhalfl_hd= -81.21
+			kl_hd= -15.62
+			gmt_hd= 0.514
+			zetat_hd= 5.00
+			a0t_hd= 3.59e-3
+			}
+		}
+}
+
+
+xpanel("values")
+xvalue("gpas_all")
+xvalue("epas_all")
+xvalue("Ra_somaaxon")
+xvalue("Ra_dend")
+xvalue("peack_cond")
+xvalue("vhalft_hd")
+xvalue("vhalfl_hd")
+xvalue("kl_hd")
+xvalue("gmt_hd")
+xvalue("zetat_hd")
+xvalue("a0t_hd")
+xpanel()
+
+
+xpanel("IClamp[0] at CA1_PC_cACnoljp[0].soma[0](0.5)", 0)
+xlabel("IClamp[0] at CA1_PC_cACnoljp[0].soma[0](0.5)")
+stim2.del = 88
+xvalue("del","stim2.del", 1,"", 0, 1 )
+stim2.dur = 400
+xvalue("dur","stim2.dur", 1,"", 0, 1 )
+stim2.amp = -0.05
+xvalue("amp","stim2.amp", 1,"", 0, 1 )
+stim2.i = 0
+xvalue("i","stim2.i", 0,"", 0, 1 )
+xpanel(1291,657)
+
+
+xpanel("exp",0)
+xbutton(" exp -0.15 WT-10m ","WT150()")
+xbutton(" exp -0.10 WT-10m ","WT100()")
+xbutton(" exp -0.05 WT-10m","WT50()")
+xbutton(" exp -0.15 AD-10m ","AD150()")
+xbutton(" exp -0.10 AD-10m ","AD100()")
+xbutton(" exp -0.05 AD-10m ","AD50()")
+xpanel()
+	
+xpanel("model",0)
+xbutton(" WT-10m ","WT10m()")
+xbutton(" AD-10m ","AD10m()")
+xpanel()
+
+load_file("panel.ses")

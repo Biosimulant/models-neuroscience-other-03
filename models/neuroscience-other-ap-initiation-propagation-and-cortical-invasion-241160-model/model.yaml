@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: ApInitiationPropagationAndCorticalInvasion241160Model'
+description: '{"value": "\" ... High frequency (~130 Hz) deep brain stimulation (DBS)
+  of\r\nthe subthalamic region is an established clinical therapy for the\r\ntreatment
+  of late stage Parkinson''s disease (PD). Dir'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:241160
+  source_db: modeldb
+  source_id: '241160'
+  standard: other
+  original_url: https://modeldb.science/241160
+  download_url: https://modeldb.science/download/241160
+  license: ''
+bsim:
+  entrypoint: src.ap_initiation_propagation_and_cortical_invasion_241160_model:ApInitiationPropagationAndCorticalInvasion241160Model
+  init_kwargs:
+    model_path: data/241160.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

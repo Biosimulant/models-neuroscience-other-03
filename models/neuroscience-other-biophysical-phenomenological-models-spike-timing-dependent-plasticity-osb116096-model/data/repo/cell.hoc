@@ -1,0 +1,273 @@
+/* ----------------------------------------------------------------
+   
+   Cell model used in:
+   
+   M. Badoual, Q. Zou, A.P. Davison, M. Rudolph, T. Bal,
+   Y. Frégnac and A. Destexhe (2006) Biophysical and phenomenological
+   models of multiple spike interactions in spike-timing dependent
+   plasticity.
+   Int J. Neural Syst. 16: 79-97
+   
+   
+   This file is a lightly modified version of the file "demofig1.hoc" in
+   
+   http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=2488
+   
+   original author:  Zach Mainen (zach@salk.edu or zach@cshl.org)
+   
+   modifications by: Mathilde Badoual
+  
+---------------------------------------------------------------- */
+
+
+create soma
+access soma
+
+tstop = 200
+steps_per_ms = 40
+dt = 0.025
+celsius=37
+
+pi=3.141593
+
+// --------------------------------------------------------------
+// passive & active membrane
+// --------------------------------------------------------------
+
+ra        = 150
+global_ra = ra
+// rm*2 and cm/2 to take into account the area of the spine
+rm        = 12000
+c_m       = 1.0
+cm_myelin = 0.04
+g_pas_node = 0.02
+
+v_init    = -70
+celsius   = 37
+
+Ek = -90
+Ena = 60
+
+
+gna_soma = 35
+gna_node = 30000
+gna_iseg=3000
+gna_dend = 35
+
+gkv_axon = 500
+gkv_soma = 30
+
+gca = 0.8
+
+gkm = .1
+gkm_dend=0.1
+gkca = 3
+
+gca_soma = gca
+gca_dend=gca
+gkm_soma = gkm
+gkca_soma = gkca
+ 
+
+// --------------------------------------------------------------
+// Axon geometry
+//
+// Similar to Mainen et al (Neuron, 1995)
+// --------------------------------------------------------------
+
+n_axon_seg = 5
+
+create soma,iseg,hill,myelin[2],node[2]
+
+proc create_axon() {
+
+  create iseg,hill,myelin[n_axon_seg],node[n_axon_seg]
+
+  soma {
+    L=20
+    equiv_diam = 20
+    diam = equiv_diam
+  }
+  if (numarg()) equiv_diam = $1
+
+  iseg {                // initial segment between hillock + myelin
+     L = 15
+     nseg = 5
+     diam = equiv_diam/20        // see Sloper and Powell 1982, Fig.71
+  }
+
+  hill {                
+    L = 10
+    nseg = 5
+    diam(0:1) = 4*iseg.diam:iseg.diam
+  }
+
+  // construct myelinated axon with nodes of ranvier
+
+  for i=0,n_axon_seg-1 {
+    myelin[i] {         // myelin element
+      nseg = 5
+      L = 100
+      diam = iseg.diam         
+    }
+    node[i] {           // nodes of Ranvier
+      nseg = 1
+      L = 1.0           
+      diam = iseg.diam*.75       // nodes are thinner than axon
+    }
+  }
+
+  soma connect hill(0), 0.5
+  hill connect iseg(0), 1
+  iseg connect myelin[0](0), 1
+  myelin[0] connect node[0](0), 1
+
+  for i=0,n_axon_seg-2  { 
+      node[i] connect myelin[i+1](0), 1 
+      myelin[i+1] connect node[i+1](0), 1
+  }
+}
+
+// --------------------------------------------------------------
+// Spine
+// --------------------------------------------------------------
+
+      // Based on the "Folding factor" described in
+      // Jack et al (1989), Major et al (1994)
+      // note, this assumes active channels are present in spines 
+      // at same density as dendrites
+
+
+create spine
+access spine
+L=0.5
+diam=L
+insert NMDAKIT
+gmax_NMDAKIT=0.05
+
+
+objectvar ampasyn,kin
+ampasyn=new AMPAKIT(0.5)
+kin=new KINASE(0.5)
+spines_corr=1.5
+
+access spine
+
+create neck
+access neck
+L=1.0
+diam=0.1
+
+create dendrite
+access dendrite
+L=1000
+diam=1.4
+nseg=100
+
+
+
+proc init_cell() {
+
+  // passive
+  forall {
+    insert pas
+    Ra = ra 
+    cm = c_m
+    g_pas = 1/rm
+    e_pas = -70
+  }
+
+  dendrite {
+    cm = c_m*spines_corr
+    g_pas = 1/(rm/spines_corr)
+  }
+
+
+  // exceptions along the axon
+  forsec "myelin" cm = cm_myelin
+  forsec "node" g_pas = g_pas_node
+
+  // na+ channels
+  forall insert na
+  dendrite.gbar_na = gna_dend*spines_corr
+  spine.gbar_na = gna_dend
+  neck.gbar_na = gna_dend 
+  forsec "myelin" gbar_na = gna_soma
+  hill.gbar_na = gna_iseg
+  iseg.gbar_na = gna_iseg
+  forsec "node" gbar_na = gna_node
+
+  // kv delayed rectifier channels
+  iseg { insert kv  gbar_kv = gkv_axon }
+  hill { insert kv  gbar_kv = gkv_axon }
+  soma { insert kv  gbar_kv = gkv_soma }
+  dendrite { insert kv  gbar_kv = gkv_soma*spines_corr }
+  spine { insert kv  gbar_kv = gkv_soma }
+  neck { insert kv  gbar_kv = gkv_soma }
+
+  // dendritic channels
+  dendrite {
+    insert km    gbar_km  = gkm_dend*spines_corr
+    insert kca   gbar_kca = gkca*spines_corr
+    insert ca    gbar_ca = gca_dend*spines_corr
+    insert cad
+  }
+  spine {
+    insert km    gbar_km  = gkm_dend
+    insert kca   gbar_kca = gkca
+    insert ca    gbar_ca = gca_dend
+    insert cadspine
+    lneck_cadspine=neck.L
+    sneck_cadspine=pi*neck.diam*neck.diam/4
+    vspine_cadspine=pi*spine.diam*spine.diam*spine.L/4
+  }
+  neck {
+    insert km    gbar_km  = gkm_dend
+    insert kca   gbar_kca = gkca
+    insert ca    gbar_ca = gca_dend
+    insert cad
+  }  
+
+  soma {
+    gbar_na = gna_soma
+    insert km gbar_km = gkm_soma
+    insert kca gbar_kca = gkca_soma
+    insert ca gbar_ca = gca_soma
+    insert cad
+  }
+
+ 
+  forall if(ismembrane("k_ion")) ek = Ek
+  forall if(ismembrane("na_ion")) {
+    ena = Ena
+    // seems to be necessary for 3d cells to shift Na kinetics -5 mV
+    vshift_na = -5
+  }
+  forall if(ismembrane("ca_ion")) {
+    eca = 140
+    ion_style("ca_ion",0,1,0,0,0)
+    vshift_ca = 0
+  }
+}
+
+
+create_axon()
+
+init_cell()
+objectvar st
+access iseg
+st=new IClamp(1)
+st.dur = 1
+st.del = 70
+st.amp = 2
+
+
+
+connect spine(0), neck(1)
+connect neck(0), dendrite(0.5)
+connect dendrite(0), soma(1)
+
+
+
+
+

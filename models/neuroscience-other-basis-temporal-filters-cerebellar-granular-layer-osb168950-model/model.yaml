@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model168950168950Model'
+description: Basis for temporal filters in the cerebellar granular layer (Roessert
+  et al. 2015)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:168950
+  source_db: opensourcebrain
+  source_id: '168950'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/168950
+  download_url: https://github.com/OpenSourceBrain/168950.git
+  license: ''
+bsim:
+  entrypoint: src.model_168950_168950_model:Model168950168950Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

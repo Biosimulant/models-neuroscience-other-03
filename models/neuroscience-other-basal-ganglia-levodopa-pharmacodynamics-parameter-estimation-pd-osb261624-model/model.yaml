@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model261624261624Model'
+description: Basal Ganglia and Levodopa Pharmacodynamics model for parameter estimation
+  in PD (Ursino et al 2020)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:261624
+  source_db: opensourcebrain
+  source_id: '261624'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/261624
+  download_url: https://github.com/OpenSourceBrain/261624.git
+  license: ''
+bsim:
+  entrypoint: src.model_261624_261624_model:Model261624261624Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

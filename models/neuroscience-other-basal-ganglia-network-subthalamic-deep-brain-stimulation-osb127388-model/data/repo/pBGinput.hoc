@@ -1,0 +1,277 @@
+//----------------------------------------------------------------------------
+// Initialize global variables
+//----------------------------------------------------------------------------
+
+objref preCtxSTN[numSTN], preStrGPe[numGPe], preStrGPi[numGPi]	//list of input timing objects for each cell
+objref ncCtxSTN[numSTN], ncStrGPe[numGPe], ncStrGPi[numGPi]		//vector of nclist indices for each cell
+objref ncCtxSTN2[numSTN], ncStrGPe2[numGPe], ncStrGPi2[numGPi] 	//vector of nclist indices for each cell
+objref nclistINP
+
+
+for tmpi=0,numSTN-1 {
+	if (pnm.gid_exists(cellID(ID_STN, tmpi))) {
+		preCtxSTN[tmpi] = new List()
+		ncCtxSTN[tmpi] = new Vector()
+		ncCtxSTN2[tmpi] = new Vector()
+	}
+}
+for tmpi=0,numGPe-1 {
+	if (pnm.gid_exists(cellID(ID_GPe, tmpi))) {
+		preStrGPe[tmpi] = new List()
+		ncStrGPe[tmpi] = new Vector()
+		ncStrGPe2[tmpi] = new Vector()
+	}
+}
+for tmpi=0,numGPi-1 {
+	if (pnm.gid_exists(cellID(ID_GPi, tmpi))) {
+		preStrGPi[tmpi] = new List()
+		ncStrGPi[tmpi] = new Vector()
+		ncStrGPi2[tmpi] = new Vector()
+	}
+}
+
+
+nclistINP = new List()
+
+
+
+//-----------------------------------------
+objref betaClk
+
+betaClk = new twoStateGen(.5)
+betaClk.start = 0
+betaClk.iMean = 1000/16		// 16Hz trigger
+
+
+
+
+//betaClk drives burst mode in twoStateGen that is connected to CtxSTN, StrGPe and StrGPi synapses
+
+
+
+
+//----------------------------------------------------------------------------
+// Functions to set up input from current value of global variables
+//----------------------------------------------------------------------------
+
+objref preSyn, nc
+
+proc INPconnectNet() { local i,j
+
+//-----------------------------------------
+// connections to STN
+
+for i=0,numSTN-1 {
+	if (pnm.gid_exists(cellID(ID_STN, i))) {
+		for j=0,numCtxSTN-1 {
+			preSyn = new twoStateGen(.5)
+			preCtxSTN[i].append(preSyn)
+
+			nc = new NetCon(betaClk, preSyn)
+			nc.weight = 1
+			ncCtxSTN[i].append(nclistINP.count)
+			nclistINP.append(nc)
+
+			synIndx = synNum(ID_Ctx, ID_STN, j)
+
+			nc = new NetCon(preSyn, pnm.pc.gid2obj(cellID(ID_STN, i)).synlist.o(synIndx))
+			ncCtxSTN2[i].append(nclistINP.count)
+			nclistINP.append(nc)
+		}
+	} 
+}
+
+
+
+//-----------------------------------------
+// connections to GPe
+
+for i=0,numGPe-1 {
+	if (pnm.gid_exists(cellID(ID_GPe, i))) {
+		for j=0,numStrGPe-1 {
+			preSyn = new twoStateGen(.5)
+			preStrGPe[i].append(preSyn)
+
+			nc = new NetCon(betaClk, preSyn)
+			nc.weight = 1
+			ncStrGPe[i].append(nclistINP.count)
+			nclistINP.append(nc)
+
+			synIndx = synNum(ID_Str, ID_GPe, j)
+
+			nc = new NetCon(preSyn, pnm.pc.gid2obj(cellID(ID_GPe, i)).synlist.o(synIndx))
+			ncStrGPe2[i].append(nclistINP.count)
+			nclistINP.append(nc)
+		}
+	} 
+}
+
+
+
+//-----------------------------------------
+// connections to GPi
+
+for i=0,numGPi-1 {
+	if (pnm.gid_exists(cellID(ID_GPi, i))) {
+		for j=0,numStrGPi-1 {
+			preSyn = new twoStateGen(.5)
+			preStrGPi[i].append(preSyn)
+
+			nc = new NetCon(betaClk, preSyn)
+			nc.weight = 1
+			ncStrGPi[i].append(nclistINP.count)
+			nclistINP.append(nc)
+
+			synIndx = synNum(ID_Str, ID_GPi, j)
+
+			nc = new NetCon(preSyn, pnm.pc.gid2obj(cellID(ID_GPi, i)).synlist.o(synIndx))
+			ncStrGPi2[i].append(nclistINP.count)
+			nclistINP.append(nc)
+		}
+	} 
+}
+
+
+
+
+}
+
+
+
+//----------------------------------------------------------------------------
+proc INPupdateWeights() { local i,j
+
+//-----------------------------------------
+// connections to STN
+
+for i=0,numSTN-1 {
+	if (pnm.gid_exists(cellID(ID_STN, i))) {
+
+		for j=0,numCtxSTN-1 {
+
+			ncIndx = ncCtxSTN[i].x(j)
+
+			if (ncIndx >= 0) {
+				nclistINP.o(ncIndx).weight = 1
+				nclistINP.o(ncIndx).delay = 0
+			}
+
+
+			preCtxSTN[i].o(j).iMean = imnCtxSTN
+			preCtxSTN[i].o(j).iStd = isdCtxSTN
+			preCtxSTN[i].o(j).bMean = bmnCtxSTN
+			preCtxSTN[i].o(j).bStd = bsdCtxSTN
+			preCtxSTN[i].o(j).bDurMean = bdmnCtxSTN
+			preCtxSTN[i].o(j).bDurStd = bdsdCtxSTN
+
+			preCtxSTN[i].o(j).p = probCtxSTN.x(j)
+
+
+			ncIndx = ncCtxSTN2[i].x(j)
+
+			if (ncIndx >= 0) {
+				nclistINP.o(ncIndx).weight = gDA_CtxSTN*gmaxCtxSTN/numCtxSTN
+				nclistINP.o(ncIndx).delay = delCtxSTN
+			}
+
+
+		}
+	}
+}
+
+//-----------------------------------------
+// connections to GPe
+
+for i=0,numGPe-1 {
+	if (pnm.gid_exists(cellID(ID_GPe, i))) {
+		for j=0,numStrGPe-1 {
+
+			ncIndx = ncStrGPe[i].x(j)
+
+			if (ncIndx >= 0) {
+				nclistINP.o(ncIndx).weight = 1
+				nclistINP.o(ncIndx).delay = 0
+			}
+
+
+			preStrGPe[i].o(j).iMean = imnStrGPe
+			preStrGPe[i].o(j).iStd = isdStrGPe
+			preStrGPe[i].o(j).bMean = bmnStrGPe
+			preStrGPe[i].o(j).bStd = bsdStrGPe
+			preStrGPe[i].o(j).bDurMean = bdmnStrGPe
+			preStrGPe[i].o(j).bDurStd = bdsdStrGPe
+
+			preStrGPe[i].o(j).p = probStrGPe.x(j)
+
+
+			ncIndx = ncStrGPe2[i].x(j)
+
+			if (ncIndx >= 0) {
+				nclistINP.o(ncIndx).weight = gDA_StrGPe*gmaxStrGPe/numStrGPe
+				nclistINP.o(ncIndx).delay = delStrGPe
+			}
+
+
+		}
+	}
+}
+
+//-----------------------------------------
+// connections to GPi
+
+for i=0,numGPi-1 {
+	if (pnm.gid_exists(cellID(ID_GPi, i))) {
+
+		for j=0,numStrGPi-1 {
+
+			ncIndx = ncStrGPi[i].x(j)
+
+			if (ncIndx >= 0) {
+				nclistINP.o(ncIndx).weight = 1
+				nclistINP.o(ncIndx).delay = 0
+			}
+
+
+			preStrGPi[i].o(j).iMean = imnStrGPi
+			preStrGPi[i].o(j).iStd = isdStrGPi
+			preStrGPi[i].o(j).bMean = bmnStrGPi
+			preStrGPi[i].o(j).bStd = bsdStrGPi
+			preStrGPi[i].o(j).bDurMean = bdmnStrGPi
+			preStrGPi[i].o(j).bDurStd = bdsdStrGPi
+
+			preStrGPi[i].o(j).p = probStrGPi.x(j)
+
+
+			ncIndx = ncStrGPi2[i].x(j)
+
+			if (ncIndx >= 0) {
+				nclistINP.o(ncIndx).weight = gDA_StrGPi*gmaxStrGPi/numStrGPi
+				nclistINP.o(ncIndx).delay = delStrGPi
+			}
+
+
+		}
+	}
+}
+
+
+}
+
+
+
+
+//----------------------------------------------------------------------------
+// Call setup functions when .hoc file is loaded
+//----------------------------------------------------------------------------
+
+
+INPconnectNet()
+INPupdateWeights()
+
+
+
+//----------------------------------------------------------------------------
+// Dialog to update parameter values
+//----------------------------------------------------------------------------
+
+

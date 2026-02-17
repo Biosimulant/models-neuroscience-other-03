@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: Ca1PyramidalCellReceptorDependentCampDynam184731Model'
+description: '{"value": "We use a combination of live cell imaging and stochastic
+  modeling of signaling pathways to investigate how noradrenergic receptor stimulation
+  interacts with calcium to control cAMP, require'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:184731
+  source_db: modeldb
+  source_id: '184731'
+  standard: other
+  original_url: https://modeldb.science/184731
+  download_url: https://modeldb.science/download/184731
+  license: ''
+bsim:
+  entrypoint: src.ca1_pyramidal_cell_receptor_dependent_camp_dynam_184731_model:Ca1PyramidalCellReceptorDependentCampDynam184731Model
+  init_kwargs:
+    model_path: data/184731.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

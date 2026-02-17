@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: BrainstemCircuitsControllingLocomotorFrequen266663Model'
+description: '{"value": "\"A series of recent studies identified key structures in
+  the mesencephalic locomotor region and the caudal brainstem of mice involved in
+  the initiation and control of slow (exploratory) an'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:266663
+  source_db: modeldb
+  source_id: '266663'
+  standard: other
+  original_url: https://modeldb.science/266663
+  download_url: https://modeldb.science/download/266663
+  license: ''
+bsim:
+  entrypoint: src.brainstem_circuits_controlling_locomotor_frequen_266663_model:BrainstemCircuitsControllingLocomotorFrequen266663Model
+  init_kwargs:
+    model_path: data/266663.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

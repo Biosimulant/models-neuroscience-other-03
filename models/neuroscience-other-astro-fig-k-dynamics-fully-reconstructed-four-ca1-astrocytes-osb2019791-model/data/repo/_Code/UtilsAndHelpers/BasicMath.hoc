@@ -1,0 +1,35 @@
+
+begintemplate BasicMath
+
+    public inf
+    public updateMinMax, sumSq
+    
+    inf = -1
+    
+    
+    proc init() {
+        sscanf("inf", "%f", &inf)
+    }
+    
+    proc updateMinMax() { local value
+        value = $3
+        if (value < $&1) {
+            $&1 = value
+        }
+        if (value > $&2) {
+            $&2 = value
+        }
+    }
+    
+    func sumSq() { local res, i
+        res = 0
+        for i = 1, numarg() {
+            res += $i ^ 2
+        }
+        return res
+    }
+    
+endtemplate BasicMath
+
+objref math
+math = new BasicMath()

@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AnElectrophysiologicalModelOfGabaergicDoubl257610Model'
+description: '{"value": "We present an electrophysiological model of double bouquet
+  cells (DBCs) and integrate them into an established cortical columnar microcircuit
+  model that implements a BCPNN (Bayesian Confide'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:257610
+  source_db: modeldb
+  source_id: '257610'
+  standard: other
+  original_url: https://modeldb.science/257610
+  download_url: https://modeldb.science/download/257610
+  license: ''
+bsim:
+  entrypoint: src.an_electrophysiological_model_of_gabaergic_doubl_257610_model:AnElectrophysiologicalModelOfGabaergicDoubl257610Model
+  init_kwargs:
+    model_path: data/257610.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

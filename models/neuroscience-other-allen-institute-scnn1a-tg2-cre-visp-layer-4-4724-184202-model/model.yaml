@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AllenInstituteScnn1aTg2CreVispLayer44724184202Model'
+description: '{"value": "This is an Allen Cell Types Database model of a Scnn1a-Tg2-Cre
+  neuron from layer 4 of the mouse primary visual cortex. The model was based on a
+  traced morphology after filling the cell with'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:184202
+  source_db: modeldb
+  source_id: '184202'
+  standard: other
+  original_url: https://modeldb.science/184202
+  download_url: https://modeldb.science/download/184202
+  license: ''
+bsim:
+  entrypoint: src.allen_institute_scnn1a_tg2_cre_visp_layer_4_4724_184202_model:AllenInstituteScnn1aTg2CreVispLayer44724184202Model
+  init_kwargs:
+    model_path: data/184202.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

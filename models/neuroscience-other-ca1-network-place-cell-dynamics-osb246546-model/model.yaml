@@ -1,0 +1,33 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model246546246546Model'
+description: CA1 network model for place cell dynamics (Turi et al 2019)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:246546
+  source_db: opensourcebrain
+  source_id: '246546'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/246546
+  download_url: https://github.com/OpenSourceBrain/246546.git
+  license: ''
+bsim:
+  entrypoint: src.model_246546_246546_model:Model246546246546Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

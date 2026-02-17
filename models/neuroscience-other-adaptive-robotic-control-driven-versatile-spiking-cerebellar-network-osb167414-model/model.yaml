@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model167414167414Model'
+description: Adaptive robotic control driven by a versatile spiking cerebellar network
+  (Casellato et al. 2014)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:167414
+  source_db: opensourcebrain
+  source_id: '167414'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/167414
+  download_url: https://github.com/OpenSourceBrain/167414.git
+  license: ''
+bsim:
+  entrypoint: src.model_167414_167414_model:Model167414167414Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

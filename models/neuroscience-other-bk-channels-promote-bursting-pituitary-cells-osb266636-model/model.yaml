@@ -1,0 +1,33 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model266636266636Model'
+description: BK Channels Promote Bursting in Pituitary Cells (Tabak et al 2011)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:266636
+  source_db: opensourcebrain
+  source_id: '266636'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/266636
+  download_url: https://github.com/OpenSourceBrain/266636.git
+  license: ''
+bsim:
+  entrypoint: src.model_266636_266636_model:Model266636266636Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

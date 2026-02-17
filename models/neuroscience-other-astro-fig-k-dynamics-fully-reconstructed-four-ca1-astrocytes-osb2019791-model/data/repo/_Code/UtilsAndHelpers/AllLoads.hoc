@@ -1,0 +1,14 @@
+
+{ load_file("OtherUtils.hoc") }
+sourcePythonCode("/PythonCode", "from SegmentSearcher import *")
+{ load_file("SectionUtils.hoc") }
+{ pyObj.segmentSearcher.cacheAllSegms3DCoords() }
+
+{ load_file("Enums.hoc") }
+{ load_file("MessageWarningHelper.hoc") }   // !! some unused code here
+{ load_file("BasicMath.hoc") }
+{ load_file("CellBoundingBoxHelper.hoc") }
+{ load_file("ExtracellularSource.hoc") }
+{ load_file("CreateDefaultExtracellularSource.hoc") }
+{ load_file("GraphUtils.hoc") }
+{ load_file("ShapeUtils.hoc") }

@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AstrocyteAndBloodVesselCalciumImagingTrack266929Model'
+description: '{"value": "Code for tracking Astrocytes/Blood vessels in Calcium Imaging
+  based recordings from ...\r\n\r\nData files should be loaded as .tiff stacks with
+  several options for processing (see matlab fi'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:266929
+  source_db: modeldb
+  source_id: '266929'
+  standard: other
+  original_url: https://modeldb.science/266929
+  download_url: https://modeldb.science/download/266929
+  license: ''
+bsim:
+  entrypoint: src.astrocyte_and_blood_vessel_calcium_imaging_track_266929_model:AstrocyteAndBloodVesselCalciumImagingTrack266929Model
+  init_kwargs:
+    model_path: data/266929.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

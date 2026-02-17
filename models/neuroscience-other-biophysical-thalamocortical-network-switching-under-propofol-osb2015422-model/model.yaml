@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model20154222015422Model'
+description: A biophysical model of thalamocortical network switching under propofol
+  (Soplata et al., 2023)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:2015422
+  source_db: opensourcebrain
+  source_id: '2015422'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/2015422
+  download_url: https://github.com/OpenSourceBrain/2015422.git
+  license: ''
+bsim:
+  entrypoint: src.model_2015422_2015422_model:Model20154222015422Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

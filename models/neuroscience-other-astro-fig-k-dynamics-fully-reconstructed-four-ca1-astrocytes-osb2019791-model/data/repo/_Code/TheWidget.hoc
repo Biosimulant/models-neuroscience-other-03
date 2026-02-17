@@ -1,0 +1,167 @@
+
+// !!! BUG: some zombie Graph-s appear when user quickly clicks the Shape or the arrows at right-hand side of x/y/z/r xpvalue-s
+
+objref mainBox
+objref colourmapsBox1, colourmapBox2
+
+
+proc createClampInitParamsAndShowGUI() {
+    
+    load_file("_Code/UtilsAndHelpers/PointProcessManager.hoc")
+    
+    _setDefaultParamsForPotassium()
+    
+    _showGUI()
+    
+    mwh.startIntercepting()
+    {
+        warnIfNoContact(1)
+        mwh.showMessageBox("SEClamp was inserted into the centre of the soma section.", "To remove it, just close the \"PointProcessGroupManager\" widget.", "SEClamp inserted")
+    }
+    mwh.endIntercepting()
+}
+
+proc srcMovedOrResizedHandler() {
+    dismissGraph()
+    updateSphereMarker()
+    ifHasContactThenCreateGraphForPointClosestToSphereCentre()
+    warnIfNoContact(0)
+}
+
+
+proc _setDefaultParamsForPotassium() {
+    
+    Kout = 2.5      // mM
+    
+}
+
+proc _showGUI() { local y, x localobj vBox, deck, hBox, plotShape1, plotShape2, plotShape3
+    strdef pesMenuToolName
+    
+    mainBox = new HBox()
+    mainBox.intercept(1)
+    {
+        vBox = new VBox()
+        vBox.intercept(1)
+        {
+            xpanel("")
+            xlabel("======== Potassium Input Simulation Fig. 5 (Nature Commun. 2018)")
+			xlabel("==Disentangling astroglial physiology with a realistic cell model==")
+			xlabel("============================================")
+			xlabel("Panel of geometrical coordinat and timescale of [K]out")
+			
+            kSrc.addParamsToPanel()     // -> srcMovedOrResizedHandler()
+            xvalue("Kout (mM)", "Kout", 1, "", 0, 1)
+            xlabel("============================================")
+            xpanel()
+            deck = new Deck()   // Used just as an elastic spacer
+            deck.intercept(1)
+            {
+                xpanel("")
+                xlabel("")
+                xlabel("")
+                xbutton("Run simulation", "run()")
+                xlabel("")
+                xpanel()
+            }
+            deck.intercept(0)
+            deck.flip_to(0)
+            deck.map()
+        }
+        vBox.intercept(0)
+        vBox.map()
+        
+        vBox = new VBox()
+        vBox.intercept(1)
+        {
+            hBox = new HBox()
+            hBox.intercept(1)
+            {
+                xpanel("")
+				
+				xradiobutton("XY projection", "viewDirectionChangedHandler(0)", viewDirIdx == 0)
+				xradiobutton("ZY projection", "viewDirectionChangedHandler(1)", viewDirIdx == 1)
+				xradiobutton("XZ projection", "viewDirectionChangedHandler(2)", viewDirIdx == 2)
+				xpanel()
+				xpanel("")
+			
+				xlabel("Interactive Controls: Position extracellular source (sphere) with mouse;")
+				xlabel("hold [Shift] key to modify source radius.")
+				xlabel("")
+				xlabel("Sphere repositioning automatically updates [K]in (Graph(0) time plot.")
+				xlabel("Recording locations: soma (continuous) + sphere center (variable).")
+				xlabel("Note: Disable '3D Rotate' during source editing;")
+				xlabel("      use 'XY/ZY/XZ projection' toggles for view changes.")
+				
+				xpanel()
+            }
+            hBox.intercept(0)
+            hBox.map("", 1, 1, 370, 1)
+            
+            ecsShape = new Shape()
+            // ecsShape.exec_menu("Show Diam")     // !! commented out to have better UI performance when placing an extracellular source
+            pesMenuToolName = "Position Extracellular Source"
+            ecsShape.menu_tool(pesMenuToolName, "mouseEventsHandler")
+            ecsShape.exec_menu(pesMenuToolName)
+        }
+        vBox.intercept(0)
+        vBox.map()
+    }
+    mainBox.intercept(0)
+    y = 124
+    mainBox.map("Potassium Simulation", 285, y, 635, 440)
+    
+    viewDirectionChangedHandler(viewDirIdx)
+    
+    colourmapsBox1 = new HBox()
+    colourmapsBox1.intercept(1)
+    {
+        plotShape1 = _createOnePlotShape("ki", "[K+]in (mM)", ki_min, ki_range)
+        plotShape2 = _createOnePlotShape("ko", "[K+]o (mM)", 3, 2)
+    }
+    colourmapsBox1.intercept(0)
+    x = 1140
+    colourmapsBox1.map("Potassium", x, y, -1, -1)
+    
+    // Doing this after mapping the parent box
+    _finishOnePlotShape(plotShape1)
+    _finishOnePlotShape(plotShape2)
+    
+    colourmapBox2 = new HBox()
+    colourmapBox2.intercept(1)
+    {
+        plotShape3 = _createOnePlotShape("v", "Transmembrane Voltage (mV)", -83.7, 0.1)
+    }
+    colourmapBox2.intercept(0)
+    colourmapBox2.map("Voltage", x, 475, -1, -1)
+    
+    // Doing this after mapping the parent box
+    _finishOnePlotShape(plotShape3)
+    
+    ifHasContactThenCreateGraphForPointClosestToSphereCentre()
+}
+
+obfunc _createOnePlotShape() { local min, range localobj plotShape
+    strdef var, label
+    
+    var = $s1
+    label = $s2
+    min = $3
+    range = $4
+    
+    plotShape = new PlotShape()
+    fast_flush_list.append(plotShape)
+    plotShape.exec_menu("Show Diam")
+    plotShape.variable(var)
+    plotShape.label(0.99, 0.99, label, 2, 1, 1, 1, 1)
+    plotShape.scale(min, min + range)
+    
+    return plotShape
+}
+
+proc _finishOnePlotShape() { localobj plotShape
+    plotShape = $o1
+    plotShape.exec_menu("View = plot")
+    plotShape.exec_menu("Space Plot")   // !! a workaround to move the colourbar to the corner
+    plotShape.exec_menu("Shape Plot")   //
+}

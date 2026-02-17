@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model182758182758Model'
+description: Activity patterns in a subthalamopallidal network of the basal ganglia
+  model (Terman et al 2002)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:182758
+  source_db: opensourcebrain
+  source_id: '182758'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/182758
+  download_url: https://github.com/OpenSourceBrain/182758.git
+  license: ''
+bsim:
+  entrypoint: src.model_182758_182758_model:Model182758182758Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

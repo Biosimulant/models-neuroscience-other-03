@@ -1,0 +1,47 @@
+
+>------------------------------->--------------------------------------->
+  VAR_TO_GRAPH: 		>	List of current contributing	>
+				>		to ion pools		>
+>------------------------------->--------------------------------------->
+	GRPH_CHNL:		>	Graph channel			>
+>------------------------------->--------------------------------------->
+	2			>	GAIN of Channel			>
+	time<{ivr}            	>	Var Name for X-axis		>
+		6           	>	Number of Tic Marks		>
+		0           	>	Min Value of X			>
+		120          	>	Max Value of X			>
+		yellow       	>	Color of Range			>
+	V[R15....]<{ivr}      	>	Var Name for Y-axis		>
+		6           	>	Number of Tic Marks		>
+		-70         	>	Min Value of Y			>
+		50          	>	Max Value of Y			>
+		cyan           	>	Color of RAnge			>
+>------------------------------->--------------------------------------->
+	GRPH_CHNL:		>	Graph channel			>
+>------------------------------->--------------------------------------->
+	1			>	GAIN of Channel			>
+	time<{ivr}            	>	Var Name for X-axis		>
+		6           	>	Number of Tic Marks		>
+		0           	>	Min Value of X			>
+		120          	>	Max Value of X			>
+		yellow       	>	Color of Range			>
+   ssCsm[cAMP.R15...]<{ivr}     >	Var Name for Y-axis		>
+		5           	>	Number of Tic Marks		>
+		0         	>	Min Value of Y			>
+		20          	>	Max Value of Y			>
+		magenta         >	Color of RAnge			>
+>------------------------------->--------------------------------------->
+	END:			>					>
+>------------------------------->--------------------------------------->
+
+>------------------------------->--------------------------------------->
+>   VAR_TO_FILE: 		>	List of current contributing	>
+>				>		to ion pools		>
+>------------------------------->--------------------------------------->
+>	time<{ivr}             	>	VAR name			>
+>	V[R15....]<{svr}       	>	VAR name			>
+>------------------------------->--------------------------------------->
+>	END:			>					>
+>------------------------------->--------------------------------------->
+
+END:

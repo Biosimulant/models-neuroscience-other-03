@@ -1,0 +1,408 @@
+//----------------------------------------------------------------------------
+// Initialize global variables
+//----------------------------------------------------------------------------
+
+// One vector of NetCon indices for each cell for each synapse type
+objref ncGPeSTN[numSTN], ncSTNGPe[numGPe], ncGPeGPe[numGPe], ncSTNGPi[numGPi], ncGPeGPi[numGPi]  //, ncGPiTha[numGPi]
+for tmpi=0,numSTN-1 {
+	ncGPeSTN[tmpi] = new Vector()
+}
+for tmpi=0,numGPe-1 {
+	ncSTNGPe[tmpi] = new Vector()
+	ncGPeGPe[tmpi] = new Vector()
+}
+for tmpi=0,numGPi-1 {
+	ncSTNGPi[tmpi] = new Vector()
+	ncGPeGPi[tmpi] = new Vector()
+//	ncGPiTha[tmpi] = new Vector()
+}
+
+
+
+// One vector of source cell local IDs of presyn cells for each cell for each cell type
+objref srcGPeSTN[numSTN], srcSTNGPe[numGPe], srcGPeGPe[numGPe], srcSTNGPi[numGPi], srcGPeGPi[numGPi]
+for tmpi=0,numSTN-1 {
+	srcGPeSTN[tmpi] = new Vector()
+}
+for tmpi=0,numGPe-1 {
+	srcSTNGPe[tmpi] = new Vector()
+	srcGPeGPe[tmpi] = new Vector()
+}
+for tmpi=0,numGPi-1 {
+	srcSTNGPi[tmpi] = new Vector()
+	srcGPeGPi[tmpi] = new Vector()
+}
+
+
+objref offsets
+offsets = new Vector()
+
+
+// FUNCTIONAL COLUMN TEMPLATE
+// STN	  		  2
+// GPe		 	6 7 8
+
+// STN        0 1		  		3 4
+// GPi	  		  2
+
+// GPe	3 4 5				9 10 11
+// STN			  2
+
+// GPe			6 7 8
+// GPi	  		  2
+
+// GPe 			  7
+// GPe    2 3 4 5       6   8		9 10 11 12
+
+
+
+//----------------------------------------------------------------------------
+// Functions to set up network from current value of global variables
+//----------------------------------------------------------------------------
+
+proc CONconnectNet() { local i,j,k
+
+//-----------------------------------------
+// connections to STN
+
+offsets.resize(numGPeSTN)	//offset from first GPe within module
+offsets.x(0) = -3
+offsets.x(1) = -2
+offsets.x(2) = -1
+offsets.x(3) = 3
+offsets.x(4) = 4
+offsets.x(5) = 5
+
+for i=0,numSTN-1 {
+
+	tarIndx = cellID(ID_STN, i)	// get global id
+
+	for j=0,numGPeSTN-1 {
+		k = 3*i + offsets.x(j)
+		if (k < 0) {
+			k = numGPe + k
+		}
+		if (k >= numGPe) {
+			k = k - numGPe
+		}
+
+		srcIndx = cellID(ID_GPe, k)	// get global id
+
+		synIndx = synNum(ID_GPe, ID_STN, j)
+
+		ncIndx = pnm.nc_append(srcIndx, tarIndx, synIndx, gmaxGPeSTN, delGPeSTN)
+
+		ncGPeSTN[i].append(ncIndx)
+
+		srcGPeSTN[i].append(k)
+	}
+}
+
+
+
+//-----------------------------------------
+// connections to GPe
+
+offsets.resize(numGPeGPe)	//offset current GPe
+offsets.x(0) = -5
+offsets.x(1) = -4
+offsets.x(2) = -3
+offsets.x(3) = -2
+offsets.x(4) = -1
+offsets.x(5) = 1
+offsets.x(6) = 2
+offsets.x(7) = 3
+offsets.x(8) = 4
+offsets.x(9) = 5
+
+for i=0,numGPe-1 {
+
+	tarIndx = cellID(ID_GPe, i)	// get global id
+
+	for j=0,numSTNGPe-1 {
+		k = int(i/3)
+		if (k < 0) {
+			k = numSTN + k
+		}
+		if (k >= numSTN) {
+			k = k - numSTN
+		}
+
+		srcIndx = cellID(ID_STN, k)	// get global id
+
+		synIndx = synNum(ID_STN, ID_GPe, j)
+
+		ncIndx = pnm.nc_append(srcIndx, tarIndx, synIndx, gmaxSTNGPe, delSTNGPe)
+
+		ncSTNGPe[i].append(ncIndx)
+
+		srcSTNGPe[i].append(k)
+	}
+
+	for j=0,numGPeGPe-1 {
+		k = i + offsets.x(j)
+		if (k < 0) {
+			k = numGPe + k
+		}
+		if (k >= numGPe) {
+			k = k - numGPe
+		}
+
+		srcIndx = cellID(ID_GPe, k)	// get global id
+
+		synIndx = synNum(ID_GPe, ID_GPe, j)
+
+		ncIndx = pnm.nc_append(srcIndx, tarIndx, synIndx, gmaxGPeGPe, delGPeGPe)
+
+		ncGPeGPe[i].append(ncIndx)
+
+		srcGPeGPe[i].append(k)
+	}
+}
+
+
+
+//-----------------------------------------
+// connections to GPi
+
+offsets.resize(numSTNGPi)	//offset from current GPi
+offsets.x(0) = -2
+offsets.x(1) = -1
+offsets.x(2) = 1
+offsets.x(3) = 2
+
+
+for i=0,numGPi-1 {
+
+	tarIndx = cellID(ID_GPi, i)	// get global id
+
+	for j=0,numSTNGPi-1 {
+		k = i + offsets.x(j)
+		if (k < 0) {
+			k = numSTN + k
+		}
+		if (k >= numSTN) {
+			k = k - numSTN
+		}
+
+		srcIndx = cellID(ID_STN, k)	// get global id
+
+		synIndx = synNum(ID_STN, ID_GPi, j)
+
+		ncIndx = pnm.nc_append(srcIndx, tarIndx, synIndx, gmaxSTNGPi, delSTNGPi)
+
+		ncSTNGPi[i].append(ncIndx)
+
+		srcSTNGPi[i].append(k)
+	}
+
+	for j=0,numGPeGPi-1 {
+		k = 3*i + j
+		if (k < 0) {
+			k = numGPe + k
+		}
+		if (k >= numGPe) {
+			k = k - numGPe
+		}
+
+		srcIndx = cellID(ID_GPe, k)	// get global id
+
+		synIndx = synNum(ID_GPe, ID_GPi, j)
+
+		ncIndx = pnm.nc_append(srcIndx, tarIndx, synIndx, gmaxGPeGPi, delGPeGPi)
+
+		ncGPeGPi[i].append(ncIndx)
+
+		srcGPeGPi[i].append(k)
+	}
+}
+
+
+
+//-----------------------------------------
+// connections from GPi (to artificial cell representing Thalamus)
+
+/*
+for i=0,numGPi-1 {
+
+	tarIndx = cellID(ID_GPi, i)	// get global id
+
+	for j=0,numGPiTha-1 {
+
+		srcIndx = cellID(ID_GPi, i)	// get global id
+
+		synIndx = synNum(ID_GPi, ID_Tha, j)
+
+		ncIndx = pnm.nc_append(srcIndx, tarIndx, synIndx, gmaxGPiTha, delGPiTha)
+
+		ncGPiTha[i].append(ncIndx)	// NetCon not actually used for synapse, only to count events
+
+	}
+}
+*/
+
+
+}
+
+
+
+//----------------------------------------------------------------------------
+proc CONupdateWeights() { local i,j
+
+//-----------------------------------------
+// connections to STN
+
+for i=0,numSTN-1 {
+
+	for j=0,numGPeSTN-1 {
+
+		ncIndx = ncGPeSTN[i].x(j)
+
+		if (ncIndx >= 0) {
+			pnm.nclist.o(ncIndx).weight = gDA_GPeSTN*gmaxGPeSTN/numGPeSTN
+			pnm.nclist.o(ncIndx).delay = delGPeSTN
+		}
+	}
+}
+
+//-----------------------------------------
+// connections to GPe
+
+for i=0,numGPe-1 {
+
+	for j=0,numSTNGPe-1 {
+
+		ncIndx = ncSTNGPe[i].x(j)
+
+		if (ncIndx >= 0) {
+			pnm.nclist.o(ncIndx).weight = gDA_STNGPe*gmaxSTNGPe/numSTNGPe
+			pnm.nclist.o(ncIndx).delay = delSTNGPe
+		}
+	}
+
+	for j=0,numGPeGPe-1 {
+
+		ncIndx = ncGPeGPe[i].x(j)
+
+		if (ncIndx >= 0) {
+			pnm.nclist.o(ncIndx).weight = gDA_GPeGPe*gmaxGPeGPe/numGPeGPe
+			pnm.nclist.o(ncIndx).delay = delGPeGPe
+		}
+	}
+}
+
+//-----------------------------------------
+// connections to GPi
+
+for i=0,numGPi-1 {
+
+	for j=0,numSTNGPi-1 {
+
+		ncIndx = ncSTNGPi[i].x(j)
+
+		if (ncIndx >= 0) {
+			pnm.nclist.o(ncIndx).weight = gDA_STNGPi*gmaxSTNGPi/numSTNGPi
+			pnm.nclist.o(ncIndx).delay = delSTNGPi
+		}
+	}
+
+	for j=0,numGPeGPi-1 {
+
+		ncIndx = ncGPeGPi[i].x(j)
+
+		if (ncIndx >= 0) {
+			pnm.nclist.o(ncIndx).weight = gDA_GPeGPi*gmaxGPeGPi/numGPeGPi
+			pnm.nclist.o(ncIndx).delay = delGPeGPi
+		}
+	}
+}
+
+
+
+
+}
+
+
+//----------------------------------------------------------------------------
+// Update one parameter value
+//----------------------------------------------------------------------------
+
+
+strdef pstr
+
+//----------------------------------------------------------------------------
+proc CONupdateOneWeight() { local i,j		// $1:srctype, $2:tartype, $3:tarID, $4:synnum, $5:new weight
+
+
+if (pnm.pc.id() == 0) {
+	// master tells all slave nodes to update network with params vector
+	
+	pnm.pc.look_take("CONupOne")
+	pnm.pc.post("CONupOne")
+	pnm.pc.context("CONupdateOneWeight", $1, $2, $3, $4, $5)
+	for i=1,pnm.pc.nhost-1 {
+		sprint(pstr, "CONupOne%d", i)
+		pnm.pc.take(pstr)
+	}
+	pnm.pc.take("CONupOne")
+
+} else {
+	// slave nodes clear message from master and doit
+
+        pnm.pc.look("CONupOne")
+	sprint(pstr, "CONupOne%d", pnm.pc.id())
+	pnm.pc.post(pstr)
+}
+
+//print "pc.id=", pnm.pc.id(), $1, $2, $3, $4, $5
+
+if ($1 == ID_GPe && $2 == ID_STN) {
+	ncIndx = ncGPeSTN[$3].x($4)
+} else {
+
+if ($1 == ID_STN && $2 == ID_GPe) {
+	ncIndx = ncSTNGPe[$3].x($4)
+} else {
+
+if ($1 == ID_GPe && $2 == ID_GPe) {
+	ncIndx = ncGPeGPe[$3].x($4)
+} else {
+
+if ($1 == ID_STN && $2 == ID_GPi) {
+	ncIndx = ncSTNGPi[$3].x($4)
+} else {
+
+if ($1 == ID_GPe && $2 == ID_GPi) {
+	ncIndx = ncGPeGPi[$3].x($4)
+}
+
+}
+}
+}
+}
+
+
+if (ncIndx >= 0) {
+	pnm.nclist.o(ncIndx).weight = $5
+}
+
+
+
+}
+
+
+
+
+
+//----------------------------------------------------------------------------
+// Call setup functions when .hoc file is loaded
+//----------------------------------------------------------------------------
+
+CONconnectNet()
+CONupdateWeights()
+
+
+//----------------------------------------------------------------------------
+// Dialog to update parameter values
+//----------------------------------------------------------------------------
+

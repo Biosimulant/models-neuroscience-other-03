@@ -1,0 +1,398 @@
+//proc randomize(seedVal)
+//proc zeroNet()
+//proc saveSpikes(filename)//proc recGidVm(mode/*0=setup, 1=get values*/)//proc saveStims(filename)
+//proc netStats(resultVec)
+//proc updateAll()
+//proc saveCON()
+
+
+
+load_file("pBGburstSearch.hoc")
+
+
+objref r, sc_r
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc randomize() {local seedVal	//$1 seedVal base
+////////////////
+seedVal = $1 + pnm.pc.id
+r = new Random(seedVal)
+sc_r = new scopRandom(.5)
+sc_r.seed(seedVal)
+
+print "pc.id() ", pnm.pc.id(), " using random seed ", seedVal
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc zeroNet() {
+////////////////
+//Set all synaptic weights to zero
+
+gmaxSTNGPe = 0
+gmaxGPeGPe = 0
+gmaxGPeSTN = 0
+gmaxGPeGPi = 0
+gmaxSTNGPi = 0
+gmaxGPiTha = 0
+
+CONupdateWeights()
+
+gmaxCtxSTN = 0
+gmaxStrGPe = 0
+gmaxStrGPi = 0
+
+INPupdateWeights()
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc saveSpikes() { local i localobj f	//(s1:filename)
+////////////////
+//Save random seed and pnm spike time and id vectors to file with name passed in $s1
+
+//pnm.gatherspikes()	should be called right after prun, calling twice produces error?
+
+f =  new File()
+f.wopen($s1)
+print "seed=", seedVal
+f.printf("%f\n", seedVal)
+for i=0, pnm.spikevec.size-1 {
+	f.printf("%f\t%f\n", pnm.spikevec.x[i], pnm.idvec.x[i])
+}
+f.close()
+
+}
+
+
+
+objref vmRecIds,vmL,vmI
+vmRecIds = new Vector()	//global record id vector
+vmL = new List()	//list containing record data vectors
+vmI = new Vector()	//locally owned record id vector
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc setupVms() {local i	localobj vm
+////////////////
+//Called internally - prepare to record voltages for cell ids stored in vmRecIds, vecs stored locally will be collected by master in the same manner as pnm spikevec and idvec
+
+vmL.remove_all()
+vmI.resize(0)
+
+if (pnm.pc.id > 0) {
+	//nodes consume setup message
+	while (pnm.pc.look("setupIds") != 1) {
+	}
+
+	vmRecIds = pnm.pc.upkvec()	//unpack vector of ids to record
+}
+
+for i=0,vmRecIds.size-1 {
+	if (pnm.pc.gid_exists(vmRecIds.x(i))) {
+		//vm goes out of context, but pointer in vmL should remain to hold object
+		vm = new Vector()	
+		vm.record(&pnm.pc.gid2obj(vmRecIds.x(i)).soma.v)
+		vmL.append(vm)
+		vmI.append(vmRecIds.x(i))
+	}
+}
+
+if (pnm.pc.id > 0) {
+	pnm.pc.post("setupvm")	//nodes tell master they're done
+}
+
+}
+
+
+proc postVms() {local i
+////////////////
+pnm.pc.pack(vmI)	//send back vector of ids recorded by this node
+for i=0,vmI.size-1 {	//... as well as the recorded data
+	pnm.pc.pack(vmL.o(i))
+}
+
+pnm.pc.post("postvm")	//tell master this node is done
+
+}
+
+
+proc recGidVm() { local i,j localobj v1,v2	//($1:mode(0=setup, 1=get values))
+////////////////
+
+if (pnm.pc.nhost > 1 && pnm.pc.id == 0) {	
+
+	//all this work required only by master node if running parallel with >1 host
+
+	if ($1==0) {
+		pnm.pc.pack(vmRecIds)
+		pnm.pc.post("setupIds")
+		pnm.pc.context("setupVms()\n")	//tell each node to run setupVms
+		for i=0, pnm.pc.nhost-2 {
+			pnm.pc.take("setupvm")	//wait until all responses are consumed
+		}
+
+		setupVms()			//call setup for ids owned by master itself
+
+		pnm.pc.take("setupIds")		//clear the setup message
+
+	} else {
+		pnm.pc.context("postVms()\n")	//tell each node to run postVms
+		for i=0, pnm.pc.nhost-2 {
+			pnm.pc.take("postvm")	//consume message once for each node (not master)
+
+			v1 = pnm.pc.upkvec()	//deal with data sent back from nodes
+			vmI.append(v1)		//... appending to data already on master
+			for j=0,v1.size-1 {
+				v2 = pnm.pc.upkvec()
+				vmL.append(v2)
+			}
+		}
+	}
+
+}
+
+
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc poststims() {
+////////////////
+	for i=0, numGPi-1 {
+		//send back vector of GPI stim times for ids on this node
+		pnm.pc.pack(timesDBSGPi[i])
+	}
+	pnm.pc.post("poststim")	//tell master this node is done
+	
+}
+
+proc gatherstims() {local i,j  localobj s
+////////////////
+	if (pnm.pc.nhost > 1) {
+		s = new Vector()
+		pnm.pc.context("poststims()\n")	//tell each node to run poststims
+		for i=0, pnm.pc.nhost-2 {
+			pnm.pc.take("poststim") //consume message once for each node (not master)
+                  for j=0,numGPi-1 {
+				s = pnm.pc.upkvec()	//deal with data sent back from nodes
+				timesDBSGPi[j].append(s)//... appending to data already on master
+			}
+		}
+	}
+}
+
+
+proc saveStims() { local i localobj f	//($s1:filename)
+////////////////
+
+gatherstims() //  need this for parallel to pull stim times on nodes other than master
+
+f =  new File()
+f.wopen($s1)
+for i=0,numGPi-1 {
+	for j=0,timesDBSGPi[i].size-1 {
+		f.printf("%f\t%f\n", timesDBSGPi[i].x(j), cellID(ID_GPi,i))
+	}
+}
+f.close()
+
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+objref st[ncell], isi[ncell], bur[ncell]
+for i=0,ncell-1 {
+	st[i] = new Vector()
+	isi[i] = new Vector()
+        bur[i] = new Matrix()
+}
+
+
+proc netStats() {local i,j localobj res,spkRate, burRate			//$o1:res
+//////////////////
+
+//pnm.gatherspikes()	should be called right after prun, calling twice produces error?
+
+res = $o1
+
+spkRate = new Vector(ncell)
+burRate = new Vector(ncell)
+
+for i=0,ncell-1 {
+	st[i].resize(0)
+	isi[i].resize(0)
+        bur[i].resize(1,1)
+}
+
+// get spike times for each cell
+for i=0,pnm.idvec.size-1 {
+	st[pnm.idvec.x(i)].append(pnm.spikevec.x(i))
+}
+
+// process each cell
+for i=0,ncell-1 {
+
+	if (st[i].size > 2) {
+
+		// calculate interspike intervals
+		for j=0,st[i].size-2 {
+			isi[i].append(st[i].x(j+1) - st[i].x(j))
+		}
+
+		// get burst times
+
+		burstSearch(st[i], isi[i], bur[i])
+
+		// calculate average spike and burst rates
+		spkRate.x(i) = 1000*(st[i].size - 1)/st[i].x(st[i].size-1)	      //using total time is time of last spike
+		if (bur[i].ncol == 1) {
+			burRate.x(i) = 0
+		} else {
+		      burRate.x(i) = 1000*bur[i].nrow/st[i].x(st[i].size-1)		//using total time is t at end???
+		}
+
+	} else {
+		spkRate.x(i) = 0
+		burRate.x(i) = 0
+	}
+}
+
+
+
+f_stn = spkRate.mean(cellID(ID_STN, 0), cellID(ID_STN, numSTN-1))
+std_stn = spkRate.stdev(cellID(ID_STN, 0), cellID(ID_STN, numSTN-1))
+//print "STN ", f_stn, std_stn
+
+f_gpe = spkRate.mean(cellID(ID_GPe, 0), cellID(ID_GPe, numGPe-1))
+std_gpe = spkRate.stdev(cellID(ID_GPe, 0), cellID(ID_GPe, numGPe-1))
+//print "GPe ", f_gpe, std_gpe
+
+f_gpi = spkRate.mean(cellID(ID_GPi, 0), cellID(ID_GPi, numGPi-1))
+std_gpi = spkRate.stdev(cellID(ID_GPi, 0), cellID(ID_GPi, numGPi-1))
+//print "GPi ", f_gpi, std_gpi
+
+
+
+br_stn = 60*burRate.mean(cellID(ID_STN, 0), cellID(ID_STN, numSTN-1))
+brstd_stn = 60*burRate.stdev(cellID(ID_STN, 0), cellID(ID_STN, numSTN-1))
+//print "STN(br) ", br_stn, brstd_stn
+
+br_gpe = 60*burRate.mean(cellID(ID_GPe, 0), cellID(ID_GPe, numGPe-1))
+brstd_gpe = 60*burRate.stdev(cellID(ID_GPe, 0), cellID(ID_GPe, numGPe-1))
+//print "GPe(br) ", br_gpe, brstd_gpe
+
+br_gpi = 60*burRate.mean(cellID(ID_GPi, 0), cellID(ID_GPi, numGPi-1))
+brstd_gpi = 60*burRate.stdev(cellID(ID_GPi, 0), cellID(ID_GPi, numGPi-1))
+//print "GPi(br) ", br_gpi, brstd_gpi
+
+
+
+res.resize(6)
+res.x(0) = f_stn
+res.x(1) = f_gpe
+res.x(2) = f_gpi
+res.x(3) = br_stn
+res.x(4) = br_gpe
+res.x(5) = br_gpi
+
+
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc updateAll() { 
+//////////////////
+//Distribute any global parameter changes to cells
+
+readParms($s1)
+BIAupdateWeights()
+CONupdateWeights()
+INPupdateWeights()
+
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+proc saveCON() { local i localobj f
+////////////////
+
+f = new File()
+
+f.wopen("pBG_CON.txt")
+
+for i=0,pnm.nclist.count-1 {
+	f.printf("Cell %s -> cell %s\n", pnm.nclist.o(i).precell, pnm.nclist.o(i).postcell)
+}
+
+f.close()
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+strdef junkStr
+//-----------------------------------------------------------------------------------------------------
+proc getOutput() {local i,numFields,tmp localobj f 	//(filename, skipLines, readInputs)
+//---------------
+
+numTargets = 6
+
+f = new File()
+
+f.ropen($s1)
+
+for i=0,$2-1 {
+	f.gets(junkStr)
+}
+
+
+for i=0,3+numTargets-1 {
+	tmp = f.scanvar()
+}
+
+
+gmaxSTNGPi = f.scanvar()
+gmaxGPeGPi = f.scanvar()
+gmaxSTNGPe = f.scanvar()
+gmaxGPeGPe = f.scanvar()
+gmaxGPeSTN = f.scanvar()
+gDA_STNGPi = f.scanvar()
+gDA_GPeGPi = f.scanvar()
+gDA_STNGPe = f.scanvar()
+gDA_GPeGPe = f.scanvar()
+gDA_GPeSTN = f.scanvar()
+iBiasSTN = f.scanvar()
+iBiasGPe = f.scanvar()
+iBiasGPi = f.scanvar()
+
+
+if ($3) {
+	// read in input parameters (assumes format is same as listed here)
+
+	gmaxCtxSTN = f.scanvar()	
+	gmaxStrGPe = f.scanvar()	
+	gmaxStrGPi = f.scanvar()
+
+/* ... removed in distribution ... */
+
+}
+
+
+f.close()
+
+BIAupdateWeights()
+CONupdateWeights()
+INPupdateWeights()
+
+}
+

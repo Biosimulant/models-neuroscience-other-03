@@ -1,0 +1,128 @@
+
+proc srcMovedOrResizedHandler() { codeContractViolation() }
+
+begintemplate ExtracellularSource
+    
+    public x, y, z, radius, startTime, endTime, colour, species
+    public addParamsToPanel, getCentreScreenCoords, moveSphere, resizeSphere
+    public isSourceActive
+    
+    public cachedDistToClosestSegm
+    public hasContactWithTheCell, warnIfNoContactWithTheCell
+    
+    external srcMovedOrResizedHandler
+    external math, mwh
+    external codeContractViolation
+    
+    strdef species
+    
+    
+    proc init() {
+        x = $1
+        y = $2
+        z = $3
+        radius = $4
+        startTime = $5
+        endTime = $6
+        colour = $7
+        species = $s8
+        
+        cachedDistToClosestSegm = -1
+    }
+    
+    proc addParamsToPanel() {
+        strdef hocCommand
+        
+        hocCommand = "srcMovedOrResizedHandler()"
+        
+        xpvalue("X coordinate (um)", &x, 1, hocCommand, 0, 1)
+        xpvalue("Y coordinate (um)", &y, 1, hocCommand, 0, 1)
+        xpvalue("Z coordinate (um)", &z, 1, hocCommand, 0, 1)
+        xpvalue("Input radius (um)", &radius, 1, hocCommand, 0, 1)
+        xpvalue("Input onset (ms)", &startTime, 1, "", 0, 1)
+        xpvalue("Input end (ms)", &endTime, 1, "", 0, 1)
+    }
+    
+    proc getCentreScreenCoords() { local viewDirIdx
+        viewDirIdx = $1
+        
+        if (viewDirIdx == 0) {          // XY plane
+            $&2 = x
+            $&3 = y
+        } else if (viewDirIdx == 1) {   // ZY plane
+            $&2 = z
+            $&3 = y
+        } else if (viewDirIdx == 2) {   // XZ plane
+            $&2 = x
+            $&3 = z
+        } else {
+            codeContractViolation()
+        }
+    }
+    
+    proc moveSphere() { local viewDirIdx, x_screen, y_screen
+        viewDirIdx = $1
+        x_screen = $2
+        y_screen = $3
+        
+        if (viewDirIdx == 0) {          // XY plane
+            x = x_screen
+            y = y_screen
+        } else if (viewDirIdx == 1) {   // ZY plane
+            z = x_screen
+            y = y_screen
+        } else if (viewDirIdx == 2) {   // XZ plane
+            x = x_screen
+            z = y_screen
+        } else {
+            codeContractViolation()
+        }
+    }
+    
+    proc resizeSphere() { local viewDirIdx, x_screen, y_screen, xc_screen, yc_screen, distSq
+        viewDirIdx = $1
+        x_screen = $2
+        y_screen = $3
+        
+        getCentreScreenCoords(viewDirIdx, &xc_screen, &yc_screen)
+        distSq = math.sumSq(x_screen - xc_screen, y_screen - yc_screen)
+        radius = sqrt(distSq)
+    }
+    
+    func hasContactWithTheCell() {
+        return (cachedDistToClosestSegm < radius)
+    }
+    
+    func warnIfNoContactWithTheCell() { local isDefaultSrc, isWarn
+        strdef defaultOrEmpty, line1, line2
+        
+        isDefaultSrc = $1
+        
+        isWarn = !hasContactWithTheCell()
+        if (isWarn) {
+            if (isDefaultSrc) {
+                defaultOrEmpty = " default"
+            } else {
+                defaultOrEmpty = ""
+            }
+            sprint(line1, "The%s extracellular source of %s has no contact with the astrocyte.", defaultOrEmpty, species)
+            line2 = "Please move the sphere closer to the cell or make it bigger."
+            mwh.showWarningBox(line1, line2)
+        }
+        
+        return isWarn
+    }
+    
+    // !! ideally, loop by all segments here (but need to cache all segment centre coords in advance)
+    func isSourceActive() { local ptIdx, distSq
+        
+        if (t < startTime || t > endTime) {
+            return 0
+        }
+         
+        ptIdx = int(n3d() / 2)
+        distSq = math.sumSq(x - x3d(ptIdx), y - y3d(ptIdx), z - z3d(ptIdx))
+        return (distSq < radius ^ 2)
+    }
+    
+endtemplate ExtracellularSource

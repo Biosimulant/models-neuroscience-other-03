@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model20197912019791Model'
+description: "ASTRO Fig\u202F5 K\u207A Dynamics in Fully Reconstructed Four CA1 Astrocytes\
+  \ (Savtchenko\u202FLP et al., 2018)"
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:2019791
+  source_db: opensourcebrain
+  source_id: '2019791'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/2019791
+  download_url: https://github.com/OpenSourceBrain/2019791.git
+  license: ''
+bsim:
+  entrypoint: src.model_2019791_2019791_model:Model20197912019791Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

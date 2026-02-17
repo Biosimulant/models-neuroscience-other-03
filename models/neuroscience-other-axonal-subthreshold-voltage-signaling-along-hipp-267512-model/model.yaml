@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AxonalSubthresholdVoltageSignalingAlongHipp267512Model'
+description: '{"value": "Subthreshold depolarization of soma passively propagates
+  into the axons for a substantial distance and thereby caused enhancement of the
+  transmitter release from the axon terminals of hippo'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:267512
+  source_db: modeldb
+  source_id: '267512'
+  standard: other
+  original_url: https://modeldb.science/267512
+  download_url: https://modeldb.science/download/267512
+  license: ''
+bsim:
+  entrypoint: src.axonal_subthreshold_voltage_signaling_along_hipp_267512_model:AxonalSubthresholdVoltageSignalingAlongHipp267512Model
+  init_kwargs:
+    model_path: data/267512.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

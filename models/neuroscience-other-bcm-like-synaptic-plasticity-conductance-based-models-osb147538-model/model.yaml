@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model147538147538Model'
+description: BCM-like synaptic plasticity with conductance-based models (Narayanan
+  Johnston, 2010)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:147538
+  source_db: opensourcebrain
+  source_id: '147538'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/147538
+  download_url: https://github.com/OpenSourceBrain/147538.git
+  license: ''
+bsim:
+  entrypoint: src.model_147538_147538_model:Model147538147538Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

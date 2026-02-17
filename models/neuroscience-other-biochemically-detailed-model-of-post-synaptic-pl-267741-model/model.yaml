@@ -1,0 +1,33 @@
+schema_version: '2.0'
+title: 'Neuroscience: BiochemicallyDetailedModelOfPostSynapticPl267741Model'
+description: '{"value": "", "attr_id": 24}'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:267741
+  source_db: modeldb
+  source_id: '267741'
+  standard: other
+  original_url: https://modeldb.science/267741
+  download_url: https://modeldb.science/download/267741
+  license: ''
+bsim:
+  entrypoint: src.biochemically_detailed_model_of_post_synaptic_pl_267741_model:BiochemicallyDetailedModelOfPostSynapticPl267741Model
+  init_kwargs:
+    model_path: data/267741.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model156781156781Model'
+description: Bursting and oscillations in RD1 Retina driven by AII Amacrine Neuron
+  (Choi et al. 2014)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:156781
+  source_db: opensourcebrain
+  source_id: '156781'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/156781
+  download_url: https://github.com/OpenSourceBrain/156781.git
+  license: ''
+bsim:
+  entrypoint: src.model_156781_156781_model:Model156781156781Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

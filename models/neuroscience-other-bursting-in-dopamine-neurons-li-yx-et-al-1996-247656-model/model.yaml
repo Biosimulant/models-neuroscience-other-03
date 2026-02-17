@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: BurstingInDopamineNeuronsLiYxEtAl1996247656Model'
+description: '{"value": "\"Burst firing of dopaminergic neurons of the substantia
+  nigra pars\r\ncompacta can be induced in vitro by the glutamate agonist\r\nN-methyl-D-aspartate.
+  It has been suggested that the inte'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:247656
+  source_db: modeldb
+  source_id: '247656'
+  standard: other
+  original_url: https://modeldb.science/247656
+  download_url: https://modeldb.science/download/247656
+  license: ''
+bsim:
+  entrypoint: src.bursting_in_dopamine_neurons_li_yx_et_al_1996_247656_model:BurstingInDopamineNeuronsLiYxEtAl1996247656Model
+  init_kwargs:
+    model_path: data/247656.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

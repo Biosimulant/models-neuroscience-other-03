@@ -1,0 +1,118 @@
+//----------------------------------------------------------------------------
+// Initialize global variables
+//----------------------------------------------------------------------------
+
+objref biasSTN[numSTN], biasGPe[numGPe], biasGPi[numGPi]
+
+
+
+
+//----------------------------------------------------------------------------
+// Functions to set up network from current value of global variables
+//----------------------------------------------------------------------------
+
+proc BIAconnectNet() { local i
+
+//-----------------------------------------
+// connections to STN
+
+for i=0,numSTN-1 {
+	if (pnm.gid_exists(cellID(ID_STN, i))) {
+		biasSTN[i] = new IClamp()		
+		pnm.pc.gid2obj(cellID(ID_STN, i)).soma biasSTN[i].loc(.5)
+
+	}
+}
+
+
+
+//-----------------------------------------
+// connections to GPe
+
+for i=0,numGPe-1 {
+	if (pnm.gid_exists(cellID(ID_GPe, i))) {
+		biasGPe[i] = new IClamp()		
+		pnm.pc.gid2obj(cellID(ID_GPe, i)).soma biasGPe[i].loc(.5)
+
+	}
+}
+
+
+
+//-----------------------------------------
+// connections to GPi
+
+for i=0,numGPi-1 {
+	if (pnm.gid_exists(cellID(ID_GPi, i))) {
+		biasGPi[i] = new IClamp()
+		pnm.pc.gid2obj(cellID(ID_GPi, i)).soma biasGPi[i].loc(.5)
+	}
+}
+
+
+
+}
+
+
+
+
+
+
+//----------------------------------------------------------------------------
+proc BIAupdateWeights() { local i
+
+//-----------------------------------------
+// connections to STN
+
+for i=0,numSTN-1 {
+	if (pnm.gid_exists(cellID(ID_STN, i))) {
+		biasSTN[i].del = 0
+		biasSTN[i].dur = 1e9	
+		biasSTN[i].amp = iBiasSTN
+	}
+}
+
+
+
+//-----------------------------------------
+// connections to GPe
+
+for i=0,numGPe-1 {
+	if (pnm.gid_exists(cellID(ID_GPe, i))) {
+		biasGPe[i].del = 0
+		biasGPe[i].dur = 1e9	
+		biasGPe[i].amp = iBiasGPe
+	}
+}
+
+
+
+//-----------------------------------------
+// connections to GPi
+
+for i=0,numGPi-1 {
+	if (pnm.gid_exists(cellID(ID_GPi, i))) {
+		biasGPi[i].del = 0
+		biasGPi[i].dur = 1e9	
+		biasGPi[i].amp = iBiasGPi
+	}
+}
+
+}
+
+
+
+//----------------------------------------------------------------------------
+// Call setup functions when .hoc file is loaded
+//----------------------------------------------------------------------------
+
+BIAconnectNet()
+BIAupdateWeights()
+
+
+
+//----------------------------------------------------------------------------
+// Dialog to update parameter values
+//----------------------------------------------------------------------------
+
+

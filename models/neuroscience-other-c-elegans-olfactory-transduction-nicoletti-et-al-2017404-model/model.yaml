@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: CElegansOlfactoryTransductionNicolettiEtAl2017404Model'
+description: '{"value": "The existing electrical and intracellular calcium dynamics
+  models are here combined into a comprehensive biophysically accurate description
+  of olfactory transduction in AWCON neurons. The i'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:2017404
+  source_db: modeldb
+  source_id: '2017404'
+  standard: other
+  original_url: https://modeldb.science/2017404
+  download_url: https://modeldb.science/download/2017404
+  license: ''
+bsim:
+  entrypoint: src.c_elegans_olfactory_transduction_nicoletti_et_al_2017404_model:CElegansOlfactoryTransductionNicolettiEtAl2017404Model
+  init_kwargs:
+    model_path: data/2017404.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

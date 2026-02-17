@@ -1,0 +1,29 @@
+// makes a gap junction between 2 axonal compartments
+// $o1 - cell[1], 
+// $2 - section index in cell[1].axon[]
+// $o3 - cell[2], 
+// $4 - section index in cell[2].axon[]
+// $5 - gj conductance
+// $6, $7 - position within section1, section2
+begintemplate gapjunction
+      public g
+	  public setg, setcells, cell1, cell2
+      objref con1, con2
+      proc init() {
+        objref con1, con2
+        $o1.axon[$2] con1 = new Gap($6)
+        $o3.axon[$4] con2 = new Gap($7)
+        setpointer con1.vgap, $o3.axon[$4].v($7)
+        setpointer con2.vgap, $o1.axon[$2].v($6)
+		con1.g = $5
+		con2.g = $5
+      }
+	 proc setg() { // change the gj conductance externally
+        con1.g = $1
+        con2.g = $1
+      }
+	  proc setcells(){ //IDs of cells that are coupled
+	    cell1=$1
+		cell2=$2
+	  }
+endtemplate gapjunction

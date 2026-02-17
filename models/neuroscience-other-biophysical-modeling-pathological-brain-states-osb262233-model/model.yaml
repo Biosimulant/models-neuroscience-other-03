@@ -1,0 +1,33 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model262233262233Model'
+description: Biophysical modeling of pathological brain states (Sudhakar et al 2019)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:262233
+  source_db: opensourcebrain
+  source_id: '262233'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/262233
+  download_url: https://github.com/OpenSourceBrain/262233.git
+  license: ''
+bsim:
+  entrypoint: src.model_262233_262233_model:Model262233262233Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

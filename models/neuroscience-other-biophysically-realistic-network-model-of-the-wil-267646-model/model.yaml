@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: BiophysicallyRealisticNetworkModelOfTheWil267646Model'
+description: '{"value": "Please read the readme.txt file before running any code.\r\n\r\nObjective:
+  A major reason for poor visual outcomes provided by existing retinal prostheses
+  is the limited knowledge of the im'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:267646
+  source_db: modeldb
+  source_id: '267646'
+  standard: other
+  original_url: https://modeldb.science/267646
+  download_url: https://modeldb.science/download/267646
+  license: ''
+bsim:
+  entrypoint: src.biophysically_realistic_network_model_of_the_wil_267646_model:BiophysicallyRealisticNetworkModelOfTheWil267646Model
+  init_kwargs:
+    model_path: data/267646.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

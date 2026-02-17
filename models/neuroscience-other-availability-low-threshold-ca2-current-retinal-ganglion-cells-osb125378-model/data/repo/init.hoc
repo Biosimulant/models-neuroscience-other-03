@@ -1,0 +1,33 @@
+load_file("cell.hoc")
+load_file("fig8b_setupgraph.ses")
+
+xpanel("Figure 8B")
+  xlabel("Press the below button to reproduce the simulation")
+  xlabel("traces shown in Lee et al. 2003 figure 8B")
+  xbutton("Start","fig8b()")
+xpanel()
+
+objref g
+
+proc fig8b() {
+  graph_stagger = 2.5e-4 // used to stagger voltage traces
+  Graph[0].exec_menu("Erase")
+  Graph[0].exec_menu("Keep Lines")
+  for i=0,5 {
+    seclamp.amp2=-62+i*5
+    init()
+    run()
+    i_traces[i]=i_vec.c.sub(i*graph_stagger)
+    i_vec.resize(0)
+  }
+  Graph[0].exec_menu("View = plot")
+  g = new Graph()
+  g.exec_menu("Keep Lines")
+  for i=0,5 {
+    i_traces[i].line(g,t_vec)
+  }
+  g.exec_menu("View = plot")
+  g.unmap()
+  g.view(0, -0.0021, 120, 0.0021, 437, 68, 289.92, 688)
+  g.label(0.6,.2,"Figure 8B")
+}

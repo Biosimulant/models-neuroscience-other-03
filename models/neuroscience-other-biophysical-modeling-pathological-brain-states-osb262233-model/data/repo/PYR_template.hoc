@@ -1,0 +1,226 @@
+
+
+begintemplate PYR_template
+public init, topol, basic_shape, subsets, geom, biophys
+public synlist, x, y, z, position, connect2target
+public ampa,nmda,gabaa,gabab,gabaaf,gababf,gabaad,gababd
+
+public soma, dend
+public all, somatic, dendritic, apical, basal, dend0, dend1
+public dend2, dend3, dend4, dend5, dend6 
+public pre, ampa, gabaa, gabab, nmda
+public gbar_ar, gbar_cat,voltagem,spiketimes,tonicg,vec_ek,vec_ec,vec_evm,vec_gab,tonicg,GABA,AMPA,Currentclamp
+
+objref synlist,voltagem,spiketimes,spikecount,Currentclamp,vec,tvec,vec_ek,vec_ec,vec_evm,vec_gab,GABA,AMPA
+
+proc init() {
+  
+  topol()
+  subsets()
+  geom()
+  biophys()
+  geom_nseg()
+  Currentinjection()
+  recordvec()
+  synlist = new List()
+  //synapses()
+  x = y = z = 0 // only change via position
+}
+
+create soma, dend[7]
+
+proc topol() { local i
+  connect dend(0), soma(1)
+  for i = 1, 2 connect dend[i](0), dend(1)
+  connect dend[3](0), dend[2](1)
+  connect dend[4](0), soma(0) 
+  for i = 5, 6 connect dend[i](0), dend[4](1)
+  basic_shape()
+}
+proc basic_shape() {
+  soma {pt3dclear() pt3dadd(-50, 765, 0, 1) pt3dadd(-50, 778, 0, 1)}
+  dend {pt3dclear() pt3dadd(-50, 778, 0, 1) pt3dadd(-50, 813, 0, 1)}
+  dend[1] {pt3dclear() pt3dadd(-50, 813, 0, 1) pt3dadd(-250, 813, 0, 1)}
+  dend[2] {pt3dclear() pt3dadd(-50, 813, 0, 1) pt3dadd(-50, 993, 0, 1)}
+  dend[3] {pt3dclear() pt3dadd(-50, 993, 0, 1) pt3dadd(-50, 1133, 0, 1)}
+  dend[4] {pt3dclear() pt3dadd(-50, 765, 0, 1) pt3dadd(-50, 715, 0, 1)}
+  dend[5] {pt3dclear() pt3dadd(-50, 715, 0, 1) pt3dadd(-156, 609, 0, 1)}
+  dend[6] {pt3dclear() pt3dadd(-50, 715, 0, 1) pt3dadd(56, 609, 0, 1)}
+}
+
+objref all, somatic, dendritic, apical, basal, dend0, dend1, tonicg
+objref dend2, dend3, dend4, dend5, dend6
+proc subsets() { local i
+  objref all, somatic, dendritic, apical, basal, dend0, dend1
+  objref dend2, dend3, dend4, dend5, dend6
+  all = new SectionList()
+    soma all.append()	
+    for i=0, 6 dend[i] all.append()
+
+  somatic = new SectionList()
+    soma somatic.append()
+
+  dendritic = new SectionList()
+    for i=0, 6 dend[i] dendritic.append()
+
+  apical = new SectionList()
+    for i=0, 3 dend[i] apical.append()
+
+  basal = new SectionList()
+    for i=4, 6 dend[i] basal.append()
+
+  dend0 = new SectionList()
+    dend dend0.append()
+
+  dend1 = new SectionList()
+    dend[1] dend1.append()
+
+  dend2 = new SectionList()
+    dend[2] dend2.append()
+
+  dend3 = new SectionList()
+    dend[3] dend3.append()
+
+  dend4 = new SectionList()
+    dend[4] dend4.append()
+
+  dend5 = new SectionList()
+    dend[5] dend5.append()
+
+  dend6 = new SectionList()
+    dend[6] dend6.append()
+
+}
+
+proc geom() {
+  forsec all {  }
+   soma.L = 13
+   dend.L = 35
+   dend[1].L = 200
+   dend[2].L = 180
+   dend[3].L = 140
+   dend[4].L = 50
+   dend[5].L = 150
+   dend[6].L = 150
+   
+    soma.diam = 15.6
+    dend.diam = 2.5
+    dend[1].diam = 2.3
+    dend[2].diam = 2.4
+    dend[3].diam = 2
+    dend[4].diam = 2.5
+    dend[5].diam = 1.6
+    dend[6].diam = 1.6
+}
+
+
+proc geom_nseg() {
+  soma area(.5) // make sure diam reflects 3d points
+forsec all { if (L < 250) {nseg=1} else {nseg=int(L/50)} } //change to 50 for making vector play work
+}
+proc biophys() {
+ forsec all {
+  
+
+  
+	insert pas
+	insert kdrs1 
+	insert nas_rs
+
+celsius = 30
+Ra = 200
+cm = 1
+g_pas=.00004 //0.00004
+
+
+Koutside= 3.5 //mM control 5 3.5 
+Kinside=140 //mM control 160 140
+Naoutside= 140 //mM //140
+Nainside=20 //mM
+Cloutside=110 //mM 120 120
+Clinside=6 //mM control 3 4
+R= 8.314 //J.K-1.mol-1
+T=celsius+273.15 //Kelvin
+F=96485 //C.mol-1
+pCl = 0.45 //cl relative permeability 0.45
+pNa = 0.04 //na relative permeability 0.05
+pK=1//relative K permeabiltiy
+Vrest = (R*T/F) * log(((pK*Koutside)+(pNa*Naoutside)+(pCl*Clinside))/((pK*Kinside)+(pNa*Nainside)+(pCl*Cloutside)))
+Vrest = int(Vrest*1000)
+ek = (R*T/F) * log(Koutside/Kinside)
+ek = int(ek*1000)
+ena = (R*T/F) * log(Naoutside/Nainside)
+ena = int(ena*1000)
+ecl1 = (R*T/-F) * log(Cloutside/Clinside)
+ecl1 = int(ecl1*1000)
+
+e_pas = Vrest
+printf("\nThe Resting membrane potential of FS neuron is = %f mV",e_pas)
+printf("\nThe Potassium Nernst potential is = %f mV",ek)
+printf("\nThe Sodium Nernst potential is = %f mV",ena)
+printf("\nThe Chloride Nernst potential is = %f mV",ecl1)
+
+
+}
+
+
+
+forsec somatic {
+
+gna_nas_rs = 0.45  
+gkdr_kdrs1 = 0.1 
+
+
+}
+
+forsec dendritic {
+
+gna_nas_rs  =  0.1125   
+gkdr_kdrs1 =  0.03  
+
+
+
+	} 
+
+ }  //end proc biophysics 
+
+
+proc position() { local i
+  soma for i = 0, n3d()-1 {
+    pt3dchange(i, $1-x+x3d(i), $2-y+y3d(i), $3-z+z3d(i), diam3d(i))
+  }
+  x = $1  y = $2  z = $3
+}
+proc connect2target() { //$o1 target point process, $o2 returned NetCon
+  soma $o2 = new NetCon(&v(1), $o1)
+}
+
+proc Currentinjection() {
+
+soma Currentclamp= new IClamp(0.5)
+Currentclamp.dur = 2000
+Currentclamp.amp = 0
+Currentclamp.del = 0
+
+
+}
+
+proc recordvec() {
+soma spikecount=new APCount(0.5)
+spikecount.thresh=0
+spiketimes=new Vector()
+
+
+spikecount.record(spiketimes)
+
+
+voltagem=new Vector()
+voltagem.record(&soma.v(0.5))
+
+}
+
+
+
+func is_art() { return 0 }
+
+endtemplate PYR_template

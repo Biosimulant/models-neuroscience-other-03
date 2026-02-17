@@ -1,0 +1,33 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model184148184148Model'
+description: 'Allen Institute: Nr5a1-Cre VISp layer 4 329322394'
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:184148
+  source_db: opensourcebrain
+  source_id: '184148'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/184148
+  download_url: https://github.com/OpenSourceBrain/184148.git
+  license: ''
+bsim:
+  entrypoint: src.model_184148_184148_model:Model184148184148Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

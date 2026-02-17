@@ -1,0 +1,104 @@
+/* ----------------------------------------------------------------
+   
+   Script to reproduce Figures 2 and 3 from:
+   
+   M. Badoual, Q. Zou, A.P. Davison, M. Rudolph, T. Bal,
+   Y. Frégnac and A. Destexhe (2006) Biophysical and phenomenological
+   models of multiple spike interactions in spike-timing dependent
+   plasticity.
+   Int J. Neural Syst. 16: 79-97
+      
+   Authors: Mathilde Badoual and Andrew Davison
+  
+---------------------------------------------------------------- */
+
+xopen("cell.hoc")
+
+proc init() {
+    finitialize(v_init)
+    fcurrent()
+    tmpdt = dt
+    t = -1000 // ms 
+    dt = 1    // ms 
+    while (t < 0) {
+            fadvance()
+            cadend_cadspine=dendrite.cai
+    }
+    dt = tmpdt
+    lneck_cadspine = neck.L
+    sneck_cadspine = pi*neck.diam*neck.diam/4
+    vspine_cadspine = pi*spine.diam*spine.diam*spine.diam/6
+    access spine
+    onset_NMDAKIT = ampasyn.onset
+    period_NMDAKIT = ampasyn.periodpre
+    nbre_NMDAKIT = ampasyn.nbrepre
+    st.del = ampasyn.onset+ampasyn.delta
+    access spine
+    jpost = 1
+    kin.trans = ampasyn.C
+    ltp = 0.0
+    ltd = 0.0
+    ltpint = 0.0
+    ltdint = 0.0
+    maxltp = 0.0
+    maxltd = 0.0
+    kin.n = 0
+    kin.h = 0
+    kin.m = 0
+    kin.nbegin = 1
+    kin.mbegin = 1
+    kin.hbegin = 1
+}
+
+proc advance() {
+    fadvance()
+    kin.trans=ampasyn.C
+    cadend_cadspine=dendrite.cai
+
+    ltp=kin.n
+    ltpint=ltpint+ltp*dt
+    ltd=kin.m * kin.h
+
+    ltdint=ltdint+ltd*dt
+    if (ltp>maxltp) {maxltp=ltp}
+    if (ltd>maxltd) {maxltd=ltd}
+    if (jpost<ampasyn.nbrepost) {
+      if ((t>st.del+ampasyn.periodpost-1.5*dt) && (t<st.del+ampasyn.periodpost-0.5*dt)) {
+        st.del=st.del+ampasyn.periodpost
+        jpost=jpost+1
+      }
+    }
+}
+
+xopen("graphs.hoc")
+
+proc set_parameters_for_Figs2and3() {
+    tstop = 500
+    ampasyn.onset = 150
+    ampasyn.delta = -100
+    ampasyn.periodpre = 25
+    ampasyn.periodpost = 20
+    ampasyn.nbrepre = 1
+    ampasyn.nbrepost = 1
+    ampasyn.tau0 = 0.34
+    ampasyn.tau1 = 2
+    ampasyn.gmax = 0.0005
+    spine {
+        onset_NMDAKIT = 150
+        period_NMDAKIT = 25
+        nbre_NMDAKIT = 1
+        tau0_NMDAKIT = 2
+        tau1_NMDAKIT = 80
+        cao_NMDAKIT = 1.5
+        gmax_NMDAKIT = 0.04
+    }
+    kin.an = 3e9
+    kin.bn = 1
+    kin.am = 200
+    kin.bm = 0.1
+    kin.ah = 1
+    kin.bh = 0.4
+    D_cadspine = 0 
+}
+
+set_parameters_for_Figs2and3()

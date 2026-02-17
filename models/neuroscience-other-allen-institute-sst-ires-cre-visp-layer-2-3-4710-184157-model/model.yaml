@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AllenInstituteSstIresCreVispLayer234710184157Model'
+description: '{"value": "This is an Allen Cell Types Database model of a Sst-IRES-Cre
+  neuron from layer 2/3 of the mouse primary visual cortex. The model was based on
+  a traced morphology after filling the cell with'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:184157
+  source_db: modeldb
+  source_id: '184157'
+  standard: other
+  original_url: https://modeldb.science/184157
+  download_url: https://modeldb.science/download/184157
+  license: ''
+bsim:
+  entrypoint: src.allen_institute_sst_ires_cre_visp_layer_2_3_4710_184157_model:AllenInstituteSstIresCreVispLayer234710184157Model
+  init_kwargs:
+    model_path: data/184157.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

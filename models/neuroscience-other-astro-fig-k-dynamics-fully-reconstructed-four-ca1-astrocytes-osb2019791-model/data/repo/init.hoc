@@ -1,0 +1,26 @@
+
+if (unix_mac_pc() == 1) {
+    load_file("stdrun.hoc")
+}
+
+if (!nrnpython("")) {
+    execerror("\n\n    Sorry, this simulation requires a Python distribution to be installed first. Anaconda is recommended:\n    https://www.anaconda.com/download\n")
+}
+
+objref pyObj
+pyObj = new PythonObject()
+
+{ load_file("_Code/LoadGeometryAndIdentifySoma.hoc") }
+{ load_file("_Code/AddBiophysics.hoc") }
+
+{ load_file("_Code/UtilsAndHelpers/AllLoads.hoc") }
+{ load_file("_Code/ProcAdvance.hoc") }
+{ load_file("_Code/TheWidget.hoc") }
+
+v_init = -83.7        // mV
+tstop = 10000         // ms
+dt = 10              // ms
+steps_per_ms = 0.1
+showRunControlPanel()
+
+createClampInitParamsAndShowGUI()

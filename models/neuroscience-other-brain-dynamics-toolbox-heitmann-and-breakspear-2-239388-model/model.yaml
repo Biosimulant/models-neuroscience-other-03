@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: BrainDynamicsToolboxHeitmannAndBreakspear2239388Model'
+description: '{"value": "\"The Brain Dynamics Toolbox is open-source software for
+  simulating dynamical systems in neuroscience. It is for researchers and students
+  who wish to explore mathematical models of brain fu'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:239388
+  source_db: modeldb
+  source_id: '239388'
+  standard: other
+  original_url: https://modeldb.science/239388
+  download_url: https://modeldb.science/download/239388
+  license: ''
+bsim:
+  entrypoint: src.brain_dynamics_toolbox_heitmann_and_breakspear_2_239388_model:BrainDynamicsToolboxHeitmannAndBreakspear2239388Model
+  init_kwargs:
+    model_path: data/239388.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

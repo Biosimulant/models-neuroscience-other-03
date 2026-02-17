@@ -1,0 +1,205 @@
+
+//parameters
+/*****************************************************************************/
+probrel=0.15  //set 0.15 to simulate ctrl condition, 0.36 Abeta condition
+nSyn = 10       //number of synapses. Each 'synapse' represents a population of synapses
+
+nStim=5         //number of stimuli
+t0=500          //(ms) stimulation start
+
+ISI=10  // (ms) initialize inter-stimulus interval
+
+VCLAMP = 1    //set 1 to simulate voltage clamp, 0 otherwise
+PRINTRATIO = 1    //set 1 to calculate and print relative peaks,
+                  //0 absolute peaks  
+
+
+//random number to make the simulation asynchronous
+objref randelay
+randelay = new Random()
+maxDelay = 0    //(ms) set maximum delay
+randelay.uniform(0,maxDelay)
+
+/*****************************************************************************/
+
+//load basic model
+
+xopen("./loadBasicModel.hoc")
+
+
+//place synapses
+/*****************************************************************************/
+
+
+objref dend[200], nstim[nSyn], syn[nSyn], netcon[nSyn]
+
+index = 0
+
+//forsec apical_non_trunk_list {
+forsec apical_trunk_list {
+	dend[index] = new SectionRef()
+	index += 1
+}
+
+nSec = index	//number of objects in the list
+
+min_distance = 100	//um
+max_distance = 400	//um
+
+//random number used for locating synapses
+objref ransec, ranseg
+ransec = new Random()
+ransec.uniform(0,nSec-1)	//generate distribution for selecting sections
+ranseg = new Random()
+
+//random number used for synaptic weights
+objref ranwei
+ranwei = new Random()
+ranwei.lognormal(1.6,1)
+//x0=5, mu=1.6, sigma=1 -> fitting data by Ito & Schuman
+
+
+//allocate synapses randomly on different apical dendrites (no repetitions) and connect them with presynaptic mechanism
+for i = 0, nSyn-1 {
+	nstim[i] = new NetStim(0.5)
+}
+
+
+
+/*****************************************************************************/
+
+
+//set experimental condition
+dt=0.1
+steps_per_ms=10
+setdt()
+
+
+//procedures for stimulation
+/*****************************************************************************/
+
+//Insert a voltage clamp electrode
+objref vclamp
+soma vclamp = new VClamp(0.5)
+vclamp.dur[0] = 0
+vclamp.amp[0] = -70
+
+proc setVClamp() {
+	VCLAMP = 1
+	vclamp.dur[0] = $1
+}
+
+
+//check peaks
+/*****************************************************************************/
+
+
+
+//create vector and file
+objref vec
+vec = new Vector()
+
+
+double start[nStim], end[nStim], baseline[nStim], maxvalue[nStim], peak[nStim], ratio[nStim]
+
+
+//procedure to measure peaks
+proc calculateRatios() {
+
+	//calculate the first start and end
+	start[0] = t0/0.1										//index = time(ms)/dt
+	end[0] = start[0] + ISI/0.1
+
+	//calculate the ratios
+	for (j = 0; j <= nStim-1; j += 1) {
+
+		//calculate the n-th peak (where n = j+1 = nStim)
+		start[j] = start[0] + j*ISI/0.1		//(startpoint + stimulusNumber*ISI)/0.1
+		
+    if (j == nStim-1) {
+			end[j] = tstop/0.1
+		} else {
+			end[j] = start[j] + ISI/0.1
+		}
+
+    if (VCLAMP == 1) {  //for vclamp.i use vec.max; for soma.v use vec.min
+      baseline[j] = vec.max(int(start[j]-ISI/0.2),int(start[j]+ISI/0.2))
+    } else {
+      baseline[j] = vec.min(int(start[j]-ISI/0.2),int(start[j]+ISI/0.2))
+    }				
+
+    if (VCLAMP == 1) {  //for vclamp.i use vec.min; for soma.v use vec.max
+		  maxvalue[j] = vec.min(int(start[j]),int(end[j]))			
+    } else {
+      maxvalue[j] = vec.max(int(start[j]),int(end[j]))
+    }
+    
+		peak[j] = maxvalue[j] - baseline[j]
+
+		//calculate the n-th ratio
+		ratio[j] = peak[j]/peak[0]
+	}
+}
+
+//Stimulate with n stimuli, having a certain inter-stimulus interval (ISI)
+proc stimulation() { //ISI, nStim
+
+	for i=0, nSyn-1 {
+		nstim[i].number = nStim
+		nstim[i].interval = ISI
+		nstim[i].start = t0 + randelay.repick()
+		nstim[i].noise = 0
+	}
+
+}
+
+
+ 
+
+
+/****************************************************************************************/
+
+//stimulation frequency between 5 to 200 Hz
+objref nfreq
+nfreq = new Vector(7)
+
+nfreq.x[0] = 5
+nfreq.x[1] = 10
+nfreq.x[2] = 40
+nfreq.x[3] = 80
+nfreq.x[4] = 100
+nfreq.x[5] = 150
+nfreq.x[6] = 200
+
+
+//main procedure
+
+load_file("session.ses")
+
+
+proc synup(){
+ for i = 0, nSyn-1 {
+         syn[i].U=$1
+}
+}
+
+xpanel(" ")
+xvalue("U","probrel")
+xvalue("t","t", 2 )
+xbutton("Stop","stoprun=1")
+xbutton("Run","plasticity()")
+xpanel()
+
+  
+proc plasticity(){
+       m=4
+  	ISI=1000/nfreq.x[m]
+  	tstop = t0 + (nStim-1)*ISI + 150	
+      setVClamp(tstop)
+      xopen("./createNewSyn4.hoc")
+      synup(probrel)      
+      stimulation()
+      vec.record(&vclamp.i)
+      run() 
+	 calculateRatios()
+}

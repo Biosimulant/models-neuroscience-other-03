@@ -1,0 +1,33 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model184184184184Model'
+description: 'Allen Institute: Htr3a-Cre VISp layer 2/3 472352327'
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:184184
+  source_db: opensourcebrain
+  source_id: '184184'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/184184
+  download_url: https://github.com/OpenSourceBrain/184184.git
+  license: ''
+bsim:
+  entrypoint: src.model_184184_184184_model:Model184184184184Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

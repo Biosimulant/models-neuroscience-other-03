@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: AxonalEctopicBurstInducedByRepetitiveStimu2018003Model'
+description: '{"value": "Simulation of ectopic burst firings from distal axons induced
+  by repetitive stimuli of the hippocampal mossy fibers.", "attr_id": 24}'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:2018003
+  source_db: modeldb
+  source_id: '2018003'
+  standard: other
+  original_url: https://modeldb.science/2018003
+  download_url: https://modeldb.science/download/2018003
+  license: ''
+bsim:
+  entrypoint: src.axonal_ectopic_burst_induced_by_repetitive_stimu_2018003_model:AxonalEctopicBurstInducedByRepetitiveStimu2018003Model
+  init_kwargs:
+    model_path: data/2018003.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

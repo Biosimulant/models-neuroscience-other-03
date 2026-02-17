@@ -1,0 +1,14 @@
+* E:\KP\CARDIAC_PARALLEL\PARB.stl written on Fri Nov 22 13:17:56 2002
+* by Stimulus Editor -- Serial Number: 1107000750 -- Version 9.2
+;!Stimulus Get
+;! Istim Analog cell Analog
+;!Ok
+;!Plot Axis_Settings
+;!Xrange 0s 16s
+;!Yrange 0 3n
+;!AutoUniverse
+;!XminRes 1ns
+;!YminRes 1n
+;!Ok
+.STIMULUS Istim PULSE( 0 3n 0 1p 1p 500u 5s )
+.STIMULUS cell PULSE( 0 500p 0 1p 1p 500u 100m )

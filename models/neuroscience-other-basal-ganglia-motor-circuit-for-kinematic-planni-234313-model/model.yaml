@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: BasalGangliaMotorCircuitForKinematicPlanni234313Model'
+description: '{"value": "A mathematical model of BG for kinematic planning.", "attr_id":
+  24}'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:234313
+  source_db: modeldb
+  source_id: '234313'
+  standard: other
+  original_url: https://modeldb.science/234313
+  download_url: https://modeldb.science/download/234313
+  license: ''
+bsim:
+  entrypoint: src.basal_ganglia_motor_circuit_for_kinematic_planni_234313_model:BasalGangliaMotorCircuitForKinematicPlanni234313Model
+  init_kwargs:
+    model_path: data/234313.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

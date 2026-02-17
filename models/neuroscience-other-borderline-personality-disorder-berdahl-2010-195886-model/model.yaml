@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: BorderlinePersonalityDisorderBerdahl2010195886Model'
+description: '{"value": "This research developed a neural network simulation constrained
+  by known neuroanatomy and neurophysiology to generate ideas about the etiology of
+  Borderline Personality Disorder. The simula'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:195886
+  source_db: modeldb
+  source_id: '195886'
+  standard: other
+  original_url: https://modeldb.science/195886
+  download_url: https://modeldb.science/download/195886
+  license: ''
+bsim:
+  entrypoint: src.borderline_personality_disorder_berdahl_2010_195886_model:BorderlinePersonalityDisorderBerdahl2010195886Model
+  init_kwargs:
+    model_path: data/195886.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

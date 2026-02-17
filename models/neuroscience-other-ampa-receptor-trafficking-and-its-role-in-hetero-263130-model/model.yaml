@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AmpaReceptorTraffickingAndItsRoleInHetero263130Model'
+description: '{"value": "\"... cumulative experimental and theoretical data have\r\ndemonstrated
+  that long-term potentiation (LTP) and long-term\r\ndepression (LTD) can promote
+  compensatory alterations in\r\nnon-st'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:263130
+  source_db: modeldb
+  source_id: '263130'
+  standard: other
+  original_url: https://modeldb.science/263130
+  download_url: https://modeldb.science/download/263130
+  license: ''
+bsim:
+  entrypoint: src.ampa_receptor_trafficking_and_its_role_in_hetero_263130_model:AmpaReceptorTraffickingAndItsRoleInHetero263130Model
+  init_kwargs:
+    model_path: data/263130.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

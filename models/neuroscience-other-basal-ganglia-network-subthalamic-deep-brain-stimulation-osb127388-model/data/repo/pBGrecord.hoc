@@ -1,0 +1,58 @@
+//----------------------------------------------------------------------------
+// Initialize global variables
+//----------------------------------------------------------------------------
+
+objref timesDBSGPi[numGPi], ncadGPiTha[numGPi], nil
+
+for i=0,numGPi-1 {
+	timesDBSGPi[i] = new Vector()
+}
+
+
+
+//----------------------------------------------------------------------------
+// Functions to set up network from current value of global variables
+//----------------------------------------------------------------------------
+
+proc RECconnectNet() {
+
+for i=0,numGPi-1 {
+	if (pnm.gid_exists(cellID(ID_GPi,i))) {
+		ncadGPiTha[i] = new NetCon(adGPiTha[i], nil)
+		ncadGPiTha[i].record(timesDBSGPi[i])
+	}
+}
+
+}
+
+
+
+proc RECupdateWeights() {
+
+for i=0,numGPi-1 {
+	if (pnm.gid_exists(cellID(ID_GPi,i))) {
+		ncadGPiTha[i].weight = 0
+		ncadGPiTha[i].delay = 0
+	}
+}
+
+
+}
+
+
+
+//----------------------------------------------------------------------------
+// Call setup functions when .hoc file is loaded
+//----------------------------------------------------------------------------
+
+
+RECconnectNet()
+RECupdateWeights()
+
+
+
+//----------------------------------------------------------------------------
+// Dialog to update parameter values
+//----------------------------------------------------------------------------
+
+

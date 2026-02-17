@@ -1,0 +1,33 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model188977188977Model'
+description: CA1 pyramidal cells, basket cells, ripples (Malerba et al 2016)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:188977
+  source_db: opensourcebrain
+  source_id: '188977'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/188977
+  download_url: https://github.com/OpenSourceBrain/188977.git
+  license: ''
+bsim:
+  entrypoint: src.model_188977_188977_model:Model188977188977Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

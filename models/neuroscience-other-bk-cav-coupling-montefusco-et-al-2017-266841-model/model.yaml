@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: BkCavCouplingMontefuscoEtAl2017266841Model'
+description: '{"value": "An implementation of coupling between BK_Ca channels and
+  CaV channels suitable for use in whole cell models.", "attr_id": 24}'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:266841
+  source_db: modeldb
+  source_id: '266841'
+  standard: other
+  original_url: https://modeldb.science/266841
+  download_url: https://modeldb.science/download/266841
+  license: ''
+bsim:
+  entrypoint: src.bk_cav_coupling_montefusco_et_al_2017_266841_model:BkCavCouplingMontefuscoEtAl2017266841Model
+  init_kwargs:
+    model_path: data/266841.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

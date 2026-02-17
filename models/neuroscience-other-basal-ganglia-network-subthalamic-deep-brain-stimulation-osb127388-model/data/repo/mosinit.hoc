@@ -1,0 +1,37 @@
+// mosinit.hoc
+// created for auto-launch from modeldb by modeldb administrators 20100624-25
+// Note that this file, init.hoc, simulation_run.hoc, spkplt2.hoc, and
+// pBGLaunchNoQuit.000 were derived from the original model files provided
+// by P. Hahn (the other files in this collection not named above)
+
+load_file("nrngui.hoc")
+
+load_file("init.hoc")
+
+xpanel("start parallel network version")
+  xlabel("Below creates graphs similar to Fig. 6b1, Fig. 8b")
+  xbutton("Start","run_sim()")
+xpanel()
+
+objref vbox, fig6b1, fig8b
+
+proc run_sim() {
+  load_file("simulation_run.hoc")
+  load_file("spkplt2.hoc")
+  vbox= new VBox()
+    vbox.intercept(1)
+     xpanel("Fig 6b1")
+     xlabel("Graph similar to Fig 6 b1:")
+     xpanel()
+     fig6b1= new Graph()
+     spkplt2("spikes000.txt",fig6b1)
+     fig6b1.size(-10, 1000, -4, 50)
+     xpanel("Fig 8b")
+     xlabel("Graph similar to Fig 8 b:")
+     xpanel()
+     fig8b= new Graph()
+     spkplt2("spikes001.txt",fig8b)
+     fig8b.size(-10, 1000, -4, 50)
+   vbox.intercept(0)
+  vbox.map()
+}

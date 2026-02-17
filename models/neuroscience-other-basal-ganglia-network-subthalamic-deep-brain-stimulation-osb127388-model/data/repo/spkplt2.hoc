@@ -1,0 +1,51 @@
+// spkplt2.hoc modified from spkplt.hoc from Traub et al. 2005 NEURON model
+// Tom Morse 
+load_file("nrngui.hoc")
+
+objref grspk
+
+// set sizes so can run without main program
+proc setVars() {
+  numSTN=10
+  numGPe=30
+  numGPi=10
+}
+
+// pass the below the data file name as a string as the first argument
+// and the graph object as the second argument
+
+proc spkplt2() {local i, color localobj x1, y1, x2, y2, x3, y3
+	clipboard_retrieve($s1)
+	printf("read %d spikes\n", hoc_obj_[1].size)
+	x1= new Vector()
+	y1= new Vector()
+	x2= new Vector()
+	y2= new Vector()
+	x3= new Vector()
+	y3= new Vector()
+	color=1
+	for i=0, hoc_obj_[1].size()-1 {
+	  if ((hoc_obj_[0].x[i] >= numGPi) && (hoc_obj_[0].x[i] < numGPi+numGPe)) {
+	    x2.append(hoc_obj_[1].x[i])
+	    y2.append(hoc_obj_[0].x[i])
+	  } else if (hoc_obj_[0].x[i] >= numGPi+numGPe) {
+	    x3.append(hoc_obj_[1].x[i])
+	    y3.append(hoc_obj_[0].x[i])
+	  } else {
+	    x1.append(hoc_obj_[1].x[i])
+	    y1.append(hoc_obj_[0].x[i])
+	  }
+	}
+	$o2.size(x1.min, x3.max, y1.min, y3.max)
+
+	y1.mark($o2, x1, "|", 5, 3, 4)
+	y2.mark($o2, x2, "|", 5, 4, 4)
+	y3.mark($o2, x3, "|", 5, 2, 4)
+}
+
+// sample use : spkplt2("../p2c/data/out.dat")
+// use if want to run without main program (just use data files): setVars()
+// normal use
+// grspk = new Graph()
+// spkplt2("spikes000.txt", grspk)
+

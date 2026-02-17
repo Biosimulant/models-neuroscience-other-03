@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AveNeuronModelForSlowWaveSleepInCortexT264519Model'
+description: '{"value": "Averaged neuron(AN) model is a conductance-based (Hodgkin-Huxley
+  type) neuron model which includes a mean-field approximation of a population of
+  neurons. You can simulate previous models (A'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:264519
+  source_db: modeldb
+  source_id: '264519'
+  standard: other
+  original_url: https://modeldb.science/264519
+  download_url: https://modeldb.science/download/264519
+  license: ''
+bsim:
+  entrypoint: src.ave_neuron_model_for_slow_wave_sleep_in_cortex_t_264519_model:AveNeuronModelForSlowWaveSleepInCortexT264519Model
+  init_kwargs:
+    model_path: data/264519.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

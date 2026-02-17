@@ -1,0 +1,114 @@
+/*----------------------------------------------------------------------------
+
+	SIMULATIONS OF INTERCONNECTED STN, GPe & GPi - Parallel network version
+	=============================================
+
+----------------------------------------------------------------------------*/
+
+
+//----------------------------------------------------------------------------
+
+load_file("nrngui.hoc")
+
+create acell_home_
+access acell_home_
+
+celsius=33
+dt=0.05
+steps_per_ms=20
+tstop=10000
+v_init=-58
+
+
+
+//----------------------------------------------------------------------------
+
+objref pnm
+
+load_file("pBGconst.hoc")
+
+readParms("pPARrun.txt")
+
+load_file("netparmpi.hoc")
+
+pnm = new ParallelNetManager(ncell)
+
+
+
+//----------------------------------------------------------------------------
+
+objref rf
+
+if (pnm.pc.id() == 0) {
+	rf = new File("randseed.txt")
+	rf.ropen()
+	seedVal = rf.scanvar()
+	rf.close()
+
+	// master sends seed to workers
+
+	pnm.pc.post("seed", seedVal)
+
+} else {
+
+	// workers receive seed from master
+
+	ret = 0
+	while (ret == 0) {
+		if (ret = pnm.pc.look("seed")) {
+			seedVal = pnm.pc.upkscalar()
+		}
+	}
+}
+
+
+
+
+//----------------------------------------------------------------------------
+
+xopen("pSTN.tem")
+xopen("pGPeA.tem")
+xopen("pGPi.tem")
+
+allocCells()
+
+
+
+
+//----------------------------------------------------------------------------
+
+load_file("pBGbias.hoc")		// add bias currents to set resting frequencies
+load_file("pBGconnect1.hoc")		// network make connections
+load_file("pBGinput.hoc")		// cortical and striatal inputs
+load_file("pBGstim.hoc")		// stimulate
+load_file("pBGrecord.hoc")		// record supplemental info (spike times recorded by pnm)
+
+load_file("pBGutil.hoc")
+
+
+//----------------------------------------------------------------------------
+
+
+randomize(seedVal)
+
+//pnm.set_maxstep(10) // will end up being minimum synaptic delay
+
+pnm.want_all_spikes()
+
+//xopen("parBGnet.ses")
+
+//stdinit()
+//runtime = startsw()
+//pnm.psolve(tstop)
+//runtime = startsw() - runtime
+
+//load_file("pBGtrainUtil2.hoc")
+load_file("pBGconfData.hoc")
+
+
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+//	END OF COMMON CODE (that is run by all worker processes)
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+

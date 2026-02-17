@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: BiophysicalModelOfL5PyramidalNeuronHeadley2019883Model'
+description: '{"value": "Pyramidal neurons form dense recurrently connected networks
+  with multiple types of inhibitory interneurons. A major differentiator between interneuron
+  subtypes is whether they synapse onto '
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:2019883
+  source_db: modeldb
+  source_id: '2019883'
+  standard: other
+  original_url: https://modeldb.science/2019883
+  download_url: https://modeldb.science/download/2019883
+  license: ''
+bsim:
+  entrypoint: src.biophysical_model_of_l5_pyramidal_neuron_headley_2019883_model:BiophysicalModelOfL5PyramidalNeuronHeadley2019883Model
+  init_kwargs:
+    model_path: data/2019883.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

@@ -1,0 +1,136 @@
+//******************************************************************** 
+// INTRODUZIONE SINAPSI
+//******************************************************************** 
+
+n_sin=33
+objref s[n_sin], rsyn[n_sin], nc[n_sin], r[n_sin], rr[n_sin]
+double rel[n_sin],ind[n_sin]
+
+            // (rel) sono le posizioni all' interno della sottosezione
+//rel=0.33	// alla quale viene applicata la sinapsi. Esse variano dalla
+//rel1=rel	// coordinata x =[0,1], dove 0 è la coordinata più 
+//rel2=rel	// al soma.
+           // Per l'articolo solo rel tutti uguali, con rel=0.33
+
+//*****************************************************
+//Opzione per il random posizionamento delle sinapsi
+//all'interno di, scelti ma anch'essi random, rami
+//dendritico
+
+r = new Random(23453262255) 
+rel[0]=r.uniform(0.05, 0.6) 
+for i=1,n_sin-1 {
+rel[i]=r.repick()
+}
+
+//**************************************************
+//Scelta casuale dei dendriti
+
+ //,ind[n_sin]
+rr = new Random(456884557) 
+ind[0]=int(rr.uniform(1,numapical+1))
+for i=1,n_sin-1 {
+ind[i]=rr.repick()
+  for j=0,i-1 {
+  if (ind[i]=ind[j]) ind[i]=int(rr.repick())
+}
+print i,ind[i],rel[i] 
+}
+
+//*****************************************************
+
+
+peso=3.e-3	  //n-siemens
+
+//******** USO DELLE SINAPSI *******************************
+//s = new NetStim(x)
+//s.interval ms (mean) time between spikes
+//s.number (average) number of spikes
+//s.start ms (most likely) start time of first spike
+//s.noise ---- range 0 to 1. Fractional randomness.
+//             0 deterministic,1 intervals have negexp distribution.
+//**********************************************************
+//syn = new Exp2Syn(x)
+//syn.tau1 --- ms rise time
+//syn.tau2 --- ms decay time
+//syn.e -- mV reversal potential
+//syn.i -- nA synaptic current
+//**********************************************************
+// i = G * (v - e)      i(nanoamps), g(micromhos);
+// G = weight * factor * (exp(-t/tau2) - exp(-t/tau1))
+//**********************************************************
+//netcon = new NetCon(source,target,threshold,delay,weight)
+//SPIEGAZIONE: When the source variable passes threshold in 
+//             the positive direction at time t-delay, 
+//             the target will receive an event at time t 
+//             along with weight information.
+//*************************************************************
+//Meccanismo con cui varia il potenziale nel punto di applicazione
+//della sinapsi.
+//-------------------------------------------------------------
+//Conoscendo l' impedenza di ingresso K_ii(t) del sistema, tramite
+//convoluzione Š possibile ricavare la variazione del potenziale.
+//La sinapsi infatti Š una sorgente di corrente dipendente dal
+//tempo grazie alla conducibilit… dipendente dal tempo, e dal
+//potenziale di membrana che anch' esso varia. Una volta conosciuto
+//la variazione di potenziale nel sito postsinaptico i, (il che
+//richiede la soluzione numerica di una equazione integrale di Volterra)
+//Š possibile ricavare il potenziale di membrana nel sito j, tramite
+//un' altra equazione integrale di convoluzione. Vedi "Bioph. of comput."
+//pagg. 106-107.
+
+//Questo modello di sinapsi va bene per l' AMPA, che non mostra
+//dipendenza dal potenziale di membrana. Per modellizzare NMDA
+//sinapsi,va scelto un modello che tenga conto della concentrazione
+//ionica (che dipende dal potenziale di membrana).
+//*************************************************************
+
+//objref rr
+//rr = new Random(num+10) 
+//print rr.uniform(-1,1)
+
+for i=0, n_sin-1 {
+            s[i] = new NetStims(rel[i])
+		s[i].interval=2
+		s[i].number = 1e9
+		s[i].start=0.
+		s[i].noise=1
+		s[i].seed(987651119)
+		                        		
+ apical_dendrite[i+1] {
+		rsyn[i] = new Exp2Syn(rel[i])
+		rsyn[i].tau1 = 0.4		// AMPA	(Voltage indipendent Channel)
+		rsyn[i].tau2 = 1		// recettore del glutammato.
+		rsyn.e=0				// Questo permette il passaggio di ioni Na e K
+		nc[i] = new NetCon(s[i],rsyn[i],0,0,peso)
+    }
+	
+}
+
+//************************************************************************************************
+// Il processo di trasmissione sinaptica è di natura statistica ed assoggettata ad una probabilità 
+// di rilascio di neurotrasmettitori. La probabilità di rilascio sinaptica p è essa stessa soggetta
+// a variazioni dipendenti dalla storia recente del terminale presinaptico. P può descrescere,
+// come nel caso della depressione a lungo temine, o aumentare come accade nel potenziamento.  
+// IL NetStim DETERMINA LE CARATTERISTICHE DELLA TERMINAZIONE PRESINAPTICA, MENTRE IL rsyn CONNETTE
+// LA TERMINAZIONE PRESINAPTICA AL NEURONE. CON NetCon LA SYNAPSI è CREATA.
+//************************************************************************************************
+
+	                        		
+//   soma  {
+//	   rsyn[1] = new IClamp(rel)
+//       rsyn[1].del= 1 //ms
+//     rsyn[1].dur= 8 //ms
+//   rsyn[1].amp= 2 //nA
+// i= 0.2 //nA
+//    }
+
+
+//Il problema dell' efficacia dell'azione eccitatoria in funzione della
+// distribuzione spaziale delle sinapsi è stata investigata da MEL(1992).
+// AMPA e non-NMDA sinapsi mostrano sturazione sinaptica, e l'addensamento
+// diminuisce l'efficacia del sistema. Ciò invece non è vero per sinapsi
+// NMDA per le quali si osserva invece il fenomeno opposto.
+//  		
+
+

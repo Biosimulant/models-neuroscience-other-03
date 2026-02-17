@@ -1,0 +1,16 @@
+load_file("nrngui.hoc")
+
+create s
+forall Ra = 110
+forall cm = 1
+access s
+    nseg = 10
+	diam = 10
+	L    = 10
+forall insert mfbhh
+forall gkbar_mfbhh = 0    /* S/cm^2 */
+    celsius = 25
+
+load_file("TestVCna.ses")
+
+

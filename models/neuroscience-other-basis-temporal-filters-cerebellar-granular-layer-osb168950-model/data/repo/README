@@ -1,0 +1,68 @@
+This contains the models, functions and resulting data as used in:
+
+Roessert C, Dean P, Porrill J. At the Edge of Chaos: How Cerebellar Granular Layer Network Dynamics Can Provide the Basis for Temporal Filters
+
+It is based on code used for Yamazaki T, Tanaka S (2005) Neural modeling of an internal clock. Neural Comput 17:1032-58
+
+
+1. Recompile if necessary. In ./cells/ifun execute:
+python setup.py build_ext --inplace
+python setup2.py build_ext --inplace
+python setup2b.py build_ext --inplace
+python setup2re.py build_ext --inplace
+
+2. Run the simulations:
+
+Data will be saved to ./data
+Intermediate figure will be saved to ./figs/dump and ./figs/Pub
+Figures will be saved to: ./figs/Pub
+
+- To run a single instance of the one-population network execute:
+python Plots_Closedloop.py -o ifun -nompi
+
+- To plot FIGURE 2
+python Plots_Closedloop.py -o fig1 -nompi
+
+- To plot FIGURE 3:
+python Plots_Closedloop.py -o fig2 -nompi
+
+- To plot FIGURE 4:
+python Plots_Closedloop.py -o fig3 -nompi
+
+- To plot FIGURE 5:
+python Plots_Closedloop.py -o fig3b -nompi
+
+- To plot FIGURE 6:
+python Plots_Closedloop.py -o fig4l -nompi
+
+- To plot FIGURE 7:
+python Plots_Closedloop.py -o fig51l -nompi
+
+- To plot FIGURE 8:
+python Plots_Closedloop.py -o fig52l -nompi
+
+- To plot FIGURE 9:
+python Plots_Closedloop.py -o figRe6 -nompi
+
+
+
+Running on a single core takes a very long time, it is suggested to use a cluster.
+Here is an example to run on a cluster using Sun Grid Engine:
+
+- To generate a single trace for e.g. Fig 6:
+qsub -v J=Plots_Closedloop.py,O=fig4lruntest -pe ompigige 64 -l rmem=32G -l mem=32G PBSinsigneo.sh
+
+- Run a trace with recurrent filter (Fig 9):
+qsub -v J=Plots_Closedloop.py,O=figRe6runtest -pe ompigige 64 -l rmem=32G -l mem=32G PBSinsigneo.sh
+
+
+All the code and data files that are used in the publication can be found here:
+https://github.com/croessert/ClosedLoopRoessertEtAl 
+
+
+** Terms of use:
+
+This code, "ClosedLoopRoessertEtAl", is a derivative of "internalclock" by Takeru Honda and Tadashi Yamazaki 
+used under CC-BY (http://creativecommons.org/licenses/by/3.0/). 
+The code of "internalclock" was downloaded from https://senselab.med.yale.edu/ModelDB/ShowModel.cshtml?model=115966
+"ClosedLoopRoessertEtAl" is licensed under CC BY by Christian Rössert (christian.a [4t] roessert.de).

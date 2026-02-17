@@ -1,0 +1,34 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model141699141699Model'
+description: Basal ganglia-thalamic network model for deep brain stimulation (So et
+  al. 2011)
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:141699
+  source_db: opensourcebrain
+  source_id: '141699'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/141699
+  download_url: https://github.com/OpenSourceBrain/141699.git
+  license: ''
+bsim:
+  entrypoint: src.model_141699_141699_model:Model141699141699Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

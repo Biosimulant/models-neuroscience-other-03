@@ -1,0 +1,493 @@
+
+
+{load_file("nrngui.hoc")}   // load the GUI and standard run libraries
+
+
+//////////Parameters//////////////////////////
+connect_random_low_start_ = 1
+
+NCELL = 1      
+n_simul=1  // number of simulations,
+
+load_file("ranstream.hoc")
+load_file("pyramidal_cell4b.hoc")
+load_file("stim_cell.hoc")
+
+cvode_active(1)
+
+
+
+tstopI=200
+tstop =tstopI+200
+ 
+
+strdef str, flagname
+str="HH"
+celsius=34
+flagname="Control"
+
+
+
+redsAHP=1 
+redmAHP=1 
+tauca=3.6
+thna3=-28
+thna3dend=-28
+
+somakap =0.007
+somakad =0.007
+somacaL=0.006// AD case 0.01   ctrl 0.006
+ghsoma = 0.00004 
+somacaT= 0.0007//  0.0004
+
+shift=0
+shiftkap=shift
+shiftkad=shift
+shifth=shift
+shifth=shift
+
+  
+
+
+//********************************************
+   
+////////////////////
+
+
+v_init=-65 // resting potential
+///////////////////////
+
+objref cells,ncstim[40],ranlist3,ranlist4,rs1,rs2,rs3,rs4,ncslist, nclist,ncc[40],ncslist2, nclist2,ncc2[100],ncstim2[100],rs,rs2
+
+proc mkcells() {local i  localobj cell
+  cells = new List()
+	
+  for i=0, $1-1 {
+
+    cell = new PyramidalCell(redsAHP,redmAHP,v_init,tauca,thna3,thna3dend,somakap,somakad,ghsoma,somacaT,somacaL,shift)
+    cells.append(cell)
+		
+  }
+}
+
+
+proc input(){
+
+ mcell_ran4_init(1)
+
+Nstim=20
+Nstim2=20
+
+rs = new RandomStream ($1*2+1)
+
+for i=0, Nstim-1 {
+
+ ncstim[i]  = new StimCell()	
+    
+             
+ ncc[i]= ncstim[i].stim   //EC
+ ncc[i].number = 100000
+ ncc[i].start = 100
+ ncc[i].interval = 25
+ ncc[i].noise = 0.2
+  ncc[i].noiseFromRandom(rs.r)
+  rs.r.normal(0,1)
+  rs.start()
+
+   }
+
+
+rs2 = new RandomStream ($1*2)
+
+
+for i=0, Nstim2-1 {
+
+   ncstim2[i]  = new StimCell()	 // CA3
+  //ncstim2[i]  = new NetStim(.5)
+  ncc2[i]= ncstim2[i].stim
+  //ncc2[i]=ncstim2[i]
+  ncc2[i].number = 100000
+  ncc2[i].start = 100+9
+  ncc2[i].interval = 25
+  ncc2[i].noise = 0.2
+   ncc2[i].noiseFromRandom(rs2.r)
+  rs2.r.normal(0,1)
+  rs2.start()
+   }
+
+
+}
+
+ECW=0.001
+
+proc connectcells() {local i,k,s,j localobj synE2,src,nc,ncs,synE
+
+  ncslist = new List()
+  nclist = new List()
+
+ for i=0, cells.count-1 {  // iterating over sources
+  for k=0, Nstim-1{                         
+     src = ncstim[k].stim
+
+   //src = ncstim[i]
+
+  synE = cells.object(i).pre_list.object(0)
+     nc = new NetCon(src, synE)
+    nclist.append(nc)
+    nc.delay = 1
+    nc.weight =ECW
+
+synE2 = cells.object(i).pre_list.object(1)
+    ncs = new NetCon(src, synE2)
+    ncslist.append(ncs)
+    ncs.delay = 1
+    ncs.weight =ECW
+
+
+}
+
+ } 
+}
+
+proc concells2() {local i,k,s,j localobj synE2,src2,nc2,ncs2,synE
+
+  ncslist2 = new List()
+  nclist2 = new List()
+
+ for i=0, cells.count-1 {  // iterating over sources
+    for k=0, Nstim2-1{                         
+     src2 = ncstim2[k].stim
+     //src2 = ncstim2[k]
+     
+
+  synE = cells.object(i).pre_list.object(23)
+     synE.d=0*8/2
+     synE.p=0*(1.2)/2 
+
+     nc2 = new NetCon(src2, synE)
+    nclist2.append(nc2)
+    nc2.delay = 1
+    nc2.weight =$1
+
+synE2 = cells.object(i).pre_list.object(3)
+    ncs2 = new NetCon(src2, synE2)
+    ncslist2.append(ncs2)
+    ncs2.delay = 1
+    ncs2.weight =$2
+
+
+}
+
+ } 
+
+}
+
+
+
+//// Instrumentation, i.e. stimulation and recording////
+
+objref apc, v1
+
+proc insert_APC() {
+apc = new APCount(0.5)
+apc.thresh = -20
+v1 = new Vector()
+apc.record(v1)
+}
+
+
+objref clamp2
+
+proc insert_IClamp2() {
+
+     clamp2 = new IClamp(0.5)
+     clamp2.del = 100
+     clamp2.dur = tstopI
+     clamp2.amp = $1
+}
+
+
+
+
+///////////////////////////////////////////////
+objref tvec, idvec  // will be Vectors that record all spike times (tvec)
+                   
+proc spikerecord() {local i  localobj nc, nil
+//  if ($1==0){
+	  tvec = new Vector()
+	  idvec = new Vector()
+//	}
+  for i=0, NCELL-1 {
+    cells.object(i).soma nc=new NetCon(&v(1),nil,10,1,0.01)
+    nc.record(tvec, idvec, i)
+    // the Vector will continue to record spike times
+    // even after the NetCon has been destroyed
+  }
+}
+
+///////////////// currents /////
+
+proc caT_insert() {
+    
+     for (x) if (x>0 && x<1)  {  
+        xdist = distance(x)
+       insert cat  
+        if (xdist < 300) {
+           gcatbar_cat(x) = $1*(1+xdist/60)
+
+        } else {
+           gcatbar_cat(x) = $1*6     
+    }
+}
+}
+
+proc caL_insert() {
+
+     cal_distance=200
+     for (x) if (x>0 && x<1) {  
+         xdist = distance(x)
+         insert calH
+         mytau_calH=$2
+         if (xdist < cal_distance) {
+           gcalbar_calH(x) = $1 *(1-xdist/cal_distance)
+
+        } else {
+           gcalbar_calH(x) = 0       
+    }
+
+                    
+     }
+}
+
+     
+
+proc A_h_insert(){
+
+     ghend=$1*7
+     dhalf=280
+     steep=50
+     KMA=3
+   
+	insert h
+        ghdbar_h=0
+ 	insert kap
+   	  gkabar_kap = 0
+	insert kad
+   	 gkabar_kad = 0
+
+
+	for (x) if (x>0 && x<1) {  
+       	xdist=distance(x)
+
+          	ghdbar_h(x)= $1 + (ghend - $1)/(1.0 + exp((dhalf-xdist)/steep))
+             
+     		 if (xdist < 100){
+	         gkabar_kap(x) = $2*(1+KMA*xdist/100)
+               vhalfl_h=-73
+
+              	   }else{
+
+                        vhalfl_h=-81
+                       gkabar_kad(x) = $3*(1+KMA*xdist/100)
+                      // print secname(), " ",xdist, gkabar_kad(x)
+                 		         }
+       
+
+}
+}
+
+
+proc acc_dist(){local i
+
+ for i=0, cells.count-1 {
+     
+      
+       access cells.object(i).soma
+       distance(0,x)
+
+       access cells.object(i).radTprox
+        A_h_insert(ghsoma,somakap,somakad)
+        caT_insert(somacaT)
+        caL_insert(somacaL,tauca)
+
+     access cells.object(i).radTmed
+        A_h_insert(ghsoma,somakap,somakad)
+        caT_insert(somacaT)
+         caL_insert(somacaL,tauca)
+
+      access cells.object(i).radTdist
+        A_h_insert(ghsoma,somakap,somakad)
+        caT_insert(somacaT)
+         caL_insert(somacaL,tauca)
+
+ access cells.object(i).lm_thick1
+        A_h_insert(ghsoma,somakap,somakad)
+  access cells.object(i).lm_medium1
+        A_h_insert(ghsoma,somakap,somakad)
+ access cells.object(i).lm_thin1
+        A_h_insert(ghsoma,somakap,somakad)
+
+access cells.object(i).lm_thick2
+        A_h_insert(ghsoma,somakap,somakad)
+ access cells.object(i).lm_medium2
+        A_h_insert(ghsoma,somakap,somakad)
+ access cells.object(i).lm_thin2
+        A_h_insert(ghsoma,somakap,somakad)
+  
+
+
+  }
+
+}
+
+
+
+
+/// Report simulation results-save potential and time////////////////////////
+
+proc spikeout() { local i
+  
+printf("\ntime\t cell\n")
+  for i=0, tvec.size-1 {
+        printf("%g\t %d\n", tvec.x[i], idvec.x[i])
+  }
+}
+
+
+objref rect, recv, listrecv
+
+proc potential_record() {local i
+  rect = new Vector()
+  listrecv = new List()
+  rect.record(&t)
+  for i=0, cells.count-1 {
+    recv = new Vector()
+    recv.record(&cells.object(i).soma.v(0.5))
+    listrecv.append(recv)
+  }
+}
+
+
+
+
+
+
+/////////Main////////////////
+
+  mkcells(NCELL)   
+
+objref vec,vec_2,savdata3
+strdef name3
+
+ proc batchrun() { local i,k 
+  sum=0
+  sum_2=0
+  mean=0
+  mean_2=0
+  SD=0
+  vec=new Vector(n_simul)
+  vec_2=new Vector(n_simul)
+
+     for i=1,$1 {
+		printf("\nRun %d\n", i)
+		
+	   run()
+       	printf("//////Simulation: %d  ////// \n", i)
+      
+        printf("g: %f| # Spike: %d\n", $2, apc.n)
+
+        //calculates mean and standard deviation
+
+  
+    vec.x[i-1]=apc.n
+    vec_2.x[i-1]=(apc.n)^2
+    temp=sum + vec.x[i-1]
+    temp_2=sum_2 + vec_2.x[i-1]
+    sum=temp
+    sum_2=temp_2
+  
+	}   // end for i
+
+   //////Mean and SD/////////
+
+  mean = sum/n_simul
+  mean_2 = sum_2/n_simul
+  SD=sqrt(mean_2-mean^2)
+  printf("___________________\n")
+  printf("Mean: %lf\n", mean)
+  printf("Std. Dev.: %lf\n", SD) 
+  printf("___________________\n")
+
+ 
+  if ($1==1) { savdata3.printf("%f \t %d\n",$2, apc.n)
+              
+       }else{ savdata3.printf("%.2f \t %.2f \t %.2f\n",$2*1000,mean,SD)
+       }
+
+
+}
+
+
+
+
+
+acc_dist()
+
+
+inizio=6
+ for j=inizio,6{
+
+   current=j*0.05
+   access cells.object(0).soma
+     
+   
+   insert_IClamp2(current)    
+   insert_APC()
+  
+   cells.object(0).current_balance(v_init)
+
+
+
+CWT=0.0004+j*0.00005
+CNWT=0.00045
+
+
+
+if (j==inizio){
+
+      savdata3 = new File()
+
+      sprint(name3,"Simulation_%s.dat",str)
+      savdata3.wopen(name3)
+      savdata3.printf("Current \t # Spikes\n")
+       //savdata3.printf("g \t # Spikes \t SD\n")
+
+
+   }
+
+
+load_file("ses.ses")
+
+batchrun(n_simul,current,CWT,CNWT)
+
+ 
+} // for
+
+savdata3.close()
+
+
+
+
+//quit()
+
+
+
+
+
+
+
+
+
+
+
+

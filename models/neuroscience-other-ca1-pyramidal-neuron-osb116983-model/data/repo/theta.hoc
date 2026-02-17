@@ -1,0 +1,133 @@
+load_file("nrngui.hoc")
+cvode_active(0)
+
+dist=22
+rel=0.5
+
+xopen("geoc62564.hoc")             // geometry file
+xopen("fixnseg.hoc")           
+
+Rm = 28000
+RmDend = Rm/1
+RmSoma = Rm
+RmAx = Rm
+
+Cm    = 1
+CmSoma= Cm
+CmAx  = Cm
+CmDend = Cm
+
+RaAll= 150
+RaSoma=150  
+RaAx = 50
+
+Vrest = -70
+dt = 0.1
+celsius = 35.0  
+ghd=0.00005
+
+objref g, b, stim, infile, curr
+objref p, s, rsyn, nc
+strdef filename
+
+curr = new Vector()
+
+infile = new File()
+
+forsec "axon" {insert pas e_pas=Vrest g_pas = 1/RmAx Ra=RaAx cm=CmAx}
+forsec "soma" {insert pas e_pas=Vrest g_pas = 1/RmSoma Ra=RaSoma cm=CmSoma}
+forsec "dendrite"{insert pas e_pas=Vrest g_pas = 1/RmDend Ra=RaAll cm=CmDend}
+forsec "user5" {insert pas e_pas=Vrest g_pas = 1/RmDend Ra=RaAll cm=CmDend}
+
+access soma
+
+freq=50
+geom_nseg()
+tot=0
+forall {tot=tot+nseg}
+distance()
+
+maxdist=0
+forsec "user5" for(x) {if (distance(x)>maxdist) {maxdist=distance(x)}}
+print "total # of segments (50Hz): ",tot, "  max path distance: ", maxdist
+
+tstop=30000
+
+infile = new File()
+infile.ropen("ondelette-No-Gain-1-4Hz.txt")
+	while (!infile.eof()) {
+	curr.append(infile.scanvar()/15)
+	}
+infile.close()
+
+b = new VBox()
+b.intercept(1)
+g = new Graph()
+g.size(0,tstop,-65,-55)
+g.addvar("user5[dist].v(rel)",2,1,2*tstop,0,2)
+g.xaxis(1)
+xpanel("")
+xbutton("runm ", "runm()")
+xpanel()
+b.intercept(0)
+b.map()
+
+user5[dist] {
+print distance(rel)
+stim= new IClamp(rel)
+stim.amp=0
+stim.dur=tstop
+stim.del=0
+curr.play(&stim.amp, 0.3)
+}
+
+forsec "soma" {   
+		insert hd ghdbar_hd=ghd	vhalfl_hd=-90
+}
+                
+forsec "apical_dendrite" {
+		insert hd ghdbar_hd=ghd vhalfl_hd=-90
+
+		for (x,0) { xdist = distance(x)
+                	if (xdist>500) {xdist=500}
+                	ghdbar_hd(x) = ghd*(1+5*xdist/100)
+               		if (xdist > 100){vhalfl_hd=-100} else {vhalfl_hd=-90}
+		}
+}
+
+forsec "user5" {
+		insert hd ghdbar_hd=ghd vhalfl_hd=-90
+
+		for (x,0) { xdist = distance(x)
+                	if (xdist>500) {xdist=500}
+                	ghdbar_hd(x) = ghd*(1+5*xdist/100)
+               		if (xdist > 100){vhalfl_hd=-100} else {vhalfl_hd=-90}
+		}
+
+}
+
+proc init() {
+	t=0
+        forall {v=Vrest	
+        if (ismembrane("hd") ) {ehd_hd=-30}
+	}
+	finitialize(Vrest)
+        fcurrent()
+        forall for (x) {if (ismembrane("hd")) {e_pas(x)=v(x)+i_hd(x)/g_pas(x)}}
+	cvode.re_init()
+	cvode.event(tstop)
+	access soma
+	g.begin()
+}
+
+
+proc advance() {
+	fadvance()
+	g.plot(t)
+	g.flush()
+	doNotify()
+}
+
+proc runm() {
+run()
+}

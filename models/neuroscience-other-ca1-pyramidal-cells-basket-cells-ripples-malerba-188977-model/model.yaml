@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: Ca1PyramidalCellsBasketCellsRipplesMalerba188977Model'
+description: '{"value": "Model of CA1 pyramidal layer Ripple activity, triggered when
+  receiving current input (to represent CA3 sharp-waves). \r\nCells are Adaptive-Exponential
+  Integrate and Fire neurons, receiving'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:188977
+  source_db: modeldb
+  source_id: '188977'
+  standard: other
+  original_url: https://modeldb.science/188977
+  download_url: https://modeldb.science/download/188977
+  license: ''
+bsim:
+  entrypoint: src.ca1_pyramidal_cells_basket_cells_ripples_malerba_188977_model:Ca1PyramidalCellsBasketCellsRipplesMalerba188977Model
+  init_kwargs:
+    model_path: data/188977.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

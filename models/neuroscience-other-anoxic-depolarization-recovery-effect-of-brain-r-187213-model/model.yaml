@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AnoxicDepolarizationRecoveryEffectOfBrainR187213Model'
+description: '{"value": "The extent of anoxic depolarization (AD), the initial electrophysiological
+  event during ischemia, determines the degree of brain region-specific neuronal damage.
+  Neurons in higher brain reg'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:187213
+  source_db: modeldb
+  source_id: '187213'
+  standard: other
+  original_url: https://modeldb.science/187213
+  download_url: https://modeldb.science/download/187213
+  license: ''
+bsim:
+  entrypoint: src.anoxic_depolarization_recovery_effect_of_brain_r_187213_model:AnoxicDepolarizationRecoveryEffectOfBrainR187213Model
+  init_kwargs:
+    model_path: data/187213.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

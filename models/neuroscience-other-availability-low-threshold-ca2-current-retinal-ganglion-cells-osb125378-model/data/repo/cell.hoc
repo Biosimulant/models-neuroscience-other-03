@@ -1,0 +1,30 @@
+create soma
+access soma
+insert ca12dZUy
+diam=20
+
+objref seclamp
+
+seclamp=new SEClamp(.5)
+
+seclamp.amp1=-92
+seclamp.amp2=-62
+seclamp.amp3=-92
+
+seclamp.dur1=10
+seclamp.dur2=100
+seclamp.dur3=10
+
+tstop=120
+
+objref i_traces[6], i_vec, t_vec
+t_vec = new Vector()
+t_vec.indgen(0, tstop, dt)
+
+i_vec = new Vector()
+i_vec.record(&soma.ica(0.5))
+
+for i=0,5 {
+  i_traces[i] = new Vector()
+}
+

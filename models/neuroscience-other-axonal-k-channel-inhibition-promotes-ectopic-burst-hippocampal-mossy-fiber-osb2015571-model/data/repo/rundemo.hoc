@@ -1,0 +1,14 @@
+load_file("nrngui.hoc")
+
+xpanel("Demo")
+xradiobutton("Fig 5A", "restart() load_file(\"Sim1.hoc\")")
+xradiobutton("Fig 5B", "restart() load_file(\"Sim2.hoc\")")
+xradiobutton("Fig 5C", "restart() load_file(\"Sim3.hoc\")")
+xradiobutton("Fig 5D top", "restart() load_file(\"Sim4.hoc\")")
+xradiobutton("Fig 5D middle", "restart() load_file(\"Sim5.hoc\")")
+xradiobutton("Fig 5D bottom", "restart() load_file(\"Sim6.hoc\")")
+xpanel(10, 565)
+proc restart() {objectvar graphList[n_graph_lists], RunControl, graphItem, flush_list
+for i=0,n_graph_lists-1 graphList[i] = new List(1)
+flush_list = new List(1)
+}

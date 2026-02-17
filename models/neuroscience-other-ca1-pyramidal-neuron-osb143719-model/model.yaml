@@ -1,0 +1,33 @@
+schema_version: '2.0'
+title: 'Neuroscience: Model143719143719Model'
+description: 'CA1 pyramidal neuron: depolarization block  (Bianchi et al. 2012)'
+standard: other
+tags:
+- neuroscience
+- other
+- opensourcebrain
+- faithful
+authors:
+- Biosimulant Team
+- Open Source Brain
+upstream:
+  id: opensourcebrain:143719
+  source_db: opensourcebrain
+  source_id: '143719'
+  standard: other
+  original_url: https://github.com/OpenSourceBrain/143719
+  download_url: https://github.com/OpenSourceBrain/143719.git
+  license: ''
+bsim:
+  entrypoint: src.model_143719_143719_model:Model143719143719Model
+  init_kwargs:
+    model_path: data/repo
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

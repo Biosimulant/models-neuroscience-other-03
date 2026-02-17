@@ -1,0 +1,1274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+<model metaid="newTNFa" id="newTNFa">
+<annotation/>
+<listOfUnitDefinitions>
+<unitDefinition metaid="substance" id="substance" name="substance">
+<listOfUnits>
+<unit metaid="CDMT00231" kind="mole"/>
+</listOfUnits>
+</unitDefinition>
+<unitDefinition metaid="volume" id="volume" name="volume">
+<listOfUnits>
+<unit metaid="CDMT00232" kind="litre"/>
+</listOfUnits>
+</unitDefinition>
+<unitDefinition metaid="area" id="area" name="area">
+<listOfUnits>
+<unit metaid="CDMT00233" kind="metre" exponent="2"/>
+</listOfUnits>
+</unitDefinition>
+<unitDefinition metaid="length" id="length" name="length">
+<listOfUnits>
+<unit metaid="CDMT00234" kind="metre"/>
+</listOfUnits>
+</unitDefinition>
+<unitDefinition metaid="time" id="time" name="time">
+<listOfUnits>
+<unit metaid="CDMT00235" kind="second"/>
+</listOfUnits>
+</unitDefinition>
+</listOfUnitDefinitions>
+<listOfCompartments>
+<compartment metaid="default" id="default" size="1" units="volume"/>
+<compartment metaid="c1" id="c1" name="Activated Microglia" size="10" units="volume" outside="default">
+<annotation/>
+</compartment>
+<compartment metaid="c2" id="c2" name="Activated Astrocytes" size="3" units="volume" outside="default">
+<annotation/>
+</compartment>
+<compartment metaid="c3" id="c3" name="Dopaminergic cells" size="3" units="volume" outside="default">
+<annotation/>
+</compartment>
+<compartment metaid="c4" id="c4" name="Damaged Neuron" size="4" units="volume" outside="default">
+<annotation/>
+</compartment>
+<compartment metaid="c5" id="c5" name="Nucleus" size="3" units="volume" outside="c1">
+<annotation/>
+</compartment>
+<compartment metaid="c6" id="c6" name="Mitochondria" size="3" units="volume" outside="c3">
+<annotation/>
+</compartment>
+<compartment metaid="c7" id="c7" name="Blood Brain Barrier" size="5" units="volume" outside="default">
+<annotation/>
+</compartment>
+</listOfCompartments>
+<listOfSpecies>
+<species metaid="s1" id="s1" name="T cell" compartment="c7" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s2" id="s2" name="TNF α" compartment="default" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s6" id="s6" name="NO" compartment="c1" initialConcentration="0.0509" charge="0">
+<annotation/>
+</species>
+<species metaid="s24" id="s24" name="NOS" compartment="c1" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s26" id="s26" name="TRADD" compartment="c3" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s27" id="s27" name="Procaspase 8" compartment="c3" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s28" id="s28" name="Caspase 8" compartment="c3" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s29" id="s29" name="Caspase3" compartment="c3" initialConcentration="0.0031" charge="0">
+<annotation/>
+</species>
+<species metaid="s30" id="s30" name="L-arginine" compartment="c1" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s31" id="s31" name="L-citruline" compartment="c1" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s32" id="s32" name="NFkB" compartment="c1" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s37" id="s37" name="NFKβ" compartment="c5" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s38" id="s38" name="TNFA" compartment="c5" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s41" id="s41" name="ATP" compartment="c4" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s44" id="s44" name="P2Y" compartment="c1" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s46" id="s46" name="NADPH oxidase" compartment="c1" initialConcentration="0.25" charge="0">
+<annotation/>
+</species>
+<species metaid="s47" id="s47" name="Cathepsin B" compartment="c1" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s7" id="s7" name="ROS" compartment="c1" initialConcentration="0.0496" charge="0">
+<annotation/>
+</species>
+<species metaid="s9" id="s9" name="TNFR1" compartment="c1" initialConcentration="0.17" charge="0">
+<annotation/>
+</species>
+<species metaid="s10" id="s10" name="IL-1β" compartment="c1" initialConcentration="0.014" charge="0">
+<annotation/>
+</species>
+<species metaid="s15" id="s15" name="BID" compartment="c3" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s49" id="s49" name="Cytochrome C" compartment="c6" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s45" id="s45" name="IL-1β" compartment="c2" initialConcentration="0.00436" charge="0">
+<annotation/>
+</species>
+<species metaid="s13" id="s13" name="α synuclein" compartment="c2" initialConcentration="0.432" charge="0">
+<annotation/>
+</species>
+<species metaid="s16" id="s16" name="Cytochrome C" compartment="c3" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s48" id="s48" name="BID" compartment="c6" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s8" id="s8" name="TNFR1" compartment="c3" initialConcentration="0.17" charge="0">
+<annotation/>
+</species>
+<species metaid="s5" id="s5" name="ROS" compartment="c2" initialConcentration="0.0311" charge="0">
+<annotation/>
+</species>
+<species metaid="s12" id="s12" name="TNFR1" compartment="c2" initialConcentration="0.196" charge="0">
+<annotation/>
+</species>
+<species metaid="s11" id="s11" name="TNFα" compartment="c2" initialConcentration="0.0691" charge="0">
+<annotation/>
+</species>
+<species metaid="s4" id="s4" name="TNFα" compartment="c1" initialConcentration="0.0799" charge="0">
+<annotation/>
+</species>
+<species metaid="s51" id="s51" name="Procaspase 9" compartment="c3" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s50" id="s50" name="Apoptosome" compartment="c3" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s55" id="s55" name="Caspase 9" compartment="c3" initialConcentration="0.693" charge="0">
+<annotation/>
+</species>
+<species metaid="s18" id="s18" name="Cell death" compartment="c3" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s56" id="s56" name="Apaf1" compartment="c3" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s57" id="s57" name="FADD" compartment="c3" initialConcentration="0" charge="0">
+<annotation/>
+</species>
+<species metaid="s14" id="s14" name="α synuclein" compartment="c3" initialConcentration="0.491" charge="0">
+<annotation/>
+</species>
+<species metaid="s58" id="s58" name="Activation of JNK pathway" compartment="c3" initialAmount="0">
+<annotation/>
+</species>
+<species metaid="s59" id="s59" name="Activation of p38 MAPK pathway" compartment="c3" initialAmount="0">
+<annotation/>
+</species>
+</listOfSpecies>
+<listOfReactions>
+<reaction metaid="re1" id="re45" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00001" species="s1"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00002" species="s2"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00003">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s1 </ci>
+<ci> k2 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="k1" id="k1" name="k1" value="0.01" units="substance"/>
+<parameter metaid="k2" id="k2" name="k2" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re13" id="re46" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00004" species="s4"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00005" species="s2"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00006">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s4 </ci>
+<ci> k2 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00007" id="k1" name="k1" value="0.00084" units="substance"/>
+<parameter metaid="CDMT00204" id="k2" name="k2" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re14" id="re47" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00008" species="s2"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00009" species="s9"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00010">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s2 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00011" id="k1" name="k1" value="0.009" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re33" id="re48" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00012" species="s24"/>
+<speciesReference metaid="CDMT00013" species="s30"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00014" species="s6"/>
+<speciesReference metaid="CDMT00015" species="s31"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00016">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s24 </ci>
+<ci> s30 </ci>
+<ci> k3 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00017" id="k1" name="k1" value="0.00085" units="substance"/>
+<parameter metaid="CDMT00207" id="k2" name="k2" value="0.1" units="substance"/>
+<parameter metaid="k3" id="k3" name="k3" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re35" id="re49" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00018" species="s12"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00019" species="s5"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00020">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s12 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00021" id="k1" name="k1" value="0.00109" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re37" id="re50" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00022" species="s8"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00023" species="s26"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00024">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s8 </ci>
+<ci> k2 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00025" id="k1" name="k1" value="0.01" units="substance"/>
+<parameter metaid="CDMT00205" id="k2" name="k2" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re39" id="re52" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00026" species="s27"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00027" species="s28"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00028">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s27 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00029" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re40" id="re53" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00030" species="s28"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00031" species="s29"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00032">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s28 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00033" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re41" id="re54" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00034" species="s29"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00035" species="s18"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00036">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s29 </ci>
+<ci> k3 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00037" id="k1" name="k1" value="0.01" units="substance"/>
+<parameter metaid="CDMT00213" id="k2" name="k2" value="0.1" units="substance"/>
+<parameter metaid="CDMT00236" id="k3" name="k3" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re42" id="re55" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00038" species="s6"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00039" species="s18"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00040">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s6 </ci>
+<ci> k6 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00041" id="k1" name="k1" value="0.0001" units="substance"/>
+<parameter metaid="CDMT00198" id="k2" name="k2" value="0.01" units="substance"/>
+<parameter metaid="CDMT00212" id="k3" name="k3" value="0.1" units="substance"/>
+<parameter metaid="k4" id="k4" name="k4" value="0.001" units="substance"/>
+<parameter metaid="k5" id="k5" name="k5" value="0.1" units="substance"/>
+<parameter metaid="k6" id="k6" name="k6" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re43" id="re56" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00042" species="s7"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00043" species="s18"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00044">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s7 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00045" id="k1" name="k1" value="0.001" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re44" id="re57" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00046" species="s5"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00047" species="s18"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00048">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s5 </ci>
+<ci> k2 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00049" id="k1" name="k1" value="0.001" units="substance"/>
+<parameter metaid="CDMT00199" id="k2" name="k2" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re47" id="re59" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00050" species="s9"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00051" species="s32"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00052">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s9 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00053" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re51" id="re60" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00054" species="s32"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00055" species="s37"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00056">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s32 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00057" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re52" id="re61" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00058" species="s37"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00059" species="s38"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00060">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s37 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00061" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re53" id="re62" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00062" species="s38"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00063" species="s4"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00064">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s38 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00065" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re56" id="re64" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00070" species="s37"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00071" species="s24"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00072">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s37 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00073" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re58" id="re65" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00074" species="s41"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00075" species="s44"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00076">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s41 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00077" id="k1" name="k1" value="0.001" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re60" id="re66" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00078" species="s44"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00079" species="s24"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00080">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s44 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00081" id="k1" name="k1" value="0.0001" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re61" id="re67" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00082" species="s37"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00083" species="s10"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00084">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s37 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00085" id="k1" name="k1" value="0.0001" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re62" id="re68" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00086" species="s44"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00087" species="s10"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00088">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s44 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00089" id="k1" name="k1" value="0.0001" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re63" id="re69" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00090" species="s44"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00091" species="s4"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00092">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s44 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00093" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re64" id="re70" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00094" species="s9"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00095" species="s46"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00096">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s9 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00097" id="k1" name="k1" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re65" id="re71" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00098" species="s46"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00099" species="s7"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00100">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s46 </ci>
+<ci> k2 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00101" id="k1" name="k1" value="0.001" units="substance"/>
+<parameter metaid="CDMT00208" id="k2" name="k2" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re66" id="re72" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00102" species="s9"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00103" species="s47"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00104">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s9 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00105" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re67" id="re73" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00106" species="s47"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00107" species="s18"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00108">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s47 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00109" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re69" id="re74" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00110" species="s28"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00111" species="s15"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00112">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s28 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00113" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re70" id="re75" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00114" species="s15"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00115" species="s48"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00116">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s15 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00117" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re71" id="re76" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00118" species="s48"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00119" species="s49"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00120">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s48 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00121" id="k1" name="k1" value="0.001" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re72" id="re77" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00122" species="s49"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00123" species="s16"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00124">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s49 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00125" id="k1" name="k1" value="0.001" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re75" id="re79" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00126" species="s14"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00127" species="s13"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00128">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s14 </ci>
+<ci> k6 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00129" id="k1" name="k1" value="0.001" units="substance"/>
+<parameter metaid="CDMT00200" id="k2" name="k2" value="0.1" units="substance"/>
+<parameter metaid="CDMT00210" id="k3" name="k3" value="0.01" units="substance"/>
+<parameter metaid="CDMT00211" id="k4" name="k4" value="0.001" units="substance"/>
+<parameter metaid="CDMT00214" id="k5" name="k5" value="0.1" units="substance"/>
+<parameter metaid="CDMT00217" id="k6" name="k6" value="0.05" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re76" id="re80" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00130" species="s12"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00131" species="s45"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00132">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s12 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00133" id="k1" name="k1" value="0.0001" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re77" id="re81" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00134" species="s13"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00135" species="s45"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00136">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s13 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00137" id="k1" name="k1" value="0.0001" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re78" id="re82" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00138" species="s13"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00139" species="s11"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00140">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s13 </ci>
+<ci> k3 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00141" id="k1" name="k1" value="0.01" units="substance"/>
+<parameter metaid="CDMT00219" id="k2" name="k2" value="0.1" units="substance"/>
+<parameter metaid="CDMT00221" id="k3" name="k3" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re81" id="re83" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00142" species="s2"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00143" species="s12"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00144">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s2 </ci>
+<ci> k2 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00145" id="k1" name="k1" value="0.01" units="substance"/>
+<parameter metaid="CDMT00202" id="k2" name="k2" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re82" id="re84" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00146" species="s12"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00147" species="s11"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00148">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s12 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00149" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re83" id="re85" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00150" species="s11"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00151" species="s2"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00152">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s11 </ci>
+<ci> k5 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00153" id="k1" name="k1" value="0.001" units="substance"/>
+<parameter metaid="CDMT00203" id="k2" name="k2" value="0.1" units="substance"/>
+<parameter metaid="CDMT00209" id="k3" name="k3" value="0.1" units="substance"/>
+<parameter metaid="CDMT00220" id="k4" name="k4" value="0.1" units="substance"/>
+<parameter metaid="CDMT00222" id="k5" name="k5" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re84" id="re86" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00154" species="s10"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00155" species="s18"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00156">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s10 </ci>
+<ci> k2 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00157" id="k1" name="k1" value="0.01" units="substance"/>
+<parameter metaid="CDMT00218" id="k2" name="k2" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re85" id="re87" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00158" species="s45"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00159" species="s18"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00160">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s45 </ci>
+<ci> k2 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00161" id="k1" name="k1" value="0.01" units="substance"/>
+<parameter metaid="CDMT00201" id="k2" name="k2" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re86" id="re88" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00162" species="s18"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00163" species="s41"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00164">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s18 </ci>
+<ci> k2 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00165" id="k1" name="k1" value="0.0001" units="substance"/>
+<parameter metaid="CDMT00166" id="k2" name="k2" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re89" id="re89" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00167" species="s16"/>
+<speciesReference metaid="CDMT00168" species="s56"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00169" species="s50"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00170">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s16 </ci>
+<ci> s56 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00171" id="k1" name="k1" value="0.001" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re91" id="re91" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00172" species="s51"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00173" species="s55"/>
+</listOfProducts>
+<listOfModifiers>
+<modifierSpeciesReference metaid="CDMT00174" species="s50"/>
+</listOfModifiers>
+<kineticLaw metaid="CDMT00175">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s51 </ci>
+<ci> k4 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00176" id="k1" name="k1" value="0.01" units="substance"/>
+<parameter metaid="CDMT00215" id="k2" name="k2" value="0.1" units="substance"/>
+<parameter metaid="CDMT00237" id="k3" name="k3" value="0.1" units="substance"/>
+<parameter metaid="CDMT00238" id="k4" name="k4" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re93" id="re93" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00177" species="s55"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00178" species="s29"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00179">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s55 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00180" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re94" id="re94" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00181" species="s26"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00182" species="s57"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00183">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s26 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00184" id="k1" name="k1" value="0.01" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re95" id="re95" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00185" species="s57"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00186" species="s27"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00187">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s57 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00188" id="k1" name="k1" value="5e-005" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re96" id="re96" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00189" species="s2"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00190" species="s8"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00191">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s2 </ci>
+<ci> k3 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00192" id="k1" name="k1" value="0.011" units="substance"/>
+<parameter metaid="CDMT00193" id="k2" name="k2" value="0.1" units="substance"/>
+<parameter metaid="CDMT00206" id="k3" name="k3" value="0.001" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re97" id="re97" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00194" species="s8"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00195" species="s58"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00066">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s8 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00067" id="k1" name="k1" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re99" id="re99" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00227" species="s7"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00228" species="s59"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00068">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s7 </ci>
+<ci> k2 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00069" id="k1" name="k1" value="0.1" units="substance"/>
+<parameter metaid="CDMT00196" id="k2" name="k2" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re101" id="re101" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00197" species="s58"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00216" species="s18"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00223">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s58 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00224" id="k1" name="k1" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+<reaction metaid="re102" id="re102" reversible="false" fast="false">
+<annotation/>
+<listOfReactants>
+<speciesReference metaid="CDMT00225" species="s59"/>
+</listOfReactants>
+<listOfProducts>
+<speciesReference metaid="CDMT00226" species="s18"/>
+</listOfProducts>
+<kineticLaw metaid="CDMT00229">
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+<times/>
+<ci> s59 </ci>
+<ci> k1 </ci>
+</apply>
+</math>
+<listOfParameters>
+<parameter metaid="CDMT00230" id="k1" name="k1" value="0.1" units="substance"/>
+</listOfParameters>
+</kineticLaw>
+</reaction>
+</listOfReactions>
+</model>
+</sbml>

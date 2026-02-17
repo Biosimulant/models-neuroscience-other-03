@@ -1,0 +1,35 @@
+schema_version: '2.0'
+title: 'Neuroscience: AllenInstituteNr5a1CreVispLayer4473834758184319Model'
+description: '{"value": "This is an Allen Cell Types Database model of a Nr5a1-Cre
+  neuron from layer 4 of the mouse primary visual cortex. The model was based on a
+  traced morphology after filling the cell with bioc'
+standard: other
+tags:
+- neuroscience
+- other
+- modeldb
+- faithful
+authors:
+- Biosimulant Team
+- modeldb
+upstream:
+  id: modeldb:184319
+  source_db: modeldb
+  source_id: '184319'
+  standard: other
+  original_url: https://modeldb.science/184319
+  download_url: https://modeldb.science/download/184319
+  license: ''
+bsim:
+  entrypoint: src.allen_institute_nr5a1_cre_visp_layer_4_473834758_184319_model:AllenInstituteNr5a1CreVispLayer4473834758184319Model
+  init_kwargs:
+    model_path: data/184319.zip
+  min_dt: 0.01
+runtime:
+  python_version: '3.12'
+  dependencies:
+    packages:
+    - numpy==1.26.4
+io:
+  outputs:
+  - state

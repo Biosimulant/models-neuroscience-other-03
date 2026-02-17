@@ -1,0 +1,25 @@
+NEURONS
+LP_1 /cells/LP.neu green
+LP_2 /cells/LP.neu green
+MN /cells/MN.neu green
+SN_1 /cells/SN.neu green
+SN_2 /cells/SN.neu green
+SN_3 /cells/SN.neu green
+SN_4 /cells/SN.neu green
+CONNECTIONS
+LP_1 MN c1 f1_exc 0 /syn_cntrl/LP_2_MN_f.cs N white
+LP_1 MN c1 s1_exc -1 /syn_cntrl/LP_2_MN_s.cs N white
+LP_2 MN c1 f2_exc 0 /syn_cntrl/LP_2_MN_f.cs N white
+LP_2 MN c1 s2_exc -1 /syn_cntrl/LP_2_MN_s.cs N white
+SN_1 LP_1 c1 fe_exc 0 /syn_cntrl/SN_2_LP.cs N white
+SN_1 LP_2 c1 fi_exc 0 /syn_cntrl/SN_2_LP.cs N white
+SN_1 MN c1 fa_exc 0 /syn_cntrl/SN_2_MN.cs N green
+SN_2 LP_1 c1 ff_exc 0 /syn_cntrl/SN_2_LP.cs N white
+SN_2 LP_2 c1 fj_exc 0 /syn_cntrl/SN_2_LP.cs N white
+SN_2 MN c1 fb_exc 0 /syn_cntrl/SN_2_MN_2.cs N green
+SN_3 LP_1 c1 fg_exc 0 /syn_cntrl/SN_2_LP.cs N white
+SN_3 LP_2 c1 fk_exc 0 /syn_cntrl/SN_2_LP.cs N white
+SN_3 MN c1 fc_exc 0 /syn_cntrl/SN_2_MN.cs N green
+SN_4 LP_1 c1 fh_exc 0 /syn_cntrl/SN_2_LP.cs N white
+SN_4 LP_2 c1 fl_exc 0 /syn_cntrl/SN_2_LP.cs N white
+SN_4 MN c1 fd_exc 0 /syn_cntrl/SN_2_MN_2.cs N green
