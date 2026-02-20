@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/153635
   download_url: https://modeldb.science/download/153635
   license: ''
-bsim:
+biosim:
   entrypoint: src.adaptive_exponential_integrate_and_fire_model_br_153635_model:AdaptiveExponentialIntegrateAndFireModelBr153635Model
   init_kwargs:
     model_path: data/153635.zip

@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/257610
   download_url: https://modeldb.science/download/257610
   license: ''
-bsim:
+biosim:
   entrypoint: src.an_electrophysiological_model_of_gabaergic_doubl_257610_model:AnElectrophysiologicalModelOfGabaergicDoubl257610Model
   init_kwargs:
     model_path: data/257610.zip

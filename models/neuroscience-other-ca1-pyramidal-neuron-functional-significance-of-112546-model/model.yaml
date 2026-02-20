@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/112546
   download_url: https://modeldb.science/download/112546
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_pyramidal_neuron_functional_significance_of_112546_model:Ca1PyramidalNeuronFunctionalSignificanceOf112546Model
   init_kwargs:
     model_path: data/112546.zip

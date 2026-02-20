@@ -16,13 +16,13 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Set, TYPE_CHECKING
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
-    from bsim import BioWorld
+    from biosim import BioWorld
 
-import bsim
-from bsim.signals import BioSignal, SignalMetadata
+import biosim
+from biosim.signals import BioSignal, SignalMetadata
 
 
-class OtherAveNeuronModelForSlowWaveSleepInCortexTatsuki2016(bsim.BioModule):
+class OtherAveNeuronModelForSlowWaveSleepInCortexTatsuki2016(biosim.BioModule):
     """Placeholder BioModule wrapper for: Ave. neuron model for slow-wave sleep in cortex Tatsuki 2016 Yoshida 2018 Rasmussen 2017 (all et al).
 
     This model's original format is not directly supported by the auto-generator.

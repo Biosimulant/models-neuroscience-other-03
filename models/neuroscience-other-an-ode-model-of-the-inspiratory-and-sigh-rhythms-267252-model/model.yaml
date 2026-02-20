@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/267252
   download_url: https://modeldb.science/download/267252
   license: ''
-bsim:
+biosim:
   entrypoint: src.an_ode_model_of_the_inspiratory_and_sigh_rhythms_267252_model:AnOdeModelOfTheInspiratoryAndSighRhythms267252Model
   init_kwargs:
     model_path: data/267252.zip

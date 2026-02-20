@@ -16,13 +16,13 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Set, TYPE_CHECKING
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
-    from bsim import BioWorld
+    from biosim import BioWorld
 
-import bsim
-from bsim.signals import BioSignal, SignalMetadata
+import biosim
+from biosim.signals import BioSignal, SignalMetadata
 
 
-class OtherBcmLikeSynapticPlasticityWithConductanceBasedModels(bsim.BioModule):
+class OtherBcmLikeSynapticPlasticityWithConductanceBasedModels(biosim.BioModule):
     """Placeholder BioModule wrapper for: BCM-like synaptic plasticity with conductance-based models (Narayanan Johnston, 2010).
 
     This model's original format is not directly supported by the auto-generator.

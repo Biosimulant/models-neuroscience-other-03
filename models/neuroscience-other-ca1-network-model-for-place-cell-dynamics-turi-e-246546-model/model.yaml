@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/246546
   download_url: https://modeldb.science/download/246546
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_network_model_for_place_cell_dynamics_turi_e_246546_model:Ca1NetworkModelForPlaceCellDynamicsTuriE246546Model
   init_kwargs:
     model_path: data/246546.zip

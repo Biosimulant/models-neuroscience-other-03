@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/232875
   download_url: https://modeldb.science/download/232875
   license: ''
-bsim:
+biosim:
   entrypoint: src.basal_ganglia_motor_function_and_the_inverse_kin_232875_model:BasalGangliaMotorFunctionAndTheInverseKin232875Model
   init_kwargs:
     model_path: data/232875.zip

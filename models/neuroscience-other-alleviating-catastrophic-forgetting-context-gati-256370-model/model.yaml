@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/256370
   download_url: https://modeldb.science/download/256370
   license: ''
-bsim:
+biosim:
   entrypoint: src.alleviating_catastrophic_forgetting_context_gati_256370_model:AlleviatingCatastrophicForgettingContextGati256370Model
   init_kwargs:
     model_path: data/256370.zip

@@ -16,13 +16,13 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Set, TYPE_CHECKING
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
-    from bsim import BioWorld
+    from biosim import BioWorld
 
-import bsim
-from bsim.signals import BioSignal, SignalMetadata
+import biosim
+from biosim.signals import BioSignal, SignalMetadata
 
 
-class OtherBiophysicallyRealisticNetworkModelOfTheWildTypeAnd(bsim.BioModule):
+class OtherBiophysicallyRealisticNetworkModelOfTheWildTypeAnd(biosim.BioModule):
     """Placeholder BioModule wrapper for: Biophysically Realistic Network Model of the Wild-Type and Degenerate Retina (Ly et al 2022).
 
     This model's original format is not directly supported by the auto-generator.

@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/232074
   download_url: https://modeldb.science/download/232074
   license: ''
-bsim:
+biosim:
   entrypoint: src.behavioral_time_scale_synaptic_plasticity_underl_232074_model:BehavioralTimeScaleSynapticPlasticityUnderl232074Model
   init_kwargs:
     model_path: data/232074.zip

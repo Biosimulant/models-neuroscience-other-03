@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/126466
   download_url: https://modeldb.science/download/126466
   license: ''
-bsim:
+biosim:
   entrypoint: src.asynchronous_irregular_and_up_down_states_in_exc_126466_model:AsynchronousIrregularAndUpDownStatesInExc126466Model
   init_kwargs:
     model_path: data/126466.zip

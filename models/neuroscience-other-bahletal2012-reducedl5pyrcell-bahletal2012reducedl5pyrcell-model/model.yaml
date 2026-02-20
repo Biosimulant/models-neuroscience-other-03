@@ -19,7 +19,7 @@ upstream:
   original_url: https://github.com/OpenSourceBrain/BahlEtAl2012_ReducedL5PyrCell
   download_url: https://github.com/OpenSourceBrain/BahlEtAl2012_ReducedL5PyrCell.git
   license: ''
-bsim:
+biosim:
   entrypoint: src.bahletal2012_reducedl5pyrcell_bahletal2012reducedl5pyrcell_model:Bahletal2012Reducedl5pyrcellBahletal2012reducedl5pyrcellModel
   init_kwargs:
     model_path: data/repo

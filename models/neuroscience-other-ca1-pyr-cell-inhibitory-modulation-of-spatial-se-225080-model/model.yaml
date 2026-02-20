@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/225080
   download_url: https://modeldb.science/download/225080
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_pyr_cell_inhibitory_modulation_of_spatial_se_225080_model:Ca1PyrCellInhibitoryModulationOfSpatialSe225080Model
   init_kwargs:
     model_path: data/225080.zip

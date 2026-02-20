@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/147172
   download_url: https://modeldb.science/download/147172
   license: ''
-bsim:
+biosim:
   entrypoint: src.biophysical_model_for_field_potentials_of_networ_147172_model:BiophysicalModelForFieldPotentialsOfNetwor147172Model
   init_kwargs:
     model_path: data/147172.zip

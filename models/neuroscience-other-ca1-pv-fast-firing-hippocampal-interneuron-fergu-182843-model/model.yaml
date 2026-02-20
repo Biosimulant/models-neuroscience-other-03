@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/182843
   download_url: https://modeldb.science/download/182843
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_pv_fast_firing_hippocampal_interneuron_fergu_182843_model:Ca1PvFastFiringHippocampalInterneuronFergu182843Model
   init_kwargs:
     model_path: data/182843.zip

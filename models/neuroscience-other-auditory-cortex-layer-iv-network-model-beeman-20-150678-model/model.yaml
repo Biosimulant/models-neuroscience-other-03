@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/150678
   download_url: https://modeldb.science/download/150678
   license: ''
-bsim:
+biosim:
   entrypoint: src.auditory_cortex_layer_iv_network_model_beeman_20_150678_model:AuditoryCortexLayerIvNetworkModelBeeman20150678Model
   init_kwargs:
     model_path: data/150678.zip

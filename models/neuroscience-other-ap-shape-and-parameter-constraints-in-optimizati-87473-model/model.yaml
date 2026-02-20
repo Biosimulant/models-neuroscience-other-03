@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/87473
   download_url: https://modeldb.science/download/87473
   license: ''
-bsim:
+biosim:
   entrypoint: src.ap_shape_and_parameter_constraints_in_optimizati_87473_model:ApShapeAndParameterConstraintsInOptimizati87473Model
   init_kwargs:
     model_path: data/87473.zip

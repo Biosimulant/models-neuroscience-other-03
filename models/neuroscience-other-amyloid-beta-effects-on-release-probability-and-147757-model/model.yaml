@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/147757
   download_url: https://modeldb.science/download/147757
   license: ''
-bsim:
+biosim:
   entrypoint: src.amyloid_beta_effects_on_release_probability_and_147757_model:AmyloidBetaEffectsOnReleaseProbabilityAnd147757Model
   init_kwargs:
     model_path: data/147757.zip

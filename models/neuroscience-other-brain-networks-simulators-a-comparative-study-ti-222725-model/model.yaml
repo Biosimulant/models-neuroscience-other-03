@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/222725
   download_url: https://modeldb.science/download/222725
   license: ''
-bsim:
+biosim:
   entrypoint: src.brain_networks_simulators_a_comparative_study_ti_222725_model:BrainNetworksSimulatorsAComparativeStudyTi222725Model
   init_kwargs:
     model_path: data/222725.zip

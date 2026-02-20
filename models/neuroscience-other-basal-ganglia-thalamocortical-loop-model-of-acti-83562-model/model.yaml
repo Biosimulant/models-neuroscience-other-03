@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/83562
   download_url: https://modeldb.science/download/83562
   license: ''
-bsim:
+biosim:
   entrypoint: src.basal_ganglia_thalamocortical_loop_model_of_acti_83562_model:BasalGangliaThalamocorticalLoopModelOfActi83562Model
   init_kwargs:
     model_path: data/83562.zip

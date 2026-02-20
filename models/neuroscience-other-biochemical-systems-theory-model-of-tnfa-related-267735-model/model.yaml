@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/267735
   download_url: https://modeldb.science/download/267735
   license: ''
-bsim:
+biosim:
   entrypoint: src.biochemical_systems_theory_model_of_tnfa_related_267735_model:BiochemicalSystemsTheoryModelOfTnfaRelated267735Model
   init_kwargs:
     model_path: data/267735.zip

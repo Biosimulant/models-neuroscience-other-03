@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/267187
   download_url: https://modeldb.science/download/267187
   license: ''
-bsim:
+biosim:
   entrypoint: src.biophysical_models_of_awcon_and_rmd_c_elegans_ne_267187_model:BiophysicalModelsOfAwconAndRmdCElegansNe267187Model
   init_kwargs:
     model_path: data/267187.zip

@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/184312
   download_url: https://modeldb.science/download/184312
   license: ''
-bsim:
+biosim:
   entrypoint: src.allen_institute_scnn1a_tg2_cre_visp_layer_4_4734_184312_model:AllenInstituteScnn1aTg2CreVispLayer44734184312Model
   init_kwargs:
     model_path: data/184312.zip

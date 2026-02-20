@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/241160
   download_url: https://modeldb.science/download/241160
   license: ''
-bsim:
+biosim:
   entrypoint: src.ap_initiation_propagation_and_cortical_invasion_241160_model:ApInitiationPropagationAndCorticalInvasion241160Model
   init_kwargs:
     model_path: data/241160.zip

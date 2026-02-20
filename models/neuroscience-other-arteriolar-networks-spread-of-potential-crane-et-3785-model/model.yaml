@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/3785
   download_url: https://modeldb.science/download/3785
   license: ''
-bsim:
+biosim:
   entrypoint: src.arteriolar_networks_spread_of_potential_crane_et_3785_model:ArteriolarNetworksSpreadOfPotentialCraneEt3785Model
   init_kwargs:
     model_path: data/3785.zip

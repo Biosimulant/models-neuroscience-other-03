@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/141274
   download_url: https://modeldb.science/download/141274
   license: ''
-bsim:
+biosim:
   entrypoint: src.biophysically_detailed_model_of_the_mouse_sino_a_141274_model:BiophysicallyDetailedModelOfTheMouseSinoA141274Model
   init_kwargs:
     model_path: data/141274.zip

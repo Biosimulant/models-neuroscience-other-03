@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/180789
   download_url: https://modeldb.science/download/180789
   license: ''
-bsim:
+biosim:
   entrypoint: src.alcohol_action_in_a_detailed_purkinje_neuron_mod_180789_model:AlcoholActionInADetailedPurkinjeNeuronMod180789Model
   init_kwargs:
     model_path: data/180789.zip

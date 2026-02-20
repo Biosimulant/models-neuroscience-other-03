@@ -19,7 +19,7 @@ upstream:
   original_url: https://github.com/OpenSourceBrain/BonoClopath2017
   download_url: https://github.com/OpenSourceBrain/BonoClopath2017.git
   license: ''
-bsim:
+biosim:
   entrypoint: src.bonoclopath2017_bonoclopath2017_model:Bonoclopath2017Bonoclopath2017Model
   init_kwargs:
     model_path: data/repo

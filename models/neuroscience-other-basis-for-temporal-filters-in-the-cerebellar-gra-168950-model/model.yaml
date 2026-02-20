@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/168950
   download_url: https://modeldb.science/download/168950
   license: ''
-bsim:
+biosim:
   entrypoint: src.basis_for_temporal_filters_in_the_cerebellar_gra_168950_model:BasisForTemporalFiltersInTheCerebellarGra168950Model
   init_kwargs:
     model_path: data/168950.zip

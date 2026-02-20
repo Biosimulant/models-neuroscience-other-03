@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/243595
   download_url: https://modeldb.science/download/243595
   license: ''
-bsim:
+biosim:
   entrypoint: src.an_oscillatory_neural_autoencoder_based_on_frequ_243595_model:AnOscillatoryNeuralAutoencoderBasedOnFrequ243595Model
   init_kwargs:
     model_path: data/243595.zip

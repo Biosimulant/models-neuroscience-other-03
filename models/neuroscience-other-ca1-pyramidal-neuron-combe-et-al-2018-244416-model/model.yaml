@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/244416
   download_url: https://modeldb.science/download/244416
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_pyramidal_neuron_combe_et_al_2018_244416_model:Ca1PyramidalNeuronCombeEtAl2018244416Model
   init_kwargs:
     model_path: data/244416.zip

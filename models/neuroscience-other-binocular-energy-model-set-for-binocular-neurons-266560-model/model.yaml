@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/266560
   download_url: https://modeldb.science/download/266560
   license: ''
-bsim:
+biosim:
   entrypoint: src.binocular_energy_model_set_for_binocular_neurons_266560_model:BinocularEnergyModelSetForBinocularNeurons266560Model
   init_kwargs:
     model_path: data/266560.zip

@@ -16,13 +16,13 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Set, TYPE_CHECKING
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
-    from bsim import BioWorld
+    from biosim import BioWorld
 
-import bsim
-from bsim.signals import BioSignal, SignalMetadata
+import biosim
+from biosim.signals import BioSignal, SignalMetadata
 
 
-class OtherAmyloidBetaEffectsOnReleaseProbabilityAndIntegration(bsim.BioModule):
+class OtherAmyloidBetaEffectsOnReleaseProbabilityAndIntegration(biosim.BioModule):
     """Placeholder BioModule wrapper for: Amyloid-beta effects on release probability and integration at CA3-CA1 synapses (Romani et al. 2013).
 
     This model's original format is not directly supported by the auto-generator.

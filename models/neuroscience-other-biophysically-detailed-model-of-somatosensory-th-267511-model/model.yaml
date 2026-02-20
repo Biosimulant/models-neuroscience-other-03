@@ -19,7 +19,7 @@ upstream:
   original_url: https://modeldb.science/267511
   download_url: https://modeldb.science/download/267511
   license: ''
-bsim:
+biosim:
   entrypoint: src.biophysically_detailed_model_of_somatosensory_th_267511_model:BiophysicallyDetailedModelOfSomatosensoryTh267511Model
   init_kwargs:
     model_path: data/267511.zip

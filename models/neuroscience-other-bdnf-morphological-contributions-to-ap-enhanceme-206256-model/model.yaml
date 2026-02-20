@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/206256
   download_url: https://modeldb.science/download/206256
   license: ''
-bsim:
+biosim:
   entrypoint: src.bdnf_morphological_contributions_to_ap_enhanceme_206256_model:BdnfMorphologicalContributionsToApEnhanceme206256Model
   init_kwargs:
     model_path: data/206256.zip

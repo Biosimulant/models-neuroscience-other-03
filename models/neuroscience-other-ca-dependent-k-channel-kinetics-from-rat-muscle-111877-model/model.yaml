@@ -19,7 +19,7 @@ upstream:
   original_url: https://modeldb.science/111877
   download_url: https://modeldb.science/download/111877
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca_dependent_k_channel_kinetics_from_rat_muscle_111877_model:CaDependentKChannelKineticsFromRatMuscle111877Model
   init_kwargs:
     model_path: data/111877.zip

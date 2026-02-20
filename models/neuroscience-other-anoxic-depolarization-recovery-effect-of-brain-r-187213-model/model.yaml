@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/187213
   download_url: https://modeldb.science/download/187213
   license: ''
-bsim:
+biosim:
   entrypoint: src.anoxic_depolarization_recovery_effect_of_brain_r_187213_model:AnoxicDepolarizationRecoveryEffectOfBrainR187213Model
   init_kwargs:
     model_path: data/187213.zip

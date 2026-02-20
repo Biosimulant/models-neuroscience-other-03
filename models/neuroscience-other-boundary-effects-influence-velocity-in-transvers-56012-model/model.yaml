@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/56012
   download_url: https://modeldb.science/download/56012
   license: ''
-bsim:
+biosim:
   entrypoint: src.boundary_effects_influence_velocity_in_transvers_56012_model:BoundaryEffectsInfluenceVelocityInTransvers56012Model
   init_kwargs:
     model_path: data/56012.zip

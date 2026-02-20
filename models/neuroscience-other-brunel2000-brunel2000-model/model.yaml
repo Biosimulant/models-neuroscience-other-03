@@ -18,7 +18,7 @@ upstream:
   original_url: https://github.com/OpenSourceBrain/Brunel2000
   download_url: https://github.com/OpenSourceBrain/Brunel2000.git
   license: NOASSERTION
-bsim:
+biosim:
   entrypoint: src.brunel2000_brunel2000_model:Brunel2000Brunel2000Model
   init_kwargs:
     model_path: data/repo

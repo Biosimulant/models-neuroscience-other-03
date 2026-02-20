@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/64242
   download_url: https://modeldb.science/download/64242
   license: ''
-bsim:
+biosim:
   entrypoint: src.biologically_plausible_models_for_spatial_naviga_64242_model:BiologicallyPlausibleModelsForSpatialNaviga64242Model
   init_kwargs:
     model_path: data/64242.zip

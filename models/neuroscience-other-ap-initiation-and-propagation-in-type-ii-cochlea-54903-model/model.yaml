@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/54903
   download_url: https://modeldb.science/download/54903
   license: ''
-bsim:
+biosim:
   entrypoint: src.ap_initiation_and_propagation_in_type_ii_cochlea_54903_model:ApInitiationAndPropagationInTypeIiCochlea54903Model
   init_kwargs:
     model_path: data/54903.zip

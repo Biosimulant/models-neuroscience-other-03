@@ -18,7 +18,7 @@ upstream:
   original_url: https://modeldb.science/267741
   download_url: https://modeldb.science/download/267741
   license: ''
-bsim:
+biosim:
   entrypoint: src.biochemically_detailed_model_of_post_synaptic_pl_267741_model:BiochemicallyDetailedModelOfPostSynapticPl267741Model
   init_kwargs:
     model_path: data/267741.zip

@@ -16,13 +16,13 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Set, TYPE_CHECKING
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
-    from bsim import BioWorld
+    from biosim import BioWorld
 
-import bsim
-from bsim.signals import BioSignal, SignalMetadata
+import biosim
+from biosim.signals import BioSignal, SignalMetadata
 
 
-class OtherAllenInstitutePvalbIresCreVispLayer5471085845(bsim.BioModule):
+class OtherAllenInstitutePvalbIresCreVispLayer5471085845(biosim.BioModule):
     """Placeholder BioModule wrapper for: Allen Institute: Pvalb-IRES-Cre VISp layer 5 471085845.
 
     This model's original format is not directly supported by the auto-generator.

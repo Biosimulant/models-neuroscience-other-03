@@ -19,7 +19,7 @@ upstream:
   original_url: https://github.com/OpenSourceBrain/BartosEtAl2002
   download_url: https://github.com/OpenSourceBrain/BartosEtAl2002.git
   license: ''
-bsim:
+biosim:
   entrypoint: src.bartosetal2002_bartosetal2002_model:Bartosetal2002Bartosetal2002Model
   init_kwargs:
     model_path: data/repo

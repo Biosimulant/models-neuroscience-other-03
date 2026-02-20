@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/141699
   download_url: https://modeldb.science/download/141699
   license: ''
-bsim:
+biosim:
   entrypoint: src.basal_ganglia_thalamic_network_model_for_deep_br_141699_model:BasalGangliaThalamicNetworkModelForDeepBr141699Model
   init_kwargs:
     model_path: data/141699.zip

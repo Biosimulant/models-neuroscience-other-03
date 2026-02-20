@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/188977
   download_url: https://modeldb.science/download/188977
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_pyramidal_cells_basket_cells_ripples_malerba_188977_model:Ca1PyramidalCellsBasketCellsRipplesMalerba188977Model
   init_kwargs:
     model_path: data/188977.zip

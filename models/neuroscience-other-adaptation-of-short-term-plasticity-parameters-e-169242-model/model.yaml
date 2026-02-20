@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/169242
   download_url: https://modeldb.science/download/169242
   license: ''
-bsim:
+biosim:
   entrypoint: src.adaptation_of_short_term_plasticity_parameters_e_169242_model:AdaptationOfShortTermPlasticityParametersE169242Model
   init_kwargs:
     model_path: data/169242.zip

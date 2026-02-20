@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/126389
   download_url: https://modeldb.science/download/126389
   license: ''
-bsim:
+biosim:
   entrypoint: src.auditory_nerve_spontaneous_rate_histograms_jacks_126389_model:AuditoryNerveSpontaneousRateHistogramsJacks126389Model
   init_kwargs:
     model_path: data/126389.zip

@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/263703
   download_url: https://modeldb.science/download/263703
   license: ''
-bsim:
+biosim:
   entrypoint: src.alpha_rhythm_in_vitro_visual_cortex_traub_et_al_263703_model:AlphaRhythmInVitroVisualCortexTraubEtAl263703Model
   init_kwargs:
     model_path: data/263703.zip

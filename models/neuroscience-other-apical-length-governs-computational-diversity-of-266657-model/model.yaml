@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/266657
   download_url: https://modeldb.science/download/266657
   license: ''
-bsim:
+biosim:
   entrypoint: src.apical_length_governs_computational_diversity_of_266657_model:ApicalLengthGovernsComputationalDiversityOf266657Model
   init_kwargs:
     model_path: data/266657.zip

@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/185858
   download_url: https://modeldb.science/download/185858
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca_hcn_channel_dependent_persistent_activity_in_185858_model:CaHcnChannelDependentPersistentActivityIn185858Model
   init_kwargs:
     model_path: data/185858.zip

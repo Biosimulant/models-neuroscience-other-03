@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/155601
   download_url: https://modeldb.science/download/155601
   license: ''
-bsim:
+biosim:
   entrypoint: src.basket_cell_extrasynaptic_inhibition_modulates_n_155601_model:BasketCellExtrasynapticInhibitionModulatesN155601Model
   init_kwargs:
     model_path: data/155601.zip

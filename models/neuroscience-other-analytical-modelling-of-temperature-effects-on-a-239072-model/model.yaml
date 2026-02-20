@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/239072
   download_url: https://modeldb.science/download/239072
   license: ''
-bsim:
+biosim:
   entrypoint: src.analytical_modelling_of_temperature_effects_on_a_239072_model:AnalyticalModellingOfTemperatureEffectsOnA239072Model
   init_kwargs:
     model_path: data/239072.zip

@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/83520
   download_url: https://modeldb.science/download/83520
   license: ''
-bsim:
+biosim:
   entrypoint: src.ambiguous_encoding_and_distorted_perception_carl_83520_model:AmbiguousEncodingAndDistortedPerceptionCarl83520Model
   init_kwargs:
     model_path: data/83520.zip

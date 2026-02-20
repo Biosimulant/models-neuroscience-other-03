@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/154927
   download_url: https://modeldb.science/download/154927
   license: ''
-bsim:
+biosim:
   entrypoint: src.analyzing_neural_time_series_data_theory_and_pra_154927_model:AnalyzingNeuralTimeSeriesDataTheoryAndPra154927Model
   init_kwargs:
     model_path: data/154927.zip

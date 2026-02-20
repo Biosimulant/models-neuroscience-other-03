@@ -16,13 +16,13 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Set, TYPE_CHECKING
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
-    from bsim import BioWorld
+    from biosim import BioWorld
 
-import bsim
-from bsim.signals import BioSignal, SignalMetadata
+import biosim
+from biosim.signals import BioSignal, SignalMetadata
 
 
-class OtherBooleanNetworkBasedAnalysisOfTheApoptosisNetworkMai(bsim.BioModule):
+class OtherBooleanNetworkBasedAnalysisOfTheApoptosisNetworkMai(biosim.BioModule):
     """Placeholder BioModule wrapper for: Boolean network-based analysis of the apoptosis network (Mai and Liu 2009).
 
     This model's original format is not directly supported by the auto-generator.

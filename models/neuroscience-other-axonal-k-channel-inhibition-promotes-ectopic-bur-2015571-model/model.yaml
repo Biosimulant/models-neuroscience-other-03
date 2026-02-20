@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/2015571
   download_url: https://modeldb.science/download/2015571
   license: ''
-bsim:
+biosim:
   entrypoint: src.axonal_k_channel_inhibition_promotes_ectopic_bur_2015571_model:AxonalKChannelInhibitionPromotesEctopicBur2015571Model
   init_kwargs:
     model_path: data/2015571.zip

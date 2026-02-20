@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/262233
   download_url: https://modeldb.science/download/262233
   license: ''
-bsim:
+biosim:
   entrypoint: src.biophysical_modeling_of_pathological_brain_state_262233_model:BiophysicalModelingOfPathologicalBrainState262233Model
   init_kwargs:
     model_path: data/262233.zip

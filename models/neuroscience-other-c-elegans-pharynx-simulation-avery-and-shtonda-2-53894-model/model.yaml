@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/53894
   download_url: https://modeldb.science/download/53894
   license: ''
-bsim:
+biosim:
   entrypoint: src.c_elegans_pharynx_simulation_avery_and_shtonda_2_53894_model:CElegansPharynxSimulationAveryAndShtonda253894Model
   init_kwargs:
     model_path: data/53894.zip

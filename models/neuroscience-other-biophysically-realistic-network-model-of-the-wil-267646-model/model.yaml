@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/267646
   download_url: https://modeldb.science/download/267646
   license: ''
-bsim:
+biosim:
   entrypoint: src.biophysically_realistic_network_model_of_the_wil_267646_model:BiophysicallyRealisticNetworkModelOfTheWil267646Model
   init_kwargs:
     model_path: data/267646.zip

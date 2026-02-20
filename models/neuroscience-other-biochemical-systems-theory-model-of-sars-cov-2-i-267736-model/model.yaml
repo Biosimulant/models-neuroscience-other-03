@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/267736
   download_url: https://modeldb.science/download/267736
   license: ''
-bsim:
+biosim:
   entrypoint: src.biochemical_systems_theory_model_of_sars_cov_2_i_267736_model:BiochemicalSystemsTheoryModelOfSarsCov2I267736Model
   init_kwargs:
     model_path: data/267736.zip

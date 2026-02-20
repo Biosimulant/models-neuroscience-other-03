@@ -18,7 +18,7 @@ upstream:
   original_url: https://github.com/OpenSourceBrain/Amacrine
   download_url: https://github.com/OpenSourceBrain/Amacrine.git
   license: ''
-bsim:
+biosim:
   entrypoint: src.amacrine_amacrine_model:AmacrineAmacrineModel
   init_kwargs:
     model_path: data/repo

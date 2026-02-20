@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/55749
   download_url: https://modeldb.science/download/55749
   license: ''
-bsim:
+biosim:
   entrypoint: src.breakdown_of_accmmodation_in_nerve_a_possible_ro_55749_model:BreakdownOfAccmmodationInNerveAPossibleRo55749Model
   init_kwargs:
     model_path: data/55749.zip

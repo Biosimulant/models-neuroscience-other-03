@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/116096
   download_url: https://modeldb.science/download/116096
   license: ''
-bsim:
+biosim:
   entrypoint: src.biophysical_and_phenomenological_models_of_spike_116096_model:BiophysicalAndPhenomenologicalModelsOfSpike116096Model
   init_kwargs:
     model_path: data/116096.zip

@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/150206
   download_url: https://modeldb.science/download/150206
   license: ''
-bsim:
+biosim:
   entrypoint: src.biologically_constrained_basal_ganglia_model_bcb_150206_model:BiologicallyConstrainedBasalGangliaModelBcb150206Model
   init_kwargs:
     model_path: data/150206.zip

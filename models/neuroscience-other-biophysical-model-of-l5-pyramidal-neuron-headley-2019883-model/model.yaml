@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/2019883
   download_url: https://modeldb.science/download/2019883
   license: ''
-bsim:
+biosim:
   entrypoint: src.biophysical_model_of_l5_pyramidal_neuron_headley_2019883_model:BiophysicalModelOfL5PyramidalNeuronHeadley2019883Model
   init_kwargs:
     model_path: data/2019883.zip

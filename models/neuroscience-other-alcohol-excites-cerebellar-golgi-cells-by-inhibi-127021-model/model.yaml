@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/127021
   download_url: https://modeldb.science/download/127021
   license: ''
-bsim:
+biosim:
   entrypoint: src.alcohol_excites_cerebellar_golgi_cells_by_inhibi_127021_model:AlcoholExcitesCerebellarGolgiCellsByInhibi127021Model
   init_kwargs:
     model_path: data/127021.zip

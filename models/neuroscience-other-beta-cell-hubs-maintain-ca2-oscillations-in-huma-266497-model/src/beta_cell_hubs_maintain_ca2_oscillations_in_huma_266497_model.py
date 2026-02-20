@@ -16,13 +16,13 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Set, TYPE_CHECKING
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
-    from bsim import BioWorld
+    from biosim import BioWorld
 
-import bsim
-from bsim.signals import BioSignal, SignalMetadata
+import biosim
+from biosim.signals import BioSignal, SignalMetadata
 
 
-class OtherBetaCellHubsMaintainCa2OscillationsInHumanAndMouse(bsim.BioModule):
+class OtherBetaCellHubsMaintainCa2OscillationsInHumanAndMouse(biosim.BioModule):
     """Placeholder BioModule wrapper for: Beta-cell hubs maintain Ca2+ oscillations in human and mouse islet simulations (Lei et al 2018).
 
     This model's original format is not directly supported by the auto-generator.

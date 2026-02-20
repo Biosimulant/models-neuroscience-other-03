@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/2020504
   download_url: https://modeldb.science/download/2020504
   license: ''
-bsim:
+biosim:
   entrypoint: src.binocular_l2_3_pyramidal_neuron_honnuraiah_et_al_2020504_model:BinocularL23PyramidalNeuronHonnuraiahEtAl2020504Model
   init_kwargs:
     model_path: data/2020504.zip

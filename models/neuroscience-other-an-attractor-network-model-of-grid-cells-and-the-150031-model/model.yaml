@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/150031
   download_url: https://modeldb.science/download/150031
   license: ''
-bsim:
+biosim:
   entrypoint: src.an_attractor_network_model_of_grid_cells_and_the_150031_model:AnAttractorNetworkModelOfGridCellsAndThe150031Model
   init_kwargs:
     model_path: data/150031.zip

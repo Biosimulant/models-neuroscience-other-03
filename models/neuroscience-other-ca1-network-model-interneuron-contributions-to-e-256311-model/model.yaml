@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/256311
   download_url: https://modeldb.science/download/256311
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_network_model_interneuron_contributions_to_e_256311_model:Ca1NetworkModelInterneuronContributionsToE256311Model
   init_kwargs:
     model_path: data/256311.zip

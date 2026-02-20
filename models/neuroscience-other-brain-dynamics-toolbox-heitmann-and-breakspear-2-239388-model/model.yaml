@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/239388
   download_url: https://modeldb.science/download/239388
   license: ''
-bsim:
+biosim:
   entrypoint: src.brain_dynamics_toolbox_heitmann_and_breakspear_2_239388_model:BrainDynamicsToolboxHeitmannAndBreakspear2239388Model
   init_kwargs:
     model_path: data/239388.zip

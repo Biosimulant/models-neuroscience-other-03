@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/147538
   download_url: https://modeldb.science/download/147538
   license: ''
-bsim:
+biosim:
   entrypoint: src.bcm_like_synaptic_plasticity_with_conductance_ba_147538_model:BcmLikeSynapticPlasticityWithConductanceBa147538Model
   init_kwargs:
     model_path: data/147538.zip

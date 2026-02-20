@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/267355
   download_url: https://modeldb.science/download/267355
   license: ''
-bsim:
+biosim:
   entrypoint: src.ais_model_of_l5_cortical_pyramidal_neuron_filipi_267355_model:AisModelOfL5CorticalPyramidalNeuronFilipi267355Model
   init_kwargs:
     model_path: data/267355.zip

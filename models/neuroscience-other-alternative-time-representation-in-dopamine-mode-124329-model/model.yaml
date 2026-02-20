@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/124329
   download_url: https://modeldb.science/download/124329
   license: ''
-bsim:
+biosim:
   entrypoint: src.alternative_time_representation_in_dopamine_mode_124329_model:AlternativeTimeRepresentationInDopamineMode124329Model
   init_kwargs:
     model_path: data/124329.zip

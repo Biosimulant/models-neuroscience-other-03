@@ -16,13 +16,13 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Set, TYPE_CHECKING
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
-    from bsim import BioWorld
+    from biosim import BioWorld
 
-import bsim
-from bsim.signals import BioSignal, SignalMetadata
+import biosim
+from biosim.signals import BioSignal, SignalMetadata
 
 
-class OtherBiophysicalModelForFieldPotentialsOfNetworksOfIF(bsim.BioModule):
+class OtherBiophysicalModelForFieldPotentialsOfNetworksOfIF(biosim.BioModule):
     """Placeholder BioModule wrapper for: Biophysical model for field potentials of networks of I&F neurons (beim Graben & Serafim 2013).
 
     This model's original format is not directly supported by the auto-generator.

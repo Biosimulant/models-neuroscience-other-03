@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/260971
   download_url: https://modeldb.science/download/260971
   license: ''
-bsim:
+biosim:
   entrypoint: src.biochemically_detailed_model_of_ltp_and_ltd_in_a_260971_model:BiochemicallyDetailedModelOfLtpAndLtdInA260971Model
   init_kwargs:
     model_path: data/260971.zip

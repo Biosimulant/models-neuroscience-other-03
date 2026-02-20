@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/258867
   download_url: https://modeldb.science/download/258867
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_pyramidal_neuron_nonlinear_a5_gabaar_control_258867_model:Ca1PyramidalNeuronNonlinearA5GabaarControl258867Model
   init_kwargs:
     model_path: data/258867.zip

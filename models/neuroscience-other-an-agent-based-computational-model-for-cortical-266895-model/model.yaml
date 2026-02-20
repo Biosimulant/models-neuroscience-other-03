@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/266895
   download_url: https://modeldb.science/download/266895
   license: ''
-bsim:
+biosim:
   entrypoint: src.an_agent_based_computational_model_for_cortical_266895_model:AnAgentBasedComputationalModelForCortical266895Model
   init_kwargs:
     model_path: data/266895.zip

@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/256610
   download_url: https://modeldb.science/download/256610
   license: ''
-bsim:
+biosim:
   entrypoint: src.bump_attractor_models_delayed_response_and_recog_256610_model:BumpAttractorModelsDelayedResponseAndRecog256610Model
   init_kwargs:
     model_path: data/256610.zip

@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/189155
   download_url: https://modeldb.science/download/189155
   license: ''
-bsim:
+biosim:
   entrypoint: src.axonal_hh_model_for_temperature_stimulation_frib_189155_model:AxonalHhModelForTemperatureStimulationFrib189155Model
   init_kwargs:
     model_path: data/189155.zip

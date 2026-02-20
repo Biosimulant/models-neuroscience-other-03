@@ -19,7 +19,7 @@ upstream:
   original_url: https://modeldb.science/114242
   download_url: https://modeldb.science/download/114242
   license: ''
-bsim:
+biosim:
   entrypoint: src.brette_gerstner_model_touboul_and_brette_2008_114242_model:BretteGerstnerModelTouboulAndBrette2008114242Model
   init_kwargs:
     model_path: data/114242.zip

@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/262368
   download_url: https://modeldb.science/download/262368
   license: ''
-bsim:
+biosim:
   entrypoint: src.biophysical_basis_of_subthalamic_lfps_recorded_f_262368_model:BiophysicalBasisOfSubthalamicLfpsRecordedF262368Model
   init_kwargs:
     model_path: data/262368.zip

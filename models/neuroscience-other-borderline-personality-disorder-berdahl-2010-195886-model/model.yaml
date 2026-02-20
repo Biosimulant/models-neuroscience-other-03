@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/195886
   download_url: https://modeldb.science/download/195886
   license: ''
-bsim:
+biosim:
   entrypoint: src.borderline_personality_disorder_berdahl_2010_195886_model:BorderlinePersonalityDisorderBerdahl2010195886Model
   init_kwargs:
     model_path: data/195886.zip

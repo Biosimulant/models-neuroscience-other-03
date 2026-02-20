@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/167414
   download_url: https://modeldb.science/download/167414
   license: ''
-bsim:
+biosim:
   entrypoint: src.adaptive_robotic_control_driven_by_a_versatile_s_167414_model:AdaptiveRoboticControlDrivenByAVersatileS167414Model
   init_kwargs:
     model_path: data/167414.zip

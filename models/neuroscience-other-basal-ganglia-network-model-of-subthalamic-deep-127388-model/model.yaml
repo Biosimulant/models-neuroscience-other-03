@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/127388
   download_url: https://modeldb.science/download/127388
   license: ''
-bsim:
+biosim:
   entrypoint: src.basal_ganglia_network_model_of_subthalamic_deep_127388_model:BasalGangliaNetworkModelOfSubthalamicDeep127388Model
   init_kwargs:
     model_path: data/127388.zip

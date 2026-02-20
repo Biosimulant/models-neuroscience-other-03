@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/182515
   download_url: https://modeldb.science/download/182515
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_pyramidal_neuron_ferguson_et_al_2014_182515_model:Ca1PyramidalNeuronFergusonEtAl2014182515Model
   init_kwargs:
     model_path: data/182515.zip

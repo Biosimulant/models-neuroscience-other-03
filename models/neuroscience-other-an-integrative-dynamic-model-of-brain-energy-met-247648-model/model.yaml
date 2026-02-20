@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/247648
   download_url: https://modeldb.science/download/247648
   license: ''
-bsim:
+biosim:
   entrypoint: src.an_integrative_dynamic_model_of_brain_energy_met_247648_model:AnIntegrativeDynamicModelOfBrainEnergyMet247648Model
   init_kwargs:
     model_path: data/247648.zip

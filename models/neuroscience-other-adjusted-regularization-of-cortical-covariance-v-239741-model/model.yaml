@@ -19,7 +19,7 @@ upstream:
   original_url: https://modeldb.science/239741
   download_url: https://modeldb.science/download/239741
   license: ''
-bsim:
+biosim:
   entrypoint: src.adjusted_regularization_of_cortical_covariance_v_239741_model:AdjustedRegularizationOfCorticalCovarianceV239741Model
   init_kwargs:
     model_path: data/239741.zip

@@ -16,13 +16,13 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Set, TYPE_CHECKING
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
-    from bsim import BioWorld
+    from biosim import BioWorld
 
-import bsim
-from bsim.signals import BioSignal, SignalMetadata
+import biosim
+from biosim.signals import BioSignal, SignalMetadata
 
 
-class Other184163(bsim.BioModule):
+class Other184163(biosim.BioModule):
     """Placeholder BioModule wrapper for: 184163.
 
     This model's original format is not directly supported by the auto-generator.

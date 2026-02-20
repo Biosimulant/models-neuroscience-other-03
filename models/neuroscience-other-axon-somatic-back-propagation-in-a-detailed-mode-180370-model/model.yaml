@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/180370
   download_url: https://modeldb.science/download/180370
   license: ''
-bsim:
+biosim:
   entrypoint: src.axon_somatic_back_propagation_in_a_detailed_mode_180370_model:AxonSomaticBackPropagationInADetailedMode180370Model
   init_kwargs:
     model_path: data/180370.zip

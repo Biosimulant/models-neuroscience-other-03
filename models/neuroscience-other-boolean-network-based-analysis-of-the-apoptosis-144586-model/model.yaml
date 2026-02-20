@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/144586
   download_url: https://modeldb.science/download/144586
   license: ''
-bsim:
+biosim:
   entrypoint: src.boolean_network_based_analysis_of_the_apoptosis_144586_model:BooleanNetworkBasedAnalysisOfTheApoptosis144586Model
   init_kwargs:
     model_path: data/144586.zip

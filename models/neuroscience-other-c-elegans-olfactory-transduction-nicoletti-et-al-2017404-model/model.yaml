@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/2017404
   download_url: https://modeldb.science/download/2017404
   license: ''
-bsim:
+biosim:
   entrypoint: src.c_elegans_olfactory_transduction_nicoletti_et_al_2017404_model:CElegansOlfactoryTransductionNicolettiEtAl2017404Model
   init_kwargs:
     model_path: data/2017404.zip

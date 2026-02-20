@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/187687
   download_url: https://modeldb.science/download/187687
   license: ''
-bsim:
+biosim:
   entrypoint: src.axon_growth_model_diehl_et_al_2016_187687_model:AxonGrowthModelDiehlEtAl2016187687Model
   init_kwargs:
     model_path: data/187687.zip

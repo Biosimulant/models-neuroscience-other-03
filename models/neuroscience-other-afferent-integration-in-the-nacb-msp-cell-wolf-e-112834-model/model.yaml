@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/112834
   download_url: https://modeldb.science/download/112834
   license: ''
-bsim:
+biosim:
   entrypoint: src.afferent_integration_in_the_nacb_msp_cell_wolf_e_112834_model:AfferentIntegrationInTheNacbMspCellWolfE112834Model
   init_kwargs:
     model_path: data/112834.zip

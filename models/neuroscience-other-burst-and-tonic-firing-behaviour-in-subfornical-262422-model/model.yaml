@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/262422
   download_url: https://modeldb.science/download/262422
   license: ''
-bsim:
+biosim:
   entrypoint: src.burst_and_tonic_firing_behaviour_in_subfornical_262422_model:BurstAndTonicFiringBehaviourInSubfornical262422Model
   init_kwargs:
     model_path: data/262422.zip

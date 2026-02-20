@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/79145
   download_url: https://modeldb.science/download/79145
   license: ''
-bsim:
+biosim:
   entrypoint: src.an_oscillatory_neural_model_of_multiple_object_t_79145_model:AnOscillatoryNeuralModelOfMultipleObjectT79145Model
   init_kwargs:
     model_path: data/79145.zip

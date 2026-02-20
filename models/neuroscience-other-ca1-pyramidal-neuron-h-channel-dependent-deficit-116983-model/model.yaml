@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/116983
   download_url: https://modeldb.science/download/116983
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_pyramidal_neuron_h_channel_dependent_deficit_116983_model:Ca1PyramidalNeuronHChannelDependentDeficit116983Model
   init_kwargs:
     model_path: data/116983.zip

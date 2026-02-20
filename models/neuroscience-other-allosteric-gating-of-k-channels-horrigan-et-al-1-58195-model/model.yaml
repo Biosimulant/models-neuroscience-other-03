@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/58195
   download_url: https://modeldb.science/download/58195
   license: ''
-bsim:
+biosim:
   entrypoint: src.allosteric_gating_of_k_channels_horrigan_et_al_1_58195_model:AllostericGatingOfKChannelsHorriganEtAl158195Model
   init_kwargs:
     model_path: data/58195.zip

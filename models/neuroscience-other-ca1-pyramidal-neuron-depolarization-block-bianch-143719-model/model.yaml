@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/143719
   download_url: https://modeldb.science/download/143719
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_pyramidal_neuron_depolarization_block_bianch_143719_model:Ca1PyramidalNeuronDepolarizationBlockBianch143719Model
   init_kwargs:
     model_path: data/143719.zip

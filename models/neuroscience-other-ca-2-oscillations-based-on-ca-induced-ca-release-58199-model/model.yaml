@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/58199
   download_url: https://modeldb.science/download/58199
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca_2_oscillations_based_on_ca_induced_ca_release_58199_model:Ca2OscillationsBasedOnCaInducedCaRelease58199Model
   init_kwargs:
     model_path: data/58199.zip

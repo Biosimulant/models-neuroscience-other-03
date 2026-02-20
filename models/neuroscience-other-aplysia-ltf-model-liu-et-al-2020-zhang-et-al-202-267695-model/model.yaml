@@ -18,7 +18,7 @@ upstream:
   original_url: https://modeldb.science/267695
   download_url: https://modeldb.science/download/267695
   license: ''
-bsim:
+biosim:
   entrypoint: src.aplysia_ltf_model_liu_et_al_2020_zhang_et_al_202_267695_model:AplysiaLtfModelLiuEtAl2020ZhangEtAl202267695Model
   init_kwargs:
     model_path: data/267695.zip

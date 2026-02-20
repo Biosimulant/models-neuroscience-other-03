@@ -19,7 +19,7 @@ upstream:
   original_url: https://modeldb.science/195555
   download_url: https://modeldb.science/download/195555
   license: ''
-bsim:
+biosim:
   entrypoint: src.automated_metadata_suggester_mcdougal_et_al_2018_195555_model:AutomatedMetadataSuggesterMcdougalEtAl2018195555Model
   init_kwargs:
     model_path: data/195555.zip

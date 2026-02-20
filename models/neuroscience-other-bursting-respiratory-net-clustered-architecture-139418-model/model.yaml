@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/139418
   download_url: https://modeldb.science/download/139418
   license: ''
-bsim:
+biosim:
   entrypoint: src.bursting_respiratory_net_clustered_architecture_139418_model:BurstingRespiratoryNetClusteredArchitecture139418Model
   init_kwargs:
     model_path: data/139418.zip

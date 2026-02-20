@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/36834
   download_url: https://modeldb.science/download/36834
   license: ''
-bsim:
+biosim:
   entrypoint: src.auditory_nerve_model_for_predicting_performance_36834_model:AuditoryNerveModelForPredictingPerformance36834Model
   init_kwargs:
     model_path: data/36834.zip

@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/187599
   download_url: https://modeldb.science/download/187599
   license: ''
-bsim:
+biosim:
   entrypoint: src.an_ion_based_model_for_swelling_of_neurons_and_a_187599_model:AnIonBasedModelForSwellingOfNeuronsAndA187599Model
   init_kwargs:
     model_path: data/187599.zip

@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/125378
   download_url: https://modeldb.science/download/125378
   license: ''
-bsim:
+biosim:
   entrypoint: src.availability_of_low_threshold_ca2_current_in_ret_125378_model:AvailabilityOfLowThresholdCa2CurrentInRet125378Model
   init_kwargs:
     model_path: data/125378.zip

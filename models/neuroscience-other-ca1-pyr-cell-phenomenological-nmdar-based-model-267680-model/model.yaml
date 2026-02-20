@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/267680
   download_url: https://modeldb.science/download/267680
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_pyr_cell_phenomenological_nmdar_based_model_267680_model:Ca1PyrCellPhenomenologicalNmdarBasedModel267680Model
   init_kwargs:
     model_path: data/267680.zip

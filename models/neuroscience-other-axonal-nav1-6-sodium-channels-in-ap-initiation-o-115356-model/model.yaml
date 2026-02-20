@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/115356
   download_url: https://modeldb.science/download/115356
   license: ''
-bsim:
+biosim:
   entrypoint: src.axonal_nav1_6_sodium_channels_in_ap_initiation_o_115356_model:AxonalNav16SodiumChannelsInApInitiationO115356Model
   init_kwargs:
     model_path: data/115356.zip

@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/247656
   download_url: https://modeldb.science/download/247656
   license: ''
-bsim:
+biosim:
   entrypoint: src.bursting_in_dopamine_neurons_li_yx_et_al_1996_247656_model:BurstingInDopamineNeuronsLiYxEtAl1996247656Model
   init_kwargs:
     model_path: data/247656.zip

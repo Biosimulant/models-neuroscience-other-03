@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/114365
   download_url: https://modeldb.science/download/114365
   license: ''
-bsim:
+biosim:
   entrypoint: src.an_allosteric_kinetics_of_nmdars_in_stdp_urakubo_114365_model:AnAllostericKineticsOfNmdarsInStdpUrakubo114365Model
   init_kwargs:
     model_path: data/114365.zip

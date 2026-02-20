@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/37103
   download_url: https://modeldb.science/download/37103
   license: ''
-bsim:
+biosim:
   entrypoint: src.auditory_nerve_response_model_zhang_et_al_2001_37103_model:AuditoryNerveResponseModelZhangEtAl200137103Model
   init_kwargs:
     model_path: data/37103.zip

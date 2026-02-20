@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/2017403
   download_url: https://modeldb.science/download/2017403
   license: ''
-bsim:
+biosim:
   entrypoint: src.c_elegans_motor_and_interneurons_nicoletti_at_al_2017403_model:CElegansMotorAndInterneuronsNicolettiAtAl2017403Model
   init_kwargs:
     model_path: data/2017403.zip

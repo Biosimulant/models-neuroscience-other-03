@@ -16,13 +16,13 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Set, TYPE_CHECKING
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
-    from bsim import BioWorld
+    from biosim import BioWorld
 
-import bsim
-from bsim.signals import BioSignal, SignalMetadata
+import biosim
+from biosim.signals import BioSignal, SignalMetadata
 
 
-class OtherApInitiationAndPropagationInTypeIiCochlearGanglion(bsim.BioModule):
+class OtherApInitiationAndPropagationInTypeIiCochlearGanglion(biosim.BioModule):
     """Placeholder BioModule wrapper for: AP initiation and propagation in  type II cochlear ganglion cell (Hossain et al 2005).
 
     This model's original format is not directly supported by the auto-generator.

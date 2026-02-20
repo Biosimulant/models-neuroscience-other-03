@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/267512
   download_url: https://modeldb.science/download/267512
   license: ''
-bsim:
+biosim:
   entrypoint: src.axonal_subthreshold_voltage_signaling_along_hipp_267512_model:AxonalSubthresholdVoltageSignalingAlongHipp267512Model
   init_kwargs:
     model_path: data/267512.zip

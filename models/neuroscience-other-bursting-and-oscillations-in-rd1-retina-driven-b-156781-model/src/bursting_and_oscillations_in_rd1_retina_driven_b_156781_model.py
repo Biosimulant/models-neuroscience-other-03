@@ -16,13 +16,13 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Set, TYPE_CHECKING
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
-    from bsim import BioWorld
+    from biosim import BioWorld
 
-import bsim
-from bsim.signals import BioSignal, SignalMetadata
+import biosim
+from biosim.signals import BioSignal, SignalMetadata
 
 
-class OtherBurstingAndOscillationsInRd1RetinaDrivenByAii(bsim.BioModule):
+class OtherBurstingAndOscillationsInRd1RetinaDrivenByAii(biosim.BioModule):
     """Placeholder BioModule wrapper for: Bursting and oscillations in RD1 Retina driven by AII Amacrine Neuron (Choi et al. 2014).
 
     This model's original format is not directly supported by the auto-generator.

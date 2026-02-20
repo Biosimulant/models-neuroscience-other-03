@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/184054
   download_url: https://modeldb.science/download/184054
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_pyramidal_neuron_dendritic_na_spikes_are_req_184054_model:Ca1PyramidalNeuronDendriticNaSpikesAreReq184054Model
   init_kwargs:
     model_path: data/184054.zip

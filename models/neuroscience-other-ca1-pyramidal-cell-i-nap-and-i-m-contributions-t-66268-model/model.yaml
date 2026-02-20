@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/66268
   download_url: https://modeldb.science/download/66268
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_pyramidal_cell_i_nap_and_i_m_contributions_t_66268_model:Ca1PyramidalCellINapAndIMContributionsT66268Model
   init_kwargs:
     model_path: data/66268.zip

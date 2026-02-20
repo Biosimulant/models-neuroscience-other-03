@@ -18,7 +18,7 @@ upstream:
   original_url: https://modeldb.science/247310
   download_url: https://modeldb.science/download/247310
   license: ''
-bsim:
+biosim:
   entrypoint: src.adaptive_dual_control_of_deep_brain_stimulation_247310_model:AdaptiveDualControlOfDeepBrainStimulation247310Model
   init_kwargs:
     model_path: data/247310.zip

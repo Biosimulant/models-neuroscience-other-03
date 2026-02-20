@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/264519
   download_url: https://modeldb.science/download/264519
   license: ''
-bsim:
+biosim:
   entrypoint: src.ave_neuron_model_for_slow_wave_sleep_in_cortex_t_264519_model:AveNeuronModelForSlowWaveSleepInCortexT264519Model
   init_kwargs:
     model_path: data/264519.zip

@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/185332
   download_url: https://modeldb.science/download/185332
   license: ''
-bsim:
+biosim:
   entrypoint: src.aob_mitral_cell_persistent_activity_without_feed_185332_model:AobMitralCellPersistentActivityWithoutFeed185332Model
   init_kwargs:
     model_path: data/185332.zip

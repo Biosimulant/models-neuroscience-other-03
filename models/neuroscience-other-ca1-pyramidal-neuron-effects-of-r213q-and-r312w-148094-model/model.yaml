@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/148094
   download_url: https://modeldb.science/download/148094
   license: ''
-bsim:
+biosim:
   entrypoint: src.ca1_pyramidal_neuron_effects_of_r213q_and_r312w_148094_model:Ca1PyramidalNeuronEffectsOfR213qAndR312w148094Model
   init_kwargs:
     model_path: data/148094.zip

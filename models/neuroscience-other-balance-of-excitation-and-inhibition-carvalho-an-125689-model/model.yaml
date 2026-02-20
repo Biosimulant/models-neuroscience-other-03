@@ -20,7 +20,7 @@ upstream:
   original_url: https://modeldb.science/125689
   download_url: https://modeldb.science/download/125689
   license: ''
-bsim:
+biosim:
   entrypoint: src.balance_of_excitation_and_inhibition_carvalho_an_125689_model:BalanceOfExcitationAndInhibitionCarvalhoAn125689Model
   init_kwargs:
     model_path: data/125689.zip
