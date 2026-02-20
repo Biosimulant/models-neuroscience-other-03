@@ -1,0 +1,28 @@
+modules:
+  allen_institute_1:
+    class: src.allen_institute_ntsr1_cre_visp_layer_4_472430904_184348_model:AllenInstituteNtsr1CreVispLayer4472430904184348Model
+    args:
+      model_path: data/184348.zip
+  allen_institute_2:
+    class: src.model_184142_184142_model:Model184142184142Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: allen_institute_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: allen_institute_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b

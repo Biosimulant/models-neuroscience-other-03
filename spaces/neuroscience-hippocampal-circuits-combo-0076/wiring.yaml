@@ -1,0 +1,44 @@
+modules:
+  axonal_k_1:
+    class: src.axonal_k_channel_inhibition_promotes_ectopic_bur_2015571_model:AxonalKChannelInhibitionPromotesEctopicBur2015571Model
+    args:
+      model_path: data/2015571.zip
+  axonal_k_2:
+    class: src.model_2015571_2015571_model:Model20155712015571Model
+    args:
+      model_path: data/repo
+  axonal_nav1_3:
+    class: src.model_115356_115356_model:Model115356115356Model
+    args:
+      model_path: data/repo
+  axonal_subthresh_4:
+    class: src.model_267512_267512_model:Model267512267512Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: axonal_k_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: axonal_k_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: axonal_nav1_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: axonal_subthresh_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

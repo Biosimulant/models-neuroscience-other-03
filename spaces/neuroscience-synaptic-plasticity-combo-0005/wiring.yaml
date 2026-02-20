@@ -1,0 +1,28 @@
+modules:
+  activity_phase_1:
+    class: src.model_45513_45513_model:Model4551345513Model
+    args:
+      model_path: data/repo
+  adaptation_of_2:
+    class: src.adaptation_of_short_term_plasticity_parameters_e_169242_model:AdaptationOfShortTermPlasticityParametersE169242Model
+    args:
+      model_path: data/169242.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: activity_phase_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: adaptation_of_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b

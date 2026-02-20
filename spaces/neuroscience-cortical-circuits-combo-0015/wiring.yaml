@@ -1,0 +1,28 @@
+modules:
+  adjusted_regular_1:
+    class: src.model_239741_239741_model:Model239741239741Model
+    args:
+      model_path: data/repo
+  adjusted_regular_2:
+    class: src.adjusted_regularization_of_cortical_covariance_v_239741_model:AdjustedRegularizationOfCorticalCovarianceV239741Model
+    args:
+      model_path: data/239741.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: adjusted_regular_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: adjusted_regular_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b

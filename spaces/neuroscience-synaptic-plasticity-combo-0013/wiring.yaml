@@ -1,0 +1,28 @@
+modules:
+  bono_j_1:
+    class: src.bonoclopath2017_bonoclopath2017_model:Bonoclopath2017Bonoclopath2017Model
+    args:
+      model_path: data/repo
+  bonoclopath2017_2:
+    class: src.bonoclopath2017_bonoclopath2017_model:Bonoclopath2017Bonoclopath2017Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: bono_j_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: bonoclopath2017_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b

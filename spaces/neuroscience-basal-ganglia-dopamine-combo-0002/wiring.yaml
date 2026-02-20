@@ -1,0 +1,28 @@
+modules:
+  alternative_time_1:
+    class: src.alternative_time_representation_in_dopamine_mode_124329_model:AlternativeTimeRepresentationInDopamineMode124329Model
+    args:
+      model_path: data/124329.zip
+  basal_ganglia_2:
+    class: src.basal_ganglia_and_levodopa_pharmacodynamics_mode_261624_model:BasalGangliaAndLevodopaPharmacodynamicsMode261624Model
+    args:
+      model_path: data/261624.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: alternative_time_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: basal_ganglia_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b

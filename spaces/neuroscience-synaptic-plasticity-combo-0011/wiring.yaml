@@ -1,0 +1,28 @@
+modules:
+  bcm_like_1:
+    class: src.bcm_like_synaptic_plasticity_with_conductance_ba_147538_model:BcmLikeSynapticPlasticityWithConductanceBa147538Model
+    args:
+      model_path: data/147538.zip
+  biochemically_de_2:
+    class: src.biochemically_detailed_model_of_ltp_and_ltd_in_a_260971_model:BiochemicallyDetailedModelOfLtpAndLtdInA260971Model
+    args:
+      model_path: data/260971.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: bcm_like_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: biochemically_de_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b

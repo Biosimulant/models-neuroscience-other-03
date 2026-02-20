@@ -1,0 +1,36 @@
+modules:
+  allen_institute_1:
+    class: src.allen_institute_pvalb_ires_cre_visp_layer_6a_471_184145_model:AllenInstitutePvalbIresCreVispLayer6a471184145Model
+    args:
+      model_path: data/184145.zip
+  allen_institute_2:
+    class: src.allen_institute_pvalb_ires_cre_visp_layer_6a_472_184168_model:AllenInstitutePvalbIresCreVispLayer6a472184168Model
+    args:
+      model_path: data/184168.zip
+  allen_institute_3:
+    class: src.allen_institute_pvalb_ires_cre_visp_layer_6a_473_184323_model:AllenInstitutePvalbIresCreVispLayer6a473184323Model
+    args:
+      model_path: data/184323.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: allen_institute_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: allen_institute_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: allen_institute_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c

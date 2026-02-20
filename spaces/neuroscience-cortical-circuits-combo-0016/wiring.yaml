@@ -1,0 +1,28 @@
+modules:
+  agent_based_1:
+    class: src.model_266895_266895_model:Model266895266895Model
+    args:
+      model_path: data/repo
+  ais_l5_2:
+    class: src.model_267355_267355_model:Model267355267355Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: agent_based_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: ais_l5_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b

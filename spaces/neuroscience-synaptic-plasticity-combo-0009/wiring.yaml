@@ -1,0 +1,28 @@
+modules:
+  balance_of_1:
+    class: src.balance_of_excitation_and_inhibition_carvalho_an_125689_model:BalanceOfExcitationAndInhibitionCarvalhoAn125689Model
+    args:
+      model_path: data/125689.zip
+  basket_cell_2:
+    class: src.basket_cell_extrasynaptic_inhibition_modulates_n_155601_model:BasketCellExtrasynapticInhibitionModulatesN155601Model
+    args:
+      model_path: data/155601.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: balance_of_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: basket_cell_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b

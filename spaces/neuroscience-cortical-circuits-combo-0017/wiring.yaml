@@ -1,0 +1,28 @@
+modules:
+  ais_model_1:
+    class: src.ais_model_of_l5_cortical_pyramidal_neuron_filipi_267355_model:AisModelOfL5CorticalPyramidalNeuronFilipi267355Model
+    args:
+      model_path: data/267355.zip
+  allen_institute_2:
+    class: src.allen_institute_gad2_ires_cre_visp_layer_5_47244_184299_model:AllenInstituteGad2IresCreVispLayer547244184299Model
+    args:
+      model_path: data/184299.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: ais_model_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: allen_institute_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b

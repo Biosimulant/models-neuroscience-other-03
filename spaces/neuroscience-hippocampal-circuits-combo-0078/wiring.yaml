@@ -1,0 +1,44 @@
+modules:
+  ca1_interneuron_1:
+    class: src.model_20015_20015_model:Model2001520015Model
+    args:
+      model_path: data/repo
+  ca1_network_2:
+    class: src.ca1_network_model_for_place_cell_dynamics_turi_e_246546_model:Ca1NetworkModelForPlaceCellDynamicsTuriE246546Model
+    args:
+      model_path: data/246546.zip
+  ca1_network_3:
+    class: src.ca1_network_model_interneuron_contributions_to_e_256311_model:Ca1NetworkModelInterneuronContributionsToE256311Model
+    args:
+      model_path: data/256311.zip
+  ca1_network_4:
+    class: src.model_256311_256311_model:Model256311256311Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: ca1_interneuron_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: ca1_network_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: ca1_network_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: ca1_network_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

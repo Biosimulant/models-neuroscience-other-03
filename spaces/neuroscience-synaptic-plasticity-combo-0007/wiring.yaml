@@ -1,0 +1,28 @@
+modules:
+  ampa_receptor_1:
+    class: src.ampa_receptor_trafficking_and_its_role_in_hetero_263130_model:AmpaReceptorTraffickingAndItsRoleInHetero263130Model
+    args:
+      model_path: data/263130.zip
+  an_allosteric_2:
+    class: src.an_allosteric_kinetics_of_nmdars_in_stdp_urakubo_114365_model:AnAllostericKineticsOfNmdarsInStdpUrakubo114365Model
+    args:
+      model_path: data/114365.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: ampa_receptor_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: an_allosteric_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b

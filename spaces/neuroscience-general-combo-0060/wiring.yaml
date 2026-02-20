@@ -1,0 +1,44 @@
+modules:
+  analyzing_neural_1:
+    class: src.analyzing_neural_time_series_data_theory_and_pra_154927_model:AnalyzingNeuralTimeSeriesDataTheoryAndPra154927Model
+    args:
+      model_path: data/154927.zip
+  analyzing_neural_2:
+    class: src.model_154927_154927_model:Model154927154927Model
+    args:
+      model_path: data/repo
+  angii_signaling_3:
+    class: src.model_156830_156830_model:Model156830156830Model
+    args:
+      model_path: data/repo
+  anoxic_depolariz_4:
+    class: src.anoxic_depolarization_recovery_effect_of_brain_r_187213_model:AnoxicDepolarizationRecoveryEffectOfBrainR187213Model
+    args:
+      model_path: data/187213.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: analyzing_neural_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: analyzing_neural_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: angii_signaling_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: anoxic_depolariz_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

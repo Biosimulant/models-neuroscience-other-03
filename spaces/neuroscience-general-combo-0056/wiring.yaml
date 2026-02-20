@@ -1,0 +1,44 @@
+modules:
+  alcohol_action_1:
+    class: src.alcohol_action_in_a_detailed_purkinje_neuron_mod_180789_model:AlcoholActionInADetailedPurkinjeNeuronMod180789Model
+    args:
+      model_path: data/180789.zip
+  alcohol_excites_2:
+    class: src.alcohol_excites_cerebellar_golgi_cells_by_inhibi_127021_model:AlcoholExcitesCerebellarGolgiCellsByInhibi127021Model
+    args:
+      model_path: data/127021.zip
+  alcohol_excites_3:
+    class: src.model_127021_127021_model:Model127021127021Model
+    args:
+      model_path: data/repo
+  alleviating_cata_4:
+    class: src.alleviating_catastrophic_forgetting_context_gati_256370_model:AlleviatingCatastrophicForgettingContextGati256370Model
+    args:
+      model_path: data/256370.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: alcohol_action_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: alcohol_excites_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: alcohol_excites_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: alleviating_cata_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

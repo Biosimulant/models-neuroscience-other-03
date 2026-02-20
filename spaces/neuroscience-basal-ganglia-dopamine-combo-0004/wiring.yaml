@@ -1,0 +1,28 @@
+modules:
+  basal_ganglia_1:
+    class: src.basal_ganglia_thalamic_network_model_for_deep_br_141699_model:BasalGangliaThalamicNetworkModelForDeepBr141699Model
+    args:
+      model_path: data/141699.zip
+  biophysical_basi_2:
+    class: src.biophysical_basis_of_subthalamic_lfps_recorded_f_262368_model:BiophysicalBasisOfSubthalamicLfpsRecordedF262368Model
+    args:
+      model_path: data/262368.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: basal_ganglia_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: biophysical_basi_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b

@@ -1,0 +1,28 @@
+modules:
+  biophysical_and_1:
+    class: src.biophysical_and_phenomenological_models_of_spike_116096_model:BiophysicalAndPhenomenologicalModelsOfSpike116096Model
+    args:
+      model_path: data/116096.zip
+  biophysical_phen_2:
+    class: src.model_116096_116096_model:Model116096116096Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: biophysical_and_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: biophysical_phen_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b

@@ -1,0 +1,44 @@
+modules:
+  biochemical_syst_1:
+    class: src.biochemical_systems_theory_model_of_sars_cov_2_i_267736_model:BiochemicalSystemsTheoryModelOfSarsCov2I267736Model
+    args:
+      model_path: data/267736.zip
+  biochemical_syst_2:
+    class: src.biochemical_systems_theory_model_of_tnfa_related_267735_model:BiochemicalSystemsTheoryModelOfTnfaRelated267735Model
+    args:
+      model_path: data/267735.zip
+  biologically_con_3:
+    class: src.biologically_constrained_basal_ganglia_model_bcb_150206_model:BiologicallyConstrainedBasalGangliaModelBcb150206Model
+    args:
+      model_path: data/150206.zip
+  biologically_con_4:
+    class: src.model_150206_150206_model:Model150206150206Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: biochemical_syst_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: biochemical_syst_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: biologically_con_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: biologically_con_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

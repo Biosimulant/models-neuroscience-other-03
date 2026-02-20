@@ -1,0 +1,36 @@
+modules:
+  adaptive_dual_1:
+    class: src.adaptive_dual_control_of_deep_brain_stimulation_247310_model:AdaptiveDualControlOfDeepBrainStimulation247310Model
+    args:
+      model_path: data/247310.zip
+  adaptive_exponen_2:
+    class: src.adaptive_exponential_integrate_and_fire_model_br_153635_model:AdaptiveExponentialIntegrateAndFireModelBr153635Model
+    args:
+      model_path: data/153635.zip
+  adaptive_exponen_3:
+    class: src.model_153635_153635_model:Model153635153635Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: adaptive_dual_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: adaptive_exponen_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: adaptive_exponen_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c

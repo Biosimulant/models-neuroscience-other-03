@@ -1,0 +1,28 @@
+modules:
+  basal_ganglia_1:
+    class: src.basal_ganglia_network_model_of_subthalamic_deep_127388_model:BasalGangliaNetworkModelOfSubthalamicDeep127388Model
+    args:
+      model_path: data/127388.zip
+  basal_ganglia_2:
+    class: src.model_127388_127388_model:Model127388127388Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: basal_ganglia_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: basal_ganglia_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b

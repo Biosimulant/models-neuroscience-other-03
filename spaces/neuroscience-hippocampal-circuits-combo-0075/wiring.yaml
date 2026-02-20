@@ -1,0 +1,44 @@
+modules:
+  amyloid_beta_1:
+    class: src.model_87284_87284_model:Model8728487284Model
+    args:
+      model_path: data/repo
+  app_c_2:
+    class: src.model_256388_256388_model:Model256388256388Model
+    args:
+      model_path: data/repo
+  astro_fig_3:
+    class: src.model_2019791_2019791_model:Model20197912019791Model
+    args:
+      model_path: data/repo
+  axonal_ectopic_4:
+    class: src.axonal_ectopic_burst_induced_by_repetitive_stimu_2018003_model:AxonalEctopicBurstInducedByRepetitiveStimu2018003Model
+    args:
+      model_path: data/2018003.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: amyloid_beta_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: app_c_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: astro_fig_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: axonal_ectopic_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

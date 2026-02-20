@@ -1,0 +1,44 @@
+modules:
+  axon_growth_1:
+    class: src.model_187687_187687_model:Model187687187687Model
+    args:
+      model_path: data/repo
+  axon_somatic_2:
+    class: src.model_180370_180370_model:Model180370180370Model
+    args:
+      model_path: data/repo
+  axon_somatic_3:
+    class: src.axon_somatic_back_propagation_in_a_detailed_mode_180370_model:AxonSomaticBackPropagationInADetailedMode180370Model
+    args:
+      model_path: data/180370.zip
+  axonal_gap_4:
+    class: src.model_114654_114654_model:Model114654114654Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: axon_growth_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: axon_somatic_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: axon_somatic_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: axonal_gap_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

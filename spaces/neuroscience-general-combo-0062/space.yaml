@@ -1,0 +1,86 @@
+schema_version: '2.0'
+title: 'Neuroscience: General (COMBO_0062)'
+description: Neuroscience general comparative space with 4 models, configured as non-causal
+  co-simulation.
+models:
+- repo: Biosimulant/models-neuroscience-other-03
+  alias: ap_back_1
+  manifest_path: models/neuroscience-other-ap-back-prop-osb135839-model/model.yaml
+  parameters:
+    model_path: data/repo
+- repo: Biosimulant/models-neuroscience-other-03
+  alias: ap_initiation_2
+  manifest_path: models/neuroscience-other-ap-initiation-and-propagation-in-type-ii-cochlea-54903-model/model.yaml
+  parameters:
+    model_path: data/54903.zip
+- repo: Biosimulant/models-neuroscience-other-03
+  alias: ap_shape_3
+  manifest_path: models/neuroscience-other-ap-shape-and-parameter-constraints-in-optimizati-87473-model/model.yaml
+  parameters:
+    model_path: data/87473.zip
+- repo: Biosimulant/models-neuroscience-other-03
+  alias: ap_shape_4
+  manifest_path: models/neuroscience-other-ap-shape-parameter-constraints-optimization-compartment-models-osb87473-model/model.yaml
+  parameters:
+    model_path: data/repo
+- repo: Biosimulant/models-observability
+  alias: state_compare_mon
+  manifest_path: models/observability-state-comparison-monitor/model.yaml
+  parameters:
+    max_points: 2000
+    min_dt: 1.0
+- repo: Biosimulant/models-observability
+  alias: state_metrics_mon
+  manifest_path: models/observability-state-metrics-monitor/model.yaml
+  parameters:
+    max_points: 2000
+    min_dt: 1.0
+runtime:
+  duration: 0.3
+  tick_dt: 0.01
+  initial_inputs: {}
+wiring:
+- from: ap_back_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: ap_initiation_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: ap_shape_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: ap_shape_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d
+scientific_context:
+  question: How do general mechanisms compare across these models?
+  mode: comparative
+  assumptions:
+  - Model implementations are used as published in their curated manifests without
+    biological reinterpretation.
+  - Time integration uses a shared global tick compatible with model min_dt constraints.
+  - Comparative (non-causal) mode is used because full deterministic IO coverage for
+    causal coupling was not satisfied.
+  expected_observables:
+  - Model output trajectories under shared runtime settings.
+  - Cross-model agreement/divergence in key state or metric signals.
+  - Relative behavior comparison without causal linkage claims.
+  limitations:
+  - No new biology is introduced beyond what upstream models encode.
+  - Cross-model semantic matching is rule-based and may under-connect uncertain routes.
+  provenance:
+  - 'neuroscience-other-ap-back-prop-osb135839-model :: opensourcebrain:135839 ::
+    https://github.com/OpenSourceBrain/135839'
+  - 'neuroscience-other-ap-initiation-and-propagation-in-type-ii-cochlea-54903-model
+    :: modeldb:54903 :: https://modeldb.science/54903'
+  - 'neuroscience-other-ap-shape-and-parameter-constraints-in-optimizati-87473-model
+    :: modeldb:87473 :: https://modeldb.science/87473'
+  - 'neuroscience-other-ap-shape-parameter-constraints-optimization-compartment-models-osb87473-model
+    :: opensourcebrain:87473 :: https://github.com/OpenSourceBrain/87473'
+  visualization_rationale: A dedicated monitor model receives all participating model
+    state streams (`state_a..state_d`) so trajectories can be compared in one place
+    without claiming causal coupling when IO semantics are incomplete.

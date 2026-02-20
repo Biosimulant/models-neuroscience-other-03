@@ -1,0 +1,44 @@
+modules:
+  anoxic_depolariz_1:
+    class: src.model_187213_187213_model:Model187213187213Model
+    args:
+      model_path: data/repo
+  aob_mitral_2:
+    class: src.model_185332_185332_model:Model185332185332Model
+    args:
+      model_path: data/repo
+  aob_mitral_3:
+    class: src.aob_mitral_cell_persistent_activity_without_feed_185332_model:AobMitralCellPersistentActivityWithoutFeed185332Model
+    args:
+      model_path: data/185332.zip
+  ap_back_4:
+    class: src.ap_back_prop_explains_threshold_variability_and_135839_model:ApBackPropExplainsThresholdVariabilityAnd135839Model
+    args:
+      model_path: data/135839.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: anoxic_depolariz_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: aob_mitral_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: aob_mitral_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: ap_back_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

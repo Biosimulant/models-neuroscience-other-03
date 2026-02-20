@@ -1,0 +1,44 @@
+modules:
+  basal_ganglia_1:
+    class: src.basal_ganglia_corticothalamic_bgct_network_chen_152113_model:BasalGangliaCorticothalamicBgctNetworkChen152113Model
+    args:
+      model_path: data/152113.zip
+  basal_ganglia_2:
+    class: src.model_152113_152113_model:Model152113152113Model
+    args:
+      model_path: data/repo
+  basal_ganglia_3:
+    class: src.basal_ganglia_motor_circuit_for_kinematic_planni_234313_model:BasalGangliaMotorCircuitForKinematicPlanni234313Model
+    args:
+      model_path: data/234313.zip
+  basal_ganglia_4:
+    class: src.basal_ganglia_motor_function_and_the_inverse_kin_232875_model:BasalGangliaMotorFunctionAndTheInverseKin232875Model
+    args:
+      model_path: data/232875.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: basal_ganglia_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: basal_ganglia_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: basal_ganglia_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: basal_ganglia_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

@@ -1,0 +1,44 @@
+modules:
+  axonal_spheroids_1:
+    class: src.axonal_spheroids_and_conduction_defects_in_alzhe_185864_model:AxonalSpheroidsAndConductionDefectsInAlzhe185864Model
+    args:
+      model_path: data/185864.zip
+  axonal_spheroids_2:
+    class: src.model_185864_185864_model:Model185864185864Model
+    args:
+      model_path: data/repo
+  axonal_subthresh_3:
+    class: src.axonal_subthreshold_voltage_signaling_along_hipp_267512_model:AxonalSubthresholdVoltageSignalingAlongHipp267512Model
+    args:
+      model_path: data/267512.zip
+  balance_excitati_4:
+    class: src.model_125689_125689_model:Model125689125689Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: axonal_spheroids_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: axonal_spheroids_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: axonal_subthresh_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: balance_excitati_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

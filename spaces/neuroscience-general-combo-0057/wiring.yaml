@@ -1,0 +1,44 @@
+modules:
+  allosteric_gatin_1:
+    class: src.allosteric_gating_of_k_channels_horrigan_et_al_1_58195_model:AllostericGatingOfKChannelsHorriganEtAl158195Model
+    args:
+      model_path: data/58195.zip
+  amacrine_2:
+    class: src.amacrine_amacrine_model:AmacrineAmacrineModel
+    args:
+      model_path: data/repo
+  ambient_glutamat_3:
+    class: src.ambient_glutamate_shapes_ampa_receptor_responses_266925_model:AmbientGlutamateShapesAmpaReceptorResponses266925Model
+    args:
+      model_path: data/266925.zip
+  ambiguous_encodi_4:
+    class: src.ambiguous_encoding_and_distorted_perception_carl_83520_model:AmbiguousEncodingAndDistortedPerceptionCarl83520Model
+    args:
+      model_path: data/83520.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: allosteric_gatin_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: amacrine_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: ambient_glutamat_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: ambiguous_encodi_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

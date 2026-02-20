@@ -1,0 +1,44 @@
+modules:
+  axonal_gap_1:
+    class: src.axonal_gap_junctions_produce_fast_oscillations_i_114654_model:AxonalGapJunctionsProduceFastOscillationsI114654Model
+    args:
+      model_path: data/114654.zip
+  axonal_hh_2:
+    class: src.axonal_hh_model_for_temperature_stimulation_frib_189155_model:AxonalHhModelForTemperatureStimulationFrib189155Model
+    args:
+      model_path: data/189155.zip
+  axonal_hh_3:
+    class: src.model_189155_189155_model:Model189155189155Model
+    args:
+      model_path: data/repo
+  axonal_projectio_4:
+    class: src.model_116053_116053_model:Model116053116053Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: axonal_gap_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: axonal_hh_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: axonal_hh_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: axonal_projectio_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

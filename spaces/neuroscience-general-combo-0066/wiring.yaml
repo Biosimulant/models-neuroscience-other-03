@@ -1,0 +1,44 @@
+modules:
+  auditory_nerve_1:
+    class: src.model_37103_37103_model:Model3710337103Model
+    args:
+      model_path: data/repo
+  auditory_nerve_2:
+    class: src.model_37129_37129_model:Model3712937129Model
+    args:
+      model_path: data/repo
+  auditory_nerve_3:
+    class: src.auditory_nerve_spontaneous_rate_histograms_jacks_126389_model:AuditoryNerveSpontaneousRateHistogramsJacks126389Model
+    args:
+      model_path: data/126389.zip
+  auditory_nerve_4:
+    class: src.model_126389_126389_model:Model126389126389Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: auditory_nerve_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: auditory_nerve_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: auditory_nerve_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: auditory_nerve_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

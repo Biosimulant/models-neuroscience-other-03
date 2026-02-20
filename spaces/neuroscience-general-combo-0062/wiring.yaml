@@ -1,0 +1,44 @@
+modules:
+  ap_back_1:
+    class: src.model_135839_135839_model:Model135839135839Model
+    args:
+      model_path: data/repo
+  ap_initiation_2:
+    class: src.ap_initiation_and_propagation_in_type_ii_cochlea_54903_model:ApInitiationAndPropagationInTypeIiCochlea54903Model
+    args:
+      model_path: data/54903.zip
+  ap_shape_3:
+    class: src.ap_shape_and_parameter_constraints_in_optimizati_87473_model:ApShapeAndParameterConstraintsInOptimizati87473Model
+    args:
+      model_path: data/87473.zip
+  ap_shape_4:
+    class: src.model_87473_87473_model:Model8747387473Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: ap_back_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: ap_initiation_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: ap_shape_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: ap_shape_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

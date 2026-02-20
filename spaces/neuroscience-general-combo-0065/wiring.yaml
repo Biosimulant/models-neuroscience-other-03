@@ -1,0 +1,44 @@
+modules:
+  auditory_nerve_1:
+    class: src.model_37436_37436_model:Model3743637436Model
+    args:
+      model_path: data/repo
+  auditory_nerve_2:
+    class: src.auditory_nerve_model_for_predicting_performance_36834_model:AuditoryNerveModelForPredictingPerformance36834Model
+    args:
+      model_path: data/36834.zip
+  auditory_nerve_3:
+    class: src.model_36834_36834_model:Model3683436834Model
+    args:
+      model_path: data/repo
+  auditory_nerve_4:
+    class: src.auditory_nerve_response_model_tan_carney_2003_37129_model:AuditoryNerveResponseModelTanCarney200337129Model
+    args:
+      model_path: data/37129.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: auditory_nerve_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: auditory_nerve_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: auditory_nerve_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: auditory_nerve_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

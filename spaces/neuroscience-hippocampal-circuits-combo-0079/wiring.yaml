@@ -1,0 +1,44 @@
+modules:
+  ca1_network_1:
+    class: src.model_246546_246546_model:Model246546246546Model
+    args:
+      model_path: data/repo
+  ca1_oriens_2:
+    class: src.model_87546_87546_model:Model8754687546Model
+    args:
+      model_path: data/repo
+  ca1_oriens_3:
+    class: src.ca1_oriens_alveus_interneurons_signaling_propert_87546_model:Ca1OriensAlveusInterneuronsSignalingPropert87546Model
+    args:
+      model_path: data/87546.zip
+  ca1_pv_4:
+    class: src.ca1_pv_fast_firing_hippocampal_interneuron_fergu_182843_model:Ca1PvFastFiringHippocampalInterneuronFergu182843Model
+    args:
+      model_path: data/182843.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: ca1_network_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: ca1_oriens_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: ca1_oriens_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: ca1_pv_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

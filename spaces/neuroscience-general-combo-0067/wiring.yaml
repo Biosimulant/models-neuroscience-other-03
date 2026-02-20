@@ -1,0 +1,44 @@
+modules:
+  automated_metada_1:
+    class: src.model_195555_195555_model:Model195555195555Model
+    args:
+      model_path: data/repo
+  availability_low_2:
+    class: src.model_125378_125378_model:Model125378125378Model
+    args:
+      model_path: data/repo
+  availability_of_3:
+    class: src.availability_of_low_threshold_ca2_current_in_ret_125378_model:AvailabilityOfLowThresholdCa2CurrentInRet125378Model
+    args:
+      model_path: data/125378.zip
+  ave_neuron_4:
+    class: src.ave_neuron_model_for_slow_wave_sleep_in_cortex_t_264519_model:AveNeuronModelForSlowWaveSleepInCortexT264519Model
+    args:
+      model_path: data/264519.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: automated_metada_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: availability_low_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: availability_of_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: ave_neuron_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

@@ -1,0 +1,28 @@
+modules:
+  an_ode_1:
+    class: src.an_ode_model_of_the_inspiratory_and_sigh_rhythms_267252_model:AnOdeModelOfTheInspiratoryAndSighRhythms267252Model
+    args:
+      model_path: data/267252.zip
+  application_comm_2:
+    class: src.model_18198_18198_model:Model1819818198Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: an_ode_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: application_comm_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b

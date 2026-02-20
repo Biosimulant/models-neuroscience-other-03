@@ -1,0 +1,44 @@
+modules:
+  astrocyte_and_1:
+    class: src.astrocyte_and_blood_vessel_calcium_imaging_track_266929_model:AstrocyteAndBloodVesselCalciumImagingTrack266929Model
+    args:
+      model_path: data/266929.zip
+  asynchronous_irr_2:
+    class: src.asynchronous_irregular_and_up_down_states_in_exc_126466_model:AsynchronousIrregularAndUpDownStatesInExc126466Model
+    args:
+      model_path: data/126466.zip
+  asynchronous_irr_3:
+    class: src.model_126466_126466_model:Model126466126466Model
+    args:
+      model_path: data/repo
+  attractor_networ_4:
+    class: src.model_150031_150031_model:Model150031150031Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: astrocyte_and_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: asynchronous_irr_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: asynchronous_irr_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: attractor_networ_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

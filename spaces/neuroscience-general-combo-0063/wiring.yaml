@@ -1,0 +1,44 @@
+modules:
+  arrhythmias_card_1:
+    class: src.model_150691_150691_model:Model150691150691Model
+    args:
+      model_path: data/repo
+  arteriolar_netwo_2:
+    class: src.model_3785_3785_model:Model37853785Model
+    args:
+      model_path: data/repo
+  arteriolar_netwo_3:
+    class: src.arteriolar_networks_spread_of_potential_crane_et_3785_model:ArteriolarNetworksSpreadOfPotentialCraneEt3785Model
+    args:
+      model_path: data/3785.zip
+  artificial_neuro_4:
+    class: src.model_39948_39948_model:Model3994839948Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: arrhythmias_card_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: arteriolar_netwo_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: arteriolar_netwo_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: artificial_neuro_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

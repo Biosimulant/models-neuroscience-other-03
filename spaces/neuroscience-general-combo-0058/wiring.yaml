@@ -1,0 +1,44 @@
+modules:
+  ambiguous_encodi_1:
+    class: src.model_83520_83520_model:Model8352083520Model
+    args:
+      model_path: data/repo
+  amyloid_beta_2:
+    class: src.amyloid_beta_effects_on_release_probability_and_147757_model:AmyloidBetaEffectsOnReleaseProbabilityAnd147757Model
+    args:
+      model_path: data/147757.zip
+  an_attractor_3:
+    class: src.an_attractor_network_model_of_grid_cells_and_the_150031_model:AnAttractorNetworkModelOfGridCellsAndThe150031Model
+    args:
+      model_path: data/150031.zip
+  an_integrative_4:
+    class: src.an_integrative_dynamic_model_of_brain_energy_met_247648_model:AnIntegrativeDynamicModelOfBrainEnergyMet247648Model
+    args:
+      model_path: data/247648.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: ambiguous_encodi_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: amyloid_beta_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: an_attractor_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: an_integrative_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

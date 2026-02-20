@@ -1,0 +1,44 @@
+modules:
+  age_dependent_1:
+    class: src.model_266848_266848_model:Model266848266848Model
+    args:
+      model_path: data/repo
+  age_dependent_2:
+    class: src.age_dependent_excitability_of_ca1_pyramidal_neur_266848_model:AgeDependentExcitabilityOfCa1PyramidalNeur266848Model
+    args:
+      model_path: data/266848.zip
+  amyloid_beta_3:
+    class: src.model_147757_147757_model:Model147757147757Model
+    args:
+      model_path: data/repo
+  amyloid_beta_4:
+    class: src.amyloid_beta_ia_block_effects_on_a_model_ca1_pyr_87284_model:AmyloidBetaIaBlockEffectsOnAModelCa1Pyr87284Model
+    args:
+      model_path: data/87284.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: age_dependent_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: age_dependent_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: amyloid_beta_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: amyloid_beta_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d

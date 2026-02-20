@@ -1,0 +1,36 @@
+modules:
+  allen_institute_1:
+    class: src.model_184310_184310_model:Model184310184310Model
+    args:
+      model_path: data/repo
+  allen_institute_2:
+    class: src.model_184312_184312_model:Model184312184312Model
+    args:
+      model_path: data/repo
+  allen_institute_3:
+    class: src.model_184314_184314_model:Model184314184314Model
+    args:
+      model_path: data/repo
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: allen_institute_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: allen_institute_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: allen_institute_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c

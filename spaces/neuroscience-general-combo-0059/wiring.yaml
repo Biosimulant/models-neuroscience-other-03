@@ -1,0 +1,44 @@
+modules:
+  an_ion_1:
+    class: src.an_ion_based_model_for_swelling_of_neurons_and_a_187599_model:AnIonBasedModelForSwellingOfNeuronsAndA187599Model
+    args:
+      model_path: data/187599.zip
+  an_oscillatory_2:
+    class: src.an_oscillatory_neural_autoencoder_based_on_frequ_243595_model:AnOscillatoryNeuralAutoencoderBasedOnFrequ243595Model
+    args:
+      model_path: data/243595.zip
+  an_oscillatory_3:
+    class: src.an_oscillatory_neural_model_of_multiple_object_t_79145_model:AnOscillatoryNeuralModelOfMultipleObjectT79145Model
+    args:
+      model_path: data/79145.zip
+  analytical_model_4:
+    class: src.analytical_modelling_of_temperature_effects_on_a_239072_model:AnalyticalModellingOfTemperatureEffectsOnA239072Model
+    args:
+      model_path: data/239072.zip
+  state_compare_mon:
+    class: src.state_comparison_monitor:StateComparisonMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+  state_metrics_mon:
+    class: src.state_metrics_monitor:StateMetricsMonitor
+    args:
+      max_points: 2000
+      min_dt: 1.0
+wiring:
+- from: an_ion_1.state
+  to:
+  - state_compare_mon.state_a
+  - state_metrics_mon.state_a
+- from: an_oscillatory_2.state
+  to:
+  - state_compare_mon.state_b
+  - state_metrics_mon.state_b
+- from: an_oscillatory_3.state
+  to:
+  - state_compare_mon.state_c
+  - state_metrics_mon.state_c
+- from: analytical_model_4.state
+  to:
+  - state_compare_mon.state_d
+  - state_metrics_mon.state_d
