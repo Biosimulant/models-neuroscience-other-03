@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BkCavCouplingMontefuscoEtAl2017266841Model'
-description: '{"value": "An implementation of coupling between BK_Ca channels and
-  CaV channels suitable for use in whole cell models.", "attr_id": 24}'
+description: "An implementation of coupling between BK_Ca channels and CaV channels suitable for use in whole cell models. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

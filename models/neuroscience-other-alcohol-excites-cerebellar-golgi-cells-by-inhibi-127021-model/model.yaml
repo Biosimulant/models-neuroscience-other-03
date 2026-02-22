@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AlcoholExcitesCerebellarGolgiCellsByInhibi127021Model'
-description: '{"value": "Patch-clamp in cerebellar slices and computer modeling show
-  that ethanol excites Golgi cells by inhibiting the Na+/K+ ATPase. In particular,
-  voltage-clamp recordings of Na+/K+ ATPase curren'
+description: "{\"value\": \"Patch-clamp in cerebellar slices and computer modeling show that ethanol excites Golgi cells by inhibiting the Na+/K+ ATPase. In particular, voltage-clamp recordings of Na+/K+ ATPase curren."
 standard: other
 tags:
 - neuroscience

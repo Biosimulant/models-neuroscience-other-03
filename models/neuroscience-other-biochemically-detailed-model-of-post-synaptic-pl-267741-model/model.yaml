@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BiochemicallyDetailedModelOfPostSynapticPl267741Model'
-description: '{"value": "", "attr_id": 24}'
+description: "Neuroscience Biochemically Detailed Model Of Post Synaptic Pl267741Model models core biological dynamics as a OTHER simulation curated from modeldb (modeldb:267741), focused on neuroscience, modeldb, biochemica. When you run it, you can track state over time and compare response patterns across parameter settings."
 standard: other
 tags:
 - neuroscience

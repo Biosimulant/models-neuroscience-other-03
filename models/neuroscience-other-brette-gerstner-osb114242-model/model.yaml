@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model114242114242Model'
-description: Brette-Gerstner model (Touboul and Brette 2008)
+description: "Neuroscience Model114242114242Model models neuroscience brette gerstner osb114242 dynamics as a OTHER simulation curated from opensourcebrain (opensourcebrain:114242), focused on neuroscience, opensourcebrain. When you run it, you can track state over time and compare response patterns across parameter settings."
 standard: other
 tags:
 - neuroscience

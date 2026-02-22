@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyrCellPhenomenologicalNmdarBasedModel267680Model'
-description: '{"value": "This Python code implements a phenomenological NMDA receptor-based
-  voltage-dependent model of synaptic plasticity for CA3-CA1 synapse and shows weight
-  changes of a synapse placed on a two-c'
+description: "{\"value\": \"This Python code implements a phenomenological NMDA receptor-based voltage-dependent model of synaptic plasticity for CA3-CA1 synapse and shows weight changes of a synapse placed on a two-c. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

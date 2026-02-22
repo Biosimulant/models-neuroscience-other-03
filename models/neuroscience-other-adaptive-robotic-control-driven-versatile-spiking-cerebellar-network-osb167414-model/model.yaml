@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model167414167414Model'
-description: Adaptive robotic control driven by a versatile spiking cerebellar network
-  (Casellato et al. 2014)
+description: "Adaptive robotic control driven by a versatile spiking cerebellar network (Casellato et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

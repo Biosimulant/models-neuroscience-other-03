@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BiophysicalBasisOfSubthalamicLfpsRecordedF262368Model'
-description: '{"value": "\"Clinical deep brain stimulation (DBS) technology is evolving
-  to enable chronic recording of local field potentials (LFPs) that represent electrophysiological
-  biomarkers of the underlying '
+description: "{\"value\": \"\\\"Clinical deep brain stimulation (DBS) technology is evolving to enable chronic recording of local field potentials (LFPs) that represent electrophysiological biomarkers of the underlying. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

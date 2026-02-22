@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model150691150691Model'
-description: Model of arrhythmias in a cardiac cells network (Casaleggio et al. 2014)
+description: "Model of arrhythmias in a cardiac cells network (Casaleggio et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

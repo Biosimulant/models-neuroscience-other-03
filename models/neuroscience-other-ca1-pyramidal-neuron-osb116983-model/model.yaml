@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model116983116983Model'
-description: 'CA1 pyramidal neuron: h channel-dependent deficit of theta oscill. resonance
-  (Marcelin et al. 2008)'
+description: "CA1 pyramidal neuron: h channel-dependent deficit of theta oscill. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

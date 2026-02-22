@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AobMitralCellPersistentActivityWithoutFeed185332Model'
-description: '{"value": "Persistent activity has been reported in many brain areas
-  and is\r\nhypothesized to mediate working memory and emotional brain states and\r\nto
-  rely upon network or biophysical feedback. He'
+description: "{\"value\": \"Persistent activity has been reported in many brain areas and is\\r\\nhypothesized to mediate working memory and emotional brain states and\\r\\nto rely upon network or biophysical feedback. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

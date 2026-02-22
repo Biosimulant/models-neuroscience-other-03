@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model5819558195Model'
-description: Allosteric gating of K channels (Horrigan et al 1999)
+description: "Allosteric gating of K channels (Horrigan et al 1999). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

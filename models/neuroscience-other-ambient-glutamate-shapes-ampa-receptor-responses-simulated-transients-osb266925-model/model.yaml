@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model266925266925Model'
-description: Ambient glutamate shapes AMPA receptor responses to simulated transients
-  (Balmer et al. 2021)
+description: "Ambient glutamate shapes AMPA receptor responses to simulated transients (Balmer et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

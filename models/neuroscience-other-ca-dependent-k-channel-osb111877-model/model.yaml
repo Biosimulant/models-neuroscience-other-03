@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model111877111877Model'
-description: 'Ca-dependent K Channel: kinetics from rat muscle (Moczydlowski, Latorre
-  1983) XPP'
+description: "Ca-dependent K Channel: kinetics from rat muscle (Moczydlowski, Latorre 1983) XPP. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

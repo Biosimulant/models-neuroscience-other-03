@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalNeuronFergusonEtAl2014182515Model'
-description: '{"value": "Izhikevich-based models of CA1 pyramidal cells, with parameters
-  constrained based on a whole hippocampus preparation.\r\n\r\nStrongly and weakly
-  adapting models based on the experimental da'
+description: "{\"value\": \"Izhikevich-based models of CA1 pyramidal cells, with parameters constrained based on a whole hippocampus preparation.\\r\\n\\r\\nStrongly and weakly adapting models based on the experimental da. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

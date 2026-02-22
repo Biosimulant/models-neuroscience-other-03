@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model182843182843Model'
-description: CA1 PV+ fast-firing hippocampal interneuron (Ferguson et al. 2013)
+description: "CA1 PV+ fast-firing hippocampal interneuron (Ferguson et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

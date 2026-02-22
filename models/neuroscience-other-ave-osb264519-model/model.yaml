@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model264519264519Model'
-description: Ave. neuron model for slow-wave sleep in cortex Tatsuki 2016 Yoshida
-  2018 Rasmussen 2017 (all et al)
+description: "Ave. neuron model for slow-wave sleep in cortex Tatsuki 2016 Yoshida 2018 Rasmussen 2017 (all et al)."
 standard: other
 tags:
 - neuroscience

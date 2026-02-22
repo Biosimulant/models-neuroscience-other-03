@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model266895266895Model'
-description: An agent-based computational model for cortical layer formation (Bauer
-  et al 2021)
+description: "An agent-based computational model for cortical layer formation (Bauer et al 2021). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AstrocyteAndBloodVesselCalciumImagingTrack266929Model'
-description: '{"value": "Code for tracking Astrocytes/Blood vessels in Calcium Imaging
-  based recordings from ...\r\n\r\nData files should be loaded as .tiff stacks with
-  several options for processing (see matlab fi'
+description: "{\"value\": \"Code for tracking Astrocytes/Blood vessels in Calcium Imaging based recordings from ...\\r\\n\\r\\nData files should be loaded as .tiff stacks with several options for processing (see matlab fi. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

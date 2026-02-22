@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model267736267736Model'
-description: Biochemical Systems Theory Model of SARS-CoV-2 infection network (Sasidharakurup
-  et al., 2021)
+description: "Biochemical Systems Theory Model of SARS-CoV-2 infection network (Sasidharakurup et al., 2021). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalNeuronNonlinearA5GabaarControl258867Model'
-description: '{"value": "The study shows that IPSCs mediated by a5-subunit containing
-  GABAA receptors are strongly outward-rectifying generating 4-fold larger conductances
-  above -50?mV than at rest. Experiments and'
+description: "{\"value\": \"The study shows that IPSCs mediated by a5-subunit containing GABAA receptors are strongly outward-rectifying generating 4-fold larger conductances above -50?mV than at rest. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

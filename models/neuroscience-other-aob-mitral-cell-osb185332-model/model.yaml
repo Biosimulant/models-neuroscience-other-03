@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model185332185332Model'
-description: 'AOB mitral cell: persistent activity without feedback (Zylbertal et
-  al., 2015)'
+description: "AOB mitral cell: persistent activity without feedback (Zylbertal et al., 2015). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

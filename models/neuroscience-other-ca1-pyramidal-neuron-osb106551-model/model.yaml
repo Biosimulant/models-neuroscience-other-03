@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model106551106551Model'
-description: 'CA1 pyramidal neuron: calculation of MRI signals (Cassara et al. 2008)'
+description: "CA1 pyramidal neuron: calculation of MRI signals (Cassara et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

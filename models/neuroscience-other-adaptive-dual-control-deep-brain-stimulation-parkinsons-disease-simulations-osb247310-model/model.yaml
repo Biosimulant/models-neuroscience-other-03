@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model247310247310Model'
-description: Adaptive dual control of deep brain stimulation in Parkinsons disease
-  simulations (Grado et al 2018)
+description: "Adaptive dual control of deep brain stimulation in Parkinsons disease simulations (Grado et al 2018). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

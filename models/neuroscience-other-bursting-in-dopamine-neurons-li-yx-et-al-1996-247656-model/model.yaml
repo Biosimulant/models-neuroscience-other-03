@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BurstingInDopamineNeuronsLiYxEtAl1996247656Model'
-description: '{"value": "\"Burst firing of dopaminergic neurons of the substantia
-  nigra pars\r\ncompacta can be induced in vitro by the glutamate agonist\r\nN-methyl-D-aspartate.
-  It has been suggested that the inte'
+description: "{\"value\": \"\\\"Burst firing of dopaminergic neurons of the substantia nigra pars\\r\\ncompacta can be induced in vitro by the glutamate agonist\\r\\nN-methyl-D-aspartate. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

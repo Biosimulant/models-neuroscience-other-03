@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BkChannelsPromoteBurstingInPituitaryCells266636Model'
-description: '{"value": "\"The electrical activity pattern of endocrine pituitary
-  cells regulates their basal secretion level. Rat somatotrophs and lactotrophs exhibit
-  spontaneous bursting and have high basal level'
+description: "{\"value\": \"\\\"The electrical activity pattern of endocrine pituitary cells regulates their basal secretion level. Rat somatotrophs and lactotrophs exhibit spontaneous bursting and have high basal level."
 standard: other
 tags:
 - neuroscience

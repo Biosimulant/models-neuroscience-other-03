@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model262422262422Model'
-description: Burst and tonic firing behaviour in subfornical organ (SFO) neurons (Medlock
-  et al 2018)
+description: "Burst and tonic firing behaviour in subfornical organ (SFO) neurons (Medlock et al 2018). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

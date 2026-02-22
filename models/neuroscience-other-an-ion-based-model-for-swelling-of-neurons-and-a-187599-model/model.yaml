@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AnIonBasedModelForSwellingOfNeuronsAndA187599Model'
-description: '{"value": "The programs describe ion dynamics and osmosis-driven cellular
-  swelling. \u201ccode_fig3.ode\u201d shows a \r\nscenario of permanent cessation
-  of energy supply / Na/K-pump activity, and the'
+description: "{\"value\": \"The programs describe ion dynamics and osmosis-driven cellular swelling. \\u201ccode_fig3.ode\\u201d shows a \\r\\nscenario of permanent cessation of energy supply / Na/K-pump activity, and the."
 standard: other
 tags:
 - neuroscience

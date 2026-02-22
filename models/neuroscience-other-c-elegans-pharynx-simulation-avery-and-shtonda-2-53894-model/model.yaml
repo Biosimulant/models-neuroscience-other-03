@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: CElegansPharynxSimulationAveryAndShtonda253894Model'
-description: '{''value'': ''Experimental obervations, measurements, and theoretical
-  analysis of C. elegans pharynx feeding behavior function are reported in the paper.
-  See the paper and the model files for more.'', ''at'
+description: "{'value': 'Experimental obervations, measurements, and theoretical analysis of C. elegans pharynx feeding behavior function are reported in the paper."
 standard: other
 tags:
 - neuroscience

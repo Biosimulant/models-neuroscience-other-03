@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BiophysicalModelsOfAwconAndRmdCElegansNe267187Model'
-description: '{"value": "Here are presented the Hodgkin-Huxley models of AWCon and
-  RMD cells of the C. elegans nervous system as reported in Nicoletti et al. 2019.
-  Cells are stimulated both in voltage and current c'
+description: "{\"value\": \"Here are presented the Hodgkin-Huxley models of AWCon and RMD cells of the C. elegans nervous system as reported in Nicoletti et al."
 standard: other
 tags:
 - neuroscience

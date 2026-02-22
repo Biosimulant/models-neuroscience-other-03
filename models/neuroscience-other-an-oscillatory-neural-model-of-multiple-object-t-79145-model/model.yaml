@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AnOscillatoryNeuralModelOfMultipleObjectT79145Model'
-description: '{''value'': ''An oscillatory neural network model of multiple object
-  tracking is described. The model works with a set of identical visual objects moving
-  around the screen. At the initial stage, the mode'
+description: "{'value': 'An oscillatory neural network model of multiple object tracking is described. The model works with a set of identical visual objects moving around the screen."
 standard: other
 tags:
 - neuroscience

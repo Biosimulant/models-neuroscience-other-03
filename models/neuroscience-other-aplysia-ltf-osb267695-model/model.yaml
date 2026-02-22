@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model267695267695Model'
-description: Aplysia LTF model (Liu et al, 2020; Zhang et al, 2021; Liu et al 2022)
+description: "Aplysia LTF model (Liu et al, 2020; Zhang et al, 2021; Liu et al 2022). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca2OscillationsBasedOnCaInducedCaRelease58199Model'
-description: '{''value'': ''We consider a simple, minimal model for signal-induced
-  Ca2+ oscillations based on Ca(2+)-induced Ca2+ release. The model takes into account
-  the existence of two pools of intracellular Ca2+,'
+description: "{'value': 'We consider a simple, minimal model for signal-induced Ca2+ oscillations based on Ca(2+)-induced Ca2+ release. The model takes into account the existence of two pools of intracellular Ca2+,."
 standard: other
 tags:
 - neuroscience

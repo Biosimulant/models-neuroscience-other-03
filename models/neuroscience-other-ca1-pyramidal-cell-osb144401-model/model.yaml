@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model144401144401Model'
-description: 'CA1 pyramidal cell: reconstructed axonal arbor and failures at weak
-  gap junctions (Vladimirov 2011)'
+description: "CA1 pyramidal cell: reconstructed axonal arbor and failures at weak gap junctions (Vladimirov 2011). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

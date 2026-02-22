@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BiophysicalModelOfL5PyramidalNeuronHeadley2019883Model'
-description: '{"value": "Pyramidal neurons form dense recurrently connected networks
-  with multiple types of inhibitory interneurons. A major differentiator between interneuron
-  subtypes is whether they synapse onto '
+description: "{\"value\": \"Pyramidal neurons form dense recurrently connected networks with multiple types of inhibitory interneurons. A major differentiator between interneuron subtypes is whether they synapse onto."
 standard: other
 tags:
 - neuroscience

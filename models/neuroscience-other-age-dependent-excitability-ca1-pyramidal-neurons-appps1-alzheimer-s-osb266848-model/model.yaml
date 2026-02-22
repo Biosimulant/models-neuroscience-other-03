@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model266848266848Model'
-description: Age-dependent excitability of CA1 pyramidal neurons in APPPS1 Alzheimer's
-  model (Vitale et al 2021)
+description: "Age-dependent excitability of CA1 pyramidal neurons in APPPS1 Alzheimer's model (Vitale et al 2021). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

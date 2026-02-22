@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model267680267680Model'
-description: 'CA1 pyr cell: phenomenological NMDAR-based model of synaptic plasticity
-  (Dainauskas et al 2023)'
+description: "CA1 pyr cell: phenomenological NMDAR-based model of synaptic plasticity (Dainauskas et al 2023). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

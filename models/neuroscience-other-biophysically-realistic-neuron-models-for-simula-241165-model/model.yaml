@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BiophysicallyRealisticNeuronModelsForSimula241165Model'
-description: '{"value": "This archive instantiates the single-cell cortical models
-  used in (Aberra et al. 2018) and sets up extracellular stimulation with either a
-  point-current source, to simulate intracortical mi'
+description: "{\"value\": \"This archive instantiates the single-cell cortical models used in (Aberra et al. 2018) and sets up extracellular stimulation with either a point-current source, to simulate intracortical mi."
 standard: other
 tags:
 - neuroscience

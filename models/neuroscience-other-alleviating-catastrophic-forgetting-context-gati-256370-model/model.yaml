@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AlleviatingCatastrophicForgettingContextGati256370Model'
-description: '{"value": "\"Artificial neural networks can suffer from catastrophic
-  forgetting, in which learning a new task causes the network to forget how to perform
-  previous tasks. While previous studies have pr'
+description: "{\"value\": \"\\\"Artificial neural networks can suffer from catastrophic forgetting, in which learning a new task causes the network to forget how to perform previous tasks. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

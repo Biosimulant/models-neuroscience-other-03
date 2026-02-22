@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BasalGangliaCorticothalamicBgctNetworkChen152113Model'
-description: '{"value": "We developed a biophysical model of the basal ganglia-corticothalamic\r\nnetwork
-  in this work.\r\n\r\n\"... We demonstrate that the typical absence seizure activities
-  can be\r\ncontrolled a'
+description: "{\"value\": \"We developed a biophysical model of the basal ganglia-corticothalamic\\r\\nnetwork in this work.\\r\\n\\r\\n\\\"... We demonstrate that the typical absence seizure activities can be\\r\\ncontrolled a."
 standard: other
 tags:
 - neuroscience

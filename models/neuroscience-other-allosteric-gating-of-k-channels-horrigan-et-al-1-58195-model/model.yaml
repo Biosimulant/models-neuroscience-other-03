@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AllostericGatingOfKChannelsHorriganEtAl158195Model'
-description: "{'value': 'Calcium sensitive large-conductance K channel conductance\
-  \ is controlled by both cytoplasmic calcium and membrane potential.\r\nExperimental\
-  \ data obtained by the inside out patch method can "
+description: "{'value': 'Calcium sensitive large-conductance K channel conductance is controlled by both cytoplasmic calcium and membrane potential. Experimental data obtained by the inside out patch method can."
 standard: other
 tags:
 - neuroscience

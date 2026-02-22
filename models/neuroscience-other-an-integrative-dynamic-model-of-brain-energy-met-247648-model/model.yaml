@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AnIntegrativeDynamicModelOfBrainEnergyMet247648Model'
-description: '{"value": "An integrative, systems approach to the modelling of brain
-  energy metabolism is presented. Mechanisms such as glutamate cycling between neurons
-  and astrocytes and glycogen storage in astroc'
+description: "{\"value\": \"An integrative, systems approach to the modelling of brain energy metabolism is presented. Mechanisms such as glutamate cycling between neurons and astrocytes and glycogen storage in astroc."
 standard: other
 tags:
 - neuroscience

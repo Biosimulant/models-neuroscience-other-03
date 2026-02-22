@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AuditoryNerveResponseModelZhangEtAl200137103Model'
-description: '{''value'': ''A phenomenological model was developed to describe responses
-  of high-spontaneous-rate auditory-nerve (AN) fibers, including several nonlinear
-  response properties. The implementation of this'
+description: "{'value': 'A phenomenological model was developed to describe responses of high-spontaneous-rate auditory-nerve (AN) fibers, including several nonlinear response properties. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model184321184321Model'
-description: 'Allen Institute: Sst-IRES-Cre VISp layer 5 473835796'
+description: "Allen Institute: Sst-IRES-Cre VISp layer 5 473835796. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

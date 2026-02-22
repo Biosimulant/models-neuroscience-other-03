@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BiochemicallyDetailedModelOfLtpAndLtdInA260971Model'
-description: '{"value": "\"Signalling pathways leading to post-synaptic plasticity
-  have been examined in many types of experimental studies, but a unified picture
-  on how multiple biochemical pathways collectively s'
+description: "{\"value\": \"\\\"Signalling pathways leading to post-synaptic plasticity have been examined in many types of experimental studies, but a unified picture on how multiple biochemical pathways collectively s. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AnElectrophysiologicalModelOfGabaergicDoubl257610Model'
-description: '{"value": "We present an electrophysiological model of double bouquet
-  cells (DBCs) and integrate them into an established cortical columnar microcircuit
-  model that implements a BCPNN (Bayesian Confide'
+description: "{\"value\": \"We present an electrophysiological model of double bouquet cells (DBCs) and integrate them into an established cortical columnar microcircuit model that implements a BCPNN (Bayesian Confide. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

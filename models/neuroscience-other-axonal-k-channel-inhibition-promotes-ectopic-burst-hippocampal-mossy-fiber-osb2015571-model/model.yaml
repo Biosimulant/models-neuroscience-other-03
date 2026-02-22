@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model20155712015571Model'
-description: Axonal K channel inhibition promotes ectopic burst of hippocampal mossy
-  fiber (Kamiya 2024)
+description: "Axonal K channel inhibition promotes ectopic burst of hippocampal mossy fiber (Kamiya 2024). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

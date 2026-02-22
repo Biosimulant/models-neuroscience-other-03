@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalNeuronIhCurrentMiglioreEtAl2144541Model'
-description: '{"value": "NEURON files from the paper:\r\nMigliore M, Migliore R (2012)
-  Know Your Current Ih: Interaction with a Shunting Current Explains the Puzzling
-  Effects of Its Pharmacological or\r\nPathologic'
+description: "{\"value\": \"NEURON files from the paper:\\r\\nMigliore M, Migliore R (2012) Know Your Current Ih: Interaction with a Shunting Current Explains the Puzzling Effects of Its Pharmacological or\\r\\nPathologic. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model8754687546Model'
-description: 'CA1 oriens alveus interneurons: signaling properties (Minneci et al.
-  2007)'
+description: "CA1 oriens alveus interneurons: signaling properties (Minneci et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

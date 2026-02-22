@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalCellReconstructedAxonalArborAn144401Model'
-description: '{"value": "Model of pyramidal CA1 cells connected by gap junctions in
-  their axons.\r\nCell geometry is based on anatomical reconstruction of rat CA1 cell
-  (NeuroMorpho.Org ID: NMO_00927) with long axon'
+description: "{\"value\": \"Model of pyramidal CA1 cells connected by gap junctions in their axons.\\r\\nCell geometry is based on anatomical reconstruction of rat CA1 cell (NeuroMorpho.Org ID: NMO_00927) with long axon. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

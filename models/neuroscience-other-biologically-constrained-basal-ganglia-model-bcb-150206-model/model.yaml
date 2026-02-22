@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BiologicallyConstrainedBasalGangliaModelBcb150206Model'
-description: '{"value": "We studied the physiology and function of the basal ganglia
-  through the design of mean-field models of the whole basal ganglia. The parameterizations
-  are optimized with multi-objective evol'
+description: "{\"value\": \"We studied the physiology and function of the basal ganglia through the design of mean-field models of the whole basal ganglia. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

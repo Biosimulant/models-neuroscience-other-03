@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model147757147757Model'
-description: Amyloid-beta effects on release probability and integration at CA3-CA1
-  synapses (Romani et al. 2013)
+description: "Amyloid-beta effects on release probability and integration at CA3-CA1 synapses (Romani et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

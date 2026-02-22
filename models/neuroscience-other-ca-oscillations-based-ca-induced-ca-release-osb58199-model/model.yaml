@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model5819958199Model'
-description: Ca(2+) oscillations based on Ca-induced Ca-release (Dupont et al 1991)
+description: "Ca(2+) oscillations based on Ca-induced Ca-release (Dupont et al 1991). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

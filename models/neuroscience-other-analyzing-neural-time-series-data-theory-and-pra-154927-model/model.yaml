@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AnalyzingNeuralTimeSeriesDataTheoryAndPra154927Model'
-description: '{"value": "\"This book offers a comprehensive guide to the theory and
-  practice of analyzing electrical brain signals. It explains the conceptual, mathematical,
-  and implementational (via Matlab program'
+description: "{\"value\": \"\\\"This book offers a comprehensive guide to the theory and practice of analyzing electrical brain signals. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

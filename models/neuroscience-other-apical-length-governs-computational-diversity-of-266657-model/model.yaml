@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: ApicalLengthGovernsComputationalDiversityOf266657Model'
-description: '{"value": "\"Anatomical similarity across the neocortex has led to the
-  common assumption that the circuitry is modular and performs stereotyped computations.
-  Layer 5 pyramidal neurons (L5PNs) in parti'
+description: "{\"value\": \"\\\"Anatomical similarity across the neocortex has led to the common assumption that the circuitry is modular and performs stereotyped computations. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

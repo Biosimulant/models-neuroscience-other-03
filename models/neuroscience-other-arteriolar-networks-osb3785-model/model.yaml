@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model37853785Model'
-description: 'Arteriolar networks: Spread of potential (Crane et al 2001)'
+description: "Arteriolar networks: Spread of potential (Crane et al 2001). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

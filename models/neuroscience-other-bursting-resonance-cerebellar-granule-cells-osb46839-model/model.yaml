@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model4683946839Model'
-description: Bursting and resonance in cerebellar granule cells (D"Angelo et al. 2001)
+description: "Bursting and resonance in cerebellar granule cells (D\"Angelo et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

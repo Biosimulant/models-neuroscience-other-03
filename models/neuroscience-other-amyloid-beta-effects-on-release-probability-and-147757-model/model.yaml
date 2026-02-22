@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AmyloidBetaEffectsOnReleaseProbabilityAnd147757Model'
-description: '{"value": "The role of amyloid beta (A\u00df) in brain function and
-  in the pathogenesis of Alzheimer\u2019s disease remains elusive.\r\nRecent publications
-  reported that an increase in A\u00df concent'
+description: "{\"value\": \"The role of amyloid beta (A\\u00df) in brain function and in the pathogenesis of Alzheimer\\u2019s disease remains elusive.\\r\\nRecent publications reported that an increase in A\\u00df concent. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

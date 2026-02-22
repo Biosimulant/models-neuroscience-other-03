@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AnAllostericKineticsOfNmdarsInStdpUrakubo114365Model'
-description: '{"value": "\"... We developed a detailed biophysical model of STDP and
-  found\r\nthat the model required spike timing-dependent distinct suppression of
-  NMDARs by Ca2+-calmodulin.\r\n\r\nThis led us to '
+description: "{\"value\": \"\\\"... It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

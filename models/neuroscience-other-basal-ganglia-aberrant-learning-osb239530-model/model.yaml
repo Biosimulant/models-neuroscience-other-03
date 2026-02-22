@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model239530239530Model'
-description: A basal ganglia model of aberrant learning (Ursino et al. 2018)
+description: "A basal ganglia model of aberrant learning (Ursino et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

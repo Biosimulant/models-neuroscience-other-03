@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model188977188977Model'
-description: CA1 pyramidal cells, basket cells, ripples (Malerba et al 2016)
+description: "CA1 pyramidal cells, basket cells, ripples (Malerba et al 2016). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

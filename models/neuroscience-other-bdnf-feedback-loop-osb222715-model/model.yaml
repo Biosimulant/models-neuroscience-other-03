@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model222715222715Model'
-description: Model of a BDNF feedback loop (Zhang et al 2016)
+description: "Neuroscience Model222715222715Model represents neuroscience bdnf feedback loop osb222715 mechanisms from opensourcebrain reference opensourcebrain:222715. When you run it, you can inspect state and compare temporal behavior between baseline and adjusted inputs."
 standard: other
 tags:
 - neuroscience

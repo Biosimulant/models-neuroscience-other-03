@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BrainNetworksSimulatorsAComparativeStudyTi222725Model'
-description: '{"value": "\" ... In this article, we select the three most popular
-  simulators, as determined by the number of models in the ModelDB database, such
-  as NEURON, GENESIS, and BRIAN, and perform an indepe'
+description: "{\"value\": \"\\\" ... In this article, we select the three most popular simulators, as determined by the number of models in the ModelDB database, such as NEURON, GENESIS, and BRIAN, and perform an indepe."
 standard: other
 tags:
 - neuroscience

@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model147514147514Model'
-description: Altered complexity in layer 2/3 pyramidal neurons (Luuk van der Velden
-  et al. 2012)
+description: "Altered complexity in layer 2/3 pyramidal neurons (Luuk van der Velden et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

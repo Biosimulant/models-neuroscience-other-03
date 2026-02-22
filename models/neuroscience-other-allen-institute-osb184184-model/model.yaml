@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model184184184184Model'
-description: 'Allen Institute: Htr3a-Cre VISp layer 2/3 472352327'
+description: "Allen Institute: Htr3a-Cre VISp layer 2/3 472352327. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

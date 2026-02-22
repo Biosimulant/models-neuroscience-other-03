@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: CElegansMotorAndInterneuronsNicolettiAtAl2017403Model'
-description: '{"value": "Biophysically accurate models of six classes of C. elegans
-  neurons: AIY, RIM, and AVA interneurons, and the VA, VB, and VD motor neurons. The
-  implemented codes reproduce current-clamp and v'
+description: "{\"value\": \"Biophysically accurate models of six classes of C. elegans neurons: AIY, RIM, and AVA interneurons, and the VA, VB, and VD motor neurons."
 standard: other
 tags:
 - neuroscience

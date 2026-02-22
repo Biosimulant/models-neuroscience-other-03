@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model150031150031Model'
-description: An attractor network model of grid cells and theta-nested gamma oscillations
-  (Pastoll et al., 2013)
+description: "An attractor network model of grid cells and theta-nested gamma oscillations (Pastoll et al., 2013). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AllenInstituteSstIresCreVispLayer4472304184171Model'
-description: '{"value": "This is an Allen Cell Types Database model of a Sst-IRES-Cre
-  neuron from layer 4 of the mouse primary visual cortex. The model was based on a
-  traced morphology after filling the cell with b'
+description: "{\"value\": \"This is an Allen Cell Types Database model of a Sst-IRES-Cre neuron from layer 4 of the mouse primary visual cortex. The model was based on a traced morphology after filling the cell with b."
 standard: other
 tags:
 - neuroscience

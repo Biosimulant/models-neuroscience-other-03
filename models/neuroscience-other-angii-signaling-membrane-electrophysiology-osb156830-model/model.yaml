@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model156830156830Model'
-description: Model of AngII signaling and membrane electrophysiology (Makadia, Anderson,
-  Fey et al., 2015)
+description: "Model of AngII signaling and membrane electrophysiology (Makadia, Anderson, Fey et al., 2015). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

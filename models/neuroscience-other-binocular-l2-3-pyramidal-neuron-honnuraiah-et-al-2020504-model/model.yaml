@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BinocularL23PyramidalNeuronHonnuraiahEtAl2020504Model'
-description: '{"value": "This ModelDB entry contains a morphologically detailed Layer
-  2/3 pyramidal neuron model used to identify the biophysical mechanism underlying
-  reduced excitability in callosal-receiving neur'
+description: "{\"value\": \"This ModelDB entry contains a morphologically detailed Layer 2/3 pyramidal neuron model used to identify the biophysical mechanism underlying reduced excitability in callosal-receiving neur. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

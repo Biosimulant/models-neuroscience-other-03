@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1NetworkModelInterneuronContributionsToE256311Model'
-description: '{"value": "Temporal lobe epilepsy causes significant cognitive deficits
-  in both humans and rodents, yet the specific circuit mechanisms underlying these
-  deficits remain unknown. There are profound and'
+description: "{\"value\": \"Temporal lobe epilepsy causes significant cognitive deficits in both humans and rodents, yet the specific circuit mechanisms underlying these deficits remain unknown. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

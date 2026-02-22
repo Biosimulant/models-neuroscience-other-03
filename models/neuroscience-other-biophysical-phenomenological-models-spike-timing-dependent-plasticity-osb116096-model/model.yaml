@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model116096116096Model'
-description: Biophysical and phenomenological models of spike-timing dependent plasticity
-  (Badoual et al. 2006)
+description: "Biophysical and phenomenological models of spike-timing dependent plasticity (Badoual et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

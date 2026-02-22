@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model244202244202Model'
-description: A biophysical model of vestibular ganglion neurons (Hight & Kalluri 2016,
-  Ventura & Kalluri 2018)
+description: "A biophysical model of vestibular ganglion neurons (Hight & Kalluri 2016, Ventura & Kalluri 2018). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

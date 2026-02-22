@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BasalGangliaMotorCircuitForKinematicPlanni234313Model'
-description: '{"value": "A mathematical model of BG for kinematic planning.", "attr_id":
-  24}'
+description: "A mathematical model of BG for kinematic planning. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

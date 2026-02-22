@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AllenInstituteNr5a1CreVispLayer4472442377184297Model'
-description: '{"value": "This is an Allen Cell Types Database model of a Nr5a1-Cre
-  neuron from layer 4 of the mouse primary visual cortex. The model was based on a
-  traced morphology after filling the cell with bioc'
+description: "{\"value\": \"This is an Allen Cell Types Database model of a Nr5a1-Cre neuron from layer 4 of the mouse primary visual cortex. The model was based on a traced morphology after filling the cell with bioc."
 standard: other
 tags:
 - neuroscience

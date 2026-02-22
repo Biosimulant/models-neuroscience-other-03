@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Bahletal2012Reducedl5pyrcellBahletal2012reducedl5pyrcellModel'
-description: A set of reduced models of layer 5 pyramidal neurons from Bahl et al.
-  2012
+description: "A set of reduced models of layer 5 pyramidal neurons from Bahl et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

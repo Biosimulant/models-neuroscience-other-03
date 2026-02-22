@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model147538147538Model'
-description: BCM-like synaptic plasticity with conductance-based models (Narayanan
-  Johnston, 2010)
+description: "BCM-like synaptic plasticity with conductance-based models (Narayanan Johnston, 2010). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

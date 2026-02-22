@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BasalGangliaThalamocorticalLoopModelOfActi83562Model'
-description: '{''value'': ''We embed our basal ganglia model into a wider circuit
-  containing the motor thalamocortical loop and thalamic reticular nucleus (TRN).
-  Simulation of this extended model showed that the addit'
+description: "{'value': 'We embed our basal ganglia model into a wider circuit containing the motor thalamocortical loop and thalamic reticular nucleus (TRN). Simulation of this extended model showed that the addit."
 standard: other
 tags:
 - neuroscience

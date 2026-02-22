@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AmyloidBetaIaBlockEffectsOnAModelCa1Pyr87284Model'
-description: '{''value'': ''The model simulations provide evidence oblique dendrites
-  in CA1 pyramidal neurons are susceptible to hyper-excitability by amyloid beta block
-  of the transient K+ channel, IA. See paper for '
+description: "{'value': 'The model simulations provide evidence oblique dendrites in CA1 pyramidal neurons are susceptible to hyper-excitability by amyloid beta block of the transient K+ channel, IA. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

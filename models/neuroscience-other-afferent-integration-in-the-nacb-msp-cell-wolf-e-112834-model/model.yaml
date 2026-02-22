@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AfferentIntegrationInTheNacbMspCellWolfE112834Model'
-description: '{"value": "\"We describe a computational model of the principal cell
-  in the nucleus accumbens (NAcb), the medium spiny projection (MSP) neuron. \r\n\r\nThe
-  model neuron, constructed in NEURON, include'
+description: "{\"value\": \"\\\"We describe a computational model of the principal cell in the nucleus accumbens (NAcb), the medium spiny projection (MSP) neuron. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

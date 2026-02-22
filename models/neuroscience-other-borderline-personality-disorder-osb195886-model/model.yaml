@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model195886195886Model'
-description: Borderline Personality Disorder (Berdahl, 2010)
+description: "Neuroscience Model195886195886Model models neuroscience borderline personality disorder osb195886 dynamics as a OTHER simulation curated from opensourcebrain (opensourcebrain:195886), focused on neuroscience, o. When you run it, you can track state over time and compare response patterns across parameter settings."
 standard: other
 tags:
 - neuroscience

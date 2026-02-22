@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: ApBackPropExplainsThresholdVariabilityAnd135839Model'
-description: '{"value": "This simple axon-soma model explained how the rapid rising
-  phase in the somatic spike is derived from the propagated axon initiated spike,\r\nand
-  how the somatic spike threshold variance is'
+description: "{\"value\": \"This simple axon-soma model explained how the rapid rising phase in the somatic spike is derived from the propagated axon initiated spike,\\r\\nand how the somatic spike threshold variance is. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AxonalNav16SodiumChannelsInApInitiationO115356Model'
-description: '{"value": "\"...\r\n\r\nWe show that the Na+ channel NaV1.6 displays
-  a striking aggregation at the AIS\r\nof cortical neurons.\r\n\r\n\r\n...\r\nIn combination
-  with simulations using a realistic\r\nco'
+description: "{\"value\": \"\\\"...\\r\\n\\r\\nWe show that the Na+ channel NaV1.6 displays a striking aggregation at the AIS\\r\\nof cortical neurons.\\r\\n\\r\\n\\r\\n...\\r\\nIn combination with simulations using a realistic\\r\\nco. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

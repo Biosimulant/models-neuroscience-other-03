@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AxonSomaticBackPropagationInADetailedMode180370Model'
-description: '{"value": "Morphologically detailed conductance-based models of cat
-  spinal alpha motoneurons have been developed, with the aim to reproduce and clarify
-  some aspects of the electrophysiological behavio'
+description: "{\"value\": \"Morphologically detailed conductance-based models of cat spinal alpha motoneurons have been developed, with the aim to reproduce and clarify some aspects of the electrophysiological behavio. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

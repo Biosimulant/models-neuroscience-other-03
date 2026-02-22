@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: ApInitiationPropagationAndCorticalInvasion241160Model'
-description: '{"value": "\" ... High frequency (~130 Hz) deep brain stimulation (DBS)
-  of\r\nthe subthalamic region is an established clinical therapy for the\r\ntreatment
-  of late stage Parkinson''s disease (PD). Dir'
+description: "{\"value\": \"\\\" ... High frequency (~130 Hz) deep brain stimulation (DBS) of\\r\\nthe subthalamic region is an established clinical therapy for the\\r\\ntreatment of late stage Parkinson's disease (PD)."
 standard: other
 tags:
 - neuroscience

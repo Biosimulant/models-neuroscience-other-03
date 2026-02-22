@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalNeuronDepolarizationBlockBianch143719Model'
-description: '{"value": "NEURON files from the paper: On the mechanisms underlying
-  the depolarization block in the spiking dynamics of CA1 pyramidal neurons\r\nby
-  D.Bianchi, A. Marasco, A.Limongiello, C.Marchetti, '
+description: "{\"value\": \"NEURON files from the paper: On the mechanisms underlying the depolarization block in the spiking dynamics of CA1 pyramidal neurons\\r\\nby D.Bianchi, A. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

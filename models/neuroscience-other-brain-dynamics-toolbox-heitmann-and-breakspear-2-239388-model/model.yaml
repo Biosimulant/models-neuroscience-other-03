@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BrainDynamicsToolboxHeitmannAndBreakspear2239388Model'
-description: '{"value": "\"The Brain Dynamics Toolbox is open-source software for
-  simulating dynamical systems in neuroscience. It is for researchers and students
-  who wish to explore mathematical models of brain fu'
+description: "{\"value\": \"\\\"The Brain Dynamics Toolbox is open-source software for simulating dynamical systems in neuroscience. It is for researchers and students who wish to explore mathematical models of brain fu."
 standard: other
 tags:
 - neuroscience

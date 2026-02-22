@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AnAgentBasedComputationalModelForCortical266895Model'
-description: '{"value": "This computational model can account for layer-specific neuron
-  numbers in various different cortical structures. It is agent-based and is initiated
-  from a small homogeneous pool of precurso'
+description: "{\"value\": \"This computational model can account for layer-specific neuron numbers in various different cortical structures. It is agent-based and is initiated from a small homogeneous pool of precurso."
 standard: other
 tags:
 - neuroscience

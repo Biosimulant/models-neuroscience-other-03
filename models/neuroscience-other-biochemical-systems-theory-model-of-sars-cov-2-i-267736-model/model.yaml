@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BiochemicalSystemsTheoryModelOfSarsCov2I267736Model'
-description: '{"value": "\"We report here a mathematical model of SARS-CoV-2 infection
-  pathway network with cytokine storm, oxidative stress, thrombosis, insulin resistance,
-  and nitric oxide (NO) pathways. The bioc'
+description: "{\"value\": \"\\\"We report here a mathematical model of SARS-CoV-2 infection pathway network with cytokine storm, oxidative stress, thrombosis, insulin resistance, and nitric oxide (NO) pathways. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

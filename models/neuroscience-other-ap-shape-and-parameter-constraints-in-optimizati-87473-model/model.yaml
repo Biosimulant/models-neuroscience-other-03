@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: ApShapeAndParameterConstraintsInOptimizati87473Model'
-description: '{"value": "\"... We construct an\r\nobjective function that includes
-  both time-aligned action potential shape error and errors in firing rate and firing
-  regularity. We then\r\nimplement a variant of s'
+description: "{\"value\": \"\\\"... We construct an\\r\\nobjective function that includes both time-aligned action potential shape error and errors in firing rate and firing regularity."
 standard: other
 tags:
 - neuroscience

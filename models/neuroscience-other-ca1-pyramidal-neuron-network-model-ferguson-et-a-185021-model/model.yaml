@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalNeuronNetworkModelFergusonEtA185021Model'
-description: '{"value": "From the paper:\r\nFigure 4 (1000 cell network) is reproduced
-  by running this brian code.\r\nThe raster plot and one of the excitatory cell voltage
-  is produced.", "attr_id": 24}'
+description: "From the paper: Figure 4 (1000 cell network) is reproduced by running this brian code. The raster plot and one of the excitatory cell voltage is produced."
 standard: other
 tags:
 - neuroscience

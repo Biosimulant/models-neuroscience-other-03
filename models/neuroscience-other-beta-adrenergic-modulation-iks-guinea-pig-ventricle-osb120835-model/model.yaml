@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model120835120835Model'
-description: A model of beta-adrenergic modulation of IKs in the guinea-pig ventricle
-  (Severi et al. 2009)
+description: "A model of beta-adrenergic modulation of IKs in the guinea-pig ventricle (Severi et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

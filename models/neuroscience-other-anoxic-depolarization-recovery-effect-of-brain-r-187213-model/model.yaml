@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AnoxicDepolarizationRecoveryEffectOfBrainR187213Model'
-description: '{"value": "The extent of anoxic depolarization (AD), the initial electrophysiological
-  event during ischemia, determines the degree of brain region-specific neuronal damage.
-  Neurons in higher brain reg'
+description: "{\"value\": \"The extent of anoxic depolarization (AD), the initial electrophysiological event during ischemia, determines the degree of brain region-specific neuronal damage. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

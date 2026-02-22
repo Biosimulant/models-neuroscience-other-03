@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model266929266929Model'
-description: Astrocyte and Blood Vessel Calcium Imaging Tracking code (Haidey et al
-  2021)
+description: "Astrocyte and Blood Vessel Calcium Imaging Tracking code (Haidey et al 2021). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

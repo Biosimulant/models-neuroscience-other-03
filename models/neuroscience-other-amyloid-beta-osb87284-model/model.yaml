@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model8728487284Model'
-description: Amyloid beta (IA block) effects on a model CA1 pyramidal cell (Morse
-  et al. 2010)
+description: "Amyloid beta (IA block) effects on a model CA1 pyramidal cell (Morse et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

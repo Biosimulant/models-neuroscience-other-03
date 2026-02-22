@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AveNeuronModelForSlowWaveSleepInCortexT264519Model'
-description: '{"value": "Averaged neuron(AN) model is a conductance-based (Hodgkin-Huxley
-  type) neuron model which includes a mean-field approximation of a population of
-  neurons. You can simulate previous models (A'
+description: "{\"value\": \"Averaged neuron(AN) model is a conductance-based (Hodgkin-Huxley type) neuron model which includes a mean-field approximation of a population of neurons. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

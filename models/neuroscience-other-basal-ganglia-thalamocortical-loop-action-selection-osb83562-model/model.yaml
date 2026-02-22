@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model8356283562Model'
-description: Basal ganglia-thalamocortical loop model of action selection (Humphries
-  and Gurney 2002)
+description: "Basal ganglia-thalamocortical loop model of action selection (Humphries and Gurney 2002). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

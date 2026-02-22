@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model247656247656Model'
-description: Bursting in dopamine neurons (Li YX et al 1996)
+description: "Neuroscience Model247656247656Model captures neuroscience bursting dopamine neurons osb247656 behavior in the context of neuroscience, opensourcebrain, bursting using a opensourcebrain-sourced OTHER model. When you run it, you can observe state and evaluate how the modeled system changes across runs."
 standard: other
 tags:
 - neuroscience

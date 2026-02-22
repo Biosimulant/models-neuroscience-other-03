@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AisModelOfL5CorticalPyramidalNeuronFilipi267355Model'
-description: '{"value": "In neocortical layer-5 pyramidal neurons, the action potential
-  (AP) is generated in the axon initial segment\r\n(AIS) when the membrane potential
-  (Vm) reaches the threshold for activation o'
+description: "{\"value\": \"In neocortical layer-5 pyramidal neurons, the action potential (AP) is generated in the axon initial segment\\r\\n(AIS) when the membrane potential (Vm) reaches the threshold for activation o. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

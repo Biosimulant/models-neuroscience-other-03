@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1OriensAlveusInterneuronsSignalingPropert87546Model'
-description: '{''value'': ''The model supports the experimental findings showing that
-  the dynamic interaction between cells with various firing patterns could differently
-  affect GABAergic signaling, leading to a wide '
+description: "{'value': 'The model supports the experimental findings showing that the dynamic interaction between cells with various firing patterns could differently affect GABAergic signaling, leading to a wide. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

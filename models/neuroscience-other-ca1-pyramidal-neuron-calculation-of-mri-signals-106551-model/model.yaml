@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalNeuronCalculationOfMriSignals106551Model'
-description: "{'value': 'NEURON mod files from the paper:\r\nCassar\xE0 AM, Hagberg\
-  \ GE, Bianciardi M, Migliore M, Maraviglia B.\r\nRealistic simulations of neuronal\
-  \ activity: A contribution to the debate on direc"
+description: "{'value': 'NEURON mod files from the paper: Cassar\u00e0 AM, Hagberg GE, Bianciardi M, Migliore M, Maraviglia B. Realistic simulations of neuronal activity: A contribution to the debate on direc."
 standard: other
 tags:
 - neuroscience

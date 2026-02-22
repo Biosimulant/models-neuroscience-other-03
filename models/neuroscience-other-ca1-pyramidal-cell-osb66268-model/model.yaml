@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model6626866268Model'
-description: 'CA1 pyramidal cell: I_NaP and I_M contributions to somatic bursting
-  (Golomb et al 2006)'
+description: "CA1 pyramidal cell: I_NaP and I_M contributions to somatic bursting (Golomb et al 2006). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

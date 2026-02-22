@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BiophysicallyRealisticNetworkModelOfTheWil267646Model'
-description: '{"value": "Please read the readme.txt file before running any code.\r\n\r\nObjective:
-  A major reason for poor visual outcomes provided by existing retinal prostheses
-  is the limited knowledge of the im'
+description: "{\"value\": \"Please read the readme.txt file before running any code.\\r\\n\\r\\nObjective: A major reason for poor visual outcomes provided by existing retinal prostheses is the limited knowledge of the im. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

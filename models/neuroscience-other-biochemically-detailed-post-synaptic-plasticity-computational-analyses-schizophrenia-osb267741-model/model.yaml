@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model267741267741Model'
-description: Biochemically detailed model of post-synaptic plasticity for computational
-  analyses of schizophrenia (Maki-Marttunen et al. in press)
+description: "Biochemically detailed model of post-synaptic plasticity for computational analyses of schizophrenia (Maki-Marttunen et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

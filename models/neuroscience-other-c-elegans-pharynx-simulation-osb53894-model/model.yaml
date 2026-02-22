@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model5389453894Model'
-description: C elegans pharynx simulation (Avery and Shtonda 2003)
+description: "C elegans pharynx simulation (Avery and Shtonda 2003). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

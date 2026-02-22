@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AuditoryNerveResponseModelTanCarney200337129Model'
-description: '{''value'': ''A computational model was developed to simulate the responses
-  of auditory-nerve (AN) fibers in cat. The incorporation of both the level-independent
-  frequency glide and the level-dependent c'
+description: "{'value': 'A computational model was developed to simulate the responses of auditory-nerve (AN) fibers in cat. The incorporation of both the level-independent frequency glide and the level-dependent c."
 standard: other
 tags:
 - neuroscience

@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AxonalHhModelForTemperatureStimulationFrib189155Model'
-description: '{"value": "\"... To analyze the temperature effect, our study modified\r\nthe
-  classical HH axonal model by incorporating a membrane\r\ncapacitance-temperature
-  relationship. The modified model\r\nsucce'
+description: "{\"value\": \"\\\"... To analyze the temperature effect, our study modified\\r\\nthe classical HH axonal model by incorporating a membrane\\r\\ncapacitance-temperature relationship."
 standard: other
 tags:
 - neuroscience

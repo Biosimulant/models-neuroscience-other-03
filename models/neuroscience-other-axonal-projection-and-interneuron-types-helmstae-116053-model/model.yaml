@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AxonalProjectionAndInterneuronTypesHelmstae116053Model'
-description: '{"value": "\"Interneurons in layer 2/3 (L2/3) of the somatosensory cortex
-  show\r\n4 types of axonal projection patterns with reference to the laminae\r\nand
-  borders of columns in rat barrel cortex (He'
+description: "{\"value\": \"\\\"Interneurons in layer 2/3 (L2/3) of the somatosensory cortex show\\r\\n4 types of axonal projection patterns with reference to the laminae\\r\\nand borders of columns in rat barrel cortex (He. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

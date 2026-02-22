@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BasalGangliaThalamicNetworkModelForDeepBr141699Model'
-description: '{"value": "This is a model of the basal ganglia-thalamic network, modified
-  from the Rubin and Terman model (High frequency stimulation of the Subthalamic Nucleus,
-  Rubin and Terman 2004). We subsequent'
+description: "{\"value\": \"This is a model of the basal ganglia-thalamic network, modified from the Rubin and Terman model (High frequency stimulation of the Subthalamic Nucleus, Rubin and Terman 2004). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

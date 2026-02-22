@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AlternativeTimeRepresentationInDopamineMode124329Model'
-description: '{"value": "Combines a long short-term memory (LSTM) model of the cortex
-  to a temporal difference learning (TD) model of the basal ganglia. Code to run simulations
-  similar to the published data: Rivest'
+description: "{\"value\": \"Combines a long short-term memory (LSTM) model of the cortex to a temporal difference learning (TD) model of the basal ganglia. Code to run simulations similar to the published data: Rivest."
 standard: other
 tags:
 - neuroscience

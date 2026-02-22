@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyrCellInhibitoryModulationOfSpatialSe225080Model'
-description: '{"value": "Spatially uniform synaptic inhibition enhances spatial selectivity
-  and temporal coding in CA1 place cells by suppressing broad out-of-field excitation.",
-  "attr_id": 24}'
+description: "Spatially uniform synaptic inhibition enhances spatial selectivity and temporal coding in CA1 place cells by suppressing broad out-of-field excitation. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

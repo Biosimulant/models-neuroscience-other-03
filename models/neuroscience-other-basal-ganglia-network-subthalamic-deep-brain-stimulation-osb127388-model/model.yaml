@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model127388127388Model'
-description: Basal ganglia network model of subthalamic deep brain stimulation (Hahn
-  and McIntyre 2010)
+description: "Basal ganglia network model of subthalamic deep brain stimulation (Hahn and McIntyre 2010). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

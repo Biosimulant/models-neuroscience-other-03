@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AmbientGlutamateShapesAmpaReceptorResponses266925Model'
-description: '{"value": "To explore how ambient glutamate contributes to the generation
-  of ultra-slow signaling through AMPARs at the cerebellar unipolar brush cell synapse,
-  we created this 13-state kinetic model i'
+description: "{\"value\": \"To explore how ambient glutamate contributes to the generation of ultra-slow signaling through AMPARs at the cerebellar unipolar brush cell synapse, we created this 13-state kinetic model i. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

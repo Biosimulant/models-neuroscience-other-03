@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model3710337103Model'
-description: Auditory nerve response model (Zhang et al 2001)
+description: "Neuroscience Model3710337103Model represents neuroscience auditory nerve response osb37103 mechanisms from opensourcebrain reference opensourcebrain:37103. When you run it, you can inspect state and compare temporal behavior between baseline and adjusted inputs."
 standard: other
 tags:
 - neuroscience

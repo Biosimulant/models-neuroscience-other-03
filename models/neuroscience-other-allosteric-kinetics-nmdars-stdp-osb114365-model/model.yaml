@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model114365114365Model'
-description: An allosteric kinetics of NMDARs in STDP (Urakubo et al. 2008)
+description: "An allosteric kinetics of NMDARs in STDP (Urakubo et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

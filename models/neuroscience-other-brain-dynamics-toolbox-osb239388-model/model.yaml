@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model239388239388Model'
-description: Brain Dynamics Toolbox (Heitmann & Breakspear 2016, 2017, 2018)
+description: "Brain Dynamics Toolbox (Heitmann & Breakspear 2016, 2017, 2018). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model115356115356Model'
-description: Axonal NaV1.6 Sodium Channels in AP Initiation of CA1 Pyramidal Neurons
-  (Royeck et al. 2008)
+description: "Axonal NaV1.6 Sodium Channels in AP Initiation of CA1 Pyramidal Neurons (Royeck et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

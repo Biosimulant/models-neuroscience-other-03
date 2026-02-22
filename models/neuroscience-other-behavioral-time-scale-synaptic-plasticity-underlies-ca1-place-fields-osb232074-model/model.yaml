@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model232074232074Model'
-description: Behavioral time scale synaptic plasticity underlies CA1 place fields
-  (Bittner et al. 2017)
+description: "Behavioral time scale synaptic plasticity underlies CA1 place fields (Bittner et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

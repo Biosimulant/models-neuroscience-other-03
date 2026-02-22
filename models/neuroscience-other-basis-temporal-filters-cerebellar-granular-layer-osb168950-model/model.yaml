@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model168950168950Model'
-description: Basis for temporal filters in the cerebellar granular layer (Roessert
-  et al. 2015)
+description: "Basis for temporal filters in the cerebellar granular layer (Roessert et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

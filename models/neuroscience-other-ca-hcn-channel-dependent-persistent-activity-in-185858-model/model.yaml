@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: CaHcnChannelDependentPersistentActivityIn185858Model'
-description: '{"value": "\"Neuronal persistent activity has been primarily assessed
-  in terms of electrical mechanisms, without attention to the complex array of molecular
-  events that also control cell excitability.'
+description: "{\"value\": \"\\\"Neuronal persistent activity has been primarily assessed in terms of electrical mechanisms, without attention to the complex array of molecular events that also control cell excitability. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

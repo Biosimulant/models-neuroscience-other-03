@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model232875232875Model'
-description: Basal ganglia motor function and the inverse kinematics calculation (Salimi-Badr
-  et al 2017)
+description: "Basal ganglia motor function and the inverse kinematics calculation (Salimi-Badr et al 2017). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

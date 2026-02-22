@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model184166184166Model'
-description: 'Allen Institute: Scnn1a-Tg2-Cre VISp layer 4 472300877'
+description: "Allen Institute: Scnn1a-Tg2-Cre VISp layer 4 472300877. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

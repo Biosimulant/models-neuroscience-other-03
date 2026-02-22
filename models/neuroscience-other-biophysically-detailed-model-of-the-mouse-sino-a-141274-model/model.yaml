@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BiophysicallyDetailedModelOfTheMouseSinoA141274Model'
-description: '{"value": "This model is developed to study the role of various electrophysiological
-  mechanisms in generating cardiac pacemaking action potentials (APs).The model incorporates
-  membrane ionic currents '
+description: "{\"value\": \"This model is developed to study the role of various electrophysiological mechanisms in generating cardiac pacemaking action potentials (APs).The model incorporates membrane ionic currents. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

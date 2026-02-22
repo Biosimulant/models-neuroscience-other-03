@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalCellINapAndIMContributionsT66268Model'
-description: "{'value': 'To study the mechanisms of bursting, we have constructed\
-  \ a\r\nconductance-based, one-compartment model of CA1 pyramidal neurons. In this\
-  \ neuron model,\r\nreduced [Ca2+]o is simulated by neg"
+description: "{'value': 'To study the mechanisms of bursting, we have constructed a conductance-based, one-compartment model of CA1 pyramidal neurons. In this neuron model, reduced [Ca2+]o is simulated by neg."
 standard: other
 tags:
 - neuroscience

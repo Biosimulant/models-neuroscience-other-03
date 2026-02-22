@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model127021127021Model'
-description: Alcohol excites Cerebellar Golgi Cells by inhibiting the Na+/K+ ATPase
-  (Botta et al.2010)
+description: "Alcohol excites Cerebellar Golgi Cells by inhibiting the Na+/K+ ATPase (Botta et al.2010). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

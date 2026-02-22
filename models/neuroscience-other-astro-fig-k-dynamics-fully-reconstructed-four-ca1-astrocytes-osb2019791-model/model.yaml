@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model20197912019791Model'
-description: "ASTRO Fig\u202F5 K\u207A Dynamics in Fully Reconstructed Four CA1 Astrocytes\
-  \ (Savtchenko\u202FLP et al., 2018)"
+description: "ASTRO Fig 5 K\u207a Dynamics in Fully Reconstructed Four CA1 Astrocytes (Savtchenko LP et al., 2018). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model187687187687Model'
-description: Axon growth model (Diehl et al. 2016)
+description: "Neuroscience Model187687187687Model models neuroscience axon growth osb187687 dynamics as a OTHER simulation curated from opensourcebrain (opensourcebrain:187687), focused on neuroscience, opensourcebrain, axon. When you run it, you can track state over time and compare response patterns across parameter settings."
 standard: other
 tags:
 - neuroscience

@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AxonalSpheroidsAndConductionDefectsInAlzhe185864Model'
-description: '{"value": "PAAS (plaque-associated axonal spheroid(s)) are dystrophic
-  structures that sprout from axons that pass through amyloid beta plaques. If small
-  enough they do not interfere with action potent'
+description: "{\"value\": \"PAAS (plaque-associated axonal spheroid(s)) are dystrophic structures that sprout from axons that pass through amyloid beta plaques. If small enough they do not interfere with action potent."
 standard: other
 tags:
 - neuroscience

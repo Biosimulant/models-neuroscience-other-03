@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model126776126776Model'
-description: 'CA1 pyramidal neuron: rebound spiking (Ascoli et al.2010)'
+description: "CA1 pyramidal neuron: rebound spiking (Ascoli et al.2010). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

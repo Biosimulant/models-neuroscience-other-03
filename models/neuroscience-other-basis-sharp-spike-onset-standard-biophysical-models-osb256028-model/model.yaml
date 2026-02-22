@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model256028256028Model'
-description: The basis of sharp spike onset in standard biophysical models (Telenczuk
-  et al 2017)
+description: "The basis of sharp spike onset in standard biophysical models (Telenczuk et al 2017). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

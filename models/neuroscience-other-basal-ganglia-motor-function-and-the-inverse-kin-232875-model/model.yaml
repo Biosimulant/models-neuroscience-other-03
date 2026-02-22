@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BasalGangliaMotorFunctionAndTheInverseKin232875Model'
-description: '{"value": "The computational model to study the possible correlation
-  between Basal Ganglia (BG) function and solving the Inverse Kinematics (IK).", "attr_id":
-  24}'
+description: "The computational model to study the possible correlation between Basal Ganglia (BG) function and solving the Inverse Kinematics (IK). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

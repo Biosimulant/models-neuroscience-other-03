@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AlcoholActionInADetailedPurkinjeNeuronMod180789Model'
-description: '{"value": "\" ... we employ a\r\nnovel reduction algorithm to produce
-  a 2 compartment model of the cerebellar Purkinje\r\nneuron from a previously published,
-  1089 compartment model. It runs more than '
+description: "{\"value\": \"\\\" ... we employ a\\r\\nnovel reduction algorithm to produce a 2 compartment model of the cerebellar Purkinje\\r\\nneuron from a previously published, 1089 compartment model."
 standard: other
 tags:
 - neuroscience

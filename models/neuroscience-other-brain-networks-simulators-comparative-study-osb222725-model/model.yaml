@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model222725222725Model'
-description: Brain networks simulators - a comparative study (Tikidji-Hamburyan et
-  al 2017)
+description: "Brain networks simulators - a comparative study (Tikidji-Hamburyan et al 2017). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

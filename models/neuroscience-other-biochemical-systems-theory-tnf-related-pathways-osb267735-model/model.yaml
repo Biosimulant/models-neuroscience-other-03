@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model267735267735Model'
-description: "Biochemical Systems Theory Model of TNF\u03B1 related pathways (Sasidharakurup\
-  \ and Diwakar 2020)"
+description: "Biochemical Systems Theory Model of TNF\u03b1 related pathways (Sasidharakurup and Diwakar 2020). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

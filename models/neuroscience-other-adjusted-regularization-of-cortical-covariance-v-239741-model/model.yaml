@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AdjustedRegularizationOfCorticalCovarianceV239741Model'
-description: '{"value": "Graphical Lasso with Adjusted Regularization (GAR) useful
-  to estimate functional connectivity.", "attr_id": 24}'
+description: "Graphical Lasso with Adjusted Regularization (GAR) useful to estimate functional connectivity. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

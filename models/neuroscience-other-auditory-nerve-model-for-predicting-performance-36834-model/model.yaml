@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AuditoryNerveModelForPredictingPerformance36834Model'
-description: "{'value': 'A computational auditory nerve (AN) model was developed for\r\
-  \nuse in modeling psychophysical experiments with normal and impaired\r\nhuman listeners.\
-  \ In this phenomenological model, many p"
+description: "{'value': 'A computational auditory nerve (AN) model was developed for use in modeling psychophysical experiments with normal and impaired human listeners. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

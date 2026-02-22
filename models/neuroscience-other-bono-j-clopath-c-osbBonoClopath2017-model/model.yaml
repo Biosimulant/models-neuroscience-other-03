@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Bonoclopath2017Bonoclopath2017Model'
-description: Bono J, Clopath C (2017) Modeling somatic and dendritic spike mediated
-  plasticity at the single neuron and network level Nature Communications 8:706
+description: "Bono J, Clopath C (2017) Modeling somatic and dendritic spike mediated plasticity at the single neuron and network level Nature Communications 8:706. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model266497266497Model'
-description: Beta-cell hubs maintain Ca2+ oscillations in human and mouse islet simulations
-  (Lei et al 2018)
+description: "Beta-cell hubs maintain Ca2+ oscillations in human and mouse islet simulations (Lei et al 2018). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

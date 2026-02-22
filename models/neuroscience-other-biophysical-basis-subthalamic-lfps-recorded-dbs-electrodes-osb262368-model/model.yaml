@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model262368262368Model'
-description: Biophysical basis of Subthalamic LFPs Recorded from DBS electrodes (Maling
-  et al 2018)
+description: "Biophysical basis of Subthalamic LFPs Recorded from DBS electrodes (Maling et al 2018). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AllenInstituteRbp4CreVispLayer5472424854184346Model'
-description: '{"value": "This is an Allen Cell Types Database model of a Rbp4-Cre
-  neuron from layer 5 of the mouse primary visual cortex. The model was based on a
-  traced morphology after filling the cell with biocy'
+description: "{\"value\": \"This is an Allen Cell Types Database model of a Rbp4-Cre neuron from layer 5 of the mouse primary visual cortex. The model was based on a traced morphology after filling the cell with biocy."
 standard: other
 tags:
 - neuroscience

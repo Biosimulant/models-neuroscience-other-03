@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AxonGrowthModelDiehlEtAl2016187687Model'
-description: '{"value": "The model describes the elongation over time of an axon from
-  a small neurite to its steady-state length. The elongation depends on the availability
-  of tubulin dimers in the growth cone. The'
+description: "{\"value\": \"The model describes the elongation over time of an axon from a small neurite to its steady-state length. The elongation depends on the availability of tubulin dimers in the growth cone."
 standard: other
 tags:
 - neuroscience

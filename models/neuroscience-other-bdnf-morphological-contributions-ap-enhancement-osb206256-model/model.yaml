@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model206256206256Model'
-description: BDNF morphological contributions to AP enhancement (Galati et al. 2016)
+description: "BDNF morphological contributions to AP enhancement (Galati et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

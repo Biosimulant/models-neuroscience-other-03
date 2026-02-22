@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model8352083520Model'
-description: Ambiguous Encoding and Distorted Perception (Carlson and Kawasaki 2006)
+description: "Ambiguous Encoding and Distorted Perception (Carlson and Kawasaki 2006). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

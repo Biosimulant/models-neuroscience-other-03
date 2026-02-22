@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BiophysicalAndPhenomenologicalModelsOfSpike116096Model'
-description: '{"value": "\"Spike-timing dependent plasticity (STDP) is a form of associative
-  synaptic modification which depends\r\non the respective timing of pre- and post-synaptic
-  spikes. \r\n\r\nThe biophysical'
+description: "{\"value\": \"\\\"Spike-timing dependent plasticity (STDP) is a form of associative synaptic modification which depends\\r\\non the respective timing of pre- and post-synaptic spikes. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model125689125689Model'
-description: Balance of excitation and inhibition (Carvalho and Buonomano 2009)
+description: "Balance of excitation and inhibition (Carvalho and Buonomano 2009). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

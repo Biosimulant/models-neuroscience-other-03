@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AgeDependentExcitabilityOfCa1PyramidalNeur266848Model'
-description: '{"value": "Age-dependent accumulation of amyloid-b, provoking increasing
-  brain amyloidopathy, triggers abnormal patterns of neuron activity and circuit synchronization
-  in Alzheimer\u2019s disease (AD)'
+description: "{\"value\": \"Age-dependent accumulation of amyloid-b, provoking increasing brain amyloidopathy, triggers abnormal patterns of neuron activity and circuit synchronization in Alzheimer\\u2019s disease (AD). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

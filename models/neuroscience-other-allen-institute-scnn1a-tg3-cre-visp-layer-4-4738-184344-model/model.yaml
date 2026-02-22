@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AllenInstituteScnn1aTg3CreVispLayer44738184344Model'
-description: '{"value": "This is an Allen Cell Types Database model of a Scnn1a-Tg3-Cre
-  neuron from layer 4 of the mouse primary visual cortex. The model was based on a
-  traced morphology after filling the cell with'
+description: "{\"value\": \"This is an Allen Cell Types Database model of a Scnn1a-Tg3-Cre neuron from layer 4 of the mouse primary visual cortex. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

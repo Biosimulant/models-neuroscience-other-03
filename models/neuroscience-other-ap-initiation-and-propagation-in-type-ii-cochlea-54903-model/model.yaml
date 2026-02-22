@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: ApInitiationAndPropagationInTypeIiCochlea54903Model'
-description: "{'value': 'The model of type II cochlear ganglion cell was based on\
-  \ the\r\nimmunostaining of the mouse auditory pathway. Specific antibodies were\r\
-  \nused to map the distribution of voltage-dependent s"
+description: "{'value': 'The model of type II cochlear ganglion cell was based on the immunostaining of the mouse auditory pathway. Specific antibodies were used to map the distribution of voltage-dependent s."
 standard: other
 tags:
 - neuroscience

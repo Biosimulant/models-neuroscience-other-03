@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model135839135839Model'
-description: AP back-prop. explains threshold variability and rapid rise (McCormick
-  et al. 2007, Yu et al. 2008)
+description: "AP back-prop. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

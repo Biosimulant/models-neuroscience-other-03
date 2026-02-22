@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model156781156781Model'
-description: Bursting and oscillations in RD1 Retina driven by AII Amacrine Neuron
-  (Choi et al. 2014)
+description: "Bursting and oscillations in RD1 Retina driven by AII Amacrine Neuron (Choi et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

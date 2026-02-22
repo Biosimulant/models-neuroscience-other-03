@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model225080225080Model'
-description: 'CA1 pyr cell: Inhibitory modulation of spatial selectivity+phase precession
-  (Grienberger et al 2017)'
+description: "CA1 pyr cell: Inhibitory modulation of spatial selectivity+phase precession (Grienberger et al 2017). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

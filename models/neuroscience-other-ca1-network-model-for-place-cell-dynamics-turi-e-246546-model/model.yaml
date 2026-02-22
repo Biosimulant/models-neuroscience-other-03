@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1NetworkModelForPlaceCellDynamicsTuriE246546Model'
-description: '{"value": "Biophysical model of CA1 hippocampal region. The model simulates
-  place cells/fields and explores the place cell dynamics as function of VIP+ interneurons.",
-  "attr_id": 24}'
+description: "Biophysical model of CA1 hippocampal region. The model simulates place cells/fields and explores the place cell dynamics as function of VIP+ interneurons."
 standard: other
 tags:
 - neuroscience

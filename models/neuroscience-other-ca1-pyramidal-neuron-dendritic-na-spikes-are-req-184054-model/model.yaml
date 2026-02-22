@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalNeuronDendriticNaSpikesAreReq184054Model'
-description: '{"value": "This model simulates the effects of dendritic sodium spikes
-  initiated in distal apical dendrites on the voltage and the calcium dynamics revealed
-  by calcium imaging. It shows that dendritic'
+description: "{\"value\": \"This model simulates the effects of dendritic sodium spikes initiated in distal apical dendrites on the voltage and the calcium dynamics revealed by calcium imaging. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

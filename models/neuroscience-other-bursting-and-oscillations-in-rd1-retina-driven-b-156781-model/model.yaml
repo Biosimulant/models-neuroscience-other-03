@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BurstingAndOscillationsInRd1RetinaDrivenB156781Model'
-description: '{"value": "\"In many forms of retinal degeneration, photoreceptors die
-  but inner retinal circuits remain intact. In the rd1 mouse, an established model
-  for blinding retinal diseases, spontaneous activ'
+description: "{\"value\": \"\\\"In many forms of retinal degeneration, photoreceptors die but inner retinal circuits remain intact. In the rd1 mouse, an established model for blinding retinal diseases, spontaneous activ."
 standard: other
 tags:
 - neuroscience

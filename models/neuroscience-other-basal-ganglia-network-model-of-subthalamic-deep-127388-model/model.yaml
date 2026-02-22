@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BasalGangliaNetworkModelOfSubthalamicDeep127388Model'
-description: '{"value": "Basal ganglia network model of parkinsonian activity and
-  subthalamic deep brain stimulation in non-human primates from the article \r\n\r\nInstructions
-  are provided in the README.txt file. '
+description: "{\"value\": \"Basal ganglia network model of parkinsonian activity and subthalamic deep brain stimulation in non-human primates from the article \\r\\n\\r\\nInstructions are provided in the README.txt file. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

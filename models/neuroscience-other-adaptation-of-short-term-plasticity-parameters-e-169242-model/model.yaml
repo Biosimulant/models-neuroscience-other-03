@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AdaptationOfShortTermPlasticityParametersE169242Model'
-description: '{"value": "\"The anatomical connectivity among neurons has been experimentally
-  found to be largely non-random across brain areas. This means that certain connectivity
-  motifs occur at a higher frequenc'
+description: "{\"value\": \"\\\"The anatomical connectivity among neurons has been experimentally found to be largely non-random across brain areas. This means that certain connectivity motifs occur at a higher frequenc."
 standard: other
 tags:
 - neuroscience

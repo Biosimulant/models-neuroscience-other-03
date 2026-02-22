@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AnalyticalModellingOfTemperatureEffectsOnA239072Model'
-description: '{"value": "This code was used in the construction of the model developed
-  in the paper. It is a modified version of the simulation developed by Postlethwaite
-  et al. 2007 - for details of modifications '
+description: "{\"value\": \"This code was used in the construction of the model developed in the paper. It is a modified version of the simulation developed by Postlethwaite et al."
 standard: other
 tags:
 - neuroscience

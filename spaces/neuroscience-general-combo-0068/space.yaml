@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: General (COMBO_0068)'
-description: Neuroscience general comparative space with 4 models, configured as non-causal
-  co-simulation.
+description: "Neuroscience General (COMBO_0068) organizes axon_growth_1, axon_somatic_2, axon_somatic_3 into a comparative simulation setup to examine how general mechanisms compare across these models. When you run it, you can compare participant trajectories through shared runtime settings and routed output streams."
 models:
 - repo: Biosimulant/models-neuroscience-other-03
   alias: axon_growth_1

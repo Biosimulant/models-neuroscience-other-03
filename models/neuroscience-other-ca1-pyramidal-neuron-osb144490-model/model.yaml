@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model144490144490Model'
-description: 'CA1 pyramidal neuron: synaptically-induced bAP predicts synapse location
-  (Sterratt et al. 2012)'
+description: "CA1 pyramidal neuron: synaptically-induced bAP predicts synapse location (Sterratt et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

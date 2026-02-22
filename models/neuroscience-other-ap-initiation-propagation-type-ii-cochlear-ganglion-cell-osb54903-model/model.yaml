@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model5490354903Model'
-description: AP initiation and propagation in  type II cochlear ganglion cell (Hossain
-  et al 2005)
+description: "AP initiation and propagation in type II cochlear ganglion cell (Hossain et al 2005). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

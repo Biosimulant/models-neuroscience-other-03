@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BiophysicalModelingOfPathologicalBrainState262233Model'
-description: '{"value": "\"Traumatic brain injuries (TBI) lead to dramatic changes
-  in the surviving brain tissue. Altered ion concentrations, coupled with changes
-  in the expression of membrane-spanning proteins, cr'
+description: "{\"value\": \"\\\"Traumatic brain injuries (TBI) lead to dramatic changes in the surviving brain tissue. Altered ion concentrations, coupled with changes in the expression of membrane-spanning proteins, cr."
 standard: other
 tags:
 - neuroscience

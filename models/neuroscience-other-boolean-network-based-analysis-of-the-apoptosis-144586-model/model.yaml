@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BooleanNetworkBasedAnalysisOfTheApoptosis144586Model'
-description: '{"value": "\"To understand the design principles of the molecular interaction
-  network associated with the\r\nirreversibility of cell apoptosis and the stability
-  of cell surviving, we constructed a Boo'
+description: "{\"value\": \"\\\"To understand the design principles of the molecular interaction network associated with the\\r\\nirreversibility of cell apoptosis and the stability of cell surviving, we constructed a Boo. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

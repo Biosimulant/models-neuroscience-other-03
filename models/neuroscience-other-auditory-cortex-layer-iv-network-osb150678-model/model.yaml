@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model150678150678Model'
-description: Auditory cortex layer IV network model (Beeman 2013)
+description: "Auditory cortex layer IV network model (Beeman 2013). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

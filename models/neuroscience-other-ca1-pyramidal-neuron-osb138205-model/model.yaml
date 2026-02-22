@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model138205138205Model'
-description: 'CA1 pyramidal neuron: schizophrenic behavior (Migliore et al. 2011)'
+description: "CA1 pyramidal neuron: schizophrenic behavior (Migliore et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

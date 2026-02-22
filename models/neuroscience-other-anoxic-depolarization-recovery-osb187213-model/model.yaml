@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model187213187213Model'
-description: 'Anoxic depolarization, recovery: effect of brain regions and extracellular
-  space (Hubel et al. 2016)'
+description: "Anoxic depolarization, recovery: effect of brain regions and extracellular space (Hubel et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

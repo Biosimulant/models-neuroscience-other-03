@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalNeuronDendriticCa2InhibitionMu206244Model'
-description: '{"value": "In our experimental study, we combined\r\npaired patch-clamp
-  recordings and two-photon\r\nCa2+ imaging to quantify inhibition exerted by individual
-  GABAergic contacts on hippocampal pyramid'
+description: "{\"value\": \"In our experimental study, we combined\\r\\npaired patch-clamp recordings and two-photon\\r\\nCa2+ imaging to quantify inhibition exerted by individual GABAergic contacts on hippocampal pyramid. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

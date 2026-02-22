@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model184352184352Model'
-description: 'Allen Institute: Nr5a1-Cre VISp layer 4 472915634'
+description: "Neuroscience Model184352184352Model models neuroscience allen institute osb184352 dynamics as a OTHER simulation curated from opensourcebrain (opensourcebrain:184352), focused on neuroscience, opensourcebrain. When you run it, you can track state over time and compare response patterns across parameter settings."
 standard: other
 tags:
 - neuroscience

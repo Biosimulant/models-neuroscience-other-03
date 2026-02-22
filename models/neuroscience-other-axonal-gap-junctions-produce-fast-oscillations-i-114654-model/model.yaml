@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AxonalGapJunctionsProduceFastOscillationsI114654Model'
-description: '{"value": "Examines how electrical coupling between proximal axons produces
-  fast oscillations in cerebellar Purkinje cells.\r\nTraub RD, Middleton SJ, Knopfel
-  T, Whittington MA (2008) Model of very fa'
+description: "{\"value\": \"Examines how electrical coupling between proximal axons produces fast oscillations in cerebellar Purkinje cells.\\r\\nTraub RD, Middleton SJ, Knopfel T, Whittington MA (2008) Model of very fa. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

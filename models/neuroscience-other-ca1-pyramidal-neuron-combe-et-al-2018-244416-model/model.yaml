@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalNeuronCombeEtAl2018244416Model'
-description: '{"value": "\"Gamma oscillations are thought to play a role in learning
-  and memory. Two distinct bands, slow (25-50 Hz) and fast (65-100 Hz) gamma, have
-  been identified in area CA1 of the rodent hippoc'
+description: "{\"value\": \"\\\"Gamma oscillations are thought to play a role in learning and memory. Two distinct bands, slow (25-50 Hz) and fast (65-100 Hz) gamma, have been identified in area CA1 of the rodent hippoc."
 standard: other
 tags:
 - neuroscience

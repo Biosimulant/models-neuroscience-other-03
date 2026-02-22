@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model241160241160Model'
-description: AP initiation, propagation, and cortical invasion in a Layer 5 pyramidal
-  cell (Anderson et 2018)
+description: "AP initiation, propagation, and cortical invasion in a Layer 5 pyramidal cell (Anderson et 2018). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalCellsBasketCellsRipplesMalerba188977Model'
-description: '{"value": "Model of CA1 pyramidal layer Ripple activity, triggered when
-  receiving current input (to represent CA3 sharp-waves). \r\nCells are Adaptive-Exponential
-  Integrate and Fire neurons, receiving'
+description: "{\"value\": \"Model of CA1 pyramidal layer Ripple activity, triggered when receiving current input (to represent CA3 sharp-waves). \\r\\nCells are Adaptive-Exponential Integrate and Fire neurons, receiving."
 standard: other
 tags:
 - neuroscience

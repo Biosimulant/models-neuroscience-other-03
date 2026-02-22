@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalCellReceptorDependentCampDynam184731Model'
-description: '{"value": "We use a combination of live cell imaging and stochastic
-  modeling of signaling pathways to investigate how noradrenergic receptor stimulation
-  interacts with calcium to control cAMP, require'
+description: "{\"value\": \"We use a combination of live cell imaging and stochastic modeling of signaling pathways to investigate how noradrenergic receptor stimulation interacts with calcium to control cAMP, require. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

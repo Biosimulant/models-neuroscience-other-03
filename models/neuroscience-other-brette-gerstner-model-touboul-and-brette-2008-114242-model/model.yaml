@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BretteGerstnerModelTouboulAndBrette2008114242Model'
-description: '{''value'': ''Brian code to simulate the Brette-Gerstner model and reproduce
-  the figures of Touboul and Brette, Biol Cyber (2008).'', ''attr_id'': 24}'
+description: "Brian code to simulate the Brette-Gerstner model and reproduce the figures of Touboul and Brette, Biol Cyber (2008). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

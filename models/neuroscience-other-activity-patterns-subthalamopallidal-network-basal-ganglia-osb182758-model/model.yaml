@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model182758182758Model'
-description: Activity patterns in a subthalamopallidal network of the basal ganglia
-  model (Terman et al 2002)
+description: "Activity patterns in a subthalamopallidal network of the basal ganglia model (Terman et al 2002). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

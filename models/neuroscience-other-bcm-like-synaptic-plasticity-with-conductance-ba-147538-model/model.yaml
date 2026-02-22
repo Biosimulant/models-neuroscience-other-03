@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BcmLikeSynapticPlasticityWithConductanceBa147538Model'
-description: '{"value": "\" ...\r\nAlthough the BCM-like plasticity framework\r\nhas
-  been a useful formulation to understand synaptic plasticity\r\nand metaplasticity,
-  a mechanism for the activity-dependent regulat'
+description: "{\"value\": \"\\\" ...\\r\\nAlthough the BCM-like plasticity framework\\r\\nhas been a useful formulation to understand synaptic plasticity\\r\\nand metaplasticity, a mechanism for the activity-dependent regulat. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

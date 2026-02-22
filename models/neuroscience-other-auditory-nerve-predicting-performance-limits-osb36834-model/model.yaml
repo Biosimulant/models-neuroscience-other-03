@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model3683436834Model'
-description: Auditory nerve model for predicting performance limits (Heinz et al 2001)
+description: "Auditory nerve model for predicting performance limits (Heinz et al 2001). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

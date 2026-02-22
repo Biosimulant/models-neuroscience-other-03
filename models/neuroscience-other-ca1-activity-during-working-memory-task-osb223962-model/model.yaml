@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model223962223962Model'
-description: Model of CA1 activity during working memory task (Spera et al. 2016)
+description: "Model of CA1 activity during working memory task (Spera et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

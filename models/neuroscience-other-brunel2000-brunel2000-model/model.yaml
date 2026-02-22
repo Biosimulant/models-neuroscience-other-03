@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Brunel2000Brunel2000Model'
-description: Sparsely connected spiking neuron network from Brunel 2000
+description: "Sparsely connected spiking neuron network from Brunel 2000. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

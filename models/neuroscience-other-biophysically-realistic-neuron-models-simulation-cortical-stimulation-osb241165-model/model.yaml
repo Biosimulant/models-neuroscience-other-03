@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model241165241165Model'
-description: Biophysically realistic neuron models for simulation of cortical stimulation
-  (Aberra et al. 2018)
+description: "Biophysically realistic neuron models for simulation of cortical stimulation (Aberra et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

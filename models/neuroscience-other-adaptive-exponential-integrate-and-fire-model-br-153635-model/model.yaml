@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AdaptiveExponentialIntegrateAndFireModelBr153635Model'
-description: '{"value": "\"We introduce a two-dimensional integrate-and-fire model
-  that combines an exponential spike mechanism with an adaptation equation, based
-  on recent theoretical findings. \r\n...\r\nThe mode'
+description: "{\"value\": \"\\\"We introduce a two-dimensional integrate-and-fire model that combines an exponential spike mechanism with an adaptation equation, based on recent theoretical findings. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

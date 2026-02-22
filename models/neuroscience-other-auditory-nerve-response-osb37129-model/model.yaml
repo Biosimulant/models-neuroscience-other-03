@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model3712937129Model'
-description: Auditory nerve response model (Tan, Carney 2003)
+description: "Neuroscience Model3712937129Model models neuroscience auditory nerve response osb37129 dynamics as a OTHER simulation curated from opensourcebrain (opensourcebrain:37129), focused on neuroscience, opensourcebra. When you run it, you can track state over time and compare response patterns across parameter settings."
 standard: other
 tags:
 - neuroscience

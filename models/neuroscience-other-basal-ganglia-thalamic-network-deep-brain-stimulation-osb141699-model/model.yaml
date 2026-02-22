@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model141699141699Model'
-description: Basal ganglia-thalamic network model for deep brain stimulation (So et
-  al. 2011)
+description: "Basal ganglia-thalamic network model for deep brain stimulation (So et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

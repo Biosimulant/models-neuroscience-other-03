@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AmbiguousEncodingAndDistortedPerceptionCarl83520Model'
-description: '{"value": "\"... In\r\nthe weakly electric fish Eigenmannia, P- and
-  T-type primary afferent fibers are specialized for encoding the amplitude and phase,\r\nrespectively,
-  of electrosensory stimuli. We '
+description: "{\"value\": \"\\\"... In\\r\\nthe weakly electric fish Eigenmannia, P- and T-type primary afferent fibers are specialized for encoding the amplitude and phase,\\r\\nrespectively, of electrosensory stimuli."
 standard: other
 tags:
 - neuroscience

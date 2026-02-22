@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AvailabilityOfLowThresholdCa2CurrentInRet125378Model'
-description: '{"value": "\"... we measured T-type current of isolated\r\ngoldfish
-  retinal ganglion cells with perforated-patch voltageclamp\r\nmethods in solutions
-  containing a normal extracellular Ca2+\r\nconcentr'
+description: "{\"value\": \"\\\"... we measured T-type current of isolated\\r\\ngoldfish retinal ganglion cells with perforated-patch voltageclamp\\r\\nmethods in solutions containing a normal extracellular Ca2+\\r\\nconcentr."
 standard: other
 tags:
 - neuroscience

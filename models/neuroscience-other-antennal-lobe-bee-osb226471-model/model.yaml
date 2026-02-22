@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model226471226471Model'
-description: A model of antennal lobe of bee (Chen JY et al. 2015)
+description: "A model of antennal lobe of bee (Chen JY et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

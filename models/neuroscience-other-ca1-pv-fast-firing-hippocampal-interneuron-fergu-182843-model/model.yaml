@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PvFastFiringHippocampalInterneuronFergu182843Model'
-description: '{"value": "This two-variable simple model is derived based on patch-clamp
-  recordings from the CA1 region of a whole hippocampus preparation of PV+ fast-firing
-  cells. \r\nSince basket cells, axo-axonic'
+description: "{\"value\": \"This two-variable simple model is derived based on patch-clamp recordings from the CA1 region of a whole hippocampus preparation of PV+ fast-firing cells. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

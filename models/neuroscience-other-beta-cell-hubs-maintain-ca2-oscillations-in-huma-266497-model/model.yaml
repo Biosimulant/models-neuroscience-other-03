@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BetaCellHubsMaintainCa2OscillationsInHuma266497Model'
-description: '{"value": "\"Islet \u00df-cells are responsible for secreting all circulating
-  insulin in response to rising plasma glucose concentrations. These cells are a phenotypically
-  diverse population that expr'
+description: "{\"value\": \"\\\"Islet \\u00df-cells are responsible for secreting all circulating insulin in response to rising plasma glucose concentrations. These cells are a phenotypically diverse population that expr."
 standard: other
 tags:
 - neuroscience

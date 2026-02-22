@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AmpaReceptorTraffickingAndItsRoleInHetero263130Model'
-description: '{"value": "\"... cumulative experimental and theoretical data have\r\ndemonstrated
-  that long-term potentiation (LTP) and long-term\r\ndepression (LTD) can promote
-  compensatory alterations in\r\nnon-st'
+description: "{\"value\": \"\\\"... cumulative experimental and theoretical data have\\r\\ndemonstrated that long-term potentiation (LTP) and long-term\\r\\ndepression (LTD) can promote compensatory alterations in\\r\\nnon-st."
 standard: other
 tags:
 - neuroscience

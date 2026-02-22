@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BiochemicalSystemsTheoryModelOfTnfaRelated267735Model'
-description: '{"value": "\"In this study, a computational model of AD and PD have
-  been modelled using biochemical systems theory, and shows how Tumour Necrosis Factor
-  alpha (TNFa) regulated neuroinflammation, oxida'
+description: "{\"value\": \"\\\"In this study, a computational model of AD and PD have been modelled using biochemical systems theory, and shows how Tumour Necrosis Factor alpha (TNFa) regulated neuroinflammation, oxida. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

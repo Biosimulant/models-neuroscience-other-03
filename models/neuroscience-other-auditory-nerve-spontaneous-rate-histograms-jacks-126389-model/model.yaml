@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AuditoryNerveSpontaneousRateHistogramsJacks126389Model'
-description: '{"value": "Histograms of spontaneous rate estimates of auditory nerve
-  are well reproduced by models with two or three spontaneous rates and long range
-  dependence.", "attr_id": 24}'
+description: "Histograms of spontaneous rate estimates of auditory nerve are well reproduced by models with two or three spontaneous rates and long range dependence. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

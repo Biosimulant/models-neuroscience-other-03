@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AplysiaLtfModelLiuEtAl2020ZhangEtAl202267695Model'
-description: Faithful wrapper of upstream OTHER model.
+description: "Neuroscience Aplysia Ltf Model Liu Et Al2020Zhang Et Al202267695Model captures neuroscience aplysia ltf liu et al behavior in the context of neuroscience, modeldb, aplysia using a modeldb-sourced OTHER model. When you run it, you can observe state and evaluate how the modeled system changes across runs."
 standard: other
 tags:
 - neuroscience

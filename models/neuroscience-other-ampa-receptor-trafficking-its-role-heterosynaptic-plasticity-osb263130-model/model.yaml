@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model263130263130Model'
-description: AMPA receptor trafficking and its role in heterosynaptic plasticity (Antunes
-  et al 2018)
+description: "AMPA receptor trafficking and its role in heterosynaptic plasticity (Antunes et al 2018). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

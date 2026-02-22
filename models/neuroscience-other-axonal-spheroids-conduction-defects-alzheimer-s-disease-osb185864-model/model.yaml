@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model185864185864Model'
-description: "Axonal spheroids and conduction defects in Alzheimer\u2019s disease\
-  \ (Yuan, Zhang, Tong, et al 2022)"
+description: "Axonal spheroids and conduction defects in Alzheimer\u2019s disease (Yuan, Zhang, Tong, et al 2022). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

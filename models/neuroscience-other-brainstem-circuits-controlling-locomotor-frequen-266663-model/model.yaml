@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BrainstemCircuitsControllingLocomotorFrequen266663Model'
-description: '{"value": "\"A series of recent studies identified key structures in
-  the mesencephalic locomotor region and the caudal brainstem of mice involved in
-  the initiation and control of slow (exploratory) an'
+description: "{\"value\": \"\\\"A series of recent studies identified key structures in the mesencephalic locomotor region and the caudal brainstem of mice involved in the initiation and control of slow (exploratory) an. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BasisForTemporalFiltersInTheCerebellarGra168950Model'
-description: '{"value": "This contains the models, functions and resulting data as
-  used in: Roessert C, Dean P, Porrill J. At the Edge of Chaos: How Cerebellar Granular
-  Layer Network Dynamics Can Provide the Basis '
+description: "{\"value\": \"This contains the models, functions and resulting data as used in: Roessert C, Dean P, Porrill J. At the Edge of Chaos: How Cerebellar Granular Layer Network Dynamics Can Provide the Basis."
 standard: other
 tags:
 - neuroscience

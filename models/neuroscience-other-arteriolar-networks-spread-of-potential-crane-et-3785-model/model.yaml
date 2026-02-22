@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: ArteriolarNetworksSpreadOfPotentialCraneEt3785Model'
-description: "{'value': 'Crane, G.J., Hines, M.L., and Neild, T.O. (2001)\r\nSimulating\
-  \ the spread of membrane potential changes in arteriolar networks.\r\nMicrocirculation\
-  \ 8:33-43.\r\n\r\nThis model uses a gap jun"
+description: "{'value': 'Crane, G.J., Hines, M.L., and Neild, T.O. (2001) Simulating the spread of membrane potential changes in arteriolar networks."
 standard: other
 tags:
 - neuroscience

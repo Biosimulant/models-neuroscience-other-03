@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalNeuronDendriticSpineWithPlasti144463Model'
-description: '{"value": "Biophysical model of a dendritic spine and adjacent dendrite
-  with synapse. Model parameters adjusted to fit CA3-CA1 Shaffer collateral synapse
-  data from literature. Model includes both elec'
+description: "{\"value\": \"Biophysical model of a dendritic spine and adjacent dendrite with synapse. Model parameters adjusted to fit CA3-CA1 Shaffer collateral synapse data from literature."
 standard: other
 tags:
 - neuroscience

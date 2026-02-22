@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model125378125378Model'
-description: Availability of low-threshold Ca2+ current in retinal ganglion cells
-  (Lee SC et al. 2003)
+description: "Availability of low-threshold Ca2+ current in retinal ganglion cells (Lee SC et al. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

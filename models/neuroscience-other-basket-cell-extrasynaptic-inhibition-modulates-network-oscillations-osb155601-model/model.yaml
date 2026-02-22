@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model155601155601Model'
-description: Basket cell extrasynaptic inhibition modulates network oscillations (Proddutur
-  et al., 2013)
+description: "Basket cell extrasynaptic inhibition modulates network oscillations (Proddutur et al., 2013). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

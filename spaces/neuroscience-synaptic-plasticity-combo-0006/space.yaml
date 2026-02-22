@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Synaptic Plasticity (COMBO_0006)'
-description: Neuroscience synaptic plasticity comparative space with 2 models, configured
-  as non-causal co-simulation.
+description: "Neuroscience Synaptic Plasticity (COMBO_0006) organizes adaptation_short_1, allosteric_kinet_2, state_compare_mon into a comparative simulation setup to examine how synaptic changes influence network-level outcomes. When you run it, you can compare participant trajectories through shared runtime settings and routed output streams."
 models:
 - repo: Biosimulant/models-neuroscience-other-03
   alias: adaptation_short_1

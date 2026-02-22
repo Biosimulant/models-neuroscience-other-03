@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model139418139418Model'
-description: 'Bursting respiratory net: clustered architecture gives large phase diff`s
-  (Fietkiewicz et al 2011)'
+description: "Bursting respiratory net: clustered architecture gives large phase diff`s (Fietkiewicz et al 2011). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

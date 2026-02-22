@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BdnfMorphologicalContributionsToApEnhanceme206256Model'
-description: '{"value": "\" ... We quantified BDNF\u2019s effect on\r\ncultured cortical
-  neuron morphological parameters and found that BDNF stimulates\r\ndendrite growth
-  and addition of dendrites while increasing '
+description: "{\"value\": \"\\\" ... We quantified BDNF\\u2019s effect on\\r\\ncultured cortical neuron morphological parameters and found that BDNF stimulates\\r\\ndendrite growth and addition of dendrites while increasing."
 standard: other
 tags:
 - neuroscience

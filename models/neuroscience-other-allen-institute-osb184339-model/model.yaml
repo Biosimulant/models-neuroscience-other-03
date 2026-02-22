@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model184339184339Model'
-description: 'Allen Institute: Rbp4-Cre VISp layer 6a 473871592'
+description: "Neuroscience Model184339184339Model captures neuroscience allen institute osb184339 behavior in the context of neuroscience, opensourcebrain, allen using a opensourcebrain-sourced OTHER model. When you run it, you can observe state and evaluate how the modeled system changes across runs."
 standard: other
 tags:
 - neuroscience

@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model3416834168Model'
-description: Burst induced synaptic plasticity in Apysia sensorimotor neurons (Phares
-  et al 2003)
+description: "Burst induced synaptic plasticity in Apysia sensorimotor neurons (Phares et al 2003). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

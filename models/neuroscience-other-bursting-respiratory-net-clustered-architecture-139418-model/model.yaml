@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BurstingRespiratoryNetClusteredArchitecture139418Model'
-description: '{"value": "Using a previous model of respiratory rhythm generation,
-  we modified the network architecture such that cells can be segregated into two
-  clusters. Cells within a given cluster burst with sm'
+description: "{\"value\": \"Using a previous model of respiratory rhythm generation, we modified the network architecture such that cells can be segregated into two clusters. Cells within a given cluster burst with sm."
 standard: other
 tags:
 - neuroscience

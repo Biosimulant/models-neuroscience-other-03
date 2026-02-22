@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model2001520015Model'
-description: 'CA1 interneuron: K currents (Lien et al 2002)'
+description: "Neuroscience Model2001520015Model represents neuroscience ca1 interneuron osb20015 mechanisms from opensourcebrain reference opensourcebrain:20015. When you run it, you can inspect state and compare temporal behavior between baseline and adjusted inputs."
 standard: other
 tags:
 - neuroscience

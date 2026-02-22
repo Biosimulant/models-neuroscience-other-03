@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AnOscillatoryNeuralAutoencoderBasedOnFrequ243595Model'
-description: '{"value": "\" ... We propose here an oscillatory neural network model
-  that performs the function of an autoencoder. The model is a hybrid of rate-coded
-  neurons and neural oscillators. Input signals mo'
+description: "{\"value\": \"\\\" ... We propose here an oscillatory neural network model that performs the function of an autoencoder."
 standard: other
 tags:
 - neuroscience

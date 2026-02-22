@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BinocularEnergyModelSetForBinocularNeurons266560Model'
-description: '{"value": "This is a version of the binocular energy model with parameters
-  chosen to reproduce individual cells in praying mantis optic lobe. The receptive
-  fields are very coarsely sampled (6 differen'
+description: "{\"value\": \"This is a version of the binocular energy model with parameters chosen to reproduce individual cells in praying mantis optic lobe. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

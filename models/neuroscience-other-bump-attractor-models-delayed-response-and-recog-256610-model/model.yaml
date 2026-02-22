@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: BumpAttractorModelsDelayedResponseAndRecog256610Model'
-description: '{"value": "The archive contains examples of two spatial working memory
-  tasks: the Delayed Response Task (DRT) or oculomotor task & the Delayed Recognition
-  Span Task in the spatial condition (DRSTsp).\'
+description: "{\"value\": \"The archive contains examples of two spatial working memory tasks: the Delayed Response Task (DRT) or oculomotor task & the Delayed Recognition Span Task in the spatial condition (DRSTsp).\\. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

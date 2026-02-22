@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model185021185021Model'
-description: CA1 pyramidal neuron network model (Ferguson et al 2015)
+description: "CA1 pyramidal neuron network model (Ferguson et al 2015). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

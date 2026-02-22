@@ -1,7 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model267598267598Model'
-description: Adaptive Generalized Leaky Integrate-and-Fire Model (AGLIF) (Marasco
-  et al., 2023)
+description: "Adaptive Generalized Leaky Integrate-and-Fire Model (AGLIF) (Marasco et al., 2023). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

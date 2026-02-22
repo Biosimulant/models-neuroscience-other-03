@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: AxonalSubthresholdVoltageSignalingAlongHipp267512Model'
-description: '{"value": "Subthreshold depolarization of soma passively propagates
-  into the axons for a substantial distance and thereby caused enhancement of the
-  transmitter release from the axon terminals of hippo'
+description: "{\"value\": \"Subthreshold depolarization of soma passively propagates into the axons for a substantial distance and thereby caused enhancement of the transmitter release from the axon terminals of hippo. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

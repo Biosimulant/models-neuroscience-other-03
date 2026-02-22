@@ -1,6 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Model266636266636Model'
-description: BK Channels Promote Bursting in Pituitary Cells (Tabak et al 2011)
+description: "BK Channels Promote Bursting in Pituitary Cells (Tabak et al 2011). It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience

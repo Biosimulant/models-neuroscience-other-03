@@ -1,8 +1,6 @@
 schema_version: '2.0'
 title: 'Neuroscience: Ca1PyramidalNeuronHChannelDependentDeficit116983Model'
-description: '{"value": "This model was used to confirm and support experimental data\r\nsuggesting
-  that the neuronal/circuitry changes associated with temporal lobe epilepsy,\r\nincluding
-  Ih-dependent inductive me'
+description: "{\"value\": \"This model was used to confirm and support experimental data\\r\\nsuggesting that the neuronal/circuitry changes associated with temporal lobe epilepsy,\\r\\nincluding Ih-dependent inductive me. It can be used to explore neural activity dynamics and compare response patterns across conditions."
 standard: other
 tags:
 - neuroscience
