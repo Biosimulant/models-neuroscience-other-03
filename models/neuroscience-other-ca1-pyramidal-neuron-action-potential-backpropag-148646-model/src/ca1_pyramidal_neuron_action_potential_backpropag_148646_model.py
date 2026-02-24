@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherCa1PyramidalNeuronActionPotentialBackpropagation(biosim.BioModule):
-    """BioModule wrapper for: CA1 pyramidal neuron: action potential backpropagation (Gasparini & Migliore 2015).""""""
+    """BioModule wrapper for: CA1 pyramidal neuron: action potential backpropagation (Gasparini & Migliore 2015)."""
 
     def __init__(self, model_path: str = "data/148646.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherCa1PyramidalNeuronActionPotentialBackpropagation(biosim.BioModule):
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

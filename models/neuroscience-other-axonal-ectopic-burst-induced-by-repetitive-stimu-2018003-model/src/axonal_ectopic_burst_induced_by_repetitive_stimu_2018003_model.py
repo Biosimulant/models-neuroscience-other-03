@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherAxonalEctopicBurstInducedByRepetitiveStimuliOf(biosim.BioModule):
-    """BioModule wrapper for: Axonal ectopic burst induced by repetitive stimuli of hippocampal mossy fiber.""""""
+    """BioModule wrapper for: Axonal ectopic burst induced by repetitive stimuli of hippocampal mossy fiber."""
 
     def __init__(self, model_path: str = "data/2018003.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherAxonalEctopicBurstInducedByRepetitiveStimuliOf(biosim.BioModule):
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

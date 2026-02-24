@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherBrainNetworksSimulatorsAComparativeStudyTikidji(biosim.BioModule):
-    """BioModule wrapper for: Brain networks simulators - a comparative study  (Tikidji-Hamburyan et al 2017).""""""
+    """BioModule wrapper for: Brain networks simulators - a comparative study  (Tikidji-Hamburyan et al 2017)."""
 
     def __init__(self, model_path: str = "data/222725.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherBrainNetworksSimulatorsAComparativeStudyTikidji(biosim.BioModule):
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

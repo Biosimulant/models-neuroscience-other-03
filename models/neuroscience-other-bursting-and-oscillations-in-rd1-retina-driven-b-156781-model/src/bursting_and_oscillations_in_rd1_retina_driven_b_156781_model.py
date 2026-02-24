@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherBurstingAndOscillationsInRd1RetinaDrivenByAii(biosim.BioModule):
-    """BioModule wrapper for: Bursting and oscillations in RD1 Retina driven by AII Amacrine Neuron (Choi et al. 2014).""""""
+    """BioModule wrapper for: Bursting and oscillations in RD1 Retina driven by AII Amacrine Neuron (Choi et al. 2014)."""
 
     def __init__(self, model_path: str = "data/156781.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherBurstingAndOscillationsInRd1RetinaDrivenByAii(biosim.BioModule):
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

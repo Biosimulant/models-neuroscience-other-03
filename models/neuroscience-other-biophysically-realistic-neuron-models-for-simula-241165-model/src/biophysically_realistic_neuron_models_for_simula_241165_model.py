@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherBiophysicallyRealisticNeuronModelsForSimulationOf(biosim.BioModule):
-    """BioModule wrapper for: Biophysically realistic neuron models for simulation of cortical stimulation (Aberra et al. 2018).""""""
+    """BioModule wrapper for: Biophysically realistic neuron models for simulation of cortical stimulation (Aberra et al. 2018)."""
 
     def __init__(self, model_path: str = "data/241165.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherBiophysicallyRealisticNeuronModelsForSimulationOf(biosim.BioModule):
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

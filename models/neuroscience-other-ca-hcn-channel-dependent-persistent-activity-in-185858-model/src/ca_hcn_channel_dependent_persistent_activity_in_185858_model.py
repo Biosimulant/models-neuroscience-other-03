@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherCaHcnChannelDependentPersistentActivityInMultiscale(biosim.BioModule):
-    """BioModule wrapper for: Ca+/HCN channel-dependent persistent activity in multiscale model of neocortex (Neymotin et al 2016).""""""
+    """BioModule wrapper for: Ca+/HCN channel-dependent persistent activity in multiscale model of neocortex (Neymotin et al 2016)."""
 
     def __init__(self, model_path: str = "data/185858.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherCaHcnChannelDependentPersistentActivityInMultiscale(biosim.BioModule)
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

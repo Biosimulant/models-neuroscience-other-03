@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherAdaptiveGeneralizedLeakyIntegrateAndFireModelAglif(biosim.BioModule):
-    """BioModule wrapper for: Adaptive Generalized Leaky Integrate-and-Fire Model (AGLIF) (Marasco et al., 2023).""""""
+    """BioModule wrapper for: Adaptive Generalized Leaky Integrate-and-Fire Model (AGLIF) (Marasco et al., 2023)."""
 
     def __init__(self, model_path: str = "data/267598.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherAdaptiveGeneralizedLeakyIntegrateAndFireModelAglif(biosim.BioModule):
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

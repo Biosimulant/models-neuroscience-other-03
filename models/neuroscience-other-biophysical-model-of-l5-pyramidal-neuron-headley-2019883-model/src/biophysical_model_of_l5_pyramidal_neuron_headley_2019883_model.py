@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherBiophysicalModelOfL5PyramidalNeuronHeadleyLatimerEt(biosim.BioModule):
-    """BioModule wrapper for: Biophysical model of L5 Pyramidal Neuron (Headley, Latimer et al., 2025).""""""
+    """BioModule wrapper for: Biophysical model of L5 Pyramidal Neuron (Headley, Latimer et al., 2025)."""
 
     def __init__(self, model_path: str = "data/2019883.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherBiophysicalModelOfL5PyramidalNeuronHeadleyLatimerEt(biosim.BioModule)
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

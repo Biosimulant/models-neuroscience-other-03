@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherAnElectrophysiologicalModelOfGabaergicDoubleBouquet(biosim.BioModule):
-    """BioModule wrapper for: An electrophysiological model of GABAergic double bouquet cells (Chrysanthidis et al. 2019).""""""
+    """BioModule wrapper for: An electrophysiological model of GABAergic double bouquet cells (Chrysanthidis et al. 2019)."""
 
     def __init__(self, model_path: str = "data/257610.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherAnElectrophysiologicalModelOfGabaergicDoubleBouquet(biosim.BioModule)
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

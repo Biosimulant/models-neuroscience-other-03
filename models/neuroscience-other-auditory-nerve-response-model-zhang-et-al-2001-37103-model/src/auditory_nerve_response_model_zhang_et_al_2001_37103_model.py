@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherAuditoryNerveResponseModelZhangEtAl2001(biosim.BioModule):
-    """BioModule wrapper for: Auditory nerve response model (Zhang et al 2001).""""""
+    """BioModule wrapper for: Auditory nerve response model (Zhang et al 2001)."""
 
     def __init__(self, model_path: str = "data/37103.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherAuditoryNerveResponseModelZhangEtAl2001(biosim.BioModule):
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

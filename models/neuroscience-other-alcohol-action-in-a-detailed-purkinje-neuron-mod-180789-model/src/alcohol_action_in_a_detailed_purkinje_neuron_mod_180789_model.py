@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherAlcoholActionInADetailedPurkinjeNeuronModelAndAn(biosim.BioModule):
-    """BioModule wrapper for: Alcohol action in a detailed Purkinje neuron model and an efficient simplified model (Forrest 2015).""""""
+    """BioModule wrapper for: Alcohol action in a detailed Purkinje neuron model and an efficient simplified model (Forrest 2015)."""
 
     def __init__(self, model_path: str = "data/180789.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherAlcoholActionInADetailedPurkinjeNeuronModelAndAn(biosim.BioModule):
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

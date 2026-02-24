@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherBooleanNetworkBasedAnalysisOfTheApoptosisNetworkMai(biosim.BioModule):
-    """BioModule wrapper for: Boolean network-based analysis of the apoptosis network (Mai and Liu 2009).""""""
+    """BioModule wrapper for: Boolean network-based analysis of the apoptosis network (Mai and Liu 2009)."""
 
     def __init__(self, model_path: str = "data/144586.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherBooleanNetworkBasedAnalysisOfTheApoptosisNetworkMai(biosim.BioModule)
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

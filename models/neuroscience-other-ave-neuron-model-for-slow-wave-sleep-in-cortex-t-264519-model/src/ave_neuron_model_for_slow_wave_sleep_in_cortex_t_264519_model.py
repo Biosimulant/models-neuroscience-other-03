@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherAveNeuronModelForSlowWaveSleepInCortexTatsuki2016(biosim.BioModule):
-    """BioModule wrapper for: Ave. neuron model for slow-wave sleep in cortex Tatsuki 2016 Yoshida 2018 Rasmussen 2017 (all et al).""""""
+    """BioModule wrapper for: Ave. neuron model for slow-wave sleep in cortex Tatsuki 2016 Yoshida 2018 Rasmussen 2017 (all et al)."""
 
     def __init__(self, model_path: str = "data/264519.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherAveNeuronModelForSlowWaveSleepInCortexTatsuki2016(biosim.BioModule):
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

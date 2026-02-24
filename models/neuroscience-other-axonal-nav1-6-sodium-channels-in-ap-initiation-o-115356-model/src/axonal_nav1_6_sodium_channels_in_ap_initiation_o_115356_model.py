@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherAxonalNav16SodiumChannelsInApInitiationOfCa1(biosim.BioModule):
-    """BioModule wrapper for: Axonal NaV1.6 Sodium Channels in AP Initiation of CA1 Pyramidal Neurons (Royeck et al. 2008).""""""
+    """BioModule wrapper for: Axonal NaV1.6 Sodium Channels in AP Initiation of CA1 Pyramidal Neurons (Royeck et al. 2008)."""
 
     def __init__(self, model_path: str = "data/115356.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherAxonalNav16SodiumChannelsInApInitiationOfCa1(biosim.BioModule):
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

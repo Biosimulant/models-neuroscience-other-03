@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherBrainDynamicsToolboxHeitmannBreakspear201620172018(biosim.BioModule):
-    """BioModule wrapper for: Brain Dynamics Toolbox (Heitmann & Breakspear 2016, 2017, 2018).""""""
+    """BioModule wrapper for: Brain Dynamics Toolbox (Heitmann & Breakspear 2016, 2017, 2018)."""
 
     def __init__(self, model_path: str = "data/239388.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherBrainDynamicsToolboxHeitmannBreakspear201620172018(biosim.BioModule):
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

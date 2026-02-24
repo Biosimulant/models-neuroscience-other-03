@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherCa1PyramidalNeuronEffectsOfR213qAndR312wKv72(biosim.BioModule):
-    """BioModule wrapper for: CA1 pyramidal neuron: effects of R213Q and R312W Kv7.2 mutations (Miceli et al. 2013).""""""
+    """BioModule wrapper for: CA1 pyramidal neuron: effects of R213Q and R312W Kv7.2 mutations (Miceli et al. 2013)."""
 
     def __init__(self, model_path: str = "data/148094.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherCa1PyramidalNeuronEffectsOfR213qAndR312wKv72(biosim.BioModule):
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

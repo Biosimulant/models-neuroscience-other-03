@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherAnAgentBasedComputationalModelForCorticalLayer(biosim.BioModule):
-    """BioModule wrapper for: An agent-based computational model for cortical layer formation (Bauer et al 2021).""""""
+    """BioModule wrapper for: An agent-based computational model for cortical layer formation (Bauer et al 2021)."""
 
     def __init__(self, model_path: str = "data/266895.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherAnAgentBasedComputationalModelForCorticalLayer(biosim.BioModule):
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 

@@ -20,7 +20,7 @@ import biosim
 from biosim.signals import BioSignal, SignalMetadata
 
 class OtherAllenInstituteRbp4CreVispLayer5472424854(biosim.BioModule):
-    """BioModule wrapper for: Allen Institute: Rbp4-Cre VISp layer 5 472424854.""""""
+    """BioModule wrapper for: Allen Institute: Rbp4-Cre VISp layer 5 472424854."""
 
     def __init__(self, model_path: str = "data/184346.zip", min_dt: float = 0.01) -> None:
         self.min_dt = min_dt
@@ -87,7 +87,7 @@ class OtherAllenInstituteRbp4CreVispLayer5472424854(biosim.BioModule):
         return {"state"}
 
     def advance_to(self, t: float) -> None:
-        """Advance simulation — dispatches to detected simulator."""
+        """Advance simulation - dispatches to detected simulator."""
         if self._extracted_dir is None:
             self.setup()
 
