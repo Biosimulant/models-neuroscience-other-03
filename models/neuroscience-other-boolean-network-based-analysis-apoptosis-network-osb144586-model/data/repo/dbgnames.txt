@@ -1,8 +1,0 @@
-AIN input
-BIN input
-A
-B
-C
-D
-DNADamage 2
-Apoptosis 20

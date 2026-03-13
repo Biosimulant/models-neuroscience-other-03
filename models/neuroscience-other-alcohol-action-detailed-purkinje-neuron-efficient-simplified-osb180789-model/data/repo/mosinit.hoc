@@ -1,3 +1,0 @@
-load_file("nrngui.hoc")
-print "loading simplified 2 compartment model"
-load_file("mosinit_simple.hoc")

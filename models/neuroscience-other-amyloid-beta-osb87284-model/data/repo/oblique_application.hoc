@@ -1,8 +1,0 @@
-// oblique_application.hoc
-
-proc oblique_application() {
-  runp()
-  apply_obliques_aBeta()
-  runp()
-  remove_aBeta()
-}

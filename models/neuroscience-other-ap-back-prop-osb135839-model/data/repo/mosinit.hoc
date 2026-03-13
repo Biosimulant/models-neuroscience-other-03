@@ -1,2 +1,0 @@
-load_file("nrngui.hoc")
-load_file("Rapid_rising_somatic_spike_soma_axon.hoc")

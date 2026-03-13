@@ -1,8 +1,0 @@
-{load_file("nrngui.hoc")}
-{load_file("hinton.hoc")}
-{
-xpanel("Show movie for spk.std")
-xbutton("Movie", "p()")
-xpanel()
-}
-

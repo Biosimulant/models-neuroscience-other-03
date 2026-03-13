@@ -1,4 +1,0 @@
-load_file("nrngui.hoc")
-xopen("rundemo.hoc")
-
-

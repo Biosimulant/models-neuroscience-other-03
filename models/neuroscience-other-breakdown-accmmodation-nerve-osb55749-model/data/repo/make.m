@@ -1,1 +1,0 @@
-mex -O simPatch.c mxUtility.c patch.c
