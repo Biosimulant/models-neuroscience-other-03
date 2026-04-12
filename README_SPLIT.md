@@ -4,7 +4,7 @@ Generated from monolithic models repo split.
 
 - Domain: neuroscience (other shard 3/6)
 - Model count: 394
-- Source: /Volumes/dem-ssd/imp/projects/Nitoons/Biosimulant/models
+- Source: monolithic `models` repository
 
 Layout:
 - models/<slug>/model.yaml

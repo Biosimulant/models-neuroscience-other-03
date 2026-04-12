@@ -16,9 +16,8 @@ This model was auto-generated from the modeldb repository.
 ```yaml
 # In a space.yaml wiring file:
 models:
-  - repo: Biosimulant/models
+  - path: ../../models/neuroscience-other-biochemical-systems-theory-model-of-tnfa-related-267735-model
     alias: model
-    manifest_path: models/neuroscience-other-biochemical-systems-theory-model-of-tnfa-related-267735-model/model.yaml
 ```
 
 ## Tags
